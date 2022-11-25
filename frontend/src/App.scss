@@ -1,16 +1,18 @@
-*,
-*::after,
-**::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
+// *,
+// *::after,
+// **::before{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
 
 // html{
 //     //This defines what 1rem is
 //     font-size: 62.50%;
 // }
 
-body {
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
