@@ -1,7 +1,9 @@
+import { Header } from '../components'
+
 const Home = () => {
     return ( 
         <div>
-            <div>Home</div>
+            <Header />
             <div>about</div>
             <div>service</div>
             <div>Blog</div>
