@@ -1,10 +1,10 @@
-import { Header } from '../components'
+import { About, Header } from '../components'
 
 const Home = () => {
     return ( 
         <div>
             <Header />
-            <div>about</div>
+            <About />
             <div>service</div>
             <div>Blog</div>
             <div>contact</div>
