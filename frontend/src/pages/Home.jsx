@@ -1,10 +1,10 @@
 import { About, Header } from '../components'
 
-const Home = () => {
+const Home = ({setId}) => {
     return ( 
         <div>
             <Header />
-            <About />
+            <About setId={setId}/>
             <div>service</div>
             <div>Blog</div>
             <div>contact</div>
