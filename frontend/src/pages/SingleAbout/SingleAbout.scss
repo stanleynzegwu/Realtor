@@ -1,0 +1,117 @@
+.container {
+
+    h1 {
+        text-align: center;
+        margin: 5% 0;
+
+        @media screen and (max-width:760px){
+            font-size: 1.5rem;
+        }
+        @media screen and (max-width:540px){
+            font-size: 1.2rem;
+            // font-weight: 600;
+        }
+    }
+
+    .sub-container {
+        display: flex;
+
+        &__text {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @media screen and (max-width:679px){
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+        }
+        
+        @media screen and (max-width:679px){
+            &__img {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+        }
+
+            .photo {
+                max-width: 30%;
+                max-height: 40%;
+            }
+        }
+
+        @media screen and (min-width:680px){
+            &__img {
+                width: 50%;
+                position: relative;
+    
+                .photo {
+                    max-width: 55%;
+                    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .4);
+                    position: absolute;
+                    z-index: 1;
+                    transition: all .2s;
+                    outline-offset: 1.5rem;
+    
+                    &1 {
+                        left: 0;
+                        top: -2rem;
+                    }
+    
+                    &2 {
+                        right: 0;
+                        top: 2rem;
+                    }
+    
+                    &3{
+                        left: 20%;
+                        top: 10rem;
+                    }
+    
+                    &:hover {
+                        transform: scale(1.05) translateY(-.5rem);
+                        box-shadow: 0 2.5rem 4rem rgba(0,0,0, .5);
+                        z-index: 2;
+                        //for that green border wen u hover.. class 37. time 12:00
+                        outline: 1.2rem solid rgb(196, 191, 191);
+                    }
+        
+
+                @media screen and (max-width: 1050px) and (min-width: 860px) {
+                    &1 {
+                        left: 0;
+                        top: 1rem;
+                    }
+                  }
+                @media screen and (max-width: 859px) and (min-width: 670px) {
+                    &1 {
+                        left: 0;
+                        top: 5rem;
+                    }
+                    &2 {
+                        right: 0;
+                        top: 7rem;
+                    }
+                    &3{
+                        left: 20%;
+                        top: 12rem;
+                    }
+                  }
+            }
+
+        }
+        }
+            
+
+        &:hover &photo:not(:hover){
+            transform: scale(.95);
+        }
+
+        @media screen and (max-width:679px) {
+            flex-direction: column-reverse;
+        }
+    }
+}

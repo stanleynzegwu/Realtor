@@ -5,7 +5,6 @@ import './About.scss'
 
 const About = ({ setId }) => {
 
-
     return ( 
         <section className='about'>
             <p className='about__text'>WHAT WE DO</p>
