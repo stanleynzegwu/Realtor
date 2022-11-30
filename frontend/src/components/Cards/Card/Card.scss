@@ -1,0 +1,21 @@
+.card {
+    border: 1px solid rgb(196, 195, 195);
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    max-width: 30%;
+    
+    &:hover {
+        box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
+        border: none;
+    }
+    @media screen and (max-width:860px) {
+        height: 21rem;
+        max-width: 45%;
+    }
+    @media screen and (max-width:600px) {
+        min-width: 55%;
+    }
+    @media screen and (max-width:600px) {
+        min-width: 70%;
+    }
+}

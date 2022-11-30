@@ -1,0 +1,15 @@
+.card-holder {
+    display: flex;
+    justify-content: space-between;
+    //gap: 2%;
+    height: 75%;
+    margin: 25px 5px;
+    width: 90%;
+
+    @media screen and (max-width:860px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        
+    }
+}
