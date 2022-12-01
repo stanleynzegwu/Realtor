@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { ImHome } from "react-icons/im";
 
-import CardHolder from '../Cards/CardHolder/CardHolder'
-import Card from '../Cards/Card/Card'
+import CardHolder from '../../components/Cards/CardHolder/CardHolder'
+import Card from '../../components/Cards/Card/Card'
 import './About.scss'
 
 const About = ({ setId }) => {

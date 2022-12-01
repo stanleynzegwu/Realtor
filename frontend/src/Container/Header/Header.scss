@@ -101,6 +101,12 @@
                     border-right: none;
                 }
             }
+            .search__type {
+                border-right: 1px solid gray;
+                @media screen and (max-width:550px) {
+                    border-right: none;
+                }
+            }
             .search-util {
                 display: flex;
                 justify-content: center;
@@ -149,5 +155,8 @@
 }
 
 span {
+    color: #4373AF;
+}
+svg {
     color: #4373AF;
 }
