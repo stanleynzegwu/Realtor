@@ -1,0 +1,90 @@
+.featured {
+    background-color: #F6F9FE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .featured__cardHolder {
+        margin-top: 5%;
+        width: 90%;
+        display: flex;
+        gap:5%;
+        padding-bottom: 15px;
+
+        @media screen and (min-width:700px) {
+            height: 65vh;
+        }
+
+        .featured_card {
+            width: 100%;
+            display: flex;
+            border-radius: 30px;
+
+            .card_text {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                width: 50%;
+                background: #ffff;
+                border-bottom-left-radius: 30px;
+                border-top-left-radius: 30px;
+                padding: 10% 5%;
+
+                .card_text-price {
+                    color: #4373AF;
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    padding-bottom: 10%;
+                }
+
+                .card_text-property {
+                    padding-bottom: 10%;
+
+                    @media screen and (max-width:768px) {
+                        font-size: 1.1rem;
+                    }
+                }
+
+                .property-location {
+                    display: flex;
+                    gap: 5%;
+                    border-bottom: 1px solid rgb(228, 226, 226);
+                    padding-bottom: 10%;
+
+                    .property-location__text {
+                        color: gray;
+                    }
+                }
+                
+                .view {
+                    padding-top: 10%;
+
+                    svg {
+                        font-size: 1.3rem;
+                        color: gray;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .card_img {
+                width: 50%;
+                border-bottom-right-radius: 30px;
+                border-top-right-radius: 30px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-bottom-right-radius: 30px;
+                    border-top-right-radius: 30px;
+                }
+            }
+        }
+
+        @media screen and (max-width:700px) {
+            flex-direction: column;
+            gap: 25px;
+        }
+    }
+}

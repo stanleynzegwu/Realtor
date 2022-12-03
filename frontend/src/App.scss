@@ -15,4 +15,22 @@
 .app {
     padding: 0 20px;
     font-family: Barlow;
+    
+    .heading-text--sm {
+        text-transform: uppercase;
+        padding-top: 5%;
+        margin-bottom: 10px;
+        color: #4373AF;
+    }
+    .heading-text--lg {
+        text-transform: uppercase;
+        font: 700 2rem Barlow;
+
+        @media screen and (max-width:768px) {
+            font-size: 1.6rem;
+        }
+        @media screen and (max-width:441px) {
+            font-size: 1.4rem;
+        }
+    }
 }

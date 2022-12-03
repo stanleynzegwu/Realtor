@@ -7,15 +7,6 @@
     @media screen and (min-width:861px){
         height: 100vh;
     }
-    .about__text {
-        color: #2f75ca;
-        margin-bottom: 10px;
-    }
-
-    .about__header {
-        text-transform: uppercase;
-        font: 700 2rem Barlow;
-    }
 
     .card-holder {
         // display: flex;
@@ -63,6 +54,7 @@
             .card__text {
                 padding: 0 3%;
                 text-align: center;
+                color: rgb(145, 143, 143);
 
             }
 

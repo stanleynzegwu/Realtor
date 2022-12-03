@@ -2,19 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .latest__p {
-        text-transform: uppercase;
-        padding-top: 5%;
-        margin-bottom: 10px;
-        color: #4373AF;
-    }
-    .latest__header {
-        text-transform: uppercase;
-        font: 700 2rem Barlow;
-    }
+    scroll-behavior: smooth;
 
     .card-holder {
+
+        // @media screen and (min-width:861px) {
+        //     justify-content: space-around;
+        // }
         
         .card {
             width: 30%;
@@ -27,8 +21,8 @@
                 height: 23rem;
               }
 
-            @media screen and (max-width: 448px) and (min-width: 401px) {
-                height: 23rem;
+            @media screen and (max-width: 465px) and (min-width: 401px) {
+                height: 22rem;
               }
             @media screen and (max-width: 541px) and (min-width: 485px) {
                 height: 25rem;
@@ -106,10 +100,18 @@
                     }
                     .card__view {
                         display: flex;
-                        justify-content: center;
+                        justify-content: space-between;
                         align-items: center;
-                        padding-top: 8%;
+                        padding: 5% 5% 0 5%;
                         border-top: 1px solid rgb(228, 226, 226);
+
+                        span {
+                            svg {
+                                font-size: 1.3rem;
+                                color: gray;
+                                cursor: pointer;
+                            }
+                        }
                     }
                 }
             }
@@ -135,4 +137,5 @@
             }
         }
     }
+
 }

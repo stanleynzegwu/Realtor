@@ -1,13 +1,13 @@
 import React from 'react'
 import { FaHouzz , FaMapMarkerAlt } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+//import { motion } from 'framer-motion'
 
 import image from '../../assets/logos/land-man.png'
 import './Header.scss'
 
 const Header = () => {
     return (
-            <main className="header">
+            <main className="header" id='home'>
                 <div className='header__main'>
                     <div className='header__main-text'>
                         <p className='big-s'>Find Your Best <br/>Smart <span>Real <br/> Estate</span></p>
