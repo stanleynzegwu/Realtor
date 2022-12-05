@@ -1,4 +1,4 @@
-import { About,Featured,Header,Latest } from '../Container'
+import { About,Blog,Featured,Header,Latest } from '../Container'
 
 const Home = ({setId}) => {
     return ( 
@@ -7,8 +7,8 @@ const Home = ({setId}) => {
             <About setId={setId}/>
             <Latest />
             <Featured />
+            <Blog />
             <div>service</div>
-            <div>Blog</div>
             <div>contact</div>
         </div>
      );

@@ -29,6 +29,9 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
+            @media screen and (max-width: 1025px) and (min-width: 860px) {
+                height: 60vh;
+              }
           
             .card__icon {
                 border: 1px solid #2f75ca;

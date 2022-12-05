@@ -34,25 +34,27 @@ const Latest = () => {
                             <img src={img} alt="property" />
                         </div>
 
-                        <div className='card__restHolder'>
-                            <div className='card__restHolder-sub'>
-                                <h2 className='property-type'>{property}</h2>
-                                <div className='property-location'>
-                                    <span className='icon'><FaMapMarkerAlt /></span>
-                                    <p className='property-location__text'>{location}</p>
+                        <div>
+                            <div className='card__restHolder'>
+                                <div className='card__restHolder-sub'>
+                                    <h2 className='property-type'>{property}</h2>
+                                    <div className='property-location'>
+                                        <span className='icon'><FaMapMarkerAlt /></span>
+                                        <p className='property-location__text'>{location}</p>
+                                    </div>
+                                </div>
+                                <div className='property-price__Holder'>
+                                    <span className='property-price'>{price}</span>
                                 </div>
                             </div>
-                            <div className='property-price__Holder'>
-                                <span className='property-price'>{price}</span>
-                            </div>
-                        </div>
-                        <div className='card__footer'>
-                            <div className='card__more'>
-                                <span>More about</span>
-                            </div>
-                            <div className='card__view'>
-                                <span>View</span>
-                                <span><AiFillEye /></span>
+                            <div className='card__footer'>
+                                <div className='card__more'>
+                                    <span>More about</span>
+                                </div>
+                                <div className='card__view'>
+                                    <span>View</span>
+                                    <span><AiFillEye /></span>
+                                </div>
                             </div>
                         </div>
                     </div>

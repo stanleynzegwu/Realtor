@@ -1,5 +1,5 @@
 import React from 'react'
-import {HiMenu, HimenuAlt4, HiX} from 'react-icons/hi'
+import {HiMenu,HiX} from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import logo from '../../assets/logos/stan.png'
 import './Navbar.scss'
