@@ -1,10 +1,10 @@
 import { About,Blog,Featured,Header,Latest } from '../Container'
 
-const Home = ({setId}) => {
+const Home = () => {
     return ( 
         <div>
             <Header />
-            <About setId={setId}/>
+            <About />
             <Latest />
             <Featured />
             <Blog />
