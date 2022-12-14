@@ -1,18 +1,15 @@
-import React, { useState,useRef,useContext } from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from 'framer-motion'
-//import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
-
-//import { LeftArrow, RightArrow } from '../../components/arrows/Arrows'
+//import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
+
 import './Blog.scss'
 
 let arr = [
@@ -51,6 +48,7 @@ const Blog = () => {
 
             <Swiper
                 slidesPerView={1}
+                spaceBetween={30}
                 centeredSlides={false}
                 slidesPerGroupSkip={1}
                 grabCursor={true}
@@ -58,9 +56,21 @@ const Blog = () => {
                   enabled: true,
                 }}
                 breakpoints={{
-                  769: {
-                    slidesPerView: 4,
-                    slidesPerGroup: 4,
+                  200: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                  },
+                  583: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                  },
+                  884: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                  },
+                  1030: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
                   },
                 }}
                 scrollbar={false}
@@ -84,6 +94,7 @@ const Blog = () => {
                             </div>
                         </SwiperSlide>
                     ))}
+                    {/* <SwiperSlide className='blog-card'></SwiperSlide> */}
               </Swiper>
         </motion.section>
      );
