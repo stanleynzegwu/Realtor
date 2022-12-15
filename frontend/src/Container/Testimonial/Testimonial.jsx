@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { AiFillStar } from 'react-icons/ai'
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -33,12 +32,8 @@ star:4,testimony:'One of the best real estate companies you could find out there
 
 const Testimonial = () => {
     return ( 
-        <motion.section 
-            whileInView={{ y: [100,50,0], opacity: [0, 0, 1]}}
-            transition={{ duration: 0.5}}
-            className='testimonial'
-            id='testimonial'
-        >
+        <section className='testimonial'
+            id='testimonial'>
             <p className='testimonial__p heading-text--sm'>our Testimonial</p>
             <h1 className='testimonial__header heading-text--lg'>clients testimonials</h1>
             <Swiper
@@ -63,7 +58,7 @@ const Testimonial = () => {
                 //slidesPerGroup: 2,
               }
             }}
-        spaceBetween={30}
+        spaceBetween={40}
         //centeredSlides={true}
         autoplay={{
           delay: 4500,
@@ -89,7 +84,7 @@ const Testimonial = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </motion.section>
+        </section>
      );
 }
  

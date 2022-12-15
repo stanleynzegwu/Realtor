@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import {FaMapMarkerAlt } from 'react-icons/fa'
 import { AiFillEye } from 'react-icons/ai'
 
@@ -18,11 +17,7 @@ let data = [{
 
 const Featured = () => {
     return ( 
-        <motion.section 
-            whileInView={{ y: [100,50,0], opacity: [0, 0, 1]}}
-            transition={{ duration: 0.5}}
-            className='featured'
-        >
+        <section className='featured'>
             <p className='featured__p heading-text--sm'>properties</p>
             <h1 className='featured__header heading-text--lg'>Featured properties</h1>
             <div className='featured__cardHolder'>
@@ -48,7 +43,7 @@ const Featured = () => {
                 ))}
             </div>
             <Button />
-        </motion.section>
+        </section>
      );
 }
  

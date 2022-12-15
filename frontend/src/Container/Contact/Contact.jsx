@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 
 import { GiPostOffice } from 'react-icons/gi'
 import logo from '../../assets/logos/stan.png'
@@ -9,7 +8,7 @@ import './Contact.scss'
 
 const Contact = () => {
     return ( 
-        <motion.footer className='contact' id='contact'>
+        <footer className='contact' id='contact'>
             <div className='contact__header'>
                     <img src={logo} alt="logo" className='contact__logo'/>
                     <p className='contact__header-text contact-text-small'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eaque saepe cum! Ut quia corporis, ipsa optio aperiam quo laudantium doloribus sint, expedita earum error exercitationem velit qui ipsum minus?</p>
@@ -43,7 +42,7 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-        </motion.footer>
+        </footer>
      );
 }
  

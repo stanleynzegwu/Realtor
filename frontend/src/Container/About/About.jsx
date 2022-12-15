@@ -1,23 +1,21 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { ImHome } from "react-icons/im";
-import { motion } from 'framer-motion'
+import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 
 import CardHolder from '../../components/Cards/CardHolder/CardHolder'
 import Card from '../../components/Cards/Card/Card'
 import './About.scss'
-
+//data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false" class="aos-init aos-animate" 
 const About = () => {
-
     return ( 
-        <motion.section 
-            whileInView={{ y: [100,50,0], opacity: [0, 0, 1]}}
-            transition={{ duration: 0.5}}
+        <section
             className='about'
             id='about'
             >
-            <p className='about__text heading-text--sm'>WHAT WE DO</p>
-            <h2 className='about__header heading-text--lg'>our main focus</h2>
+            <FadeUpAnimation className='about__text heading-text--sm'>WHAT WE DO</FadeUpAnimation>
+            {/* <p className='about__text heading-text--sm'>WHAT WE DO</p> */}
+            <FadeUpAnimation  className='about__header heading-text--lg'>our main focus</FadeUpAnimation>
             <CardHolder>
                 {[{icon:<ImHome />,about:'Buy a Building',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd',id:'buildings'},
                 {icon:<ImHome />,about:'Buy a Land',text:'lorem and we nnvhfhfhf hdnc  c dhd c dshsh  dbdhdhdhhd dhd can jdhdh jhdhd jdjdj bcvdhdhd',id:'lands'},
@@ -30,7 +28,7 @@ const About = () => {
                     </Card>
                 ))}
             </CardHolder>
-        </motion.section>
+        </section>
      );
 }
  

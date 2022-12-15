@@ -1,7 +1,7 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import {FaMapMarkerAlt } from 'react-icons/fa'
 import { AiFillEye } from 'react-icons/ai'
+import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 
 import { Button } from '../../components'
 import './Latest.scss'
@@ -18,14 +18,10 @@ property:'Duplex apartment',location:'Mirpa City, Dhaka',price:'$140,000'}
 
 const Latest = () => {
     return ( 
-        <motion.div 
-            whileInView={{ y: [100,50,0], opacity: [0, 0, 1]}}
-            transition={{ duration: 0.5}}
-            className='latest'
-            id='properties'
-            >
-            <p className='latest__p heading-text--sm'>our properties</p>
-            <h1 className='latest__header heading-text--lg'>latest properties</h1>
+        <div className='latest'
+            id='properties'>
+            <FadeUpAnimation className='latest__FadeUpAnimation heading-text--sm'>our properties</FadeUpAnimation>
+            <FadeUpAnimation className='latest__header heading-text--lg'>latest properties</FadeUpAnimation>
             <CardHolder>
             {arr.map(({img,property,location,price},index) => (
                 <Card key={index}>
@@ -67,7 +63,7 @@ const Latest = () => {
             </CardHolder>
             
             <Button />
-        </motion.div>
+        </div>
      );
 }
  

@@ -1,10 +1,11 @@
+import { FadeUpAnimation } from '../../UI/Animation/Animation'
 import './CardHolder.scss'
 
 const CardHolder = ( { children } ) => {
     return ( 
-        <div className='card-holder'>
+        <FadeUpAnimation className='card-holder'>
             {children}
-        </div>
+        </FadeUpAnimation>
      );
 }
  

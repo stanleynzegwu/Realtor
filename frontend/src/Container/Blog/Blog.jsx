@@ -1,6 +1,5 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion } from 'framer-motion'
 //import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
 // Import Swiper styles
 import "swiper/css";
@@ -37,18 +36,13 @@ heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf 
 const Blog = () => {
 
     return (
-        <motion.section 
-            whileInView={{ y: [100,50,0], opacity: [0, 0, 1]}}
-            transition={{ duration: 0.5}}
-            className='blog'
-            id='blog'
-        >
+        <section className='blog' id='blog'>
             <p className='blog__p heading-text--sm'>blog</p>
             <h1 className='blog__header heading-text--lg'>our blog</h1>
 
             <Swiper
                 slidesPerView={1}
-                spaceBetween={30}
+                spaceBetween={40}
                 centeredSlides={false}
                 slidesPerGroupSkip={1}
                 grabCursor={true}
@@ -96,7 +90,7 @@ const Blog = () => {
                     ))}
                     {/* <SwiperSlide className='blog-card'></SwiperSlide> */}
               </Swiper>
-        </motion.section>
+        </section>
      );
 }
  
