@@ -1,9 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const { verifyToken , verifyTokenAndAuthorization,verifyTokenAndAdmin} = require("../middleware/verifyToken")
+const { updateUser , deleteUser , getSingleUser , getAllUsers , getUserStats } = require("../controllers/user")
 
-//Main Routes - simplified for now
-router.get("/", (req,res) => {
-    res.status(200).json('ok it went well')
-});
+const User = require("../models/User");
+
+
+//UPDATE
+router.put("/:id", verifyTokenAndAuthorization, updateUser);
+
+//DELETE
+router.delete("/:id", verifyTokenAndAuthorization, deleteUser);
+
+//GET A USER
+router.get("/find/:id", verifyTokenAndAdmin, getSingleUser);
+
+//GET ALL USER
+router.get("/", verifyTokenAndAdmin, getAllUsers);
+
+//GET USER STATS
+
+router.get("/stats", verifyTokenAndAdmin, getUserStats)
 
 module.exports = router;
