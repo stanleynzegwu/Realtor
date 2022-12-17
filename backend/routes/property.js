@@ -19,8 +19,4 @@ router.get("/find/:id", getSingleProperty);
 //GET ALL Property
 router.get("/", getAllProperty);
 
-// //GET USER STATS
-
-// router.get("/stats", verifyTokenAndAdmin, getUserStats)
-
 module.exports = router;

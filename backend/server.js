@@ -4,8 +4,12 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/database");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
+const blogRoutes = require("./routes/blog");
 const buildingRoutes = require("./routes/building");
+const offerRoutes = require("./routes/offer");
 const propertyRoutes = require("./routes/property");
+const reviewRoutes = require("./routes/review");
+const subscribeRoutes = require("./routes/subscribe");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -19,8 +23,12 @@ app.use(express.json());
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/blog", blogRoutes);
 app.use("/api/building", buildingRoutes);
+app.use("/api/offer", offerRoutes);
 app.use("/api/property", propertyRoutes);
+app.use("/api/review", reviewRoutes);
+app.use("/api/subscribe", subscribeRoutes);
 
 //Server Running
 app.listen(process.env.PORT || 5000, () => {

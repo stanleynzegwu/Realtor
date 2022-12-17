@@ -5,7 +5,7 @@ const OfferSchema = new mongoose.Schema({
     desc: { type: String, required: true},
     img: { type: String, required: true},
     category: { type: String, required: true}, //Either Building,Land,Painters
-    validDate: { type: String, required: true}
+    validDate: { type: Object, required: true }
 },
 { timestamps:true}
 );

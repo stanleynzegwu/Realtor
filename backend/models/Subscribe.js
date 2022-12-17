@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const SubscribeSchema = new mongoose.Schema({
-    userEmail: { type:String, required:true}
+    email: { type:String, required:true}
 },
 { timestamps:true}
 );
