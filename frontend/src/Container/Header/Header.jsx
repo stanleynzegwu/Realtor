@@ -6,14 +6,33 @@ import 'aos/dist/aos.css';
 import background from '../../assets/logos/realtor-background.jpg'
 import image from '../../assets/logos/land-man.png'
 import './Header.scss'
-//<div data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false" class="aos-init aos-animate"><div class="flex flex-col justify-around items-center space-y-4"><h4 class="font-heading font-semibold text-lg text-gray uppercase">Get started</h4><p class="font-heading font-bold text-lg text-center md:text-justify text-blue"> Use carfaxt in three easy steps</p></div></div>
+//import {usePropertyContext} from '../../Hooks/usePropertyContext'
+
+const location = ['Delta','Anambra','Lagos','Abuja','Kaduna'].sort()
+
 const Header = () => {
     useEffect(() => {
         AOS.init();
         AOS.refresh();
       }, []);
+
+    //   const {properties,dispatch} = usePropertyContext()
+    //   console.log(properties)
+    //   useEffect(() => {
+    //     const fetchProperties = async () => {
+    //         const res = await fetch('/api/property')
+    //         const json = await res.json()
+
+    //         if(res.ok){
+    //             dispatch({type:"SET_PROPERTY", payload: json})
+    //         }
+            
+    //     } 
+    //     fetchProperties()
+    //   },[])
+
     return (
-            <main className="header" id='home' style={{objectFit: 'cover',background: `url('https://img.freepik.com/free-photo/digital-increasing-bar-graph-with-businessman-hand-overlay_53876-97640.jpg?w=1480&t=st=1671078510~exp=1671079110~hmac=2ad1f2217dc1ce3cb427c79c15803c85e6670edd7d26dc194cc1a2fa61377326')`}}>
+            <main className="header" id='home'>
                 <div className='header__main'>
                     <div className='header__main-text'>
                         <p className='big-s'>Find Your Best <br/>Smart <span>Real <br/> Estate</span></p>
@@ -34,8 +53,11 @@ const Header = () => {
                                 <select
                                 >
                                     <option value='Location'>Location</option>
-                                    <option value='Anambra'>Anambra</option>
-                                    <option value='Delta'>Delta</option>
+                                    {location.map((state,index) => (
+                                        <option value={state} key={index}>{state}</option>
+                                    ))}
+                                    {/* <option value='Anambra'>Anambra</option>
+                                    <option value='Delta'>Delta</option> */}
                                 </select>
                             </div>
                         </div>
