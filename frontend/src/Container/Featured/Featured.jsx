@@ -42,7 +42,7 @@ const Featured = () => {
                     </div>
                 ))}
             </div>
-            <Button />
+            <Button val='see all'/>
         </section>
      );
 }

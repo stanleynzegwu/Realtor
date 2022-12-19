@@ -6,6 +6,7 @@ import './Navbar.scss'
 import { useState } from 'react'
 
 const Navbar= () => {
+    const user = false
     const [toggle, setToggle] = useState(false)
     return ( 
         <nav className='app__navbar '>
@@ -21,6 +22,19 @@ const Navbar= () => {
                     </li>
                 ))}
             </ul>
+            <div>
+                {
+                    user ? 
+                    <div>
+                        <button>Logout</button>
+                    </div>
+                    :
+                    <div>
+                        <button>Sign in</button>
+                        <button>Sign up</button>
+                    </div>
+                }
+            </div>
 
             <div className='app__navbar-menu'>
                     <HiMenu onClick={() => setToggle(true)}/>

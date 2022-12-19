@@ -1,9 +1,9 @@
 import './Button.scss'
 
-const Button = () => {
+const Button = ({val}) => {
     return ( 
         <div className='button'>
-            <button>See all</button>
+            <button>{val}</button>
         </div>
      );
 }

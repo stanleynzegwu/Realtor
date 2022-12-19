@@ -62,7 +62,7 @@ const Latest = () => {
             ))}
             </CardHolder>
             
-            <Button />
+            <Button val='see all'/>
         </div>
      );
 }
