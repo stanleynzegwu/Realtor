@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaLock} from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import {Link} from 'react-router-dom'
 import './Login.scss'
 
 const Login = () => {
@@ -21,7 +22,6 @@ const Login = () => {
             }
         })
     }
-
     function handleSubmit(e) {
         e.preventDefault()
         let {email,password} = formData
@@ -76,6 +76,7 @@ const Login = () => {
                         </div>
                         <button type="submit" className="btn">Login</button>
                 </form>
+                <p className='noAccount'>Don't have an account? <Link to='/signup'><span>Signup</span></Link></p>
             </div>
         </div>
     );

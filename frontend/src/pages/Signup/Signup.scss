@@ -16,9 +16,6 @@
         @media screen and (max-width:700px){
                 width:70vw
         }
-        // @media screen and (max-width:470px){
-        //         width:80vw
-        // }
         @media screen and (max-width:470px){
                 width:80vw
         }
@@ -26,7 +23,6 @@
         .form-text {
             font-weight: 800;
             font-size: 1.5rem;
-            margin-top: 40px;
         }
     
         .form-holder {
@@ -89,6 +85,12 @@
                 }
             }
             
+        }
+        .account {
+            a {
+                list-style: none;
+                text-decoration: none;
+            }
         }
     
     }

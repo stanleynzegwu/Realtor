@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 import { FaUserAlt , FaLock} from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
@@ -12,7 +13,6 @@ const Signup = () => {
         email: "",
         password: ""
     })
-
     function handleChange(e){
         let {name,value} = e.target
         setFormData(data => {
@@ -95,6 +95,7 @@ const Signup = () => {
                     </div>
                     <button type="submit" className="btn">Sign up</button>
             </form>
+            <p className='account'>Already have an account? <Link to='/login'><span>Login</span></Link></p>
         </div>
       </div>
      );

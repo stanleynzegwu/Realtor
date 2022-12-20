@@ -2,6 +2,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 //import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
 // Import Swiper styles
+import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
@@ -37,9 +38,10 @@ const Blog = () => {
 
     return (
         <section className='blog' id='blog'>
-            <p className='blog__p heading-text--sm'>blog</p>
-            <h1 className='blog__header heading-text--lg'>our blog</h1>
+            <FadeUpAnimation className='blog__p heading-text--sm'>blog</FadeUpAnimation>
+            <FadeUpAnimation className='blog__header heading-text--lg'>our blog</FadeUpAnimation>
 
+            <FadeUpAnimation>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={40}
@@ -90,6 +92,7 @@ const Blog = () => {
                     ))}
                     {/* <SwiperSlide className='blog-card'></SwiperSlide> */}
               </Swiper>
+              </FadeUpAnimation>
         </section>
      );
 }

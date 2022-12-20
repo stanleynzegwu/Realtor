@@ -2,6 +2,7 @@ import React from 'react'
 import {FaMapMarkerAlt } from 'react-icons/fa'
 import { AiFillEye } from 'react-icons/ai'
 
+import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import { Button } from '../../components'
 import './Featured.scss'
 
@@ -18,9 +19,9 @@ let data = [{
 const Featured = () => {
     return ( 
         <section className='featured'>
-            <p className='featured__p heading-text--sm'>properties</p>
-            <h1 className='featured__header heading-text--lg'>Featured properties</h1>
-            <div className='featured__cardHolder'>
+            <FadeUpAnimation className='featured__p heading-text--sm'>properties</FadeUpAnimation>
+            <FadeUpAnimation className='featured__header heading-text--lg'>Featured properties</FadeUpAnimation>
+            <FadeUpAnimation className='featured__cardHolder'>
                 {data.map(({img,property,location,price},index) => (
                     <div key={index}
                         className='featured_card'
@@ -41,7 +42,7 @@ const Featured = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </FadeUpAnimation>
             <Button val='see all'/>
         </section>
      );

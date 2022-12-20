@@ -81,6 +81,64 @@
         }
     }
 
+    .btn__holder {
+        .btn__double {
+            display: flex;
+            gap:5px;
+            a {
+                text-decoration: none;
+                .btn {
+                    width: 80px;
+                    height: 35px;
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    border: none;
+                    background-color: #4373AF;
+                    color: #ffff;
+
+                    &:hover {
+                        background-color: #6d8db5;
+                    }
+                }
+
+                .btn1 {
+                    width: 80px;
+                    height: 35px;
+                    padding: 5px 10px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &:hover {
+                        border: #4373AF;
+                        background-color: grey;
+                        border-radius: 10px;
+                        color: #ffff;
+                        svg {
+                            color: #ffff;
+                        }
+
+                    }
+                }
+            }
+        }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 30px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: darkgrey;
+        }
+        @media screen and (max-width:900px){
+            display: none;
+        }
+    }
+
 .app__navbar-menu {
     width: 35px;
     height: 35px;
@@ -148,6 +206,9 @@
                     font-size: 1rem;
                     text-transform: uppercase;
                     font-weight: 500;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     transition: all 0.3s ease-in-out;
 

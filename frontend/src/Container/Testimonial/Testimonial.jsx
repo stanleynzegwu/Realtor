@@ -2,6 +2,7 @@ import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
+import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -34,9 +35,10 @@ const Testimonial = () => {
     return ( 
         <section className='testimonial'
             id='testimonial'>
-            <p className='testimonial__p heading-text--sm'>our Testimonial</p>
-            <h1 className='testimonial__header heading-text--lg'>clients testimonials</h1>
+            <FadeUpAnimation className='testimonial__p heading-text--sm'>our Testimonial</FadeUpAnimation>
+            <FadeUpAnimation className='testimonial__header heading-text--lg'>clients testimonials</FadeUpAnimation>
             <Swiper
+            loop
             slidesPerView={1}
             centeredSlides={false}
             slidesPerGroupSkip={1}
