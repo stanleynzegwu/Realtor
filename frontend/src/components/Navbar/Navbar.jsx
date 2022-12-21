@@ -13,7 +13,8 @@ import './Navbar.scss'
 import { useState } from 'react'
 
 const Navbar= () => {
-    const user = false
+    const user = {isAdmin:true}
+
     const [toggle, setToggle] = useState(false)
     return ( 
         <nav className='app__navbar '>
@@ -32,7 +33,10 @@ const Navbar= () => {
             <div className='btn__holder'>
                 {
                     user ? 
-                        <button className='btn'><TbLogout />Logout</button>
+                    <div className='btn__double'>
+                        <button className='btnLogout'><TbLogout />Logout</button>
+                        {user?.isAdmin && <Link to="/adminDashboard/home"><button className='btn'>Dashboard</button></Link>}
+                    </div>
                     :
                     <div className='btn__double'>
                         <Link to="/login"><button className='btn1'><TbLogin />Login</button></Link>

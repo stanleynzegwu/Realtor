@@ -27,6 +27,7 @@
             width: 80px;
         }
     }
+
 }
 
     .app__navbar-links {
@@ -85,6 +86,26 @@
         .btn__double {
             display: flex;
             gap:5px;
+
+            .btnLogout {
+                width: 80px;
+                height: 35px;
+                padding: 5px 10px;
+                border: none;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover {
+                    border: #4373AF;
+                    background-color: grey;
+                    border-radius: 10px;
+                    color: #ffff;
+                    svg {
+                        color: #ffff;
+                    }
+                }
+            }
             a {
                 text-decoration: none;
                 .btn {
