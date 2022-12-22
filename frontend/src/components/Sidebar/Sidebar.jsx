@@ -1,6 +1,7 @@
 import { MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
 import { MdProductionQuantityLimits, MdReviews } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 import './Sidebar.scss'
 
 const Sidebar = () => {
@@ -10,9 +11,11 @@ const Sidebar = () => {
                 <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Dashboard</h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem active'>
-                            <MdLineStyle />Home
-                        </li>
+                        <Link to='/adminDashboard/home'>
+                            <li className='sidebarListItem active'>
+                                <MdLineStyle />Home
+                            </li>
+                        </Link>
                         <li className='sidebarListItem'>
                             <MdTimeline />Analytics
                         </li>
@@ -22,9 +25,11 @@ const Sidebar = () => {
                 <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Quick Menu</h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem'>
-                            <FiUsers />Users
-                        </li>
+                        <Link to='/adminDashboard/users'>
+                            <li className='sidebarListItem'>
+                                <FiUsers />Users
+                            </li>
+                        </Link>
                         <li className='sidebarListItem'>
                             <MdReviews />Reviews
                         </li>

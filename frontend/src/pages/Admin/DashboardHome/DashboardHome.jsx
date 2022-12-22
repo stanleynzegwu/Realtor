@@ -1,19 +1,23 @@
-import { Topbar, Sidebar, FeaturedInfo } from '../../../components'
+import { Routes, Route } from 'react-router-dom'
+import { Topbar, Sidebar } from '../../../components'
+import { HomePage, Users } from '../../Admin'
 import './DashboardHome.scss'
 //"proxy": "http://localhost:5000",
 
 const DashboardHome = () => {
     return ( 
-        <>
+        <div className='dashboard'>
             <Topbar />
             <div className="containerr">
                 <Sidebar />
-                <div className='home'>
-                    <FeaturedInfo />
-                </div>
+
+                <Routes>
+                  <Route path='home' element={<HomePage/>}/>
+                  <Route path='users' element={<Users/>}/>
+                </Routes>
             </div>
             
-        </>
+        </div>
      );
 }
  

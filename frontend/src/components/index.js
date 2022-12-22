@@ -1,5 +1,8 @@
 export { default as Button } from "./Button/Button"
+export { default as Chart } from "./Chart/Chart"
 export { default as Navbar } from "./Navbar/Navbar"
 export { default as Topbar } from "./Topbar/Topbar"
 export { default as Sidebar } from "./Sidebar/Sidebar"
+export { default as WidgetLg } from "./WidgetLg/WidgetLg"
+export { default as WidgetSm } from "./WidgetSm/WidgetSm"
 export { default as FeaturedInfo } from "./FeaturedInfo/FeaturedInfo"
