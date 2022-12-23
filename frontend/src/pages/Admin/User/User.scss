@@ -60,17 +60,39 @@
             box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
 
             .userUpdateTitle {
-
+                font-size: 24px;
+                font-weight: 600;
             }
             .userUpdateForm {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                width: 100%;
                 .userUpdateLeft {
+                    width: 50%;
                     .userUpdateItem {
+                        display: flex;
+                        flex-direction: column;
 
+                        .userUpdateInput {
+                            width: 100%;
+                            border: none;
+                            border-bottom: 1px solid gray;
+                            margin-bottom: 10px;
+                            font-size: 1rem;
+                        }
                     }
                 }
 
                 .userUpdateRight {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    //width: 50%;
+                    text-align: end;
                     .userUpdateUpload {
+                        display: flex;
+                        align-items: center;
                         .userUpdateImg {
                             width: 100px;
                             height: 100px;
@@ -85,8 +107,36 @@
                             }
                         }
                     }
+                    .userUpdateButton {
+                        cursor: pointer;
+                        border-radius: 5px;
+                        border: none;
+                        background-color: rgb(59, 59, 195);
+                        color: #ffff;
+                        padding: 5px 10px;
+                        font-weight: 600;
+                    }
                 }
             }
+        }
+    }
+}
+label {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+.radioHolder {
+    display: flex;
+    gap: 10px;
+
+    span {
+
+        label {
+            color: black;
+            margin-right: 5px;
         }
     }
 }
