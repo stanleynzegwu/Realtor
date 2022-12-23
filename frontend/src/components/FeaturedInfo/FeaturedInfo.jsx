@@ -79,7 +79,7 @@ const FeaturedInfo = () => {
                  <span className="featuredTitle">Revenue</span>
                  <div className="featuredMoneyContainer">
                      <span className="featuredMoney">$2,415</span>
-                     <span className="featuredMoneyRate">-11.4 <BiDownArrowAlt className='faeturedIcon negative'/></span>
+                     <span className="featuredMoneyRate">-11.4 <BiDownArrowAlt className='featuredIcon negative'/></span>
                  </div>
                  <span className='featuredSub'>Compared to last month</span>
              </SwiperSlide>
@@ -87,7 +87,7 @@ const FeaturedInfo = () => {
                  <span className="featuredTitle">Sales</span>
                  <div className="featuredMoneyContainer">
                      <span className="featuredMoney">$4,415</span>
-                     <span className="featuredMoneyRate">-1.4 <BiDownArrowAlt className='faeturedIcon negative'/></span>
+                     <span className="featuredMoneyRate">-1.4 <BiDownArrowAlt className='featuredIcon negative'/></span>
                  </div>
                  <span className='featuredSub'>Compared to last month</span>
              </SwiperSlide>
@@ -95,7 +95,7 @@ const FeaturedInfo = () => {
                  <span className="featuredTitle">Cost</span>
                  <div className="featuredMoneyContainer">
                      <span className="featuredMoney">$2,225</span>
-                     <span className="featuredMoneyRate">+11.4 <BiUpArrowAlt className='faeturedIcon'/></span>
+                     <span className="featuredMoneyRate">+11.4 <BiUpArrowAlt className='featuredIcon'/></span>
                  </div>
                  <span className='featuredSub'>Compared to last month</span>
              </SwiperSlide>
