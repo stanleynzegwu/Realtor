@@ -3,8 +3,25 @@ import { useState } from 'react'
 import './NewUser.scss'
 
 const NewUser = () => {
+    const [radio,setRadio] = useState('False')
+    const [formData,setFormData] = useState({
+        username:"",
+        email: "",
+    })
+    function handleChange(e){
+        let {name,value} = e.target
+        setFormData(data => {
+            return {
+                ...data,
+                [name]: value
+            }
+        })
+    }
+    const form = {...formData,isAdmin:radio === 'False' ? false : true}
+    console.log(form)
+
     const [file, setFile] = useState()
-    function handleChange(e) {
+    function handleChangee(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
@@ -15,15 +32,15 @@ const NewUser = () => {
                 <div className="newUserLeft">
                     <div className="newUserItem">
                         <label>Username</label>
-                        <input type="text" placeholder='leo Messi' className='input'/>
+                        <input type="text" name='username' value={formData.username} onChange={handleChange} placeholder='leo Messi' className='input'/>
                     </div>
                     <div className="newUserItem">
                         <label>Email</label>
-                        <input type="email" placeholder='leo@gmail.com' className='input'/>
+                        <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='leo@gmail.com' className='input'/>
                     </div>
                     <div className="newUserItem">
                         <label>Password</label>
-                        <input type="password" placeholder='loi**********' className='input'/>
+                        <input type="password" name='password' value={formData.password} onChange={handleChange} placeholder='loi**********' className='input'/>
                     </div>
                     <div className="newUserItem">
                         <label>isAdmin</label>
@@ -34,8 +51,8 @@ const NewUser = () => {
                                   type="radio"
                                   value="True"
                                   id='true'
-                                  //checked={state === "True"}
-                                  //onChange={(e) => setState(e.target.value)}
+                                  checked={radio === "True"}
+                                  onChange={(e) => setRadio(e.target.value)}
                                   className='radioInput'
                                 />
                             </span>
@@ -45,8 +62,8 @@ const NewUser = () => {
                                   type="radio"
                                   value="False"
                                   id='false'
-                                  //checked={state === "False"}
-                                  //onChange={(e) => setState(e.target.value)}
+                                  checked={radio === "False"}
+                                  onChange={(e) => setRadio(e.target.value)}
                                   className='radioInput'
                                 />
                             </span>
@@ -58,7 +75,7 @@ const NewUser = () => {
                     <div className="newUserItem">
                         <img src={file ? file : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className="userUpdateImg" />
                         <label htmlFor="file">Upload Image<MdPublish /></label>
-                        <input type="file" id='file' style={{ display:"none"}} onChange={handleChange}/>
+                        <input type="file" id='file' style={{ display:"none"}} onChange={handleChangee}/>
                     </div>
 
                     <button className="newUserButton">Create</button>

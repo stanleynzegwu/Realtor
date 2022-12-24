@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Topbar, Sidebar } from '../../../components'
-import { HomePage, NewUser, User, Users } from '../../Admin'
+import { HomePage, NewUser, Property, User, Users } from '../../Admin'
 import './DashboardHome.scss'
 //"proxy": "http://localhost:5000",
 
@@ -14,6 +14,7 @@ const DashboardHome = () => {
                 <Routes>
                   <Route path='home' element={<HomePage/>}/>
                   <Route path='newUser' element={<NewUser/>}/>
+                  <Route path='property' element={<Property/>}/>
                   <Route path='user/:id' element={<User/>}/>
                   <Route path='users' element={<Users/>}/>
                 </Routes>

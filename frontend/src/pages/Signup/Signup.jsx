@@ -3,10 +3,11 @@ import {Link} from 'react-router-dom'
 import { FaUserAlt , FaLock} from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { SetPasswordVisibility } from '../../Hooks/customHook'
 import './Signup.scss'
 
 const Signup = () => {
-    const [visible, setVisible] = useState(false)
+  const {isVisible, changeVisibility} = SetPasswordVisibility()
 
     const [formData,setFormData] = useState({
         username:"",
@@ -77,7 +78,7 @@ const Signup = () => {
                         <div className="input-flex">
                             <span><FaLock /></span>
                             <input
-                              type={visible ? "text" : "password"}
+                              type={isVisible ? "text" : "password"}
                               className="form-control"
                               id="password"
                               name="password"
@@ -86,10 +87,10 @@ const Signup = () => {
                               value={formData.password}
                             />
                             {
-                              visible ? 
-                              <span><AiFillEyeInvisible onClick={() => setVisible(prev => !prev)}/></span> 
+                              isVisible ? 
+                              <span><AiFillEyeInvisible onClick={changeVisibility}/></span> 
                               : 
-                              <span><AiFillEye onClick={() => setVisible(prev => !prev)}/></span>
+                              <span><AiFillEye onClick={changeVisibility}/></span>
                             }
                         </div>
                     </div>

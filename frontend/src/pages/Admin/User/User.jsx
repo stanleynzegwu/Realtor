@@ -4,9 +4,24 @@ import { MdPublish } from 'react-icons/md'
 import './User.scss'
 
 const User = () => {
-    const [state,setState] = useState('False')
+    const [radio,setRadio] = useState('False')
+    const [formData,setFormData] = useState({
+        username:"",
+        email: "",
+    })
+    function handleChange(e){
+        let {name,value} = e.target
+        setFormData(data => {
+            return {
+                ...data,
+                [name]: value
+            }
+        })
+    }
+    const form = {...formData,isAdmin:radio === 'False' ? false : true}
+    console.log(form)
     const [file, setFile] = useState()
-    function handleChange(e) {
+    function handleChangee(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
@@ -33,11 +48,11 @@ const User = () => {
 
                             <div className="userUpdateItem">
                                 <label>Username</label>
-                                <input type="text" placeholder='lionelMessi' className='userUpdateInput'/>
+                                <input type="text" name='username' value={formData.username} onChange={handleChange} placeholder='lionelMessi' className='userUpdateInput'/>
                             </div>
                             <div className="userUpdateItem">
                                 <label>Email</label>
-                                <input type="email" placeholder='lionelMessi' className='userUpdateInput'/>
+                                <input type="email" name='email' value={formData.username} onChange={handleChange} placeholder='lionelMessi' className='userUpdateInput'/>
                             </div>
                             <div className="userUpdateItem">
                                 <label>isAdmin</label>
@@ -48,8 +63,8 @@ const User = () => {
                                           type="radio"
                                           value="True"
                                           id='true'
-                                          checked={state === "True"}
-                                          onChange={(e) => setState(e.target.value)}
+                                          checked={radio === "True"}
+                                          onChange={(e) => setRadio(e.target.value)}
                                           className='radioInput'
                                         />
                                     </span>
@@ -59,8 +74,8 @@ const User = () => {
                                           type="radio"
                                           value="False"
                                           id='false'
-                                          checked={state === "False"}
-                                          onChange={(e) => setState(e.target.value)}
+                                          checked={radio === "False"}
+                                          onChange={(e) => setRadio(e.target.value)}
                                           className='radioInput'
                                         />
                                     </span>
@@ -72,7 +87,7 @@ const User = () => {
                             <div className="userUpdateUpload">
                                 <img src={file ? file : "https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"} alt="avatar" className="userUpdateImg" />
                                 <label htmlFor="file"><MdPublish /></label>
-                                <input type="file" id='file' style={{ display:"none"}} onChange={handleChange}/>
+                                <input type="file" id='file' style={{ display:"none"}} onChange={handleChangee}/>
                             </div>
                             <button className="userUpdateButton">Update</button>
                         </div>

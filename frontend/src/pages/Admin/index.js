@@ -1,5 +1,6 @@
 export { default as DashboardHome } from './DashboardHome/DashboardHome'
 export { default as HomePage } from './HomePage/HomePage'
 export { default as NewUser } from './NewUser/NewUser'
+export { default as Property } from './Property/Property'
 export { default as User } from './User/User'
 export { default as Users } from './Users/Users'

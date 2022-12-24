@@ -33,9 +33,11 @@ const Sidebar = () => {
                         <li className='sidebarListItem'>
                             <MdReviews />Reviews
                         </li>
-                        <li className='sidebarListItem'>
-                            <MdProductionQuantityLimits />Products
-                        </li>
+                        <Link to='/adminDashboard/property'>
+                            <li className='sidebarListItem'>
+                                <MdProductionQuantityLimits />Properties
+                            </li>
+                        </Link>
                     </ul>
                 </div>
 
