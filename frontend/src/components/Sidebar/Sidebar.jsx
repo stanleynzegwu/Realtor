@@ -33,7 +33,7 @@ const Sidebar = () => {
                         <li className='sidebarListItem'>
                             <MdReviews />Reviews
                         </li>
-                        <Link to='/adminDashboard/property'>
+                        <Link to='/adminDashboard/properties'>
                             <li className='sidebarListItem'>
                                 <MdProductionQuantityLimits />Properties
                             </li>
