@@ -3,12 +3,17 @@ import { FaLock} from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import {Link} from 'react-router-dom'
+
 import { SetPasswordVisibility } from '../../Hooks/customHook'
+import { useLogin } from '../../Hooks/useApiRequest'
+import {useAuthContext} from '../../Hooks/useAuthContext'
 import './Login.scss'
 
 const Login = () => {
     const {isVisible, changeVisibility} = SetPasswordVisibility()
-
+    const {Login, error, isLoading} = useLogin()
+    const {user,dispatch} = useAuthContext()
+    console.log(user)
     const [formData,setFormData] = useState({
         email: "",
         password: ""
@@ -23,9 +28,9 @@ const Login = () => {
             }
         })
     }
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        let {email,password} = formData
+        await Login(formData)
     }
 
     return (

@@ -194,9 +194,11 @@ const Property = () => {
                     </div>
                     <div className="propertyEditRight">
                         <div className="userUpdateUpload">
-                            {images && images.map(url => (
-                                <img src={url} alt="avatar" className="userUpdateImg" />
-                            ))}
+                            <div className="userUpdateImgHolder">
+                                {images && images.map(url => (
+                                    <img src={url} alt="avatar" className="userUpdateImg" />
+                                ))}
+                            </div>
                     
                             <label htmlFor="file"><MdPublish /></label>
                             <input type="file" id='file' style={{ display:"none"}} multiple onChange={handleMultipleImages}/>
