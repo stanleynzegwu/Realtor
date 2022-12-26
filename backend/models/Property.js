@@ -8,6 +8,7 @@ const PropertySchema = new mongoose.Schema({
     desc: { type: String, required: true},
     img: { type: String, required: true},
     price: { type: Number, required:true},
+    consultancyFee: { type: Number, required:true},
     isFeatured: { type: Boolean, default: false}
 },
 { timestamps:true}

@@ -18,12 +18,6 @@ const create = async (req,res) => {
             email: email
         })
     }
-    // user = id && await User.findById(id)
-    // //const user = await User.findById(req.params.id)
-    // //const {star, Subscribe, img} = req.body
-    //    newSubscription = new Subscribe({
-    //     userEmail: user.email
-    // })
     try{
         const savedSubscription = await newSubscription.save()
         res.status(200).json(savedSubscription)
@@ -35,72 +29,55 @@ const create = async (req,res) => {
 
 //UPDATE
 
-// const updateReview = async (req, res) => {
+const updateSubscription = async (req, res) => {
 
-//   try {
-//     const updatedReview = await Review.findByIdAndUpdate(
-//       req.params.id,
-//       {
-//         $set: req.body,
-//       },
-//       { new: true }
-//     );
-//     res.status(200).json(updatedReview);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// }
+  try {
+    const updatedSubscription = await Subscribe.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedSubscription);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
 
-// //DELETE
+//DELETE
 
-// const deleteReview = async (req, res) => {
-//   try {
-//     await Review.findByIdAndDelete(req.params.id);
-//     res.status(200).json("Review has been deleted...");
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// }
+const deleteSubscription = async (req, res) => {
+  try {
+    await Subscribe.findByIdAndDelete(req.params.id);
+    res.status(200).json("Subscription has been deleted...");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
 
-// //GET Review
+//GET ALL SUBSCRIPTION
 
-// const getSingleReview = async (req, res) => {
-//   try {
-//     const review = await review.findById(req.params.id);
-//     res.status(200).json(property);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// }
+const getAllSubscription = async (req, res) => {
+  const qNew = req.query.new;
+  try {
+    let subscription;
 
-// //GET ALL REVIEW
+    if (qNew) {
+        subscription = await Subscribe.find().sort({ createdAt: -1 }).limit(10);
+    }else {
+        subscription = await Subscribe.find();
+    }
 
-// const getAllReviews = async (req, res) => {
-//   const qNew = req.query.new;
-//   const qFavorite = req.query.favorite
-//   try {
-//     let reviews;
-
-//     if (qNew) {
-//         reviews = await Review.find().sort({ createdAt: -1 }).limit(3);
-//     }else if(qFavorite && !qNew){
-//         reviews = await Review.find({
-//          isFavorite:true,
-//         });
-//     }else {
-//         reviews = await Review.find();
-//     }
-
-//     res.status(200).json(reviews);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// }
+    res.status(200).json(subscription);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
 
 module.exports = {
   create,
-//   updateReview,
-//   deleteReview,
-//   getSingleReview,
-//   getAllReviews
+  updateSubscription,
+  deleteSubscription,
+  getAllSubscription
 }

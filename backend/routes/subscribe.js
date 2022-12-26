@@ -1,21 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { verifyToken , verifyTokenAndAuthorization,verifyTokenAndAdmin} = require("../middleware/verifyToken")
-const { create } = require("../controllers/subscribe")
+const { verifyTokenAndAdmin} = require("../middleware/verifyToken")
+const { create , updateSubscription , deleteSubscription , getAllSubscription} = require("../controllers/subscribe")
 
 //CREATE
 router.post("/", create)
 
 //UPDATE
-// router.put("/:id", verifyTokenAndAdmin, updateReview);
+router.put("/:id", verifyTokenAndAdmin, updateSubscription);
 
-// //DELETE
-// router.delete("/:id", verifyTokenAndAdmin, deleteReview);
+//DELETE
+router.delete("/:id", verifyTokenAndAdmin, deleteSubscription);
 
-// //GET A PROPERTY
-// router.get("/find/:id", getSingleReview);
 
-// //GET ALL PROPERTIES
-// router.get("/", getAllReviews);
+//GET ALL SUBSCRIPTION
+router.get("/", verifyTokenAndAdmin, getAllSubscription);
 
 module.exports = router;

@@ -24,6 +24,7 @@ router.post("/register", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
+    img:req.body.img || '',
     password: CryptoJS.AES.encrypt(
       req.body.password,
       process.env.PASS_SEC
@@ -34,8 +35,10 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json({
       _id: savedUser.id,
-      name: savedUser.name,
+      username: savedUser.username,
       email: savedUser.email,
+      img: savedUser.img,
+      isAdmin: savedUser.isAdmin,
       //token: accessToken(savedUser._id,savedUser.isAdmin),
     });
   } catch (err) {
