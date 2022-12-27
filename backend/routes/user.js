@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { verifyToken , verifyTokenAndAuthorization,verifyTokenAndAdmin} = require("../middleware/verifyToken")
-const { updateUser , deleteUser , getSingleUser , getAllUsers , getUserStats } = require("../controllers/user")
+const { create,updateUser , deleteUser , getSingleUser , getAllUsers , getUserStats } = require("../controllers/user")
 
 const User = require("../models/User");
 
+//CREATE
+router.post("/", verifyTokenAndAdmin ,create)
 
 //UPDATE
 router.put("/:id", verifyTokenAndAuthorization, updateUser);

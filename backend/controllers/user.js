@@ -81,6 +81,43 @@ const User = require('../models/User')
 //   })
 // }
 
+//CREATE
+const create = async (req,res) => {
+  const {username,email,img,password,isAdmin} = req.body
+  
+  const newUser = new User({
+    username: username,
+    email: email,
+    img: img || '',
+    password: CryptoJS.AES.encrypt(
+      req.body.password,
+      process.env.PASS_SEC
+    ).toString(),
+    isAdmin: isAdmin
+  });
+
+  try {
+    if(!username || !email || !password){
+      return res.status(401).json("All Input Fields Must Be Filled")
+    }
+
+    const exists = await User.findOne({email})
+    if(exists){
+      return res.status(401).json("Email Already Exist")
+    }
+    const savedUser = await newUser.save();
+    return res.status(201).json({
+      _id: savedUser.id,
+      username: savedUser.username,
+      email: savedUser.email,
+      img: savedUser.img,
+      isAdmin: savedUser.isAdmin,
+    });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
+
 //UPDATE
 
 const updateUser = async (req, res) => {
@@ -173,6 +210,7 @@ const getUserStats = async (req, res) => {
 }
 
 module.exports = {
+  create,
   updateUser,
   deleteUser,
   getSingleUser,

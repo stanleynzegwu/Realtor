@@ -21,19 +21,30 @@ const accessToken = (id,isAdmin) => {
 
 //REGISTER
 router.post("/register", async (req, res) => {
+  const {username,email,img,password} = req.body
+
   const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    img:req.body.img || '',
+    username: username,
+    email: email,
+    img: img || '',
     password: CryptoJS.AES.encrypt(
-      req.body.password,
+      password,
       process.env.PASS_SEC
     ).toString(),
   });
 
   try {
+    if(!username || !email || !password){
+      return res.status(401).json("All Input Fields Should Be Filled")
+    }
+    const exists = await User.findOne({email})
+    if(exists){
+      return res.status(401).json("Email Already Exist")
+    }
     const savedUser = await newUser.save();
-    res.status(201).json({
+
+
+    return res.status(201).json({
       _id: savedUser.id,
       username: savedUser.username,
       email: savedUser.email,
@@ -42,7 +53,7 @@ router.post("/register", async (req, res) => {
       //token: accessToken(savedUser._id,savedUser.isAdmin),
     });
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -50,13 +61,15 @@ router.post("/register", async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try{
-        const user = await User.findOne(
-            {
-                email: req.body.email
-            }
-        );
 
-        !user && res.status(401).json("Wrong Email");
+      if(!req.body.email || !req.body.password){
+        return res.status(401).json("All Input Fields Should Be Filled")
+      }
+        const user = await User.findOne({email:req.body.email});
+
+        if(!user){
+          return res.status(401).json("Wrong Email");
+        }
 
         const hashedPassword = CryptoJS.AES.decrypt(
             user.password,
@@ -68,16 +81,17 @@ router.post('/login', async (req, res) => {
 
         const inputPassword = req.body.password;
         
-        originalPassword != inputPassword && 
-            res.status(401).json("Wrong Password");
+        if(originalPassword != inputPassword){
+          return res.status(401).json("Wrong Password");
+        }
 
         let token = accessToken(user._id,user.isAdmin)
   
         const { password, ...others } = user._doc;  
-        res.status(200).json({...others, token});
+        return res.status(200).json({...others, token});
 
     }catch(err){
-        res.status(500).json('err');
+        return res.status(500).json(err);
     }
 
 });
