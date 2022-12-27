@@ -6,14 +6,11 @@ import {Link} from 'react-router-dom'
 
 import { SetPasswordVisibility } from '../../Hooks/customHook'
 import { useLogin } from '../../Hooks/useApiRequest'
-import {useAuthContext} from '../../Hooks/useAuthContext'
 import './Login.scss'
 
 const Login = () => {
     const {isVisible, changeVisibility} = SetPasswordVisibility()
     const {Login, error, isLoading} = useLogin()
-    const {user,dispatch} = useAuthContext()
-    console.log(user)
     const [formData,setFormData] = useState({
         email: "",
         password: ""
@@ -80,7 +77,10 @@ const Login = () => {
                                 }
                             </div>
                         </div>
-                        <button type="submit" className="btn">Login</button>
+                        <button disabled={isLoading} type="submit" className="btn">Login</button>
+                        {error && (<div className='error'>
+                          <p>{error}</p>
+                        </div>)}
                 </form>
                 <p className='noAccount'>Don't have an account? <Link to='/signup'><span>Signup</span></Link></p>
             </div>

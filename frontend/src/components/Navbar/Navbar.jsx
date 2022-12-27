@@ -35,7 +35,7 @@ const Navbar= () => {
                 ))}
             </ul>
             <div className='navbarImgHolder'>
-                {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt=""  className='navbarUserImg'/>}
+                {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar"  className='navbarUserImg'/>}
                 <div className='btn__holder'>
                 {
                     user ? 

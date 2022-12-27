@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { MdNotificationsNone } from 'react-icons/md'
 import './Topbar.scss'
+import {useAuthContext} from '../../Hooks/useAuthContext'
+
 const Topbar = () => {
+    const { user } = useAuthContext()
     return ( 
         <div className='topbar'>
             <div className='topbarWrapper'>
@@ -13,7 +16,7 @@ const Topbar = () => {
                         <MdNotificationsNone />
                         <span className='topIconBag'>2</span>
                     </div>
-                    <img src="https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg" alt="avatar" className='topAvatar'/>
+                    {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='topAvatar'/>}
                 </div>
             </div>
         </div>

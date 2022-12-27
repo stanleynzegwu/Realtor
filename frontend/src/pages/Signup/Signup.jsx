@@ -8,13 +8,15 @@ import { useSignup } from '../../Hooks/useApiRequest'
 import {useAuthContext} from '../../Hooks/useAuthContext'
 import './Signup.scss'
 
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import app from '../../firebase'
+//import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+//import app from '../../firebase'
+import {uploadImg} from '../../firebase'
 
 const Signup = () => {
   const {isVisible, changeVisibility} = SetPasswordVisibility()
   const {user,dispatch} = useAuthContext()
   const {Signup, error, isLoading} = useSignup()
+  console.log(user,error)
 
   const [formData,setFormData] = useState({username:"",email: "",password: ""})
   
@@ -37,38 +39,39 @@ const Signup = () => {
    async function handleSubmit(e) {
         e.preventDefault()
         if(file){
-          const fileName = new Date().getTime() + file.name;
-            const storage = getStorage(app)
-            const storageRef = ref(storage, fileName)
+          uploadImg(file,Signup,formData)
+          // const fileName = new Date().getTime() + file.name;
+          //   const storage = getStorage(app)
+          //   const storageRef = ref(storage, fileName)
 
-            const uploadTask = uploadBytesResumable(storageRef, file);
-            uploadTask.on('state_changed', 
-              (snapshot) => {
-                // Observe state change events such as progress, pause, and resume
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
-                switch (snapshot.state) {
-                  case 'paused':
-                    console.log('Upload is paused');
-                    break;
-                  case 'running':
-                    console.log('Upload is running');
-                    break;
-                }
-              }, 
-              (error) => {
-                // Handle unsuccessful uploads
-              }, 
-              () => {
-                // Handle successful uploads on complete
-                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                  const allFormData = {...formData, img:downloadURL};
-                  Signup(allFormData)
-                });
-              }
-            );
+          //   const uploadTask = uploadBytesResumable(storageRef, file);
+          //   uploadTask.on('state_changed', 
+          //     (snapshot) => {
+          //       // Observe state change events such as progress, pause, and resume
+          //       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          //       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          //       console.log('Upload is ' + progress + '% done');
+          //       switch (snapshot.state) {
+          //         case 'paused':
+          //           console.log('Upload is paused');
+          //           break;
+          //         case 'running':
+          //           console.log('Upload is running');
+          //           break;
+          //       }
+          //     }, 
+          //     (error) => {
+          //       // Handle unsuccessful uploads
+          //     }, 
+          //     () => {
+          //       // Handle successful uploads on complete
+          //       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          //         const allFormData = {...formData, img:downloadURL};
+          //         Signup(allFormData)
+          //       });
+          //     }
+          //   );
         }else{
           await Signup(formData)
         }
@@ -147,7 +150,10 @@ const Signup = () => {
                         </div>
                     </div>
                     
-                    <button type="submit" className="btn">Sign up</button>
+                    <button disabled={isLoading} type="submit" className="btn">Sign up</button>
+                    {error && (<div className='error'>
+                          <p>{error}</p>
+                        </div>)}
             </form>
             <p className='account'>Already have an account? <Link to='/login'><span>Login</span></Link></p>
         </div>

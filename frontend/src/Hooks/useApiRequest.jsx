@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { publicRequest } from '../RequestMethods'
+import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 
 export const useSignup = () => {
@@ -24,7 +24,7 @@ export const useSignup = () => {
             
         }catch(err){
             setIsLoading(false)
-            setError(err.message)
+            setError(err.response.data)
         }
     }
 
@@ -52,7 +52,7 @@ export const useLogin = () => {
             
         }catch(err){
             setIsLoading(false)
-            setError(err.message)
+            setError(err.response.data)
         }
     }
 
@@ -68,4 +68,26 @@ export const useLogout = () => {
     }
 
     return {logout}
+}
+
+export const useCreateUser = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const CreateUser = async (user) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+
+            const res = await userRequest.post("/users",user)
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {CreateUser, isLoading, error, success}
 }
