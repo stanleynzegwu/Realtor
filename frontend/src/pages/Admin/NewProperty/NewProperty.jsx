@@ -2,11 +2,17 @@ import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
 import './NewProperty.scss'
 
+//import { app } from '../../../firebase';
+import { useCreateProperty } from '../../../Hooks/useApiRequest';
+import { uploadFiles } from '../../../firebase';
+//import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 const NewProperty = () => {
+    const { CreateProperty, isLoading, error, success, successMessageDisplay } = useCreateProperty()
     const [radio,setRadio] = useState('False')
     const [formData,setFormData] = useState({
         category:"",propertyType: "",location: "",
-        state:"",desc:"",price:null,consultancyFee:null
+        state:"",desc:"",price:0,consultancyFee:0
     })
     function handleChange(e){
         let {name,value} = e.target
@@ -17,20 +23,61 @@ const NewProperty = () => {
             }
         })
     }
-
+    const form = {...formData,isFeatured:radio === 'False' ? false : true}
     //for image preview
-    const [images, setImages] = useState(["https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg","https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg","https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg","https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"]);
-    console.log(images)
+    const [imagesPreview, setImagesPreview] = useState(["https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg","https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"]);
+    const [imagesFile,setImagesFile] = useState([])
+
     const handleMultipleImages =(e)=>{
       const selectedFIles =[];
+      const imagesArray = []
       const targetFiles =e.target.files;
       const targetFilesObject= [...targetFiles]
       targetFilesObject.map((file)=>{
+        imagesArray.push(file)
          return selectedFIles.push(URL.createObjectURL(file))
       })
-      setImages(selectedFIles);
+      setImagesFile(imagesArray)
+      setImagesPreview(selectedFIles);
     }
 
+  ///////////////////////////////////////uploadFiles(files)
+//   const uploadFiles = (files) => {
+//     let img = []
+//     const promises = []
+//     files.map((file) => {
+//         console.log('loop');
+//         const storage = getStorage(app)
+//         const storageRef = ref(storage, new Date().getTime() + file.name);
+
+//         const uploadTask = uploadBytesResumable(storageRef, file);
+//         promises.push(uploadTask)
+//         uploadTask.on(
+//             "state_changed",
+//             (snapshot) => {
+//                 const prog = Math.round(
+//                     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+//                 );
+//             },
+//             (error) => console.log(error),
+//             async () => {
+//                 await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+//                     img.push(downloadURLs)
+//                 });
+//                 (imagesPreview.length === img.length) && CreateProperty({...form,img})
+//             }
+//         );
+
+//     })
+//     Promise.all(promises)
+//         //.then(() => CreateProperty({...form,img}))
+//         .catch(err => console.log(err))
+// };
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  uploadFiles(imagesFile,imagesPreview,CreateProperty,form)
+ }
     return ( 
         <div className="newProperty">
             <div className="propertyTitleContainer">
@@ -38,11 +85,11 @@ const NewProperty = () => {
             </div>
 
             <div className='propertyEditContainer'>
-                <form className="form form-holder">
+                <form className="form form-holder" onSubmit={handleSubmit}>
                     <div className="propertyEditLeft">
                         <div className="fl-holder">
                           <div className="label">
-                            <label for="category" className="form-label">Category</label>
+                            <label htmlFor="category" className="form-label">Category</label>
                           </div>
                           <div className="input-flex">
                             {/* <span><FaUserAlt /></span> */}
@@ -60,7 +107,7 @@ const NewProperty = () => {
 
                         <div className="fl-holder">
                           <div className="label">
-                            <label for="propertyType" className="form-label">Property Type</label>
+                            <label htmlFor="propertyType" className="form-label">Property Type</label>
                           </div>
                           <div className="input-flex">
                             {/* <span><MdEmail /></span> */}
@@ -78,7 +125,7 @@ const NewProperty = () => {
 
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="location" className="form-label">Location</label>
+                              <label htmlFor="location" className="form-label">Location</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -95,7 +142,7 @@ const NewProperty = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="state" className="form-label">State</label>
+                              <label htmlFor="state" className="form-label">State</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -112,7 +159,7 @@ const NewProperty = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="price" className="form-label">Price</label>
+                              <label htmlFor="price" className="form-label">Price</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -129,7 +176,7 @@ const NewProperty = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="consultancyFee" className="form-label">consultancyFee</label>
+                              <label htmlFor="consultancyFee" className="form-label">consultancyFee</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -146,7 +193,7 @@ const NewProperty = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="desc" className="form-label">Description</label>
+                              <label htmlFor="desc" className="form-label">Description</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -164,7 +211,7 @@ const NewProperty = () => {
                                 <label className='radio-label'>isFeatured</label>
                                 <div className='radioHolder'>
                                     <span>
-                                        <label for='true'>True</label>
+                                        <label htmlFor='true'>True</label>
                                         <input
                                           type="radio"
                                           value="True"
@@ -175,7 +222,7 @@ const NewProperty = () => {
                                         />
                                     </span>
                                     <span>
-                                        <label for='false'>False</label>
+                                        <label htmlFor='false'>False</label>
                                         <input
                                           type="radio"
                                           value="False"
@@ -191,15 +238,23 @@ const NewProperty = () => {
                     <div className="propertyEditRight">
                         <div className="newPropertyUpload">
                             <div className="newPropertyImgHolder">
-                                {images && images.map(url => (
-                                    <img src={url} alt="avatar" className="newPropertyImg" />
+                                {imagesPreview && imagesPreview.map((url,index) => (
+                                    <img key={url + index} src={url} alt="avatar" className="newPropertyImg" />
                                 ))}
                             </div>
                     
                             <label htmlFor="file"><MdPublish /></label>
                             <input type="file" id='file' style={{ display:"none"}} multiple onChange={handleMultipleImages}/>
                         </div>
-                        <button type="submit" className="propertyCreateButton">Create</button>
+                        <button disabled={isLoading} type="submit" className="propertyCreateButton">Create</button>
+                        {error && 
+                          (<div className='error'>
+                              <p>{error}</p>
+                          </div>)}
+                        {success && 
+                          (<div className='success' style={{"display": successMessageDisplay ? "block" : "none"}}>
+                              <p>Property Created Successfully</p>
+                          </div>)}
                     </div>
                 </form>
 

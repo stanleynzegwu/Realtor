@@ -3,11 +3,11 @@ import { FaHouzz , FaMapMarkerAlt } from 'react-icons/fa'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import background from '../../assets/logos/realtor-background.jpg'
+//import background from '../../assets/logos/realtor-background.jpg'
 import image from '../../assets/logos/land-man.png'
 import './Header.scss'
-import {usePropertyContext} from '../../Hooks/usePropertyContext'
-import { userRequest } from '../../RequestMethods';
+// import {usePropertyContext} from '../../Hooks/usePropertyContext'
+// import { userRequest } from '../../RequestMethods';
 
 const location = ['Delta','Anambra','Lagos','Abuja','Kaduna'].sort()
 
@@ -31,22 +31,6 @@ const Header = () => {
     //     } 
     //     fetchProperties()
     //   },[])
-    
-    //using axios
-      const {properties,dispatch} = usePropertyContext()
-      console.log(properties)
-      useEffect(() => {
-        const fetchProperties = async () => {
-            try{
-                const res = await userRequest.get("/property")
-                dispatch({type:"SET_PROPERTY", payload: res})
-            }catch(err){
-                console.log(err)
-            }
-            
-        } 
-        fetchProperties()
-      },[])
 
     return (
             <main className="header" id='home'>

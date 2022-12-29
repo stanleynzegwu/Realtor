@@ -6,13 +6,13 @@ import { uploadImg } from '../../../firebase'
 import { useCreateUser } from '../../../Hooks/useApiRequest'
 
 const NewUser = () => {
-    const { CreateUser, isLoading, error, success } = useCreateUser()
+    const { CreateUser, isLoading, error, success , successMessageDisplay } = useCreateUser()
     const [radio,setRadio] = useState('False')
-    const [formData,setFormData] = useState({
-        username:"",
-        email: "",
-    })
+    const [formData,setFormData] = useState({username:"",email: "",})
+    const [preview, setPreview] = useState()
     const [file,setFile] = useState()
+    const form = {...formData,isAdmin:radio === 'False' ? false : true}
+
     function handleChange(e){
         let {name,value} = e.target
         setFormData(data => {
@@ -22,19 +22,18 @@ const NewUser = () => {
             }
         })
     }
-    const form = {...formData,isAdmin:radio === 'False' ? false : true}
-    console.log(form)
-
-    const [preview, setPreview] = useState()
-    function handleChangee(e) {
+    
+    function handleImageChange(e) {
         setPreview(URL.createObjectURL(e.target.files[0]));
         setFile(e.target.files[0])
     }
 
     async function handleSubmit(e) {
         e.preventDefault()
+        //if there is an img file,call the upload img func to upload to firebase , then the ref stored in db
         if(file){
           uploadImg(file,CreateUser,form)
+        //else when there is no image file, create a user, no img to upload to firebase
         }else{
           await CreateUser(form)
         }
@@ -62,7 +61,7 @@ const NewUser = () => {
                         <label>isAdmin</label>
                         <div className='radioHolder'>
                             <span>
-                                <label for='true' className='radioLabel'>True</label>
+                                <label htmlFor='true' className='radioLabel'>True</label>
                                 <input
                                   type="radio"
                                   value="True"
@@ -73,7 +72,7 @@ const NewUser = () => {
                                 />
                             </span>
                             <span>
-                                <label for='false' className='radioLabel'>False</label>
+                                <label htmlFor='false' className='radioLabel'>False</label>
                                 <input
                                   type="radio"
                                   value="False"
@@ -91,7 +90,7 @@ const NewUser = () => {
                     <div className="newUserItem">
                         <img src={preview ? preview : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className="userUpdateImg" />
                         <label htmlFor="file">Upload Image<MdPublish /></label>
-                        <input type="file" id='file' name="img" style={{ display:"none"}} onChange={handleChangee}/>
+                        <input type="file" id='file' name="img" style={{ display:"none"}} onChange={handleImageChange}/>
                     </div>
 
                     <button disabled={isLoading} className="newUserButton">Create</button>
@@ -100,7 +99,7 @@ const NewUser = () => {
                         <p>{error}</p>
                     </div>)}
                     {success && 
-                    (<div className='success'>
+                    (<div className='success' style={{"display": successMessageDisplay ? "block" : "none"}}>
                         <p>User Created Successfully</p>
                     </div>)}
                 </div>

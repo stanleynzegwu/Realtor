@@ -7,7 +7,7 @@ const Property = () => {
     const [radio,setRadio] = useState('False')
     const [formData,setFormData] = useState({
         category:"",propertyType: "",location: "",
-        state:"",desc:"",price:null,consultancyFee:null
+        state:"",desc:"",price:0,consultancyFee:0
     })
     function handleChange(e){
         let {name,value} = e.target
@@ -46,7 +46,7 @@ const Property = () => {
                     <div className="propertyEditLeft">
                         <div className="fl-holder">
                           <div className="label">
-                            <label for="category" className="form-label">Category</label>
+                            <label htmlFor="category" className="form-label">Category</label>
                           </div>
                           <div className="input-flex">
                             {/* <span><FaUserAlt /></span> */}
@@ -64,7 +64,7 @@ const Property = () => {
 
                         <div className="fl-holder">
                           <div className="label">
-                            <label for="propertyType" className="form-label">Property Type</label>
+                            <label htmlFor="propertyType" className="form-label">Property Type</label>
                           </div>
                           <div className="input-flex">
                             {/* <span><MdEmail /></span> */}
@@ -82,7 +82,7 @@ const Property = () => {
 
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="location" className="form-label">Location</label>
+                              <label htmlFor="location" className="form-label">Location</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -99,7 +99,7 @@ const Property = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="state" className="form-label">State</label>
+                              <label htmlFor="state" className="form-label">State</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -116,7 +116,7 @@ const Property = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="price" className="form-label">Price</label>
+                              <label htmlFor="price" className="form-label">Price</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -133,7 +133,7 @@ const Property = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="consultancyFee" className="form-label">consultancyFee</label>
+                              <label htmlFor="consultancyFee" className="form-label">consultancyFee</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -150,7 +150,7 @@ const Property = () => {
                         </div>
                         <div className="fl-holder">
                             <div className="label">
-                              <label for="desc" className="form-label">Description</label>
+                              <label htmlFor="desc" className="form-label">Description</label>
                             </div>
                             <div className="input-flex">
                                 {/* <span><FaLock /></span> */}
@@ -168,7 +168,7 @@ const Property = () => {
                                 <label className='radio-label'>isFeatured</label>
                                 <div className='radioHolder'>
                                     <span>
-                                        <label for='true'>True</label>
+                                        <label htmlFor='true'>True</label>
                                         <input
                                           type="radio"
                                           value="True"
@@ -179,7 +179,7 @@ const Property = () => {
                                         />
                                     </span>
                                     <span>
-                                        <label for='false'>False</label>
+                                        <label htmlFor='false'>False</label>
                                         <input
                                           type="radio"
                                           value="False"

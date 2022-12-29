@@ -17,8 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-//export default app
-
+//UPLOADING SINGLE IMAGE FUNCTION
 const uploadImg = (file,Func,formData) => {
   const fileName = new Date().getTime() + file.name;
     const storage = getStorage(app)
@@ -53,4 +52,39 @@ const uploadImg = (file,Func,formData) => {
       }
     );
 }
-export { uploadImg }
+
+//UPLOADING MULTIPLE IMAGES FUNCTION
+const uploadFiles = (files,imagesPreview,Func,form) => {
+  let img = []
+  //const promises = []
+  files.map((file) => {
+      console.log('loop');
+      const storage = getStorage(app)
+      const storageRef = ref(storage, new Date().getTime() + file.name);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      //promises.push(uploadTask)
+      uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+              const prog = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+          },
+          (error) => console.log(error),
+          async () => {
+              await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+                  img.push(downloadURLs)
+              });
+              (imagesPreview.length === img.length) && Func({...form,img})
+          }
+      );
+
+  })
+  // Promise.all(promises)
+  //     //.then(() => CreateProperty({...form,img}))
+  //     .catch(err => console.log(err))
+};
+
+//export { app, uploadImg }
+export { app, uploadImg, uploadFiles }

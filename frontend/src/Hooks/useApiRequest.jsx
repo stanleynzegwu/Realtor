@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { publicRequest, userRequest } from '../RequestMethods'
-import { useAuthContext } from './useAuthContext'
+import { useAuthContext, usePropertyContext } from './useAuthContext'
 
+//USER SIGNUP
 export const useSignup = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(null)
@@ -31,6 +32,7 @@ export const useSignup = () => {
     return { Signup, isLoading, error }
 }
 
+//USER LOGIN
 export const useLogin = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(null)
@@ -59,6 +61,7 @@ export const useLogin = () => {
     return { Login, isLoading, error }
 }
 
+//USER LOGOUT
 export const useLogout = () => {
     const { dispatch } = useAuthContext()
 
@@ -70,10 +73,12 @@ export const useLogout = () => {
     return {logout}
 }
 
+//CREATE USER
 export const useCreateUser = () => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
+    const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
 
     const CreateUser = async (user) => {
         try{
@@ -83,11 +88,41 @@ export const useCreateUser = () => {
             const res = await userRequest.post("/users",user)
             setIsLoading(false)
             setSuccess(true)
+            setSuccessMessageDisplay(true)
+            setTimeout(() => setSuccessMessageDisplay(false),10000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
 
     }
-    return {CreateUser, isLoading, error, success}
+    return {CreateUser, isLoading, error, success, successMessageDisplay,}
+}
+
+//CREATE PROPERTY
+export const useCreateProperty = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+
+    const CreateProperty = async (property) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+
+            const res = await userRequest.post("/property",property)
+            setIsLoading(false)
+            setSuccess(true)
+            setSuccessMessageDisplay(true)
+            setTimeout(() => setSuccessMessageDisplay(false),10000)
+            console.log(res)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+            setTimeout(() => setError(false),10000)
+        }
+
+    }
+    return {CreateProperty, isLoading, error, success, successMessageDisplay,}
 }

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { Home , Login, SingleAbout, Signup, DashboardHome } from "./pages"
+import { Home , Login, SingleAbout, Signup, ViewProperty, DashboardHome } from "./pages"
 import './App.scss'
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/adminDashboard/*" element={<DashboardHome />} />
                 <Route path="/about/:id" element={<SingleAbout />} />
+                <Route path="/viewProperty/:id" element={<ViewProperty />} />
             </Routes>
         </div>
      );

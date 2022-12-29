@@ -74,7 +74,7 @@ const Testimonial = () => {
         className="mySwiper"
       >
                 {arr.map(({img,name,email,star,testimony},index) => (
-                    <SwiperSlide className='testimonial-card' key={index}>
+                    <SwiperSlide className='testimonial-card' key={index + 1}>
                         <div className='client__img'>
                             <img src={img} alt="client" />
                         </div>
