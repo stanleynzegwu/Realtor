@@ -4,8 +4,17 @@ import { Link } from 'react-router-dom'
 import './Users.scss'
 import {userRows} from '../../../dummyData'
 import { useState } from 'react'
+// import { useUserContext } from '../../../Hooks/useUserContext';
+// import { useAuthContext } from '../../../Hooks/useAuthContext';
+// import { useGetAllUsers } from '../../../Hooks/useApiRequest';
 
 const Users = () => {
+    // const { user } = useAuthContext()
+    // const { GetAllUsers } = useGetAllUsers()
+    // //const [isAdmin,setUser] = useState(user?.data.isAdmin)
+    
+    // user?.data.isAdmin && GetAllUsers()
+
     const [data,setData] = useState(userRows)
     function handleDelete(id){
         let filtered = data.filter(user => user.id !== id)

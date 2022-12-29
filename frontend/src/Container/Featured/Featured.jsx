@@ -7,32 +7,13 @@ import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import { Button } from '../../components'
 import './Featured.scss'
 import { usePropertyContext } from '../../Hooks/usePropertyContext'
+import { formatPrice } from '../../utilityFunctions'
 
-
-// let data = [{
-//     img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-//     property:'Villa On Washington Avenue',location:'Mirpa City, Dhaka',price:'$20,000'
-// },{
-//     img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-//     property:'Villa On Washington Avenue',location:'Mirpa City, Dhaka',price:'$20,000'
-// }
-// ]
-function formatPrice(p){
-    let position = 3
-    return String(p).split('').reverse().map((l,index) => {
-        if(index === position){
-            position += 3
-            return `${l},`
-        }else{
-            return l
-        }
-    }).reverse().join('')
-}
 
 const Featured = () => {
     const {properties} = usePropertyContext()
     const  featured = properties?.data.filter(({isFeatured}) => isFeatured === true).slice(0,2)
-    console.log(featured)
+    
     return ( 
         <section className='featured'>
             <FadeUpAnimation className='featured__p heading-text--sm'>properties</FadeUpAnimation>

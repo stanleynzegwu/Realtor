@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { publicRequest, userRequest } from '../RequestMethods'
-import { useAuthContext, usePropertyContext } from './useAuthContext'
+import { useAuthContext } from './useAuthContext'
+import { useUserContext } from './useUserContext'
 
 //USER SIGNUP
 export const useSignup = () => {
@@ -125,4 +126,29 @@ export const useCreateProperty = () => {
 
     }
     return {CreateProperty, isLoading, error, success, successMessageDisplay,}
+}
+
+//GET ALL USERS
+export const useGetAllUsers = () => {
+    const { dispatch } = useUserContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const GetAllUsers = async () => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const users = await userRequest.get("/users")
+            dispatch({type:'SET_USERS', payload: users})
+            setIsLoading(false)
+            setSuccess(true)
+            console.log(users)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {GetAllUsers, isLoading, error, success}
 }
