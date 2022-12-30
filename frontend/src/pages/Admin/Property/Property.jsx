@@ -1,13 +1,19 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import './Property.scss'
+import { usePropertyContext } from '../../../Hooks/usePropertyContext'
 
 const Property = () => {
+  const { id } = useParams()
+  const { properties } = usePropertyContext()
+  const [ property ] = properties.data.filter((property) => property._id === id)
+
     const [radio,setRadio] = useState('False')
     const [formData,setFormData] = useState({
-        category:"",propertyType: "",location: "",
-        state:"",desc:"",price:0,consultancyFee:0
+        category:property.category,propertyType: property.propertyType,location: property.location,
+        state:property.state,desc:property.desc,price:property.price,consultancyFee:property.consultancyFee
     })
     function handleChange(e){
         let {name,value} = e.target
@@ -20,7 +26,7 @@ const Property = () => {
     }
 
     //for image preview
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState([...property.img]);
     console.log(images)
     const handleMultipleImages =(evnt)=>{
       const selectedFIles =[];

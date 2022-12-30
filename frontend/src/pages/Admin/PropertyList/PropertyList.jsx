@@ -4,28 +4,33 @@ import { Link } from 'react-router-dom'
 import {propertyRows} from '../../../dummyData'
 import { useState } from 'react'
 import './PropertyList.scss'
+import { usePropertyContext } from '../../../Hooks/usePropertyContext';
+import { useDeleteProperty } from '../../../Hooks/useApiRequest';
 
 const PropertyList = () => {
-    const [data,setData] = useState(propertyRows)
-    function handleDelete(id){
-        let filtered = data.filter(property => property.id !== id)
-        setData(filtered)
-    }
+    const { DeleteAProperty } = useDeleteProperty()
+    const { properties } = usePropertyContext()
+    const allProperties = properties.data
+    //const [data,setData] = useState(propertyRows)
+    // function handleDelete(id){
+    //     let filtered = data.filter(property => property.id !== id)
+    //     setData(filtered)
+    // }
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 40 },
-        { field: 'type', headerName: 'PropertyType', width: 150 ,renderCell: (params) => {
+        { field: '_id', headerName: 'ID', width: 40 },
+        { field: 'propertyType', headerName: 'PropertyType', width: 150 ,renderCell: (params) => {
             return (
                 <div className='propertyListProperty'>
                     <img className='propertyListImg' src={params.row.img} alt='avatar'/>
-                    {params.row.type}
+                    {params.row.propertyType}
                 </div>
             )
         }},
         { field: 'category', headerName: 'Category', width: 100 },
         { field: 'location', headerName: 'Location', width: 100 },
         { field: 'state', headerName: 'State', width: 100 },
-        { field: 'description', headerName: 'Description', width: 100 },
+        { field: 'desc', headerName: 'Description', width: 100 },
         { field: 'price', headerName: 'Price', width: 100 },
         { field: 'consultancyFee', headerName: 'ConsultancyFee', width: 100 },
         {
@@ -41,10 +46,10 @@ const PropertyList = () => {
             renderCell: (params) => {
                 return (
                     <> 
-                        <Link to={`/adminDashboard/property/${params.row.id}`}>
+                        <Link to={`/adminDashboard/property/${params.row._id}`}>
                             <button className='propertyListEdit'>Edit</button>
                         </Link>
-                        <MdDeleteOutline className='propertyListDelete' onClick={() => handleDelete(params.row.id)}/>
+                        <MdDeleteOutline className='propertyListDelete' onClick={() => DeleteAProperty(params.row._id)}/>
                     </>
                 )
             }
@@ -55,9 +60,10 @@ const PropertyList = () => {
         <div className="propertyList">
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
-                rows={data}
+                rows={allProperties}
                 disableSelectionOnClick
                 columns={columns}
+                getRowId={row=>row._id}
                 pageSize={20}
                 rowsPerPageOptions={[20]}
                 checkboxSelection

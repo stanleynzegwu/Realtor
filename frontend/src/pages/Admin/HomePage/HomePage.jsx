@@ -1,7 +1,28 @@
+import { useState,useEffect } from 'react'
 import { FeaturedInfo , Chart, WidgetLg,WidgetSm} from '../../../components'
 import './HomePage.scss'
+import { userRequest } from '../../../RequestMethods';
+import { useUserContext } from '../../../Hooks/useUserContext';
 
 const HomePage = () => {
+  const [error,setError] = useState(null)
+  const { dispatch } = useUserContext()
+
+  //FETCH ALL USERS
+  useEffect(() => {
+    const GetAllUsers = async () => {
+        try{
+            const users = await userRequest.get("/users")
+            console.log(users)
+            dispatch({type:'SET_USERS', payload: users})
+        }catch(err){
+            setError(err.response.data)
+        }
+
+    }
+    GetAllUsers()
+},[dispatch])
+
     const data = [
         {
           name: 'Jan',

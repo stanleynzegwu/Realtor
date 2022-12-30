@@ -11,8 +11,10 @@ const PropertyReducer = (state,action) => {
             }
         case 'CREATE_PROPERTY':
             return {
-                properties: [action.payload,...state.properties]
+                properties: {...state.properties,data:[...state.properties.data,action.payload.data]} 
             }
+        case 'DELETE_PROPERTY':
+            return { properties: {...state.properties,data:state.properties.data.filter((u) => u._id !== action.payload.data._id)} }
         default:
             return state
     }

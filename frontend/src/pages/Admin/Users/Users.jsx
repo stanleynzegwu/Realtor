@@ -4,34 +4,34 @@ import { Link } from 'react-router-dom'
 import './Users.scss'
 import {userRows} from '../../../dummyData'
 import { useState } from 'react'
-// import { useUserContext } from '../../../Hooks/useUserContext';
-// import { useAuthContext } from '../../../Hooks/useAuthContext';
-// import { useGetAllUsers } from '../../../Hooks/useApiRequest';
+//import { userRequest } from '../../../RequestMethods';
+import { useUserContext } from '../../../Hooks/useUserContext';
+import { useDeleteUser } from '../../../Hooks/useApiRequest';
 
 const Users = () => {
-    // const { user } = useAuthContext()
-    // const { GetAllUsers } = useGetAllUsers()
-    // //const [isAdmin,setUser] = useState(user?.data.isAdmin)
-    
-    // user?.data.isAdmin && GetAllUsers()
+    const { users } = useUserContext()
+    const { DeleteAUser } =useDeleteUser()
+    const allUsers = users.data
 
-    const [data,setData] = useState(userRows)
-    function handleDelete(id){
-        let filtered = data.filter(user => user.id !== id)
-        setData(filtered)
-    }
+    console.log(allUsers)
+    
+   // const [data,setData] = useState(userRows)
+    // function handleDelete(id){
+    //     let filtered = data.filter(user => user.id !== id)
+    //     setData(filtered)
+    // }
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'user', headerName: 'User', width: 200 ,renderCell: (params) => {
+        { field: '_id', headerName: 'ID', width: 250 },
+        { field: 'username', headerName: 'User', width: 150 ,renderCell: (params) => {
             return (
                 <div className='userListUser'>
-                    <img className='userListImg' src={params.row.avatar} alt='avatar'/>
-                    {params.row.user}
+                    <img className='userListImg' src={params.row.img} alt='avatar'/>
+                    {params.row.username}
                 </div>
             )
         }},
-        { field: 'email', headerName: 'Email', width: 250 },
+        { field: 'email', headerName: 'Email', width: 200 },
         {
           field: 'isAdmin',
           headerName: 'IsAdmin',
@@ -45,10 +45,10 @@ const Users = () => {
             renderCell: (params) => {
                 return (
                     <> 
-                        <Link to={`/adminDashboard/user/${params.row.id}`}>
+                        <Link to={`/adminDashboard/user/${params.row._id}`}>
                             <button className='userListEdit'>Edit</button>
                         </Link>
-                        <MdDeleteOutline className='userListDelete' onClick={() => handleDelete(params.row.id)}/>
+                        <MdDeleteOutline className='userListDelete' onClick={() => DeleteAUser(params.row._id)}/>
                     </>
                 )
             }
@@ -59,9 +59,10 @@ const Users = () => {
         <div className="users">
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
-                rows={data}
+                rows={allUsers}
                 disableSelectionOnClick
                 columns={columns}
+                getRowId={row=>row._id}
                 pageSize={20}
                 rowsPerPageOptions={[20]}
                 checkboxSelection

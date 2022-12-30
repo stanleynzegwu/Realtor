@@ -1,13 +1,19 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
 import './User.scss'
+import { useUserContext } from '../../../Hooks/useUserContext'
 
 const User = () => {
+    const { id } = useParams()
+    const { users } = useUserContext()
+    const [ user ] = users.data.filter((user) => user._id === id)
+
     const [radio,setRadio] = useState('False')
     const [formData,setFormData] = useState({
-        username:"",
-        email: "",
+        username:user.username,
+        email: user.email,
     })
     function handleChange(e){
         let {name,value} = e.target
@@ -20,7 +26,7 @@ const User = () => {
     }
     const form = {...formData,isAdmin:radio === 'False' ? false : true}
     console.log(form)
-    const [file, setFile] = useState()
+    const [file, setFile] = useState(user.img)
     function handleChangee(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -52,7 +58,7 @@ const User = () => {
                             </div>
                             <div className="userUpdateItem">
                                 <label>Email</label>
-                                <input type="email" name='email' value={formData.username} onChange={handleChange} placeholder='lionelMessi' className='userUpdateInput'/>
+                                <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='lionelMessi' className='userUpdateInput'/>
                             </div>
                             <div className="userUpdateItem">
                                 <label>isAdmin</label>

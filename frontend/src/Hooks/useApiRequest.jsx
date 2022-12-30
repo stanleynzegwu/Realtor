@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 import { useUserContext } from './useUserContext'
+import { usePropertyContext } from './usePropertyContext'
 
 //USER SIGNUP
 export const useSignup = () => {
@@ -80,6 +81,7 @@ export const useCreateUser = () => {
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const { dispatch } = useUserContext()
 
     const CreateUser = async (user) => {
         try{
@@ -87,6 +89,7 @@ export const useCreateUser = () => {
             setError(null)
 
             const res = await userRequest.post("/users",user)
+            dispatch({type:'CREATE_USER', payload: res})
             setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
@@ -106,6 +109,7 @@ export const useCreateProperty = () => {
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const { dispatch } = usePropertyContext()
 
     const CreateProperty = async (property) => {
         try{
@@ -113,11 +117,11 @@ export const useCreateProperty = () => {
             setError(null)
 
             const res = await userRequest.post("/property",property)
+            dispatch({type:'CREATE_PROPERTY', payload: res})
             setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
             setTimeout(() => setSuccessMessageDisplay(false),10000)
-            console.log(res)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
@@ -128,27 +132,74 @@ export const useCreateProperty = () => {
     return {CreateProperty, isLoading, error, success, successMessageDisplay,}
 }
 
+//DELETE PROPERTY
+export const useDeleteProperty = () => {
+    const { dispatch } = usePropertyContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const DeleteAProperty = async (id) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const user = await userRequest.delete(`/property/${id}`)
+            dispatch({type:'DELETE_PROPERTY', payload: user})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { DeleteAProperty }
+        
+}
 //GET ALL USERS
-export const useGetAllUsers = () => {
+// export const useGetAllUsers = () => {
+//     const { dispatch } = useUserContext()
+//     const [error, setError] = useState(null)
+//     const [success, setSuccess] = useState(null)
+//     const [isLoading, setIsLoading] = useState(null)
+
+//     const GetAllUsers = async () => {
+//         try{
+//             setIsLoading(true)
+//             setError(null)
+//             const users = await userRequest.get("/users")
+//             dispatch({type:'SET_USERS', payload: users})
+//             setIsLoading(false)
+//             setSuccess(true)
+//             console.log(users)
+//         }catch(err){
+//             setIsLoading(false)
+//             setError(err.response.data)
+//         }
+
+//     }
+//     return {GetAllUsers}
+// }
+
+//DELETE A USER
+export const useDeleteUser = () => {
     const { dispatch } = useUserContext()
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
 
-    const GetAllUsers = async () => {
+    const DeleteAUser = async (id) => {
         try{
             setIsLoading(true)
             setError(null)
-            const users = await userRequest.get("/users")
-            dispatch({type:'SET_USERS', payload: users})
+            const user = await userRequest.delete(`/users/${id}`)
+            dispatch({type:'DELETE_USER', payload: user})
             setIsLoading(false)
             setSuccess(true)
-            console.log(users)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
-
     }
-    return {GetAllUsers, isLoading, error, success}
+    return { DeleteAUser }
+        
 }
