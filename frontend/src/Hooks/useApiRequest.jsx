@@ -1,5 +1,8 @@
+//EXTERNAL IMPORTS
 import { useState, } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+//INTERNAL IMPORTS
 import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 import { useUserContext } from './useUserContext'
@@ -93,7 +96,7 @@ export const useCreateUser = () => {
             setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
-            setTimeout(() => setSuccessMessageDisplay(false),10000)
+            setTimeout(() => setSuccessMessageDisplay(false),7000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
@@ -101,6 +104,54 @@ export const useCreateUser = () => {
 
     }
     return {CreateUser, isLoading, error, success, successMessageDisplay,}
+}
+
+//UPDATE A USER
+export const useUpdateUser = () => {
+    const { dispatch } = useUserContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const UpdateUser = async (id,user) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const updatedUser = await userRequest.put(`/users/${id}`,user)
+            dispatch({type:'UPDATE_USER', payload: updatedUser})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { UpdateUser }
+        
+}
+
+//DELETE A USER
+export const useDeleteUser = () => {
+    const { dispatch } = useUserContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const DeleteAUser = async (id) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const user = await userRequest.delete(`/users/${id}`)
+            dispatch({type:'DELETE_USER', payload: user})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { DeleteAUser }
+        
 }
 
 //CREATE PROPERTY
@@ -180,26 +231,3 @@ export const useDeleteProperty = () => {
 //     return {GetAllUsers}
 // }
 
-//DELETE A USER
-export const useDeleteUser = () => {
-    const { dispatch } = useUserContext()
-    const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-
-    const DeleteAUser = async (id) => {
-        try{
-            setIsLoading(true)
-            setError(null)
-            const user = await userRequest.delete(`/users/${id}`)
-            dispatch({type:'DELETE_USER', payload: user})
-            setIsLoading(false)
-            setSuccess(true)
-        }catch(err){
-            setIsLoading(false)
-            setError(err.response.data)
-        }
-    }
-    return { DeleteAUser }
-        
-}

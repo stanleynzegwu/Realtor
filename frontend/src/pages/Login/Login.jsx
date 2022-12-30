@@ -1,11 +1,14 @@
+//EXTERNAL IMPORTS
 import { useState } from 'react'
 import { FaLock} from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 
+//INTERNAL IMPORTS
 import { SetPasswordVisibility } from '../../Hooks/customHook'
 import { useLogin } from '../../Hooks/useApiRequest'
+import { TypingText } from '../../components'
 import './Login.scss'
 
 const Login = () => {
@@ -78,9 +81,11 @@ const Login = () => {
                             </div>
                         </div>
                         <button disabled={isLoading} type="submit" className="btn">Login</button>
-                        {error && (<div className='error'>
-                          <p>{error}</p>
-                        </div>)}
+                        {
+                          error
+                          &&
+                          <TypingText text={error} intervalDuration={30} className='error'/>
+                        }
                 </form>
                 <p className='noAccount'>Don't have an account? <Link to='/signup'><span>Signup</span></Link></p>
             </div>

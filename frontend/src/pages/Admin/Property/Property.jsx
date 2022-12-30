@@ -1,7 +1,9 @@
+//EXTERNAL IMPORTS
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+
+//INTERNAL IMPORTS
 import './Property.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext'
 

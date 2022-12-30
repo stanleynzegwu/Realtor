@@ -4,6 +4,7 @@ import './NewUser.scss'
 
 import { uploadImg } from '../../../firebase'
 import { useCreateUser } from '../../../Hooks/useApiRequest'
+import { TypingText } from '../../../components'
 
 const NewUser = () => {
     const { CreateUser, isLoading, error, success , successMessageDisplay } = useCreateUser()
@@ -98,10 +99,17 @@ const NewUser = () => {
                     (<div className='error'>
                         <p>{error}</p>
                     </div>)}
-                    {success && 
+                    {/* {success && 
                     (<div className='success' style={{"display": successMessageDisplay ? "block" : "none"}}>
                         <p>User Created Successfully</p>
-                    </div>)}
+                    </div>)} */}
+                    {
+                        success
+                        &&
+                        successMessageDisplay 
+                        &&
+                        <TypingText text='User Created Successfully' intervalDuration={50} className='success'/>
+                    }
                 </div>
             </form>
         </div>

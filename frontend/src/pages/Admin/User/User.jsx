@@ -1,16 +1,20 @@
+//EXTERNAL IMPORTS
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
+
+//INTERNAL IMPORTS
 import './User.scss'
 import { useUserContext } from '../../../Hooks/useUserContext'
+import { useUpdateUser } from '../../../Hooks/useApiRequest'
 
 const User = () => {
+    const { UpdateUser } = useUpdateUser()
     const { id } = useParams()
     const { users } = useUserContext()
     const [ user ] = users.data.filter((user) => user._id === id)
 
-    const [radio,setRadio] = useState('False')
+    const [radio,setRadio] = useState(user.isAdmin ? "True" : "False")
     const [formData,setFormData] = useState({
         username:user.username,
         email: user.email,
@@ -31,6 +35,11 @@ const User = () => {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        await UpdateUser(id,form)
+    }
     return ( 
         <div className="user">
             <div className="userTitleContainer">
@@ -49,7 +58,7 @@ const User = () => {
                 </div>
                 <div className="userUpdate">
                     <span className="userUpdateTitle">Edit</span>
-                    <form action="" className="userUpdateForm">
+                    <form action="" className="userUpdateForm" onSubmit={handleSubmit}>
                         <div className="userUpdateLeft">
 
                             <div className="userUpdateItem">
@@ -64,7 +73,7 @@ const User = () => {
                                 <label>isAdmin</label>
                                 <div className='radioHolder'>
                                     <span>
-                                        <label for='true'>True</label>
+                                        <label htmlFor='true'>True</label>
                                         <input
                                           type="radio"
                                           value="True"
@@ -75,7 +84,7 @@ const User = () => {
                                         />
                                     </span>
                                     <span>
-                                        <label for='false'>False</label>
+                                        <label htmlFor='false'>False</label>
                                         <input
                                           type="radio"
                                           value="False"
@@ -95,7 +104,7 @@ const User = () => {
                                 <label htmlFor="file"><MdPublish /></label>
                                 <input type="file" id='file' style={{ display:"none"}} onChange={handleChangee}/>
                             </div>
-                            <button className="userUpdateButton">Update</button>
+                            <button className="userUpdateButton" type='submit'>Update</button>
                         </div>
                     </form>
                 </div>
