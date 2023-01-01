@@ -1,46 +1,78 @@
-import React from 'react'
+import { useState } from 'react'
+import { BsInstagram,BsFacebook,BsLinkedin,BsTwitter } from 'react-icons/bs'
+import { BiCopyright } from 'react-icons/bi'
 
-import { GiPostOffice } from 'react-icons/gi'
-import logo from '../../assets/logos/stan.png'
-import mobile from '../../assets/logos/mobile.png'
-import email from '../../assets/logos/email.png'
 import './Contact.scss'
+import { useSubscription } from '../../Hooks/useApiRequest'
+import { TypingText } from '../../components'
 
 const Contact = () => {
+    const { Subscribe,success,successMessageDisplay } = useSubscription()
+    const [formData,setFormData] = useState({email:""})
+    const [subscriber,setSubscriber] = useState(null)
+
+    async function handleSubmit(e){
+        e.preventDefault()
+        const subscriber = await Subscribe(formData)
+        setSubscriber(subscriber?.data.email)
+        setFormData({email:""})
+    }
+
     return ( 
         <footer className='contact' id='contact'>
-            <div className='contact__header'>
-                    <img src={logo} alt="logo" className='contact__logo'/>
-                    <p className='contact__header-text contact-text-small'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eaque saepe cum! Ut quia corporis, ipsa optio aperiam quo laudantium doloribus sint, expedita earum error exercitationem velit qui ipsum minus?</p>
-            </div>
-
-            <div className='contact__links'>
-                <div className='heading'>
-                    <p>Contact</p>
-                </div>
-                <div className='rest'>
-                    <div className='footer-card'>
-                        <img src={email} alt='email'/>
-                        <a href='mailto:chukky@gmail.com' className='link p-text'>nzegwustanley@gmail.com</a>
-                    </div>
-                    <div className='footer-card'>           
-                        <img src={mobile} alt='mobile'/>
-                        <a href='tel: +234 (702) 600-3700' className='link p-text'>+234 (702) 637-3728</a>
+            <div className='main-wrapper'>
+                <div className="contact_handle wrapper">
+                    <div className="logo">
+                        <h3 className='caption'>LOGO</h3>
+                        <p className='astract-col'>Find your best smart real estate</p>
+                        <div className="icons">
+                            <BsFacebook />
+                            <BsInstagram />
+                            <BsLinkedin />
+                            <BsTwitter />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className='subscribe'>
-                <div className='heading'>
-                    <p>Subscribe to our news letter</p>
+                <div className="contact_about wrapper">
+                    <h3 className='caption'>About</h3>
+                    <p className='quick-links astract-col'>Contact</p>
+                    <p className='quick-links astract-col'>Team</p>
+                    <p className='quick-links astract-col'>Career</p>
+                    <p className='quick-links astract-col'>Blogs</p>
                 </div>
-                <div className='rest'>
-                    <p>We send weekly property updates,offers and lots more. Subscribe to get direct update in your mail.</p>
-                    <form action="" className='form'>
-                        <input type="text" placeholder='Email Address'/>
-                        <button>enter</button>
+                <div className="contact_help wrapper">
+                    <h3 className='caption'>Help & Support</h3>
+                    <p className='quick-links astract-col'>Review</p>
+                    <p className='quick-links astract-col'>Contact us</p>
+                    <p className='quick-links astract-col'>Book</p>
+                </div>
+                <div className="contact_newsletter wrapper">
+                    <h3 className='caption'>Subscribe to our Newsletter</h3>
+                    <form onSubmit={handleSubmit}>
+                        <input type="email"
+                            placeholder='Enter your Email Address'
+                            onChange={(e) => setFormData({[e.target.name]:e.target.value})}
+                            value={formData.email}
+                            name='email'
+                        />
+                        <button>Subscribe</button>
+                        {
+                            success 
+                            &&
+                            successMessageDisplay
+                            &&
+                            <TypingText 
+                                text={`${subscriber} subscribed succesfully`}
+                                intervalDuration={30}
+                                className='success'
+                            /> 
+                        }
                     </form>
                 </div>
+            </div>
+            <div className='copyright'>
+                <p className='astract-col'>Copyright <BiCopyright /> Realtor 2022-2023</p>
             </div>
         </footer>
      );

@@ -6,8 +6,10 @@ import { MdPublish } from 'react-icons/md'
 //INTERNAL IMPORTS
 import './Property.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext'
+import { useUpdateProperty } from '../../../Hooks/useApiRequest'
 
 const Property = () => {
+  const { UpdateProperty } = useUpdateProperty()
   const { id } = useParams()
   const { properties } = usePropertyContext()
   const [ property ] = properties.data.filter((property) => property._id === id)
@@ -26,7 +28,7 @@ const Property = () => {
             }
         })
     }
-
+    const form = {...formData, isFeatured:radio === "True"? true : false}
     //for image preview
     const [images, setImages] = useState([...property.img]);
     console.log(images)
@@ -40,6 +42,11 @@ const Property = () => {
       setImages(selectedFIles);
     }
 
+    async function handleSubmit(e) {
+      e.preventDefault()
+      await UpdateProperty(id,form)
+    }
+
     return ( 
         <div className="property">
             <div className="propertyTitleContainer">
@@ -50,7 +57,7 @@ const Property = () => {
             </div>
 
             <div className='propertyEditContainer'>
-                <form className="form form-holder">
+                <form className="form form-holder" onSubmit={handleSubmit}>
                     <div className="propertyEditLeft">
                         <div className="fl-holder">
                           <div className="label">

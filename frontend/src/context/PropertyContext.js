@@ -13,6 +13,19 @@ const PropertyReducer = (state,action) => {
             return {
                 properties: {...state.properties,data:[...state.properties.data,action.payload.data]} 
             }
+        case 'UPDATE_PROPERTY':
+            return { 
+                properties: {
+                    ...state.properties,
+                    data: state.properties.data.map((property) => (
+                        property._id === action.payload.data._id 
+                        ?
+                        action.payload.data
+                        : 
+                        property
+                    ))
+                }
+             }
         case 'DELETE_PROPERTY':
             return { properties: {...state.properties,data:state.properties.data.filter((u) => u._id !== action.payload.data._id)} }
         default:

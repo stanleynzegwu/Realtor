@@ -58,7 +58,7 @@ const User = () => {
                 </div>
                 <div className="userUpdate">
                     <span className="userUpdateTitle">Edit</span>
-                    <form action="" className="userUpdateForm" onSubmit={handleSubmit}>
+                    <form className="userUpdateForm" onSubmit={handleSubmit}>
                         <div className="userUpdateLeft">
 
                             <div className="userUpdateItem">

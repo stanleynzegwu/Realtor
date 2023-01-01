@@ -5,16 +5,19 @@ import App from './App'
 import {AuthContextProvider} from './context/AuthContext'
 import {PropertyContextProvider} from './context/PropertyContext'
 import {UserContextProvider} from './context/UserContext'
+import {SubscriptionContextProvider} from './context/SubscriptionContext'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
-    <UserContextProvider>
-    <AuthContextProvider>
     <PropertyContextProvider>
+    <AuthContextProvider>
+    <SubscriptionContextProvider>
+    <UserContextProvider>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </PropertyContextProvider>
-    </AuthContextProvider>
     </UserContextProvider>
+    </SubscriptionContextProvider>
+    </AuthContextProvider>
+    </PropertyContextProvider>
 )

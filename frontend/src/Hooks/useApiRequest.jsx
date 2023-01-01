@@ -7,6 +7,7 @@ import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 import { useUserContext } from './useUserContext'
 import { usePropertyContext } from './usePropertyContext'
+import { useSubscriptionContext } from './useSubscriptionContext'
 
 //USER SIGNUP
 export const useSignup = () => {
@@ -206,6 +207,55 @@ export const useDeleteProperty = () => {
     return { DeleteAProperty }
         
 }
+
+//UPDATE PROPERTY
+export const useUpdateProperty = () => {
+    const { dispatch } = usePropertyContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const UpdateProperty = async (id,property) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const updatedProperty = await userRequest.put(`/property/${id}`,property)
+            dispatch({type:'UPDATE_PROPERTY', payload: updatedProperty})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { UpdateProperty }
+        
+}
+
+//SUBSCRIBE TO NEWSLETTER
+export const useSubscription = () => {
+    const { dispatch } = useSubscriptionContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+
+    const Subscribe = async (form) => {
+        try{
+            setError(null)
+            const subscriber = await publicRequest.post('/subscribe',form)
+            setSuccess(true)
+            setSuccessMessageDisplay(true)
+            setTimeout(() => setSuccessMessageDisplay(false),6000)
+            return subscriber
+        }catch(err){
+            setError(err.response.data)
+            console.log(err)
+        }
+    }
+    return { Subscribe,success,successMessageDisplay,error}
+        
+}
+
 //GET ALL USERS
 // export const useGetAllUsers = () => {
 //     const { dispatch } = useUserContext()
@@ -230,4 +280,6 @@ export const useDeleteProperty = () => {
 //     }
 //     return {GetAllUsers}
 // }
+
+
 

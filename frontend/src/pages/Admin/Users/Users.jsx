@@ -2,24 +2,32 @@ import { DataGrid } from '@mui/x-data-grid';
 import { MdDeleteOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import './Users.scss'
-import {userRows} from '../../../dummyData'
-import { useState } from 'react'
-//import { userRequest } from '../../../RequestMethods';
+import { useState,useEffect } from 'react'
+import { userRequest } from '../../../RequestMethods';
 import { useUserContext } from '../../../Hooks/useUserContext';
 import { useDeleteUser } from '../../../Hooks/useApiRequest';
+import { Loader } from '../../../components';
 
 const Users = () => {
-    const { users } = useUserContext()
-    const { DeleteAUser } =useDeleteUser()
-    const allUsers = users.data
+    const [error,setError] = useState(null)
+    const { users, dispatch } = useUserContext()
+    const { DeleteAUser } = useDeleteUser()
+    const allUsers = users?.data
 
-    console.log(allUsers)
-    
-   // const [data,setData] = useState(userRows)
-    // function handleDelete(id){
-    //     let filtered = data.filter(user => user.id !== id)
-    //     setData(filtered)
-    // }
+    //FETCH ALL USERS
+    useEffect(() => {
+        const GetAllUsers = async () => {
+            try{
+                const users = await userRequest.get("/users")
+                console.log(users)
+                dispatch({type:'SET_USERS', payload: users})
+            }catch(err){
+                setError(err.response.data)
+            }
+
+        }
+        GetAllUsers()
+    },[dispatch])
 
     const columns = [
         { field: '_id', headerName: 'ID', width: 250 },
@@ -56,6 +64,8 @@ const Users = () => {
       ];
 
     return ( 
+        users
+        ?
         <div className="users">
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
@@ -69,6 +79,8 @@ const Users = () => {
               />
             </div>
         </div>
+        :
+        <Loader className='loading'/>
      );
 }
  

@@ -1,7 +1,12 @@
 import { About,Blog,Contact,Featured,Header,Latest,Testimonial } from '../Container'
-import { Navbar } from '../components';
+import { Navbar,Loader } from '../components';
+import { usePropertyContext } from '../Hooks/usePropertyContext';
 const Home = () => {
-    return ( 
+    const { properties } = usePropertyContext()
+    
+    return (
+        properties
+        ?
         <div>
             <Navbar />
             <Header />
@@ -12,6 +17,8 @@ const Home = () => {
             <Testimonial />
             <Contact />
         </div>
+        :
+        <Loader className='loader'/>
      );
 }
  

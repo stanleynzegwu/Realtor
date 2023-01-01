@@ -1,8 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import { Topbar, Sidebar } from '../../../components'
+import { Topbar, Sidebar, Loader } from '../../../components'
 import { HomePage, NewProperty, NewUser, Property, PropertyList, User, Users } from '../../Admin'
 import './DashboardHome.scss'
-//"proxy": "http://localhost:5000",
 
 const DashboardHome = () => {
     return ( 
