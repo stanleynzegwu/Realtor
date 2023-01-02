@@ -7,9 +7,10 @@ import { useCreateUser } from '../../../Hooks/useApiRequest'
 import { TypingText } from '../../../components'
 
 const NewUser = () => {
-    const { CreateUser, isLoading, error, success , successMessageDisplay } = useCreateUser()
+    const { CreateUser, isLoading,error,success,successMessageDisplay,setIsLoading,
+    setError,errorMessageDisplay,setErrorMessageDisplay} = useCreateUser()
     const [radio,setRadio] = useState('False')
-    const [formData,setFormData] = useState({username:"",email: "",})
+    const [formData,setFormData] = useState({username:"",email: "",password:""})
     const [preview, setPreview] = useState()
     const [file,setFile] = useState()
     const form = {...formData,isAdmin:radio === 'False' ? false : true}
@@ -30,12 +31,25 @@ const NewUser = () => {
     }
 
     async function handleSubmit(e) {
+        const {username,email,password} = form
         e.preventDefault()
+        setError(null)
+        setIsLoading(true)
+
+        // Check that all form fields are filled out
+        if (!username || !email || !password) {
+          setIsLoading(false)
+          setError('Please fill out all form fields');
+          setErrorMessageDisplay(true)
+          setTimeout(() => setErrorMessageDisplay(false),6000)
+          return;
+        }
         //if there is an img file,call the upload img func to upload to firebase , then the ref stored in db
         if(file){
           uploadImg(file,CreateUser,form)
         //else when there is no image file, create a user, no img to upload to firebase
         }else{
+            console.log(form)
           await CreateUser(form)
         }
     }
@@ -95,14 +109,13 @@ const NewUser = () => {
                     </div>
 
                     <button disabled={isLoading} className="newUserButton">Create</button>
-                    {error && 
-                    (<div className='error'>
-                        <p>{error}</p>
-                    </div>)}
-                    {/* {success && 
-                    (<div className='success' style={{"display": successMessageDisplay ? "block" : "none"}}>
-                        <p>User Created Successfully</p>
-                    </div>)} */}
+                    {
+                        error
+                        &&
+                        errorMessageDisplay
+                        &&
+                        <TypingText text={error} intervalDuration={50} className='error'/> 
+                    }
                     {
                         success
                         &&

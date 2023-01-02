@@ -2,18 +2,27 @@ import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
 import './NewProperty.scss'
 
-//import { app } from '../../../firebase';
 import { useCreateProperty } from '../../../Hooks/useApiRequest';
 import { uploadFiles } from '../../../firebase';
-//import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { TypingText } from '../../../components';
 
 const NewProperty = () => {
-    const { CreateProperty, isLoading, error, success, successMessageDisplay } = useCreateProperty()
+    const { CreateProperty,isLoading,setIsLoading,
+          error,success,setError,successMessageDisplay,
+          errorMessageDisplay,seterrorMessageDisplay
+          } = useCreateProperty()
+
     const [radio,setRadio] = useState('False')
+    const [imagesFile,setImagesFile] = useState([])
+    //for image preview
+    const [imagesPreview, setImagesPreview] = useState([]);
     const [formData,setFormData] = useState({
         category:"",propertyType: "",location: "",
         state:"",desc:"",price:0,consultancyFee:0
     })
+
+    const form = {...formData,isFeatured:radio === 'False' ? false : true}
+
     function handleChange(e){
         let {name,value} = e.target
         setFormData(data => {
@@ -23,10 +32,9 @@ const NewProperty = () => {
             }
         })
     }
-    const form = {...formData,isFeatured:radio === 'False' ? false : true}
-    //for image preview
-    const [imagesPreview, setImagesPreview] = useState(["https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg","https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"]);
-    const [imagesFile,setImagesFile] = useState([])
+    
+    
+    
 
     const handleMultipleImages =(e)=>{
       const selectedFIles =[];
@@ -41,43 +49,22 @@ const NewProperty = () => {
       setImagesPreview(selectedFIles);
     }
 
-  ///////////////////////////////////////uploadFiles(files)
-//   const uploadFiles = (files) => {
-//     let img = []
-//     const promises = []
-//     files.map((file) => {
-//         console.log('loop');
-//         const storage = getStorage(app)
-//         const storageRef = ref(storage, new Date().getTime() + file.name);
 
-//         const uploadTask = uploadBytesResumable(storageRef, file);
-//         promises.push(uploadTask)
-//         uploadTask.on(
-//             "state_changed",
-//             (snapshot) => {
-//                 const prog = Math.round(
-//                     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-//                 );
-//             },
-//             (error) => console.log(error),
-//             async () => {
-//                 await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
-//                     img.push(downloadURLs)
-//                 });
-//                 (imagesPreview.length === img.length) && CreateProperty({...form,img})
-//             }
-//         );
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      const {category,propertyType,consultancyFee,price,location,state,desc} = form
+      setError(null)
+      // Check that all form fields are filled out
+      if (!category || !propertyType || !consultancyFee || !price || !location || !state || !desc || imagesPreview.length === 0) {
+        setError('Please fill out all form fields');
+        seterrorMessageDisplay(true)
+        setTimeout(() => seterrorMessageDisplay(false),6000)
+        return;
+      }
+      setIsLoading(true)
+      uploadFiles(imagesFile,imagesPreview,CreateProperty,form)
+     }
 
-//     })
-//     Promise.all(promises)
-//         //.then(() => CreateProperty({...form,img}))
-//         .catch(err => console.log(err))
-// };
-
-const handleSubmit = async (e) => {
-  e.preventDefault()
-  uploadFiles(imagesFile,imagesPreview,CreateProperty,form)
- }
     return ( 
         <div className="newProperty">
             <div className="propertyTitleContainer">
@@ -247,14 +234,19 @@ const handleSubmit = async (e) => {
                             <input type="file" id='file' style={{ display:"none"}} multiple onChange={handleMultipleImages}/>
                         </div>
                         <button disabled={isLoading} type="submit" className="propertyCreateButton">Create</button>
-                        {error && 
-                          (<div className='error'>
-                              <p>{error}</p>
-                          </div>)}
-                        {success && 
-                          (<div className='success' style={{"display": successMessageDisplay ? "block" : "none"}}>
-                              <p>Property Created Successfully</p>
-                          </div>)}
+                        {error
+                          &&
+                          errorMessageDisplay
+                          &&
+                          <TypingText text={error} intervalDuration={50} className='error'/>
+                        }
+                        {success
+                          &&
+                          successMessageDisplay
+                          && 
+                          <TypingText text='Property Created Successfully' intervalDuration={50} className='success'/>
+                        }
+
                     </div>
                 </form>
 

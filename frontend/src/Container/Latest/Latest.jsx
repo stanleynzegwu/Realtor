@@ -10,13 +10,6 @@ import Card from '../../components/Cards/Card/Card'
 import { usePropertyContext } from '../../Hooks/usePropertyContext'
 import { formatPrice } from '../../utilityFunctions'
 
-// let arr = [{img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-// property:'Duplex apartment',location:'Mirpa City, Dhaka',price:'$140,000'},
-// {img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-// property:'Duplex apartment',location:'Mirpa City, Dhaka',price:'$140,000'},
-// {img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-// property:'Duplex apartment',location:'Mirpa City, Dhaka',price:'$140,000'}
-// ]
 
 const Latest = () => {
     const {properties} = usePropertyContext()

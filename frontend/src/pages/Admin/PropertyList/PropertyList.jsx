@@ -1,16 +1,16 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { MdDeleteOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import {propertyRows} from '../../../dummyData'
 import { useState } from 'react'
 import './PropertyList.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext';
 import { useDeleteProperty } from '../../../Hooks/useApiRequest';
+import { Loader } from '../../../components';
 
 const PropertyList = () => {
     const { DeleteAProperty } = useDeleteProperty()
     const { properties } = usePropertyContext()
-    const allProperties = properties.data
+    const allProperties = properties?.data
     //const [data,setData] = useState(propertyRows)
     // function handleDelete(id){
     //     let filtered = data.filter(property => property.id !== id)
@@ -57,6 +57,8 @@ const PropertyList = () => {
       ];
 
     return ( 
+        properties
+        ?
         <div className="propertyList">
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
@@ -70,6 +72,8 @@ const PropertyList = () => {
               />
             </div>
         </div>
+        :
+        <Loader className='loading'/>
      );
 }
  

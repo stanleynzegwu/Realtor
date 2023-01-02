@@ -85,26 +85,29 @@ export const useCreateUser = () => {
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const [errorMessageDisplay,setErrorMessageDisplay] = useState(false)
     const { dispatch } = useUserContext()
 
     const CreateUser = async (user) => {
         try{
-            setIsLoading(true)
             setError(null)
 
             const res = await userRequest.post("/users",user)
+            console.log(res)
             dispatch({type:'CREATE_USER', payload: res})
             setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
-            setTimeout(() => setSuccessMessageDisplay(false),7000)
+            setTimeout(() => setSuccessMessageDisplay(false),6000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
+            setErrorMessageDisplay(true)
+            setTimeout(() => setErrorMessageDisplay(false),6000)
         }
 
     }
-    return {CreateUser, isLoading, error, success, successMessageDisplay,}
+    return {CreateUser, isLoading,setIsLoading, error, success,setError,setErrorMessageDisplay, successMessageDisplay,errorMessageDisplay}
 }
 
 //UPDATE A USER
@@ -161,27 +164,27 @@ export const useCreateProperty = () => {
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
     const { dispatch } = usePropertyContext()
 
     const CreateProperty = async (property) => {
         try{
-            setIsLoading(true)
-            setError(null)
-
             const res = await userRequest.post("/property",property)
             dispatch({type:'CREATE_PROPERTY', payload: res})
             setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
-            setTimeout(() => setSuccessMessageDisplay(false),10000)
+            setTimeout(() => setSuccessMessageDisplay(false),6000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
-            setTimeout(() => setError(false),10000)
         }
 
     }
-    return {CreateProperty, isLoading, error, success, successMessageDisplay,}
+    return {CreateProperty, isLoading,setIsLoading,
+         error, setError, success, successMessageDisplay,
+         errorMessageDisplay,seterrorMessageDisplay
+    }
 }
 
 //DELETE PROPERTY
