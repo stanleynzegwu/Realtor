@@ -1,18 +1,40 @@
 import { useState } from 'react'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
+
 import './UserReview.scss'
+import illustration from '../../assets/logos/reviewIllustration.svg'
+import { useAuthContext } from '../../Hooks/useAuthContext'
+import { useUserReview } from '../../Hooks/useApiRequest' 
 
 const UserReview = () => {
+    const { user } = useAuthContext()
+    const userId = user?.data._id
+    const { CreateReview, error, setError, success } = useUserReview()
     const [hoverIndex,setHoverIndex] = useState(0)
-    const [reviewIndex,setReviewIndex] = useState(0)
+    const [reviewStarIndex,setReviewStarIndex] = useState(0)
+    const [review,setReview] = useState("")
 
     const shouldStarBeFilled = (val) => {
-        return (hoverIndex >= val) || (reviewIndex >= val)
+        return (hoverIndex >= val) || (reviewStarIndex >= val)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setError(null)
+        if( (reviewStarIndex === 0) || (!review) ){
+            console.log('both star rating & text area should be filled')
+            setError("Both star rating & textarea should be filled")
+            return
+        }
+        const form = {star:reviewStarIndex,review}
+        await CreateReview(userId,form)
     }
 
     return ( 
         <div className="userReview">
-            <div className="reviewLeft"></div>
+            <div className="reviewLeft">
+                <img src={illustration} alt="review-illustarion" className='review_img'/>
+            </div>
             <div className="reviewRight">
                 <h1>Your review makes us serve you better</h1>
                 <div className='starMainContainer'>
@@ -22,7 +44,7 @@ const UserReview = () => {
                             <li 
                                 onMouseEnter={() => setHoverIndex(val)}
                                 onMouseLeave={() => setHoverIndex(0)}
-                                onClick={() => setReviewIndex(val)}
+                                onClick={() => setReviewStarIndex(val)}
                                 key={index}
                             >
                                 {shouldStarBeFilled(val) ? <AiFillStar /> : <AiOutlineStar />}
@@ -31,11 +53,19 @@ const UserReview = () => {
                     </ul>
                 </div>
                         
-                <form className='review-form'>
+                <form className='review-form' onSubmit={handleSubmit}>
                     <div className="reviewInput">
-                        <textarea name="review" id="" cols="20" rows="6" placeholder='Write your review'/>
+                        <textarea
+                            name="review"
+                            value={review}
+                            id=""
+                            cols="20"
+                            rows="6"
+                            placeholder='Write your review'
+                            onChange={(e) => setReview(e.target.value)}
+                        />
                     </div>
-                    <button type='submit'>submit</button>
+                    <button type='submit'>SUBMIT</button>
                 </form>
             </div>
         </div>

@@ -259,6 +259,30 @@ export const useSubscription = () => {
         
 }
 
+//USER REVIEW
+export const useUserReview = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    const CreateReview = async (id,review) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            const res = await userRequest.post(`/review/${id}`,review)
+            console.log(res)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { CreateReview, isLoading,success,error,setError}
+}
 //GET ALL USERS
 // export const useGetAllUsers = () => {
 //     const { dispatch } = useUserContext()

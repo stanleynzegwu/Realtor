@@ -7,19 +7,50 @@
 
     .reviewLeft{
         width: 45%;
-        background: rgb(97, 97, 209);
-        border-bottom-right-radius: 70%;
+        background: #d2caa2;
+        border-bottom-right-radius: 60%;
+        display: flex;
+        justify-content: center;
+
+        .review_img {
+            width: 75%;
+            height: 100%;
+
+            @media screen and (max-width:1000px) {
+                width: 80%;
+                height: 100%;
+            }
+        }
+
+        @media  screen and (max-width:722px) {
+            display: none;
+        }
     }
     .reviewRight{
         padding: 50px 0;
-        width: 55%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-
+        gap: 10px;
         h1 {
             color: rgb(101, 96, 96);
+
+            @media  screen and (max-width:1040px) {
+                font-size: 1.5rem;
+            }
+
+            @media  screen and (max-width:877px) {
+                font-size: 1.3rem;
+            }
+            @media  screen and (max-width:772px) {
+                font-size: 1.2rem;
+            }
+            @media  screen and (max-width:1040px) {
+                font-size: 1.1rem;
+            }
+            
         }
         .starMainContainer{
             padding: 10px;
@@ -33,6 +64,8 @@
             p {
                 color: rgb(173, 172, 172);
                 margin-bottom: 20px;
+                font-size: 1.1rem;
+                
             }
             .starContainer{
                 width: 100%;
@@ -48,10 +81,22 @@
                     font-size: 1.6rem;
                 }
             }
+
+            @media screen and (max-width:1030px) {
+                width: 80%;
+            }
+            @media  screen and (max-width:530px) {
+                width: 100%;
+            }
+            
         }
 
         form {
             width: 70%;
+
+            @media screen and (max-width:1030px) {
+                width: 100%;
+            }
 
             .reviewInput{
                 width: 100%;
@@ -66,7 +111,7 @@
             button {
                 width: 100%;
                 margin-top: 20px;
-                padding: 7px 0;
+                padding: 9px 0;
                 font-size: 1.2rem;
                 border-radius: 10px;
                 border: none;
@@ -78,6 +123,14 @@
                 }
             }
         }
+
+        @media  screen and (max-width:530px) {
+            width: 90%;
+        }
         
     }
+    @media  screen and (max-width:722px) {
+        justify-content: center;
+    }
+    
 }
