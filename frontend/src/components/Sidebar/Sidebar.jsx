@@ -30,9 +30,11 @@ const Sidebar = () => {
                                 <FiUsers />Users
                             </li>
                         </Link>
-                        <li className='sidebarListItem'>
-                            <MdReviews />Reviews
-                        </li>
+                        <Link to='/adminDashboard/reviewList'>
+                            <li className='sidebarListItem'>
+                                <MdReviews />Reviews
+                            </li>
+                        </Link>
                         <Link to='/adminDashboard/properties'>
                             <li className='sidebarListItem'>
                                 <MdProductionQuantityLimits />Properties

@@ -1,0 +1,94 @@
+.reviewList {
+    width: 85%;
+    position: relative;
+
+    .reviewEdit {
+        margin: 0 auto;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        //background: transparent;
+        background: rgba(255, 255, 255 , 0.25);//0.25 opacity
+        backdrop-filter: blur(4px); //blurry
+        -webkit-backdrop-filter: blur(4px); //blurry
+
+        .reviewEdit__holder {
+            width: 50%;
+            height: 80%;
+            border-radius: 10px;
+            background: rgba(255, 255, 255 , 0.25);//0.25 opacity
+            backdrop-filter: blur(4px); //blurry
+            -webkit-backdrop-filter: blur(4px); //blurry
+            border: 1px solid rgb(229, 228, 228);
+            padding: 20px 30px;
+
+            .reviewEdit__topHolder{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+
+                p {
+                    font-weight: 700;
+                }
+                .close-icon {
+                    svg {
+                        color: black;
+                        cursor: pointer;
+                    }
+                    
+                }
+            }
+
+            .reviewEdit__starHolder {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+
+                span {
+                    svg {
+                        color: goldenrod;
+                    }
+                }
+            }
+
+            form {
+                width: 100%;
+
+                .reviewEdit__textarea {
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    textarea {
+                        width: 100%;
+                        padding: 20px;
+                        border-radius: 10px;
+                    }
+                }
+
+                .reviewUpdateItem {
+                    margin-bottom: 30px;
+                }
+
+                .reviewUpdateButton {
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: rgb(59, 59, 195);
+                    color: #ffff;
+                    padding: 10px 10px;
+                    font-weight: 600;
+                }
+            }
+            @media screen and (max-width:1000px) {
+                width: 70%;
+            }
+            
+        }
+    }
+}

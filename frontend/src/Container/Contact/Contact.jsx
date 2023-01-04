@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { Link }  from 'react-router-dom'
 import { BsInstagram,BsFacebook,BsLinkedin,BsTwitter } from 'react-icons/bs'
 import { BiCopyright } from 'react-icons/bi'
+import { MdEmail } from 'react-icons/md'
 
 import './Contact.scss'
 import { useSubscription } from '../../Hooks/useApiRequest'
@@ -43,19 +45,24 @@ const Contact = () => {
                 </div>
                 <div className="contact_help wrapper">
                     <h3 className='caption'>Help & Support</h3>
-                    <p className='quick-links astract-col'>Review</p>
+                    <Link to='/userReview'>
+                        <p className='quick-links astract-col'>Review</p>
+                    </Link>
                     <p className='quick-links astract-col'>Contact us</p>
                     <p className='quick-links astract-col'>Book</p>
                 </div>
                 <div className="contact_newsletter wrapper">
                     <h3 className='caption'>Subscribe to our Newsletter</h3>
                     <form onSubmit={handleSubmit}>
-                        <input type="email"
-                            placeholder='Enter your Email Address'
-                            onChange={(e) => setFormData({[e.target.name]:e.target.value})}
-                            value={formData.email}
-                            name='email'
-                        />
+                        <div className='emailInputHolder'>
+                            <span><MdEmail /></span>
+                            <input type="email"
+                                placeholder='Enter your Email Address'
+                                onChange={(e) => setFormData({[e.target.name]:e.target.value})}
+                                value={formData.email}
+                                name='email'
+                            />
+                        </div>
                         <button>Subscribe</button>
                         {
                             success 

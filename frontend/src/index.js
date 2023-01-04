@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import {AuthContextProvider} from './context/AuthContext'
 import {PropertyContextProvider} from './context/PropertyContext'
+import {ReviewContextProvider} from './context/ReviewContext'
 import {UserContextProvider} from './context/UserContext'
 import {SubscriptionContextProvider} from './context/SubscriptionContext'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
@@ -11,6 +12,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(
     <PropertyContextProvider>
     <AuthContextProvider>
+    <ReviewContextProvider>
     <SubscriptionContextProvider>
     <UserContextProvider>
         <BrowserRouter>
@@ -18,6 +20,7 @@ root.render(
         </BrowserRouter>
     </UserContextProvider>
     </SubscriptionContextProvider>
+    </ReviewContextProvider>
     </AuthContextProvider>
     </PropertyContextProvider>
 )

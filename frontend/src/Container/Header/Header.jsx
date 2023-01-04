@@ -93,7 +93,7 @@ console.log(form)
                             <Link to={
                                 `/selectedProperty/${form.location}/${form.category}`}
                             >
-                                <button>Search</button>
+                                <button type='button'>Search</button>
                             </Link>
                         </div>
                     </form>

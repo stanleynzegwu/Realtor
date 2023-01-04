@@ -134,3 +134,18 @@
     }
     
 }
+.reviewSuccess {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .reviewSuccess__emojiHolder {
+        width: 100%;
+
+        .thumbs-up {
+            font-size: 5rem;
+        }
+    }
+}

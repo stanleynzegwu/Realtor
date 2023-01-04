@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
 
 import './UserReview.scss'
@@ -17,7 +18,7 @@ const UserReview = () => {
     const shouldStarBeFilled = (val) => {
         return (hoverIndex >= val) || (reviewStarIndex >= val)
     }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError(null)
@@ -30,7 +31,28 @@ const UserReview = () => {
         await CreateReview(userId,form)
     }
 
-    return ( 
+    return (
+        success
+        ?
+        <div className='reviewSuccess'>
+            <div className='reviewSuccess__emojiHolder'>
+                <span className="thumbs-up">
+                  👍
+                </span>
+            </div>
+            <div className='reviewSuccess__messageHolder'>
+                <h3>
+                    Thank You
+                </h3>
+                <p>
+                    Your Feedback was successfully submitted
+                </p>
+            </div>
+            <Link to='/'>
+                <span>Back to home</span>
+            </Link>
+        </div>
+        :
         <div className="userReview">
             <div className="reviewLeft">
                 <img src={illustration} alt="review-illustarion" className='review_img'/>

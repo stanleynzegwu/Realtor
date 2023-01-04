@@ -16,7 +16,7 @@ const App = () => {
                 <Route path="/adminDashboard/*" element={<DashboardHome />} />
                 <Route path="/selectedProperty/*" element={<SelectedProperty />} />
                 <Route path="/about/:id" element={<SingleAbout />} />
-                <Route path="/userReview" element={<UserReview />} />
+                <Route path="/userReview" element={!user ? <Navigate to='/login'/> :<UserReview />} />
                 <Route path="/viewProperty/:id" element={<ViewProperty />} />
             </Routes>
         </div>

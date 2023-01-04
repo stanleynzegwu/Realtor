@@ -34,7 +34,15 @@ const Users = () => {
         { field: 'username', headerName: 'User', width: 150 ,renderCell: (params) => {
             return (
                 <div className='userListUser'>
-                    <img className='userListImg' src={params.row.img} alt='avatar'/>
+                    <img className='userListImg' 
+                        src={params.row.img 
+                        ? 
+                        params.row.img 
+                        : 
+                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+                        } 
+                        alt='avatar'
+                    />
                     {params.row.username}
                 </div>
             )

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Topbar, Sidebar, Loader } from '../../../components'
-import { HomePage, NewProperty, NewUser, Property, PropertyList, User, Users } from '../../Admin'
+import { HomePage, NewProperty, NewUser, Property, PropertyList, ReviewList, User, Users } from '../../Admin'
 import './DashboardHome.scss'
 
 const DashboardHome = () => {
@@ -16,6 +16,7 @@ const DashboardHome = () => {
                   <Route path='newUser' element={<NewUser/>}/>
                   <Route path='property/:id' element={<Property/>}/>
                   <Route path='properties' element={<PropertyList/>}/>
+                  <Route path='reviewList' element={<ReviewList/>}/>
                   <Route path='user/:id' element={<User/>}/>
                   <Route path='users' element={<Users/>}/>
                 </Routes>

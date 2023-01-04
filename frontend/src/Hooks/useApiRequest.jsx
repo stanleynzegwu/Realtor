@@ -7,6 +7,7 @@ import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 import { useUserContext } from './useUserContext'
 import { usePropertyContext } from './usePropertyContext'
+import { useReviewContext } from './useReviewContext'
 import { useSubscriptionContext } from './useSubscriptionContext'
 
 //USER SIGNUP
@@ -283,30 +284,27 @@ export const useUserReview = () => {
 
     return { CreateReview, isLoading,success,error,setError}
 }
-//GET ALL USERS
-// export const useGetAllUsers = () => {
-//     const { dispatch } = useUserContext()
-//     const [error, setError] = useState(null)
-//     const [success, setSuccess] = useState(null)
-//     const [isLoading, setIsLoading] = useState(null)
 
-//     const GetAllUsers = async () => {
-//         try{
-//             setIsLoading(true)
-//             setError(null)
-//             const users = await userRequest.get("/users")
-//             dispatch({type:'SET_USERS', payload: users})
-//             setIsLoading(false)
-//             setSuccess(true)
-//             console.log(users)
-//         }catch(err){
-//             setIsLoading(false)
-//             setError(err.response.data)
-//         }
+//DELETE REVIEW
+export const useDeleteReview = () => {
+    const { dispatch } = useReviewContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
 
-//     }
-//     return {GetAllUsers}
-// }
-
-
-
+    const DeleteAReview = async (id) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const review = await userRequest.delete(`/review/${id}`)
+            dispatch({type:'DELETE_REVIEW', payload: review})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { DeleteAReview }
+        
+}
