@@ -1,5 +1,4 @@
 import { useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import { DataGrid } from '@mui/x-data-grid';
 import { MdDeleteOutline } from 'react-icons/md'
 import { AiOutlineClose,AiFillStar } from 'react-icons/ai'
@@ -7,11 +6,13 @@ import { AiOutlineClose,AiFillStar } from 'react-icons/ai'
 import './ReviewList.scss'
 import { useReviewContext } from '../../../Hooks/useReviewContext';
 import { useDeleteReview } from '../../../Hooks/useApiRequest';
+import { useUpdateReview } from '../../../Hooks/useApiRequest'
 import { Loader } from '../../../components';
 
 const ReviewList = () => {
-    const { DeleteAReview } = useDeleteReview()
     const { reviews } = useReviewContext()
+    const { DeleteAReview } = useDeleteReview()
+    const { UpdateReview } = useUpdateReview()
     const allReviews = reviews?.data
     const [toggle,setToggle] = useState(false)
     const [id,setId] = useState(null)
@@ -26,10 +27,15 @@ const ReviewList = () => {
     useEffect(() => {
         currentReview && setFormReview(currentReview?.review)
         currentReview && setRadio(currentReview?.isFavorite ? "True" : "False")
-    },[id])
+    },[id,currentReview])
     
     console.log(currentReview)
     console.log(currentReview?.review,formReview,radio)
+    async function handleUpdate(e) {
+        e.preventDefault()
+        const form = {review: formReview ,isFavorite: radio === 'False' ? false : true}
+        await UpdateReview(id,form)
+    }
 
 const columns = [
     { field: '_id', headerName: 'ID', width: 70 },
@@ -126,7 +132,7 @@ const columns = [
                                 </span>
                             </div>
                         </div>
-                        <button type='submit' className='reviewUpdateButton'>SUBMIT</button>
+                        <button type='submit' className='reviewUpdateButton' onClick={handleUpdate}>UPDATE</button>
                     </form>
                 </div>
             </div>

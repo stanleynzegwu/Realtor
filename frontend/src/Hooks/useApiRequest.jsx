@@ -285,6 +285,31 @@ export const useUserReview = () => {
     return { CreateReview, isLoading,success,error,setError}
 }
 
+////UPDATE REVIEW
+export const useUpdateReview = () => {
+    const { dispatch } = useReviewContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const UpdateReview = async (id,review) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const updatedReview = await userRequest.put(`/review/${id}`,review)
+            console.log(updatedReview)
+            dispatch({type:'UPDATE_REVIEW', payload: updatedReview})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { UpdateReview }
+        
+}
+
 //DELETE REVIEW
 export const useDeleteReview = () => {
     const { dispatch } = useReviewContext()
