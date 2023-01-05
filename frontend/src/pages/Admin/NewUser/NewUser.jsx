@@ -37,7 +37,7 @@ const NewUser = () => {
         setIsLoading(true)
 
         // Check that all form fields are filled out
-        if (!username || !email || !password) {
+        if(!username || !email || !password) {
           setIsLoading(false)
           setError('Please fill out all form fields');
           setErrorMessageDisplay(true)

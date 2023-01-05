@@ -296,17 +296,19 @@ export const useUpdateReview = () => {
         try{
             setIsLoading(true)
             setError(null)
+            setSuccess(false)
             const updatedReview = await userRequest.put(`/review/${id}`,review)
             console.log(updatedReview)
             dispatch({type:'UPDATE_REVIEW', payload: updatedReview})
             setIsLoading(false)
             setSuccess(true)
+            setTimeout(() => setSuccess(null),4000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
     }
-    return { UpdateReview }
+    return { UpdateReview,success, isLoading }
         
 }
 
@@ -331,5 +333,27 @@ export const useDeleteReview = () => {
         }
     }
     return { DeleteAReview }
+        
+}
+
+export const useReviewFunction = () => {
+    const { reviews } = useReviewContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const getReviewPercentage = (num) => {
+        const reviewLength = reviews?.data.length
+        const starNum = reviews?.data.filter((review) => review.star === num).length
+        return Math.round((starNum * 100)/reviewLength)
+    }
+
+    const starNum = (num) => {
+        return reviews && reviews?.data.filter((review) => review.star === num).length
+    }
+    const getPercentage = (num) => {
+        return reviews && getReviewPercentage(num)
+    }
+    return { starNum, reviews, getReviewPercentage, getPercentage }
         
 }

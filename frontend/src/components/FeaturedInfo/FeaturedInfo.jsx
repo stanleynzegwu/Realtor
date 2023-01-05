@@ -6,37 +6,11 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import './FeaturedInfo.scss'
+import HorizontalBar from '../HorizontalBar'
+import { useReviewFunction } from '../../Hooks/useApiRequest';
+
 const FeaturedInfo = () => {
-    // return ( 
-    //     <div className='featured'>
-    //         <div className="featuredItem">
-    //             <span className="featuredTitle">Revenue</span>
-    //             <div className="featuredMoneyContainer">
-    //                 <span className="featuredMoney">$2,415</span>
-    //                 <span className="featuredMoneyRate">-11.4 <BiDownArrowAlt className='faeturedIcon negative'/></span>
-    //             </div>
-    //             <span className='featuredSub'>Compared to last month</span>
-    //         </div>
-
-    //         <div className="featuredItem">
-    //             <span className="featuredTitle">Sales</span>
-    //             <div className="featuredMoneyContainer">
-    //                 <span className="featuredMoney">$4,415</span>
-    //                 <span className="featuredMoneyRate">-1.4 <BiDownArrowAlt className='faeturedIcon negative'/></span>
-    //             </div>
-    //             <span className='featuredSub'>Compared to last month</span>
-    //         </div>
-
-    //         <div className="featuredItem">
-    //             <span className="featuredTitle">Cost</span>
-    //             <div className="featuredMoneyContainer">
-    //                 <span className="featuredMoney">$2,225</span>
-    //                 <span className="featuredMoneyRate">+11.4 <BiUpArrowAlt className='faeturedIcon'/></span>
-    //             </div>
-    //             <span className='featuredSub'>Compared to last month</span>
-    //         </div>
-    //     </div>
-    //  );
+    const { starNum, getPercentage } = useReviewFunction()
 
     return (
         <div className='featured'>
@@ -59,12 +33,12 @@ const FeaturedInfo = () => {
                     slidesPerGroup: 2,
                   },
                   884: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 3,
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
                   },
                   1030: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 3,
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
                   },
                 }}
                 scrollbar={false}
@@ -75,6 +49,28 @@ const FeaturedInfo = () => {
                 modules={[Keyboard, Scrollbar, Navigation, Pagination]}
                 className="mySwiper"
             >
+              <SwiperSlide className="featuredItem">
+                 <div className='barAllHolder'>
+                    {
+                      [{star:5,bgColor:'#48E6B4',percentage:`${getPercentage(5)}%`,totalStarNo:starNum(5)},
+                        {star:4,bgColor:'#AED58A',percentage:`${getPercentage(4)}%`,totalStarNo:starNum(4)},
+                        {star:3,bgColor:'#D6D678',percentage:`${getPercentage(3)}%`,totalStarNo:starNum(3)},
+                        {star:2,bgColor:'#D6B878',percentage:`${getPercentage(2)}%`,totalStarNo:starNum(2)},
+                        {star:1,bgColor:'#D69178',percentage:`${getPercentage(1)}%`,totalStarNo:starNum(1)},
+                      ].map((val,index) => (
+                        <div className='barHolder' key={index}>
+                          <span className='starRating'>{val.star}</span>
+                          <HorizontalBar bgColor={val.bgColor} percentage={val.percentage} />
+                          <div className='barGroupLeft'>
+                            <span className='starPercentage'>{val.percentage}</span>
+                            <span className='starNo'>{val.totalStarNo}</span>
+                          </div>
+                        </div>
+                      ))
+                      
+                    }
+                 </div>
+              </SwiperSlide>
               <SwiperSlide className="featuredItem">
                  <span className="featuredTitle">Revenue</span>
                  <div className="featuredMoneyContainer">

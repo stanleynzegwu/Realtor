@@ -1,7 +1,12 @@
+.hideOverflow{
+    height: 100vh;
+    overflow: hidden;
+}
+
 .reviewList {
     width: 85%;
     position: relative;
-
+    
     .reviewEdit {
         margin: 0 auto;
         width: 100%;
@@ -12,10 +17,13 @@
         position: absolute;
         top: 0;
         left: 0;
-        //background: transparent;
         background: rgba(255, 255, 255 , 0.25);//0.25 opacity
         backdrop-filter: blur(4px); //blurry
         -webkit-backdrop-filter: blur(4px); //blurry
+
+        @media screen and (max-width:480px){
+            height: 90vh;
+        }
 
         .reviewEdit__holder {
             width: 50%;
@@ -50,8 +58,11 @@
                 margin-bottom: 10px;
 
                 span {
+                    display: flex;
+                    gap: 10px;
                     svg {
                         color: goldenrod;
+                        font-size: 1.5rem;
                     }
                 }
             }
@@ -72,6 +83,16 @@
 
                 .reviewUpdateItem {
                     margin-bottom: 30px;
+
+                    .radioHolder {
+
+                        span {
+                            label{
+                                color: gray;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
                 }
 
                 .reviewUpdateButton {
@@ -83,12 +104,36 @@
                     color: #ffff;
                     padding: 10px 10px;
                     font-weight: 600;
+                    margin-bottom: 10px;
+
+                    &:hover {
+                        background-color: rgb(75, 75, 198);
+                    }
+                }
+                button:disabled {
+                    opacity: 0.65;
+                    cursor: progress;
+                  }
+
+                .success {
+                    padding: 3px 10px;
+                    border-radius: 5px;
+                    border: 1px solid green;
+                    background: rgb(228, 240, 228);
+                    p {
+                        color: green;
+                        text-align: center;
+                        font-weight: 500;
+                    }
                 }
             }
             @media screen and (max-width:1000px) {
                 width: 70%;
             }
-            
+
+            @media screen and (max-width:768px){
+                width: 90%;
+            }
         }
     }
 }

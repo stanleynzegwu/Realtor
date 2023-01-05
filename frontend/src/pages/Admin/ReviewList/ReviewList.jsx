@@ -7,12 +7,13 @@ import './ReviewList.scss'
 import { useReviewContext } from '../../../Hooks/useReviewContext';
 import { useDeleteReview } from '../../../Hooks/useApiRequest';
 import { useUpdateReview } from '../../../Hooks/useApiRequest'
+import { TypingText } from '../../../components';
 import { Loader } from '../../../components';
 
 const ReviewList = () => {
     const { reviews } = useReviewContext()
     const { DeleteAReview } = useDeleteReview()
-    const { UpdateReview } = useUpdateReview()
+    const { UpdateReview, success , isLoading } = useUpdateReview()
     const allReviews = reviews?.data
     const [toggle,setToggle] = useState(false)
     const [id,setId] = useState(null)
@@ -29,8 +30,6 @@ const ReviewList = () => {
         currentReview && setRadio(currentReview?.isFavorite ? "True" : "False")
     },[id,currentReview])
     
-    console.log(currentReview)
-    console.log(currentReview?.review,formReview,radio)
     async function handleUpdate(e) {
         e.preventDefault()
         const form = {review: formReview ,isFavorite: radio === 'False' ? false : true}
@@ -51,6 +50,7 @@ const columns = [
         )
     }},
     { field: 'useremail', headerName: 'Email', width: 200 },
+    { field: 'star', headerName: 'Star', width: 50 },
     {field: 'review',headerName: 'Review',type: 'string',width: 350,},
     {field: 'isFavorite',headerName: 'isFavorite',type: 'boolean',width: 90,},
     {
@@ -71,7 +71,7 @@ const columns = [
     return (
         allReviews
         ?
-        <div className="reviewList">
+        <div className={toggle ? `reviewList hideOverflow` : `reviewList`}>
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
                 rows={allReviews}
@@ -100,7 +100,7 @@ const columns = [
                             <textarea name="review"
                             id=""
                             cols="30"
-                            rows="10"
+                            rows="8"
                             value={formReview}
                             onChange={(e) => setFormReview(e.target.value)}
                             />
@@ -132,7 +132,8 @@ const columns = [
                                 </span>
                             </div>
                         </div>
-                        <button type='submit' className='reviewUpdateButton' onClick={handleUpdate}>UPDATE</button>
+                        <button disabled={isLoading} type='submit' className='reviewUpdateButton' onClick={handleUpdate}>UPDATE</button>
+                        {success && <TypingText text='Review Updated Successfully' intervalDuration={50} className='success'/>}
                     </form>
                 </div>
             </div>

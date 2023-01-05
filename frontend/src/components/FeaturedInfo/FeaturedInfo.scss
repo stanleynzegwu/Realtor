@@ -63,11 +63,44 @@
 .featuredItem {
     height: 100%;
     //margin: 0px 20px;
-    padding: 30px;
+    padding: 10px;
     border-radius: 10px;
     cursor:pointer;
     box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
 
+    .barAllHolder{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .barHolder {
+            display: flex;
+            width:100%;
+            gap: 7px;
+
+            span {
+                color: gray;
+            }
+            .starRating{
+                width: 4%;
+            }
+            .barGroupLeft {
+                width: 26%;
+                display: flex;
+                gap: 5px;
+
+                span {
+                    width: 50%;
+                }
+                .starPercentage {
+                    font-weight: 500;
+                    color: black;
+                }
+            }
+
+        }
+    }
     .featuredTitle {
         font-size: 20px;
     }
