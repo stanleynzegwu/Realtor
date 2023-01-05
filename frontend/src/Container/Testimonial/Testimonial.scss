@@ -17,7 +17,7 @@
         .testimonial-card{
             background: #ffff;
             border-radius: 15px;
-            padding: 3%;
+            padding: 15px;
             height: 45vh;
             display: flex;
             flex-direction: column;
@@ -32,6 +32,7 @@
                     width: 65px;
                     height: 65px;
                     border-radius: 50px;
+                    object-fit: cover;
                 }
             }
 

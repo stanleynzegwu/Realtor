@@ -10,7 +10,7 @@ import HorizontalBar from '../HorizontalBar'
 import { useReviewFunction } from '../../Hooks/useApiRequest';
 
 const FeaturedInfo = () => {
-    const { starNum, getPercentage } = useReviewFunction()
+    const { starNum, getPercentage, totalReviews } = useReviewFunction()
 
     return (
         <div className='featured'>
@@ -50,6 +50,9 @@ const FeaturedInfo = () => {
                 className="mySwiper"
             >
               <SwiperSlide className="featuredItem">
+                 <span className='reviewTextBold'>
+                    Customer reviews <span className='reviewTextLight'>{`(${totalReviews()} reviews)`}</span>
+                 </span>
                  <div className='barAllHolder'>
                     {
                       [{star:5,bgColor:'#48E6B4',percentage:`${getPercentage(5)}%`,totalStarNo:starNum(5)},
@@ -57,13 +60,13 @@ const FeaturedInfo = () => {
                         {star:3,bgColor:'#D6D678',percentage:`${getPercentage(3)}%`,totalStarNo:starNum(3)},
                         {star:2,bgColor:'#D6B878',percentage:`${getPercentage(2)}%`,totalStarNo:starNum(2)},
                         {star:1,bgColor:'#D69178',percentage:`${getPercentage(1)}%`,totalStarNo:starNum(1)},
-                      ].map((val,index) => (
+                      ].map((rating,index) => (
                         <div className='barHolder' key={index}>
-                          <span className='starRating'>{val.star}</span>
-                          <HorizontalBar bgColor={val.bgColor} percentage={val.percentage} />
+                          <span className='starRating'>{rating.star}</span>
+                          <HorizontalBar bgColor={rating.bgColor} percentage={rating.percentage} />
                           <div className='barGroupLeft'>
-                            <span className='starPercentage'>{val.percentage}</span>
-                            <span className='starNo'>{val.totalStarNo}</span>
+                            <span className='starPercentage'>{rating.percentage}</span>
+                            <span className='starNo'>{rating.totalStarNo}</span>
                           </div>
                         </div>
                       ))

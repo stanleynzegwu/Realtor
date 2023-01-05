@@ -354,6 +354,10 @@ export const useReviewFunction = () => {
     const getPercentage = (num) => {
         return reviews && getReviewPercentage(num)
     }
-    return { starNum, reviews, getReviewPercentage, getPercentage }
+
+    const totalReviews = () => {
+        return reviews && reviews?.data.length
+    }
+    return { starNum, reviews, getReviewPercentage, getPercentage, totalReviews }
         
 }

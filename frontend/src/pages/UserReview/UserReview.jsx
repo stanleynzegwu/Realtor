@@ -83,14 +83,14 @@ const UserReview = () => {
                             id=""
                             cols="20"
                             rows="6"
-                            maxLength={200}
+                            maxLength={250}
                             placeholder='Write your review'
                             onChange={(e) => setReview(e.target.value)}
                         />
                     </div>
                     <span
-                    className={review.length > 170 ? 'yellow' : ''}
-                    >{`${review.length}/200`}
+                    className={review.length > 230 ? 'yellow' : ''}
+                    >{`${review.length}/250`}
                     </span>
                     <button type='submit'>SUBMIT</button>
                 </form>
