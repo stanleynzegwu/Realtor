@@ -199,8 +199,8 @@ export const useDeleteProperty = () => {
         try{
             setIsLoading(true)
             setError(null)
-            const user = await userRequest.delete(`/property/${id}`)
-            dispatch({type:'DELETE_PROPERTY', payload: user})
+            const property = await userRequest.delete(`/property/${id}`)
+            dispatch({type:'DELETE_PROPERTY', payload: property})
             setIsLoading(false)
             setSuccess(true)
         }catch(err){

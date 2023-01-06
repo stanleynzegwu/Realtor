@@ -11,7 +11,6 @@ import { useReviewFunction } from '../../Hooks/useApiRequest';
 
 const FeaturedInfo = () => {
     const { starNum, getPercentage, totalReviews } = useReviewFunction()
-
     return (
         <div className='featured'>
             <Swiper

@@ -1,10 +1,17 @@
 import { MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
 import { MdProductionQuantityLimits, MdReviews } from 'react-icons/md'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Sidebar.scss'
 
 const Sidebar = () => {
+    const [active,setActive] = useState('home')
+
+    const handleClick = (e) => {
+        setActive(e.target.id)
+    }
+
     return ( 
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -12,11 +19,17 @@ const Sidebar = () => {
                     <h3 className='sidebarTitle'>Dashboard</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/home'>
-                            <li className='sidebarListItem active'>
+                            <li id='home'
+                                style={{backgroundColor:`${active === 'home' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick }
+                                className='sidebarListItem'>
                                 <MdLineStyle />Home
                             </li>
                         </Link>
-                        <li className='sidebarListItem'>
+                        <li id='analytics'
+                            style={{backgroundColor:`${active === 'analytics' ? 'rgb(210, 206, 206)' : ''}`}}
+                            onClick={ handleClick }
+                            className='sidebarListItem'>
                             <MdTimeline />Analytics
                         </li>
                     </ul>
@@ -26,17 +39,26 @@ const Sidebar = () => {
                     <h3 className='sidebarTitle'>Quick Menu</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/users'>
-                            <li className='sidebarListItem'>
+                            <li id='users'
+                                style={{backgroundColor:`${active === 'users' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick }
+                                className='sidebarListItem'>
                                 <FiUsers />Users
                             </li>
                         </Link>
                         <Link to='/adminDashboard/reviewList'>
-                            <li className='sidebarListItem'>
+                            <li id='reviews'
+                                style={{backgroundColor:`${active === 'reviews' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick }
+                                className='sidebarListItem'>
                                 <MdReviews />Reviews
                             </li>
                         </Link>
                         <Link to='/adminDashboard/properties'>
-                            <li className='sidebarListItem'>
+                            <li id='properties'
+                                style={{backgroundColor:`${active === 'properties' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick } 
+                                className='sidebarListItem'>
                                 <MdProductionQuantityLimits />Properties
                             </li>
                         </Link>
@@ -46,10 +68,16 @@ const Sidebar = () => {
                 <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Notifications</h3>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem'>
+                        <li id='mail'
+                            style={{backgroundColor:`${active === 'mail' ? 'rgb(210, 206, 206)' : ''}`}}
+                            onClick={ handleClick }
+                            className='sidebarListItem'>
                             <FiMail />Mail
                         </li>
-                        <li className='sidebarListItem'>
+                        <li id='messages'
+                            style={{backgroundColor:`${active === 'messages' ? 'rgb(210, 206, 206)' : ''}`}}
+                            onClick={ handleClick }
+                            className='sidebarListItem'>
                             <FiMessageSquare />Messages
                         </li>
                     </ul>
