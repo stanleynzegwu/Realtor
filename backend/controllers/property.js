@@ -5,10 +5,10 @@ const create = async (req,res) => {
 
     try{
         const savedProperty = await newProperty.save()
-        res.status(200).json(savedProperty)
+        return res.status(200).json(savedProperty)
 
     }catch(err){
-        res.status(500).json(err)
+        return res.status(500).json(err)
     }
 }
 
@@ -34,10 +34,10 @@ const updateProperty = async (req, res) => {
 
 const deleteProperty = async (req, res) => {
   try {
-    await Property.findByIdAndDelete(req.params.id);
-    res.status(200).json("Property has been deleted...");
+    const property = await Property.findByIdAndDelete(req.params.id);
+    return res.status(200).json(property);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -72,12 +72,12 @@ const getAllProperty = async (req, res) => {
         propertyCategory:qCategory, state: qState,
       });
     } else {
-      properties = await Property.find();
+      properties = await Property.find().sort({createdAt:-1});
     }
 
-    res.status(200).json(properties);
+    return res.status(200).json(properties);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 

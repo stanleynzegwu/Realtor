@@ -5,21 +5,21 @@ const User = require('../models/User')
 
 const create = async (req,res) => {
     const user = await User.findById(req.params.id)
-    const {star, review, img} = req.body
+    const {star, review} = req.body
     const newReview = new Review({
         userId: user._id,
         username: user.username,
         useremail: user.email,
         star: star,
-        img : img,
+        img : user.img,
         review: review
     })
     try{
         const savedReview = await newReview.save()
-        res.status(200).json(savedReview)
+        return res.status(200).json(savedReview)
 
     }catch(err){
-        res.status(500).json(err)
+        return res.status(500).json(err)
     }
 }
 
@@ -35,9 +35,9 @@ const updateReview = async (req, res) => {
       },
       { new: true }
     );
-    res.status(200).json(updatedReview);
+    return res.status(200).json(updatedReview);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -45,10 +45,10 @@ const updateReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
   try {
-    await Review.findByIdAndDelete(req.params.id);
-    res.status(200).json("Review has been deleted...");
+    const review = await Review.findByIdAndDelete(req.params.id);
+    return res.status(200).json(review);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -78,12 +78,12 @@ const getAllReviews = async (req, res) => {
          isFavorite:true,
         });
     }else {
-        reviews = await Review.find();
+        reviews = await Review.find().sort({createdAt:-1});
     }
 
-    res.status(200).json(reviews);
+    return res.status(200).json(reviews);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
