@@ -80,7 +80,6 @@ const User = require('../models/User')
 //     expiresIn: '30d',
 //   })
 // }
-
 //CREATE
 const create = async (req,res) => {
   const {username,email,img,password,isAdmin} = req.body
@@ -95,7 +94,7 @@ const create = async (req,res) => {
     ).toString(),
     isAdmin: isAdmin
   });
-
+  
   try {
     if(!username || !email || !password){
       return res.status(401).json("All Input Fields Must Be Filled")

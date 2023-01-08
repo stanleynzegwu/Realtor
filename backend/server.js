@@ -8,13 +8,13 @@ const blogRoutes = require("./routes/blog");
 const buildingRoutes = require("./routes/building");
 const consultancyRoutes = require("./routes/consultancy");
 const offerRoutes = require("./routes/offer");
+const openaiRoutes = require("./routes/openai");
 const propertyRoutes = require("./routes/property");
 const reviewRoutes = require("./routes/review");
 const subscribeRoutes = require("./routes/subscribe");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
-
 //Connect To Database
 connectDB();
 
@@ -28,6 +28,7 @@ app.use("/api/blog", blogRoutes);
 app.use("/api/building", buildingRoutes);
 app.use("/api/consultancy", consultancyRoutes);
 app.use("/api/offer", offerRoutes);
+app.use("/api/openai", openaiRoutes);
 app.use("/api/property", propertyRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/subscribe", subscribeRoutes);
