@@ -12,7 +12,7 @@ const NewUser = () => {
     const [radio,setRadio] = useState('False')
     const [formData,setFormData] = useState({username:"",email: "",password:""})
     const [preview, setPreview] = useState()
-    const [file,setFile] = useState()
+    const [file,setFile] = useState('')
     const form = {...formData,isAdmin:radio === 'False' ? false : true}
 
     function handleChange(e){

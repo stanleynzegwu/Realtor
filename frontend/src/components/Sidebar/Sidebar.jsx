@@ -1,5 +1,6 @@
 import { MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
+import { GrBlog } from 'react-icons/gr'
 import { MdProductionQuantityLimits, MdReviews } from 'react-icons/md'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -60,6 +61,14 @@ const Sidebar = () => {
                                 onClick={ handleClick } 
                                 className='sidebarListItem'>
                                 <MdProductionQuantityLimits />Properties
+                            </li>
+                        </Link>
+                        <Link to='/adminDashboard/blog'>
+                            <li id='blogs'
+                                style={{backgroundColor:`${active === 'blogs' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick } 
+                                className='sidebarListItem'>
+                                <GrBlog />Blog
                             </li>
                         </Link>
                     </ul>

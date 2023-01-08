@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Topbar, Sidebar, Loader } from '../../../components'
-import { HomePage, NewProperty, NewUser, Property, PropertyList, ReviewList, User, Users } from '../../Admin'
+import { Blog, HomePage, NewBlog, NewProperty, NewUser, Property, PropertyList, ReviewList, User, Users } from '../../Admin'
 import './DashboardHome.scss'
 
 const DashboardHome = () => {
@@ -11,7 +11,9 @@ const DashboardHome = () => {
                 <Sidebar />
 
                 <Routes>
+                  <Route path='blog' element={<Blog/>}/>
                   <Route path='home' element={<HomePage/>}/>
+                  <Route path='newBlog' element={<NewBlog/>}/>
                   <Route path='newProperty' element={<NewProperty/>}/>
                   <Route path='newUser' element={<NewUser/>}/>
                   <Route path='property/:id' element={<Property/>}/>

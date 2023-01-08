@@ -1,0 +1,24 @@
+.admin_blog {
+    width: 85%;
+
+    .admin_blogBtn {
+        margin: 20px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        
+        a {
+            width: 100%;
+            button {
+                width: 100%;
+                padding: 10px 5px;
+                border-radius: 15px;
+                background-color: rgb(74, 74, 229);
+                color: #ffff;
+                border: none;
+                font-size: 1rem;
+            }
+        }
+        
+    }
+}

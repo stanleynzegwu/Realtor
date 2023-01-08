@@ -336,6 +336,58 @@ export const useDeleteReview = () => {
         
 }
 
+//OPENAI GENERATE IMAGE
+export const useGenerateImage = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    const generateImg = async (imgDesc) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            const res = await userRequest.post('/openai/generateImage',imgDesc)
+            console.log(res)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            return res
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { generateImg }
+}
+//OPENAI GENERATE TEXT
+export const useGenerateText = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    const generateText = async (textDesc) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            const res = await userRequest.post('/openai/generateText',textDesc)
+            console.log(res)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            return res
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { generateText }
+}
+
+
 export const useReviewFunction = () => {
     const { reviews } = useReviewContext()
     const [error, setError] = useState(null)

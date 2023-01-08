@@ -1,5 +1,7 @@
+export { default as Blog } from './Blog/Blog'
 export { default as DashboardHome } from './DashboardHome/DashboardHome'
 export { default as HomePage } from './HomePage/HomePage'
+export { default as NewBlog } from './NewBlog/NewBlog'
 export { default as NewProperty } from './NewProperty/NewProperty'
 export { default as NewUser } from './NewUser/NewUser'
 export { default as Property } from './Property/Property'

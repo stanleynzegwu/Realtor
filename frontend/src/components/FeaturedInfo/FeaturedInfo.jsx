@@ -28,6 +28,10 @@ const FeaturedInfo = () => {
                     slidesPerGroup: 1,
                   },
                   500: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                  },
+                  750: {
                     slidesPerView: 2,
                     slidesPerGroup: 2,
                   },
@@ -81,7 +85,7 @@ const FeaturedInfo = () => {
                  </div>
                  <span className='featuredSub'>Compared to last month</span>
              </SwiperSlide>
-             <SwiperSlide className="featuredItem">
+             {/* <SwiperSlide className="featuredItem">
                  <span className="featuredTitle">Sales</span>
                  <div className="featuredMoneyContainer">
                      <span className="featuredMoney">$4,415</span>
@@ -96,7 +100,7 @@ const FeaturedInfo = () => {
                      <span className="featuredMoneyRate">+11.4 <BiUpArrowAlt className='featuredIcon'/></span>
                  </div>
                  <span className='featuredSub'>Compared to last month</span>
-             </SwiperSlide>
+             </SwiperSlide> */}
               </Swiper>
         </div>
 
