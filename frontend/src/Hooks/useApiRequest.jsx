@@ -338,53 +338,78 @@ export const useDeleteReview = () => {
 
 //OPENAI GENERATE IMAGE
 export const useGenerateImage = () => {
-    const [error, setError] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-    const [success, setSuccess] = useState(null)
+    const [isGenerateImgError, setgenerateImgError] = useState(null)
+    const [isGenerateImgLoading, setGenerateImgLoading] = useState(null)
+    const [isGenerateImgSuccess, setGenerateImgSuccess] = useState(null)
 
     const generateImg = async (imgDesc) => {
         try{
-            setIsLoading(true)
-            setSuccess(null)
+            setGenerateImgLoading(true)
+            setGenerateImgSuccess(null)
             const res = await userRequest.post('/openai/generateImage',imgDesc)
-            console.log(res)
-            setIsLoading(false)
-            setSuccess(true)
-            setError(false)
+            setGenerateImgLoading(false)
+            setGenerateImgSuccess(true)
+            setgenerateImgError(false)
             return res
             
         }catch(err){
-            setIsLoading(false)
-            setError(err.response.data)
+            setGenerateImgLoading(false)
+            setgenerateImgError(err.response.data)
         }
     }
 
-    return { generateImg }
+    return { generateImg , isGenerateImgLoading , isGenerateImgSuccess, isGenerateImgError}
 }
 //OPENAI GENERATE TEXT
 export const useGenerateText = () => {
-    const [error, setError] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-    const [success, setSuccess] = useState(null)
+    const [isGenerateTextError, setgenerateTextError] = useState(null)
+    const [isGenerateTextLoading, setGenerateTextLoading] = useState(null)
+    const [isGenerateTextSuccess, setGenerateTextSuccess] = useState(null)
 
     const generateText = async (textDesc) => {
         try{
-            setIsLoading(true)
-            setSuccess(null)
+            setGenerateTextLoading(true)
+            setGenerateTextSuccess(null)
             const res = await userRequest.post('/openai/generateText',textDesc)
-            console.log(res)
-            setIsLoading(false)
-            setSuccess(true)
-            setError(false)
+            setGenerateTextLoading(false)
+            setGenerateTextSuccess(true)
+            setgenerateTextError(false)
             return res
             
         }catch(err){
-            setIsLoading(false)
-            setError(err.response.data)
+            setGenerateTextLoading(false)
+            setgenerateTextError(err.response.data)
         }
     }
 
-    return { generateText }
+    return { generateText,isGenerateTextError,isGenerateTextLoading,isGenerateTextSuccess }
+}
+
+
+//CREATE BLOG
+export const useCreateBlog = () => {
+    const [isGenerateCreateError, setgenerateCreateError] = useState(null)
+    const [isGenerateCreateLoading, setGenerateCreateLoading] = useState(null)
+    const [isGenerateCreateSuccess, setGenerateCreateSuccess] = useState(null)
+
+    const createBlog = async (form) => {
+        try{
+            setGenerateCreateLoading(true)
+            setGenerateCreateSuccess(null)
+            const res = await userRequest.post('/blog',form)
+            console.log(res)
+            setGenerateCreateLoading(false)
+            setGenerateCreateSuccess(true)
+            setgenerateCreateError(false)
+            return res
+            
+        }catch(err){
+            setGenerateCreateLoading(false)
+            setgenerateCreateError(err.response.data)
+        }
+    }
+
+    return { createBlog,isGenerateCreateLoading,isGenerateCreateError,isGenerateCreateSuccess }
 }
 
 

@@ -1,20 +1,170 @@
 .newBlog {
     width: 85%;
     padding: 20px;
-    display: flex;
 
     .newBlog__generate{
         width: 100%;
         display: flex;
 
         .newBlog__left {
-            padding: 10px;
+            padding: 15px;
             width: 40%;
             box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            //position: relative;
 
-            .generateImgForm {
+            .illustration {
+                //position: absolute;
+                top: 10px;
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .form-left__wrapper {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .form-left {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+    
+                    .form-left__holder {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+    
+                        .form-left__input {
+                            padding: 10px 5px;
+                            border-radius: 5px;
+                            border: 1px solid gray;
+                            margin-bottom: 15px;
+
+                            // background: black;
+                            // color: #ffff;
+                        }
+                    }
+    
+                    .form-left__btn {
+                        width: 50%;
+                        padding: 7px 5px;
+                        background: #5854a0;
+                        color: #ffff;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 1rem;
+    
+                        &:hover {
+                            background: #6c63ff;
+                        }
+                        
+                        @media screen and (max-width:460px) {
+                            width: 100%;
+                        }
+                    }
+
+                    &:last-child {
+                        margin-bottom: 10px;
+                    }
+
+                    button:disabled {
+                        opacity: 0.65;
+                        cursor: progress;
+                    }
+    
+                }
+            }
+
+        }
+        
+        .newBlog__right {
+            padding: 10px;
+            width: 60%;
+            box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .generated-Image {
+                width: 350px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .generated_title {
+                margin-top: 10px;
+                font-weight: 700;
+            }
+            .generated-text {
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 967px){
+            flex-direction: column;
+
+            .newBlog__left {
                 width: 100%;
+            }
 
+            .newBlog__right {
+                width: 100%;
+            }
+        }
+    }
+
+    .createBlog {
+        margin-top: 15px;
+        padding: 10px;
+        box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .createBlog__form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .createBlog__holder{
+                
+                .createBlog__input {
+                    padding: 8px 5px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    border: 1px solid black;
+                    border-right: none;
+                }
+            }
+
+            .createBlog__btn {
+                width: 80px;
+                background: #5854a0;
+                color: #ffff;
+                border: none;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                font-size: 1rem;
+                border: 1px solid #5854a0;
+
+                &:hover {
+                    background: #6c63ff;
+                    border: 1px solid #6c63ff;
+                }
+            }
+
+            button:disabled {
+                opacity: 0.65;
+                cursor: progress;
             }
         }
     }
