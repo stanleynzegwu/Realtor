@@ -11,14 +11,12 @@ const WidgetSm = () => {
     const [error,setError] = useState(null)
     const { users,dispatch } = useUserContext()
     const latestUsers = users?.data.slice(0,5)
-    console.log(latestUsers)
 
     //FETCH ALL USERS
     useEffect(() => {
         const GetAllUsers = async () => {
             try{
                 const users = await userRequest.get("/users")
-                console.log(users)
                 dispatch({type:'SET_USERS', payload: users})
             }catch(err){
                 setError(err.response.data)

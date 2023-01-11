@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 //INTERNAL IMPORTS
 import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
+import { useBlogContext } from './useBlogContext'
 import { useUserContext } from './useUserContext'
 import { usePropertyContext } from './usePropertyContext'
 import { useReviewContext } from './useReviewContext'
@@ -285,7 +286,7 @@ export const useUserReview = () => {
     return { CreateReview, isLoading,success,error,setError}
 }
 
-////UPDATE REVIEW
+//UPDATE REVIEW
 export const useUpdateReview = () => {
     const { dispatch } = useReviewContext()
     const [error, setError] = useState(null)
@@ -388,31 +389,86 @@ export const useGenerateText = () => {
 
 //CREATE BLOG
 export const useCreateBlog = () => {
-    const [isGenerateCreateError, setgenerateCreateError] = useState(null)
-    const [isGenerateCreateLoading, setGenerateCreateLoading] = useState(null)
-    const [isGenerateCreateSuccess, setGenerateCreateSuccess] = useState(null)
+    const { dispatch } = useBlogContext()
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
 
     const createBlog = async (form) => {
         try{
-            setGenerateCreateLoading(true)
-            setGenerateCreateSuccess(null)
+            setIsLoading(true)
+            setSuccess(null)
             const res = await userRequest.post('/blog',form)
+            dispatch({type:'CREATE_BLOG', payload: res})
             console.log(res)
-            setGenerateCreateLoading(false)
-            setGenerateCreateSuccess(true)
-            setgenerateCreateError(false)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
             return res
             
         }catch(err){
-            setGenerateCreateLoading(false)
-            setgenerateCreateError(err.response.data)
+            setIsLoading(false)
+            setError(err.response.data)
         }
     }
 
-    return { createBlog,isGenerateCreateLoading,isGenerateCreateError,isGenerateCreateSuccess }
+    return { createBlog,isLoading,setIsLoading,setError,setSuccess }
+}
+
+//UPDATE REVIEW
+export const useUpdateBlog = () => {
+    const { dispatch } = useBlogContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const UpdateBlog = async (id,blog) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            setSuccess(false)
+            const updatedBlog = await userRequest.put(`/blog/${id}`,blog)
+            console.log(updatedBlog)
+            dispatch({type:'UPDATE_BLOG', payload: updatedBlog})
+            setIsLoading(false)
+            setSuccess(true)
+            setTimeout(() => setSuccess(null),4000)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { UpdateBlog,success, isLoading }
+        
 }
 
 
+//DELETE BLOG
+export const useDeleteBlog = () => {
+    const { dispatch } = useBlogContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const DeleteBlog = async (id) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const blog = await userRequest.delete(`/blog/${id}`)
+            dispatch({type:'DELETE_BLOG', payload: blog})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { DeleteBlog }
+        
+}
+
+
+//review functions
 export const useReviewFunction = () => {
     const { reviews } = useReviewContext()
     const [error, setError] = useState(null)

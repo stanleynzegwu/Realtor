@@ -1,5 +1,11 @@
+.hideOverflow{
+    height: 100vh;
+    overflow: hidden;
+}
+
 .admin_blog {
     width: 85%;
+    position: relative;
 
     .admin_blogBtn {
         margin: 20px;
@@ -20,5 +26,136 @@
             }
         }
         
+    }
+
+    .blogEdit {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255 , 0.25);//0.25 opacity
+        backdrop-filter: blur(4px); //blurry
+        -webkit-backdrop-filter: blur(4px); //blurry
+
+        .blogEdit__holder {
+            margin-top: 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255 , 0.25);//0.25 opacity
+            backdrop-filter: blur(4px); //blurry
+            -webkit-backdrop-filter: blur(4px); //blurry
+            border: 1px solid rgb(229, 228, 228);
+            width: 80%;
+            height: 90%;
+            padding: 20px 30px;
+
+            .blogEdit__topHolder {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+
+                p {
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                }
+                span {
+                    svg {
+                        color: black;
+                    }
+                }
+            }
+
+            form {
+                display: flex;
+                gap: 40px;
+                width: 100%;
+
+                .blogEdit__left{
+                    width: 40%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .blogEdit__imageHolder {
+                        display: flex;
+                        align-items: center;
+                        img {
+                            width: 300px;
+                            height: 200px;
+                            object-fit: cover;
+                            border-radius: 8px;
+                        }
+
+                        label {
+                            svg {
+                                color: black;
+                                font-size: 1.6rem;
+                            }
+                        }
+                    }
+
+                    .blogEdit__textHolder {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            font-weight: 600;
+                        }
+
+                        input {
+                            border: 1px solid gray;
+                            border-radius: 5px;
+                            padding: 10px 20px;
+
+                        }
+                    }
+                }
+
+                .blogEdit__right{
+                    width: 60%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .blogEdit__textarea {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        textarea {
+                            width: 100%;
+                            border: 1px solid gray;
+                            border-radius: 5px;
+                            padding: 10px;
+                        }
+                    }
+
+                    button {
+                        font-weight: 700;
+                        margin-top: 15px;
+                        padding: 10px 0;
+                        border-radius: 5px;
+                        border: none;
+                        background: rgb(59, 59, 195);
+                        color: #ffff;
+                        width: 100%;
+
+                        &:hover {
+                            background: rgb(81, 81, 209)
+                        }
+                    }
+                }
+
+                // @media screen and (max-width: 1030px){
+                //     flex-direction: column;
+                // }
+            }
+        }
     }
 }

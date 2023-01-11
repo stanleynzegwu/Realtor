@@ -1,4 +1,5 @@
 import React from 'react'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { Swiper, SwiperSlide } from "swiper/react";
 //import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
 // Import Swiper styles
@@ -9,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
-
+import { useBlogContext } from '../../Hooks/useBlogContext'
 import './Blog.scss'
 
 let arr = [
@@ -35,7 +36,9 @@ heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf 
 
 
 const Blog = () => {
-
+    const {blogs} = useBlogContext()
+    const allBlogs = blogs?.data
+    console.log(allBlogs)
     return (
         <section className='blog' id='blog'>
             <FadeUpAnimation className='blog__p heading-text--sm'>blog</FadeUpAnimation>
@@ -77,15 +80,15 @@ const Blog = () => {
                 modules={[Keyboard, Scrollbar, Navigation, Pagination]}
                 className="mySwiper"
             >
-                {arr.map(({id,img,heading,date,text},index) => (
-                        <SwiperSlide className='blog-card' key={index} >
+                {allBlogs && allBlogs.map(({_id,img,title,createdAt,desc},index) => (
+                        <SwiperSlide className='blog-card' key={_id} >
                             <div className='card-img'>
                                 <img src={img} alt="blog-pix" />
                             </div>
                             <div className='card-text'>
-                                <h1 className='heading'>{heading}</h1>
-                                <p className='date'>{date}</p>
-                                <p className='text'>{text}</p>
+                                <h1 className='heading'>{title}</h1>
+                                <p className='date'>{formatDistanceToNow(new Date(createdAt), {addSuffix: true})}</p>
+                                <p className='text'>{`${desc.trim().slice(0,100)}...`}</p>
                                 <span className='span'>READ MORE &rarr;</span>
                             </div>
                         </SwiperSlide>
