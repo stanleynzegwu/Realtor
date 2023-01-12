@@ -1,11 +1,11 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useRef} from 'react'
 import { Link } from 'react-router-dom'
 import { FaHouzz , FaMapMarkerAlt } from 'react-icons/fa'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-//import background from '../../assets/logos/realtor-background.jpg'
 import image from '../../assets/logos/land-man.png'
+import building from '../../assets/logos/building1.jpg'
 import './Header.scss'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
 
@@ -17,6 +17,7 @@ const Header = () => {
 
       const [form,setForm] = useState({location:"", category:""})
       const { properties } = usePropertyContext()
+      const buy = useRef(null)
 
       //Get list of properties and extract the state,propertyType for our location values
       const allStates = [...new Set(properties?.data.map(({state}) => state.toLowerCase()))].sort()
@@ -32,6 +33,10 @@ const Header = () => {
             }
         })
       }
+
+      const scrollToElement = () => {
+        buy.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
+      }
 console.log(form)
     return (
             <main className="header" id='home'>
@@ -39,14 +44,22 @@ console.log(form)
                     <div className='header__main-text'>
                         <p className='big-s'>Find Your Best <br/>Smart <span>Real <br/> Estate</span></p>
                         <p className='small-s'>Find Your Best Smart <br/> <span>Real Estate</span></p>
+                        <div className='headerLeft_sub'>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt doloremque, voluptas quos illum quibusdam accusamus atque. Recusandae voluptatum</p>
+                        </div>
+                        <div className='headerBtn_holder'>
+                            <button onClick={scrollToElement} className='headerBtn'>BUY</button>
+                            <button className='headerBtn'>SELL</button>
+                            <button className='headerBtn'>HIRE</button>
+                        </div>
                     </div>
                     <div className='header__main-img'>
-                        <img src={image} alt="land" />
+                        <img src={building} alt="land" />
                     </div>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-once="false" class="aos-init aos-animate" className='header__search'>
-                    <form className='header__search-holder'>
+                    <form ref={buy} className='header__search-holder'>
                         <div data-aos-offset="0" data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-mirror="false" data-aos-once="false" class="aos-init aos-animate" className='search__location search-util'>
                             <div className='form__label label'>
                                 <label className="custom-label label"htmlFor='location'><FaMapMarkerAlt /></label>
@@ -98,7 +111,6 @@ console.log(form)
                         </div>
                     </form>
                 </div>
-                {/* <div className="overlay" style={{background: `url(${image})`}}/> */}
             </main>
      );
 }

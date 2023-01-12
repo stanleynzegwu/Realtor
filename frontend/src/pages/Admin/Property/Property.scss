@@ -144,6 +144,10 @@
                     padding: 10px 10px;
                     font-weight: 600;
                     font-size: 1rem;
+
+                    &:active {
+                        box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+                    }
                 }
 
             }
