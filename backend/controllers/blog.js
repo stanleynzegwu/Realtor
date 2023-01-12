@@ -5,10 +5,10 @@ const create = async (req,res) => {
 
     try{
         const savedBlog = await newBlog.save()
-        res.status(200).json(savedBlog)
+        return res.status(200).json(savedBlog)
 
     }catch(err){
-        res.status(500).json(err)
+        return res.status(500).json(err)
     }
 }
 
@@ -24,9 +24,9 @@ const updateBlog = async (req, res) => {
       },
       { new: true }
     );
-    res.status(200).json(updatedBlog);
+    return res.status(200).json(updatedBlog);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -34,10 +34,10 @@ const updateBlog = async (req, res) => {
 
 const deleteBlog = async (req, res) => {
   try {
-    await Blog.findByIdAndDelete(req.params.id);
-    res.status(200).json("Blog has been deleted...");
+    const blog = await Blog.findByIdAndDelete(req.params.id);
+    return res.status(200).json(blog);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
