@@ -7,6 +7,7 @@ import { MdPublish } from 'react-icons/md'
 import './Property.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext'
 import { useUpdateProperty } from '../../../Hooks/useApiRequest'
+import { uploadMultipleAndUpdate } from '../../../firebase'
 
 const Property = () => {
   const { UpdateProperty } = useUpdateProperty()
@@ -14,7 +15,7 @@ const Property = () => {
   const { properties } = usePropertyContext()
   const [ property ] = properties.data.filter((property) => property._id === id)
 
-    const [radio,setRadio] = useState('False')
+  const [radio,setRadio] = useState(property.isFeatured ? "True" : "False")
     const [formData,setFormData] = useState({
         category:property.category,propertyType: property.propertyType,location: property.location,
         state:property.state,desc:property.desc,price:property.price,consultancyFee:property.consultancyFee
@@ -30,20 +31,31 @@ const Property = () => {
     }
     const form = {...formData, isFeatured:radio === "True"? true : false}
     //for image preview
-    const [images, setImages] = useState([...property.img]);
-    console.log(images)
-    const handleMultipleImages =(evnt)=>{
+    const [preview,setPreview] = useState([...property.img])
+    const [images, setImages] = useState("");
+
+    const handleMultipleImages =(e)=>{
       const selectedFIles =[];
-      const targetFiles =evnt.target.files;
+      const imagesArray = []
+      const targetFiles =e.target.files;
       const targetFilesObject= [...targetFiles]
       targetFilesObject.map((file)=>{
+        imagesArray.push(file)
          return selectedFIles.push(URL.createObjectURL(file))
       })
-      setImages(selectedFIles);
+      setImages(imagesArray)
+      setPreview(selectedFIles);
     }
 
     async function handleSubmit(e) {
       e.preventDefault()
+
+      if(images){
+        uploadMultipleAndUpdate(images,preview,id,UpdateProperty,form)
+      //else when there is no image file, just do other updates, no img to upload to firebase
+      }else{
+        await UpdateProperty(id,form)
+      }
       await UpdateProperty(id,form)
     }
 
@@ -64,7 +76,6 @@ const Property = () => {
                             <label htmlFor="category" className="form-label">Category</label>
                           </div>
                           <div className="input-flex">
-                            {/* <span><FaUserAlt /></span> */}
                             <input
                               type="text"
                               className="form-control"
@@ -82,7 +93,6 @@ const Property = () => {
                             <label htmlFor="propertyType" className="form-label">Property Type</label>
                           </div>
                           <div className="input-flex">
-                            {/* <span><MdEmail /></span> */}
                             <input
                               type="text"
                               className="form-control"
@@ -100,7 +110,6 @@ const Property = () => {
                               <label htmlFor="location" className="form-label">Location</label>
                             </div>
                             <div className="input-flex">
-                                {/* <span><FaLock /></span> */}
                                 <input
                                   type='text'
                                   className="form-control"
@@ -117,7 +126,6 @@ const Property = () => {
                               <label htmlFor="state" className="form-label">State</label>
                             </div>
                             <div className="input-flex">
-                                {/* <span><FaLock /></span> */}
                                 <input
                                   type='text'
                                   className="form-control"
@@ -134,7 +142,6 @@ const Property = () => {
                               <label htmlFor="price" className="form-label">Price</label>
                             </div>
                             <div className="input-flex">
-                                {/* <span><FaLock /></span> */}
                                 <input
                                   type='number'
                                   className="form-control"
@@ -151,7 +158,6 @@ const Property = () => {
                               <label htmlFor="consultancyFee" className="form-label">consultancyFee</label>
                             </div>
                             <div className="input-flex">
-                                {/* <span><FaLock /></span> */}
                                 <input
                                   type='number'
                                   className="form-control"
@@ -168,7 +174,6 @@ const Property = () => {
                               <label htmlFor="desc" className="form-label">Description</label>
                             </div>
                             <div className="input-flex">
-                                {/* <span><FaLock /></span> */}
                                 <textarea
                                   className="form-control"
                                   id="desc"
@@ -210,8 +215,8 @@ const Property = () => {
                     <div className="propertyEditRight">
                         <div className="userUpdateUpload">
                             <div className="userUpdateImgHolder">
-                                {images && images.map(url => (
-                                    <img src={url} alt="avatar" className="userUpdateImg" />
+                                {preview && preview.map((url,index) => (
+                                    <img key={index}src={url} alt="property" className="userUpdateImg" />
                                 ))}
                             </div>
                     

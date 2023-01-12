@@ -117,5 +117,33 @@ const uploadImgAndUpdate = (file,Func,id,formData) => {
     );
 }
 
-export { app, uploadImg, uploadFiles, uploadImgAndUpdate }
+
+//UPDATING MULTIPLE IMAGES FUNCTION
+const uploadMultipleAndUpdate = (files,imagesPreview,id,Func,form) => {
+  let img = []
+  files.map((file) => {
+      console.log('loop');
+      const storage = getStorage(app)
+      const storageRef = ref(storage, new Date().getTime() + file.name);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+              const prog = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+          },
+          (error) => console.log(error),
+          async () => {
+              await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+                  img.push(downloadURLs)
+              });
+              (imagesPreview.length === img.length) && Func(id,{...form,img})
+          }
+      );
+
+  })
+};
+export { app, uploadImg, uploadFiles, uploadImgAndUpdate , uploadMultipleAndUpdate }
 

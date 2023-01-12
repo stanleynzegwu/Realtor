@@ -17,7 +17,7 @@ const Blog = () => {
     const { DeleteBlog } = useDeleteBlog()
     const { blogs } = useBlogContext()
     const allBlogs = blogs?.data
-    ///////////
+ 
     const [toggle,setToggle] = useState(false)
     const [id,setId] = useState(null)
     const handleUpdateState = (id) => {
@@ -99,7 +99,7 @@ const Blog = () => {
     return ( 
         blogs
         ?
-        <div className={toggle ? `admin_blog hideOverflow` : `admin_blog`}>
+        <div className={toggle ? `admin_blog hideOverrflow` : `admin_blog`}>
             <div  className='admin_blogBtn'>
                 <Link to='/adminDashboard/newBlog'>
                     <button>Create</button>

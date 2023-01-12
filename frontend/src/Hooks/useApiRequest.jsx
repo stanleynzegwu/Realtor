@@ -393,6 +393,8 @@ export const useCreateBlog = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [success, setSuccess] = useState(null)
+    const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const [errorMessageDisplay,setErrorMessageDisplay] = useState(false)
 
     const createBlog = async (form) => {
         try{
@@ -404,7 +406,9 @@ export const useCreateBlog = () => {
             setIsLoading(false)
             setSuccess(true)
             setError(false)
-            return res
+            setSuccessMessageDisplay(true)
+            setTimeout(() => setSuccessMessageDisplay(false),6000)
+            //return res
             
         }catch(err){
             setIsLoading(false)
@@ -412,7 +416,8 @@ export const useCreateBlog = () => {
         }
     }
 
-    return { createBlog,isLoading,setIsLoading,setError,setSuccess }
+    return { createBlog,isLoading,setIsLoading,error,setError,
+    success,setSuccess,successMessageDisplay,errorMessageDisplay,setErrorMessageDisplay }
 }
 
 //UPDATE REVIEW

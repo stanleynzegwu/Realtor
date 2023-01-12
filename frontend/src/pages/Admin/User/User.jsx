@@ -6,6 +6,7 @@ import { MdPublish } from 'react-icons/md'
 //INTERNAL IMPORTS
 import './User.scss'
 import { useUserContext } from '../../../Hooks/useUserContext'
+import { uploadImgAndUpdate } from '../../../firebase'
 import { useUpdateUser } from '../../../Hooks/useApiRequest'
 
 const User = () => {
@@ -30,15 +31,22 @@ const User = () => {
     }
     const form = {...formData,isAdmin:radio === 'False' ? false : true}
     console.log(form)
-    const [file, setFile] = useState(user.img)
-    function handleChangee(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
+    const [preview,setPreview] = useState(user.img)
+    const [file, setFile] = useState('')
+    function handleImageChange(e) {
+        setPreview(URL.createObjectURL(e.target.files[0]));
+        setFile(e.target.files[0])
     }
 
     async function handleSubmit(e) {
         e.preventDefault()
-        await UpdateUser(id,form)
+
+        if(file){
+            uploadImgAndUpdate(file,UpdateUser,id,form)
+        //else when there is no image file, just do other updates, no img to upload to firebase
+        }else{
+          await UpdateUser(id,form)
+        }
     }
     return ( 
         <div className="user">
@@ -100,9 +108,9 @@ const User = () => {
                         </div>
                         <div className="userUpdateRight">
                             <div className="userUpdateUpload">
-                                <img src={file ? file : "https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"} alt="avatar" className="userUpdateImg" />
+                                <img src={preview ? preview : "https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"} alt="avatar" className="userUpdateImg" />
                                 <label htmlFor="file"><MdPublish /></label>
-                                <input type="file" id='file' style={{ display:"none"}} onChange={handleChangee}/>
+                                <input type="file" id='file' style={{ display:"none"}} onChange={handleImageChange}/>
                             </div>
                             <button className="userUpdateButton" type='submit'>Update</button>
                         </div>
