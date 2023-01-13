@@ -5,14 +5,6 @@ const CryptoJS = require("crypto-js");
 //const validator = require("validator")
 const jwt = require('jsonwebtoken')
 
-
-//GENERATE JWT
-// const generateToken = (id) => {
-//   return jwt.sign({ id }, process.env.JWT_SECRET, {
-//     expiresIn: '10d',
-//   })
-// }
-
 const accessToken = (id,isAdmin) => {
   return jwt.sign({id,isAdmin}, process.env.JWT_SECRET, {
     expiresIn: '10d'

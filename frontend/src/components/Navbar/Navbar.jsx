@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {HiMenu,HiX} from 'react-icons/hi'
 import {AiFillHome,AiFillPropertySafety} from 'react-icons/ai'
+import {MdDashboardCustomize} from 'react-icons/md'
+import {SiGnuprivacyguard} from 'react-icons/si'
 import {FcAbout} from 'react-icons/fc'
 import {FaBlog,FaUsers} from 'react-icons/fa'
 import {GrContact} from 'react-icons/gr'
@@ -41,7 +43,7 @@ const Navbar= () => {
                     user ? 
                     <div className='btn__double'>
                         <button className='btnLogout' onClick={logout}><TbLogout />Logout</button>
-                        {user?.data.isAdmin && <Link to="/adminDashboard/home"><button className='btn'>Dashboard</button></Link>}
+                        {user?.data?.isAdmin && <Link to="/adminDashboard/home"><button className='btn'>Dashboard</button></Link>}
                     </div>
                     :
                     <div className='btn__double'>
@@ -68,19 +70,28 @@ const Navbar= () => {
                                 {[[<AiFillHome />,'home'],[<FcAbout />,'about'],[<AiFillPropertySafety />,'properties'],
                                 [<FaBlog />,'blog'],[<FaUsers />,'testimonial'],[<GrContact />,'contact']].map((item) => (
                                     <li key={item}>
-                                        <a href={`#${item[1]}`} onClick={() => setToggle(false)}>{item}</a>
+                                        <Link href={`#${item[1]}`} onClick={() => setToggle(false)}>{item}</Link>
                                     </li>
                                 ))}
                                     {
+                                        user?.data?.isAdmin
+                                        &&
+                                        <li>
+                                            <Link to="/adminDashboard/home"><MdDashboardCustomize/>Dashboard</Link>
+                                        </li>
+                                    }
+                                    {
                                         user ? 
                                         <li>
-                                            <a href="">Logout</a> 
-                                            {/* later change this anchor tag to button */}
+                                            <Link onClick={logout} href=""><TbLogout />Logout</Link>
                                         </li>
                                         :
-                                        <>
-                                            <Link to="/login">Login</Link>
-                                            <Link to="/Signup">Signup</Link>
+                                        <>  <li>
+                                                <Link to="/login"><TbLogin />Login</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/Signup"><SiGnuprivacyguard/>Signup</Link>
+                                            </li>
                                         </>
                                     }
                                 </ul>

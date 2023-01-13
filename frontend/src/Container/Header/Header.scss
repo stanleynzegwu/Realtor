@@ -1,25 +1,28 @@
 .header {
-    padding-left: 60px;
-    height: calc(100vh + 60px);
+    // height: calc(100vh + 60px);
     background-color: #e6edf8;
-    //background-size: cover;
     padding-top: 8%;
     position: relative;
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 750px) {
         padding-top: 12%;
+    }
+    @media screen and (min-width: 750px) {
+        height: calc(100vh + 60px);
+        padding-left: 60px;
     }
     @media screen and (max-width:550px) {
         margin-bottom: 20%;
     }
+    @media screen and (max-width:520px) {
+        padding-top: 16%;
+    }
 
     .header__main {
-        //position: relative;
         height: 100%;
         display: flex;
         justify-content: space-between;
-        //height: 70%;
         gap: 10px;
-        @media screen and (max-width:700px) {
+        @media screen and (max-width:750px) {
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -30,13 +33,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            //align-items: center;
-            @media screen and (max-width:700px){
+            @media screen and (max-width:750px){
                 width: 100%;
             }
 
             .big-s{
-                @media screen and (max-width:700px) {
+                @media screen and (max-width:750px) {
                     display: none;
                 }
             }
@@ -44,13 +46,13 @@
             .small-s {
                 display: block;
                 text-align: center;
-                @media screen and (min-width:701px) {
+                @media screen and (min-width:751px) {
                     display: none;
                 }
             }
 
             p {
-                font: 700 3.5rem Barlow;
+                font: 700 3.7rem Barlow;
                 @media screen and (max-width: 768px) {
                     font: 600 3rem Barlow;
                 }
@@ -65,7 +67,7 @@
                 margin: 20px 0;
                 p {
                     font-size: 1rem;
-                    color: gray;
+                    color: rgb(113, 111, 111);
                 }
             }
 
@@ -74,12 +76,16 @@
                 width: 270px;
                 border-radius: 15px;
                 border: none;
+                &:hover {
+                    background: #3c7ecf;
+                }
                 .headerBtn {
                     width: calc(270px/3);
-                    padding: 11px;
+                    padding: 15px;
                     cursor: pointer;
                     border: inherit;
                     font-size: 1.1rem;
+                    color: #ffff;
                     
                     &:active {
                         box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
@@ -89,25 +95,40 @@
                         border-top-left-radius: inherit;
                         border-bottom-left-radius: inherit;
                         background: #528952;
-                        color: #ffff;
+                        &:hover {
+                            background: #5f9c5f;
+                        }
                     }
                     &:nth-child(2){
                         border-bottom-right-radius: 20px;
                         background: rgb(145 97 97);
-                        color: #ffff;
+                        &:hover {
+                            background: rgb(158, 104, 104);
+                        }
                     }
                     &:nth-child(3){
                         border-top-right-radius: inherit;
                         border-bottom-right-radius: inherit;
                         background: inherit;
-                        color: #ffff;
+                        &:hover {
+                            background: inherit;
+                        }
                     }
+                }
+            }
+
+            @media screen and (max-width:750px){
+                .headerLeft_sub{
+                    padding:0 40px;
+                }
+                .headerBtn_holder {
+                    margin: 20px auto;
                 }
             }
         }
 
         .header__main-img {
-            //margin-top: 5%;
+            position: relative;
             width: 50%;
             border-top-left-radius: 1200px;
             border-top-right-radius: 1200px;
@@ -118,12 +139,35 @@
                 object-fit: cover;
                 border-radius: inherit;
             }
+
+            .painterImg {
+                position: absolute;
+                top: 0;
+                left: -25px;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+            @media screen and (max-width: 940px) {
+                margin-top: 20px;
+            }
+            @media screen and (max-width: 750px) {
+                height: 300px;
+                margin-top: 0;
+
+                .painterImg {
+                    width: 130px;
+                    height: 130px;
+                }
+            }
+            
+            @media screen and (max-width: 480px) {
+                height: 250px;
+            }
         }
     }
 
     .header__search {
-        // z-index: 4;
-        // position: relative;
         height: 30%;
         display: flex;
         justify-content: center;
@@ -133,10 +177,6 @@
         right: 0;
         left: 0;
         bottom: -15%;
-        // @media screen and (max-width:550px) {
-        //     width: 70%;
-        //     margin: auto;
-        // }
         
         .header__search-holder {
             background: #FFFFFF;
@@ -150,11 +190,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            // @media screen and (max-width:550px) {
-            //     flex-direction: column;
-            //     height: 90%;
-            // }
-            @media screen and (max-width:700px) {
+
+            @media screen and (max-width:750px) {
                 width: 90%;
             }
             @media screen and (max-width:550px) {
@@ -226,7 +263,7 @@
                     &:hover {
                         background: #2f75ca;
                     }
-                    @media screen and (max-width:700px){
+                    @media screen and (max-width:750px){
                         padding: 10px 20px;
                         font-size: 1rem;
                     }
@@ -248,11 +285,3 @@ svg {
     color: #4373AF;
     font-size: 1.3rem;
 }
-// .overlay {
-// 	height: 100%;
-// 	position: absolute;
-// 	z-index: 0;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// }

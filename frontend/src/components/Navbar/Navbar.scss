@@ -188,6 +188,7 @@
         justify-content: center;
         align-items: center;
         background-color: rgb(66, 66, 189);
+        cursor: pointer;
         
         .navbarUserImg {
             width: 35px;
@@ -223,8 +224,8 @@
             box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.15);
     
             svg {
-                width: 35px;
-                height: 35px;
+                width: 20px;
+                height: 20px;
                 color: white;
                 margin: 0.5rem 1rem;
             }

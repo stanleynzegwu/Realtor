@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { Topbar, Sidebar, Loader } from '../../../components'
+import { Topbar, Sidebar } from '../../../components'
 import { Blog, HomePage, NewBlog, NewProperty, NewUser, Property, PropertyList, ReviewList, User, Users } from '../../Admin'
 import './DashboardHome.scss'
 

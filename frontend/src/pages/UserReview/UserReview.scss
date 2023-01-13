@@ -79,6 +79,7 @@
                 svg {
                     color: goldenrod;
                     font-size: 1.6rem;
+                    cursor: pointer;
                 }
             }
 
@@ -120,12 +121,13 @@
             button {
                 width: 100%;
                 margin-top: 20px;
-                padding: 9px 0;
+                padding: 10px 0;
                 font-size: 1.2rem;
                 border-radius: 10px;
                 border: none;
                 color: #fff;
                 background: rgb(154, 152, 152);
+                cursor: pointer;
 
                 &:hover {
                     background: gray;

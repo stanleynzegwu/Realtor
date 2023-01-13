@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { Swiper, SwiperSlide } from "swiper/react";
-//import { AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
 // Import Swiper styles
 import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import "swiper/css";
@@ -12,28 +12,6 @@ import "swiper/css/pagination";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 import { useBlogContext } from '../../Hooks/useBlogContext'
 import './Blog.scss'
-
-let arr = [
-    {id:1,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:2, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:3, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:4, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:5, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:6, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:7, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:8, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'},
-{id:9, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-DW2gcUJHDogOJbd573WTCTg9z7xjo47cq88JYPW&s',
-heading:'Why Live In London',date:'May 05, 2021',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd'}
-]
-
 
 const Blog = () => {
     const {blogs} = useBlogContext()
@@ -89,11 +67,12 @@ const Blog = () => {
                                 <h1 className='heading'>{title}</h1>
                                 <p className='date'>{formatDistanceToNow(new Date(createdAt), {addSuffix: true})}</p>
                                 <p className='text'>{`${desc.trim().slice(0,100)}...`}</p>
-                                <span className='span'>READ MORE &rarr;</span>
+                                <Link to={`/viewBlog/${_id}`}>
+                                  <span className='span'>READ MORE &rarr;</span>
+                                </Link>
                             </div>
                         </SwiperSlide>
                     ))}
-                    {/* <SwiperSlide className='blog-card'></SwiperSlide> */}
               </Swiper>
               </FadeUpAnimation>
         </section>

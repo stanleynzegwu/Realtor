@@ -4,10 +4,10 @@ import { FaHouzz , FaMapMarkerAlt } from 'react-icons/fa'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import image from '../../assets/logos/land-man.png'
+import painter from '../../assets/logos/painter.jpg'
 import building from '../../assets/logos/building1.jpg'
-import './Header.scss'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
+import './Header.scss'
 
 const Header = () => {
     useEffect(() => {
@@ -41,7 +41,7 @@ console.log(form)
     return (
             <main className="header" id='home'>
                 <div className='header__main'>
-                    <div className='header__main-text'>
+                    <div data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-once="false" class="aos-init aos-animate" className='header__main-text'>
                         <p className='big-s'>Find Your Best <br/>Smart <span>Real <br/> Estate</span></p>
                         <p className='small-s'>Find Your Best Smart <br/> <span>Real Estate</span></p>
                         <div className='headerLeft_sub'>
@@ -53,8 +53,9 @@ console.log(form)
                             <button className='headerBtn'>HIRE</button>
                         </div>
                     </div>
-                    <div className='header__main-img'>
+                    <div data-aos="fade-down" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-once="false" class="aos-init aos-animate" className='header__main-img'>
                         <img src={building} alt="land" />
+                        <img className="painterImg" src={painter} alt="painter" />
                     </div>
                 </div>
 
