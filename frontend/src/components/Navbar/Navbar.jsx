@@ -29,12 +29,17 @@ const Navbar= () => {
                 <img className='img-logo' src={logo} alt="logo" />
             </div>
             <ul className='app__navbar-links'>
-                {['home','about','properties','blog','testimonial','contact'].map((item) => (
+                {['home','about','properties','testimonial','contact'].map((item) => (
                     <li className='app__flex p-text' key={`link-${item}`}>
                         <div/>
                         <a href={`#${item}`}>{item}</a>
                     </li>
+                    
                 ))}
+                <li className='app__flex p-text' >
+                    <div/>
+                    <Link to='/viewBlog/allBlog'>blog</Link>
+                </li>
             </ul>
             <div className='navbarImgHolder'>
                 {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar"  className='navbarUserImg'/>}

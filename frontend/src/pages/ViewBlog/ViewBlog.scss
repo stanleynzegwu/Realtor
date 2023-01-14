@@ -6,7 +6,8 @@
             text-align: center;
             padding: 20px;
             width: 100%;
-            background: green;
+            background: rgb(169, 166, 166);
+            font-weight: 800;
         }
         .allBlog__mainContainer{
             width: 100%;
@@ -17,15 +18,37 @@
             gap: 30px;
             .allBlog__container {
                 width: 100%;
-                background: rgb(108, 108, 195);
+                background: rgb(169, 166, 166);
                 padding: 30px;
                 border-radius: 10px;
     
                 .allBlog__img {
-                    border: 15px solid blue;
+                    border: 15px solid rgb(210, 206, 206);
                     border-radius: inherit;
                     width: 100%;
                     object-fit: contain;
+                }
+
+                .allBlog__date {
+                    color: rgb(34, 34, 34);
+                    font-size: 1.1rem;
+                    display: inline-block;
+                    padding: 10px 0;
+                }
+                .allBlog__subHeader{
+                    font-size: 600;
+                    border-bottom: 2px solid rgb(210, 206, 206);
+                }
+
+                .allBlog_desc {
+                    font-size: 1.1rem;
+                    line-height: 1.6rem;
+                    padding: 10px 0;
+                }
+
+                .allBlog_read{
+                    font-weight: 600;
+                    cursor: pointer;
                 }
             }
 

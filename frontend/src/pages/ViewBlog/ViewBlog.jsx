@@ -19,7 +19,7 @@ const ViewBlog = () => {
                             <span className="allBlog__date">{formatDistanceToNow(new Date(createdAt), {addSuffix: true})}</span>
                             <h2 className="allBlog__subHeader">{title}</h2>
                             <p className="allBlog_desc">{`${desc.slice(0,501)}${desc.length > 500 && '...'}`}</p>
-                            {(desc.length > 500) && <span>Read More</span>}
+                            {(desc.length > 500) && <span className='allBlog_read'>Read More &rarr;</span>}
                         </div>
                     ))
                     }
