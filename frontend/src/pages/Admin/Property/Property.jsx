@@ -8,9 +8,10 @@ import './Property.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext'
 import { useUpdateProperty } from '../../../Hooks/useApiRequest'
 import { uploadMultipleAndUpdate } from '../../../firebase'
+import { TypingText } from '../../../components';
 
 const Property = () => {
-  const { UpdateProperty } = useUpdateProperty()
+  const { UpdateProperty,isLoading, success,error } = useUpdateProperty()
   const { id } = useParams()
   const { properties } = usePropertyContext()
   const [ property ] = properties.data.filter((property) => property._id === id)
@@ -223,7 +224,9 @@ const Property = () => {
                             <label htmlFor="file"><MdPublish /></label>
                             <input type="file" id='file' style={{ display:"none"}} multiple onChange={handleMultipleImages}/>
                         </div>
-                        <button type="submit" className="propertyUpdateButton">Update</button>
+                        <button disabled={isLoading} type="submit" className="propertyUpdateButton">Update</button>
+                        {error && <TypingText text={error} intervalDuration={50} className='error'/>}
+                        {success && <TypingText text='Blog Updated Successfully' intervalDuration={50} className='success'/>}
                     </div>
                 </form>
 

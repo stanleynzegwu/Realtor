@@ -176,6 +176,10 @@
             }
         }
     }
+
+    @media screen and (max-width:900px){
+        width: 100%;
+    }
 }
 .radioHolder {
     margin-top: 15px;

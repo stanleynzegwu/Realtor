@@ -95,7 +95,6 @@ export const useCreateUser = () => {
             setError(null)
 
             const res = await userRequest.post("/users",user)
-            console.log(res)
             dispatch({type:'CREATE_USER', payload: res})
             setIsLoading(false)
             setSuccess(true)
@@ -228,12 +227,13 @@ export const useUpdateProperty = () => {
             dispatch({type:'UPDATE_PROPERTY', payload: updatedProperty})
             setIsLoading(false)
             setSuccess(true)
+            setTimeout(() => setSuccess(null),4000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
     }
-    return { UpdateProperty }
+    return { UpdateProperty,isLoading, success,error}
         
 }
 
@@ -254,7 +254,6 @@ export const useSubscription = () => {
             return subscriber
         }catch(err){
             setError(err.response.data)
-            console.log(err)
         }
     }
     return { Subscribe,success,successMessageDisplay,error}
@@ -272,7 +271,6 @@ export const useUserReview = () => {
             setIsLoading(true)
             setSuccess(null)
             const res = await userRequest.post(`/review/${id}`,review)
-            console.log(res)
             setIsLoading(false)
             setSuccess(true)
             setError(false)
@@ -299,7 +297,6 @@ export const useUpdateReview = () => {
             setError(null)
             setSuccess(false)
             const updatedReview = await userRequest.put(`/review/${id}`,review)
-            console.log(updatedReview)
             dispatch({type:'UPDATE_REVIEW', payload: updatedReview})
             setIsLoading(false)
             setSuccess(true)
@@ -336,6 +333,34 @@ export const useDeleteReview = () => {
     return { DeleteAReview }
         
 }
+
+//review functions
+export const useReviewFunction = () => {
+    const { reviews } = useReviewContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const getReviewPercentage = (num) => {
+        const reviewLength = reviews?.data.length
+        const starNum = reviews?.data.filter((review) => review.star === num).length
+        return Math.round((starNum * 100)/reviewLength)
+    }
+
+    const starNum = (num) => {
+        return reviews && reviews?.data.filter((review) => review.star === num).length
+    }
+    const getPercentage = (num) => {
+        return reviews && getReviewPercentage(num)
+    }
+
+    const totalReviews = () => {
+        return reviews && reviews?.data.length
+    }
+    return { starNum, reviews, getReviewPercentage, getPercentage, totalReviews }
+        
+}
+
 
 //OPENAI GENERATE IMAGE
 export const useGenerateImage = () => {
@@ -402,7 +427,6 @@ export const useCreateBlog = () => {
             setSuccess(null)
             const res = await userRequest.post('/blog',form)
             dispatch({type:'CREATE_BLOG', payload: res})
-            console.log(res)
             setIsLoading(false)
             setSuccess(true)
             setError(false)
@@ -419,34 +443,6 @@ export const useCreateBlog = () => {
     return { createBlog,isLoading,setIsLoading,error,setError,
     success,setSuccess,successMessageDisplay,errorMessageDisplay,setErrorMessageDisplay }
 }
-
-//UPDATE REVIEW
-export const useUpdateBlog = () => {
-    const { dispatch } = useBlogContext()
-    const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-
-    const UpdateBlog = async (id,blog) => {
-        try{
-            setIsLoading(true)
-            setError(null)
-            setSuccess(false)
-            const updatedBlog = await userRequest.put(`/blog/${id}`,blog)
-            console.log(updatedBlog)
-            dispatch({type:'UPDATE_BLOG', payload: updatedBlog})
-            setIsLoading(false)
-            setSuccess(true)
-            setTimeout(() => setSuccess(null),4000)
-        }catch(err){
-            setIsLoading(false)
-            setError(err.response.data)
-        }
-    }
-    return { UpdateBlog,success, isLoading }
-        
-}
-
 
 //DELETE BLOG
 export const useDeleteBlog = () => {
@@ -472,30 +468,28 @@ export const useDeleteBlog = () => {
         
 }
 
-
-//review functions
-export const useReviewFunction = () => {
-    const { reviews } = useReviewContext()
+//UPDATE BLOG
+export const useUpdateBlog = () => {
+    const { dispatch } = useBlogContext()
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
 
-    const getReviewPercentage = (num) => {
-        const reviewLength = reviews?.data.length
-        const starNum = reviews?.data.filter((review) => review.star === num).length
-        return Math.round((starNum * 100)/reviewLength)
+    const UpdateBlog = async (id,blog) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            setSuccess(false)
+            const updatedBlog = await userRequest.put(`/blog/${id}`,blog)
+            dispatch({type:'UPDATE_BLOG', payload: updatedBlog})
+            setIsLoading(false)
+            setSuccess(true)
+            setTimeout(() => setSuccess(null),4000)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
     }
-
-    const starNum = (num) => {
-        return reviews && reviews?.data.filter((review) => review.star === num).length
-    }
-    const getPercentage = (num) => {
-        return reviews && getReviewPercentage(num)
-    }
-
-    const totalReviews = () => {
-        return reviews && reviews?.data.length
-    }
-    return { starNum, reviews, getReviewPercentage, getPercentage, totalReviews }
+    return { UpdateBlog,success, isLoading,error }
         
 }

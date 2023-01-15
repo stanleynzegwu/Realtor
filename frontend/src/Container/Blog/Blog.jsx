@@ -41,7 +41,7 @@ const Blog = () => {
                     slidesPerView: 2,
                     slidesPerGroup: 2,
                   },
-                  884: {
+                  950: {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                   },

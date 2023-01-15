@@ -13,7 +13,7 @@ import { useUpdateBlog } from '../../../Hooks/useApiRequest';
 import { TypingText } from '../../../components';
 
 const Blog = () => {
-    const { UpdateBlog } = useUpdateBlog()
+    const { UpdateBlog,isLoading,success,error } = useUpdateBlog()
     const { DeleteBlog } = useDeleteBlog()
     const { blogs } = useBlogContext()
     const allBlogs = blogs?.data
@@ -28,7 +28,6 @@ const Blog = () => {
     const [formBlog,setFormBlog] = useState({desc:'',title:''})
     const [preview,setPreview] = useState('')
     const [newImg,setNewImg] = useState('')
-    console.log(formBlog)
 
     useEffect(() => {
         currentBlog && setFormBlog({desc:currentBlog.desc,title:currentBlog.title})
@@ -159,7 +158,9 @@ const Blog = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <button type='submit' className='blogUpdateButton'>UPDATE</button>
+                            <button disabled={isLoading} type='submit' className='blogUpdateButton'>UPDATE</button>
+                            {error && <TypingText text={error} intervalDuration={50} className='error'/>}
+                            {success && <TypingText text='Blog Updated Successfully' intervalDuration={50} className='success'/>}
                         </div>
                     </form>
                 </div>

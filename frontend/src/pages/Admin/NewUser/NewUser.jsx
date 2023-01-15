@@ -104,7 +104,7 @@ const NewUser = () => {
                 <div className="newUserRight">
                     <div className="newUserItem">
                         <img src={preview ? preview : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className="userUpdateImg" />
-                        <label htmlFor="file">Upload Image<MdPublish /></label>
+                        <label htmlFor="file"><MdPublish /></label>
                         <input type="file" id='file' name="img" style={{ display:"none"}} onChange={handleImageChange}/>
                     </div>
 
