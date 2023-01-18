@@ -94,4 +94,8 @@
         font-size: 15px;
         color: gray;
     }
+
+    @media screen and (max-width:750px){
+        margin-bottom: 10px;
+    }
 }

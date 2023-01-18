@@ -116,6 +116,7 @@ export const useUpdateUser = () => {
     const { dispatch } = useUserContext()
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
+    const [successMessageDisplay,setSuccessMessageDisplay] = useState(false)
     const [isLoading, setIsLoading] = useState(null)
 
     const UpdateUser = async (id,user) => {
@@ -126,12 +127,14 @@ export const useUpdateUser = () => {
             dispatch({type:'UPDATE_USER', payload: updatedUser})
             setIsLoading(false)
             setSuccess(true)
+            setSuccessMessageDisplay(true)
+            setTimeout(() => setSuccessMessageDisplay(false),6000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
     }
-    return { UpdateUser }
+    return { UpdateUser,isLoading,success,successMessageDisplay,error }
         
 }
 

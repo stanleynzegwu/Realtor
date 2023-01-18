@@ -96,6 +96,18 @@
 
         ul {
             list-style: none;
+            width: 100%;
+            a {
+                width: 100%;
+                li {
+                    width: 100%;
+                    padding:0 15px;
+                    border-radius: 10px;
+                    &:hover {
+                        background-color: rgb(210, 206, 206);
+                    }
+                }
+            }
         }
 
         .topbarWrapper {

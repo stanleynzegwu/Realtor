@@ -8,9 +8,10 @@ import './User.scss'
 import { useUserContext } from '../../../Hooks/useUserContext'
 import { uploadImgAndUpdate } from '../../../firebase'
 import { useUpdateUser } from '../../../Hooks/useApiRequest'
+import { TypingText } from '../../../components'
 
 const User = () => {
-    const { UpdateUser } = useUpdateUser()
+    const { UpdateUser,isLoading,successMessageDisplay,error } = useUpdateUser()
     const { id } = useParams()
     const { users } = useUserContext()
     const [ user ] = users.data.filter((user) => user._id === id)
@@ -57,10 +58,10 @@ const User = () => {
             <div className="userContainer">
                 <div className="userShow">
                     <div className="userShowTop">
-                        <img src="https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg" alt="avatar" className="userShowImg" />
+                        <img src={user.img ? user.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className="userShowImg" />
                         <div className="userShowTopTitle">
-                            <span className="userShowUsername">Lionel Messi</span>
-                            <span className="userShowEmail">lionelmessi@gmail.com</span>
+                            <span className="userShowUsername">{user.username}</span>
+                            <span className="userShowEmail">{user.email}</span>
                         </div>
                     </div>
                 </div>
@@ -108,11 +109,13 @@ const User = () => {
                         </div>
                         <div className="userUpdateRight">
                             <div className="userUpdateUpload">
-                                <img src={preview ? preview : "https://64.media.tumblr.com/77f2c1189e7630f51f1ad04a93605ddb/tumblr_ocbr10ggWN1sk2y1wo1_640.jpg"} alt="avatar" className="userUpdateImg" />
+                                <img src={preview ? preview : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className="userUpdateImg" />
                                 <label htmlFor="file"><MdPublish /></label>
                                 <input type="file" id='file' style={{ display:"none"}} onChange={handleImageChange}/>
                             </div>
-                            <button className="userUpdateButton" type='submit'>Update</button>
+                            <button disabled={isLoading} className="userUpdateButton" type='submit'>Update</button>
+                            {error && <TypingText text={error} intervalDuration={50} className='error'/>}
+                            {successMessageDisplay && <TypingText text='User Updated Successfully' intervalDuration={50} className='success'/>}
                         </div>
                     </form>
                 </div>
