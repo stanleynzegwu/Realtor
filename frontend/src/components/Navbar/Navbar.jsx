@@ -72,12 +72,15 @@ const Navbar= () => {
 
                                 <HiX onClick={() => setToggle(false)}/>
                                 <ul>
-                                {[[<AiFillHome />,'home'],[<FcAbout />,'about'],[<AiFillPropertySafety />,'properties'],
-                                [<FaBlog />,'blog'],[<FaUsers />,'testimonial'],[<GrContact />,'contact']].map((item) => (
+                                {[[<AiFillHome />,'home'],[<FcAbout />,'about'],[<AiFillPropertySafety />,'properties']
+                                ,[<FaUsers />,'testimonial'],[<GrContact />,'contact']].map((item) => (
                                     <li key={item}>
                                         <Link href={`#${item[1]}`} onClick={() => setToggle(false)}>{item}</Link>
                                     </li>
                                 ))}
+                                    <li>
+                                        <Link to='/viewBlog/allBlog' onClick={() => setToggle(false)}><FaBlog />blog</Link>
+                                    </li>
                                     {
                                         user?.data?.isAdmin
                                         &&

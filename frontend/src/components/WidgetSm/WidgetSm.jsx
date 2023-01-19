@@ -34,7 +34,11 @@ const WidgetSm = () => {
             <ul className="widgetSmList">
                 {latestUsers.map(({username,email,img,_id},index) => (
                     <li className="widgetSmListItem" key={index}>
-                        <img src={img ? img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='widgetSmImg'/>
+                        <img 
+                            src={img ? img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"}
+                            alt="avatar"
+                            className='widgetSmImg'
+                        />
                         <div className="widgetSmUser">
                             <span className="widgetSmUsername">{username}</span>
                             <span className="widgetSmUseremail">{email}</span>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { ImHome } from "react-icons/im";
+import { MdSell } from "react-icons/md";
+import { AiFillFormatPainter } from "react-icons/ai";
 import { FadeUpAnimation } from '../../components/UI/Animation/Animation'
 
 import CardHolder from '../../components/Cards/CardHolder/CardHolder'
@@ -17,9 +19,9 @@ const About = () => {
             {/* <p className='about__text heading-text--sm'>WHAT WE DO</p> */}
             <FadeUpAnimation  className='about__header heading-text--lg'>our main focus</FadeUpAnimation>
             <CardHolder>
-                {[{icon:<ImHome />,about:'Buy a Building',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd',id:'buildings'},
-                {icon:<ImHome />,about:'Buy a Land',text:'lorem and we nnvhfhfhf hdnc  c dhd c dshsh  dbdhdhdhhd dhd can jdhdh jhdhd jdjdj bcvdhdhd',id:'lands'},
-                {icon:<ImHome />,about:'Hire Painters',text:'lorem and we can jdhdh jhdhd jdjdj bcvdhdhd',id:'painters'}].map(({icon,about,text,id},index) => (
+                {[{icon:<ImHome />,about:'Buy Property',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd',id:'buildings'},
+                {icon:<MdSell />,about:'Sell Property',text:'lorem and we nnvhfhfhf hdnc  c dhd c dshsh  dbdhdhdhhd dhd can jdhdh jhdhd jdjdj bcvdhdhd',id:'lands'},
+                {icon:<AiFillFormatPainter />,about:'Hire Painters',text:'lorem and we can jdhdh jhdhd jdjdj bcvdhdhd',id:'painters'}].map(({icon,about,text,id},index) => (
                     <Card key={index} >
                         <div className='card__icon'>{icon}</div>
                         <p className='card__about'>{about}</p>

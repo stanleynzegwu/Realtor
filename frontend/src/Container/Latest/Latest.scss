@@ -4,115 +4,91 @@
     align-items: center;
     margin-top: 5%;
 
-    .card-holder {
+    .cardWrapper {
+        margin: 30px 5px;
+        display: flex;
+        gap: 40px;
+        width: 90%;
 
-        // @media screen and (min-width:861px) {
-        //     justify-content: space-around;
-        // }
-        
-        .card {
-            //width: 30%;
-            width:50vw;
-            border: none;
-            box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
+        .card__holder {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
             position: relative;
-            height:70%;
-            
-            @media screen and (max-width: 800px) and (min-width: 448px) {
-                height: 23rem;
-                width: 50vw;
-              }
 
-            @media screen and (max-width: 465px) and (min-width: 401px) {
-                height: 22rem;
-              }
-            @media screen and (max-width: 541px) and (min-width: 485px) {
-                height: 25rem;
-              }
-            @media screen and (max-width: 600px) and (min-width: 542px) {
-                height: 27rem;
-              }
-            @media screen and (max-width: 802px) and (min-width: 724px) {
-                height: 25rem;
-              }
-            @media screen and (max-width: 860px) and (min-width: 803px) {
-                height: 26rem;
-              }
+            .card__holder_relative {
+                width: 100%;
+                height: 400px;
 
-            div {
                 .card__imgHolder {
-    
+                    width: 100%;
+                    height: 50%;
+
                     img {
-                        width: 100%;
                         border-top-right-radius: 30px;
                         border-top-left-radius: 30px;
-                        object-fit: cover;
-                        // overflow: hidden;
-                        //  object-fit: contain;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
-    
-                .card__restHolder {
-                    display: flex;
-                    padding: 5%;
-    
-                    .card__restHolder-sub {
-                        .property-type {
-                            padding-bottom: 7%;
-                            font-weight: 600;
 
-                            @media screen and (max-width:1030px) {
-                                font-size: 1rem;
-                            }
-                        }
-    
-                        .property-location {
-                            display: flex;
-                            gap: 5%;
-                            color: gray;
-    
-                            span {
-                                svg {
-                                    color: #4373AF;
+                .card__allDescHolder {
+                    height: 50%;
+                    padding: 10px 20px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .card__restHolder {
+                        flex: 2;
+                        display: flex;
+                        gap: 5px;
+                        justify-content: space-between;
+                        align-items: flex-start;
+
+                        .card__restHolder-sub {
+                            margin-bottom: 10px;
+
+                            .property-location {
+                                display: flex;
+                                align-items: center;
+                                margin: 15px 0;
+
+                                span {
+                                    svg {
+                                        font-size: 1rem;
+                                    }
                                 }
                             }
-                            
                         }
-                    }
-    
-                    .property-price__Holder {
-                        display: flex;
-                        padding-left: 15%;
-    
-                        span {
-                            color: #4373AF;
-                            font-weight: 500;
-                        }
-                    }
-    
-                }
-    
-                .card__footer{
-                    padding: 5%;
-    
-                    .card__more {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding-bottom: 5%;
-                    }
-                    .card__view {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 5% 5% 0 5%;
-                        border-top: 1px solid rgb(228, 226, 226);
 
-                        span {
-                            svg {
-                                font-size: 1.3rem;
-                                color: gray;
-                                cursor: pointer;
+                        .property-price__Holder {
+        
+                            span {
+                                color: #4373AF;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .card__footer {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        .card__view {
+                            display: flex;
+                            
+                            border-top: 1px solid rgb(228, 226, 226);
+
+                            span {
+                                svg {
+                                    font-size: 1.5rem;
+                                    color: gray;
+                                    cursor: pointer;
+                                    margin-top: 10px;
+
+                                }
                             }
                         }
                     }
@@ -127,8 +103,6 @@
                 right: 0;
                 
                 p {
-                    // width: 100%;
-                    // height: 100%;
                     background: RGBA(67,115,175,0.75);
                     color: #ffff;
                     padding: 8px 12px;
@@ -139,110 +113,14 @@
                 }
             }
         }
+
+        @media screen and (max-width:860px){
+            flex-direction: column;
+            width: 45%;
+        }
+        @media screen and (max-width:600px){
+            width: 70%;
+        }
     }
 
 }
-
-// .latest {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-    
-//     .card-holder {
-//         display: flex;
-//         justify-content: space-between;
-//         // gap: 2%;
-//         margin: 25px 5px;
-//         width: 90%;
-//         padding-top: 2%;
-
-//         .card {
-//             border: none;
-//             box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
-//             border-radius: 30px;
-//             width: 100%;
-//             height: 65vh;
-
-//             div {
-//                 width: 100%;
-
-//                 .card__imgHolder {
-//                     width: 100%;
-//                     height: 50%;
-
-//                     img {
-//                         width: 100%;
-//                         height: 100%;
-//                         border-top-right-radius: 30px;
-//                         border-top-left-radius: 30px;
-//                     }
-//                 }
-
-//                 div {
-//                     height: 50%;
-
-//                     .card__restHolder {
-//                         display: flex;
-//                         padding: 5%;
-    
-//                         .card__restHolder-sub {
-//                            .property-type {
-//                                font-weight: 600;
-//                                padding-bottom:5%;
-//                            }
-
-//                            .property-location {
-//                                  display: flex;
-//                                  gap: 5%;
-//                                  color: gray;
-
-//                                  span {
-//                                      svg {
-//                                          color: #4373AF;
-//                                      }
-//                                  }                        
-//                             }
-//                         }
-
-//                         .property-price__Holder {
-//                             display: flex;
-//                             justify-content: flex-end;
-                            
-//                             span {
-//                                 color: #4373AF;
-//                                 font-weight: 500;
-//                             }
-//                      }
-
-//                     }
-
-//                     .card__footer {
-
-//                         .card__more {
-//                            display: flex;
-//                            justify-content: center;
-//                            align-items: center;
-//                        }
-
-//                        .card__view {
-//                           display: flex;
-//                           justify-content: space-between;
-//                           align-items: center;
-//                          padding:0 5%;
-//                           border-top: 1px solid rgb(228, 226, 226);
-//                           span {
-//                               svg {
-//                                   font-size: 1.3rem;
-//                                   color: gray;
-//                                   cursor: pointer;
-//                               }
-//                           }
-//                       }
-//                     }
-
-                    
-//                 }
-//             }
-//         }
-//     }
-// }

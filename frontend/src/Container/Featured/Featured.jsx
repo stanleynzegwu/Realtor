@@ -42,7 +42,10 @@ const Featured = () => {
                     </div>
                 ))}
             </FadeUpAnimation>
-            <Button val='see all'/>
+            <Link to="/selectedProperty/isFeatured"
+            >
+                <Button val='see all'/>
+            </Link>
         </section>
      );
 }

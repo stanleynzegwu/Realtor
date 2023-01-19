@@ -1,0 +1,105 @@
+.selectedProperty {
+    .allProperty{
+            width: 100%;
+        
+        .allProperty__header {
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+            background: rgb(169, 166, 166);
+            font-weight: 800;
+        }
+        .allProperty__mainContainer{
+            width: 100%;
+            padding: 40px;
+            display: grid;
+            place-items: center;
+            grid-template-columns: 2fr 2fr;
+            gap: 30px;
+            .allProperty__container {
+                width: 100%;
+                background: rgb(169, 166, 166);
+                padding: 30px;
+                border-radius: 10px;
+    
+                .allProperty__img {
+                    border: 15px solid rgb(210, 206, 206);
+                    border-radius: inherit;
+                    width: 100%;
+                    overflow: hidden;
+                    
+                    object-fit: contain;
+                }
+
+                .allProperty__category {
+                    color: rgb(34, 34, 34);
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    display: inline-block;
+                    padding: 10px 0;
+                }
+
+                div {
+                    width: 100%;
+                    display: flex;
+                    gap: 5px;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 2px solid rgb(210, 206, 206);
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    .allProperty__subHeader{
+                        font-size: 600;
+                        
+                    }
+
+                    span {
+                        color: black;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+
+                    @media screen and (max-width:480px) {
+                        .allProperty__subHeader{
+                            font-size: 1rem;
+                            
+                        }
+                    }
+                }
+
+                .allProperty_desc {
+                    font-size: 1.1rem;
+                    line-height: 1.6rem;
+                    padding: 10px 0;
+                    color: black;
+                }
+
+                .allProperty_read{
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+
+            @media screen and (max-width:1024px){
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+    button {
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        width: 80%;
+        padding: 17px;
+        border: none;
+        background: rgb(218, 215, 215);
+        font-weight: 700;
+        font-size: 1.2rem;
+
+        &:hover {
+            background: rgb(189, 187, 187);
+        }
+    }
+}

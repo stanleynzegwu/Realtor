@@ -24,6 +24,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-evenly;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
                 width: 50%;
                 background: #ffff;
                 border-bottom-left-radius: 30px;
@@ -60,7 +62,7 @@
                     padding-top: 10%;
 
                     svg {
-                        font-size: 1.3rem;
+                        font-size: 1.5rem;
                         color: gray;
                         cursor: pointer;
                     }
