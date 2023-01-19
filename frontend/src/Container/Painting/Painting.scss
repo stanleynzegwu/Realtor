@@ -10,10 +10,13 @@
         width: 100%;
         display: flex;
         gap: 20px;
-        margin-top: 40px;
+        margin-top: 60px;
 
         .paintingLeft {
             width: 50%;
+            display: flex;
+            align-items: center;
+            //justify-content: center;
 
             .paintingLeft_container {
                 width: 80%;
@@ -60,6 +63,111 @@
                         width: 300px;
                     }
                 }
+            }
+        }
+
+        .paintingRight {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .paintingRight_headerHolder {
+                margin-bottom: 40px;
+
+                .paintingRight_header {
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    color: #1c5090;
+                    margin-bottom: 10px;
+
+                    .paintingRight_headerIcon {
+                        margin-right: 15px;
+                        background: #527095;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        svg {
+                            
+                            color: #ffff;
+                            
+                        }
+                    }
+
+                }
+
+                .paintingRight_headerText {
+                    color: rgb(98, 96, 96);
+                    font-weight: 600;
+                }
+
+                @media screen and (max-width: 480px) {
+                    .paintingRight_header {
+                        font-weight: 700;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            .paintingRight_groupWrapper {
+                display: grid;
+                place-items: center;
+                grid-template-columns: 2fr 2fr;
+                gap: 30px;
+
+                .paintingRight_group {
+                    padding: 10px;
+                    background: #e9ebf1;
+                    border-radius: 10px;
+                    position: relative;
+                    box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
+
+                    .group_heading {
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    }
+
+                    .group_text {
+                        color: gray;
+                    }
+
+                    .group_icon {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        top: -18px;
+                        left: 1;
+                        background: #527095;
+                        padding: 4px 8px;
+                        border-radius: 5px;
+
+                        svg {
+                            color: #ffff;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+
+                @media screen and (max-width:768px) {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+
+        @media screen and (max-width:1024px){
+            flex-direction: column;
+
+            .paintingLeft {
+                width: 100%;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+
+            .paintingRight {
+                width: 100%;
+                justify-content: center;
             }
         }
     }

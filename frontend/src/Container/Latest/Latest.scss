@@ -7,7 +7,7 @@
     .cardWrapper {
         margin: 30px 5px;
         display: flex;
-        gap: 40px;
+        gap: 20px;
         width: 90%;
 
         .card__holder {
@@ -78,7 +78,6 @@
 
                         .card__view {
                             display: flex;
-                            
                             border-top: 1px solid rgb(228, 226, 226);
 
                             span {
@@ -113,7 +112,12 @@
                 }
             }
         }
-
+        @media screen and (max-width:1024px){
+            .card__holder:last-child {
+                display: none;
+            }
+        }
+        
         @media screen and (max-width:860px){
             flex-direction: column;
             width: 45%;
