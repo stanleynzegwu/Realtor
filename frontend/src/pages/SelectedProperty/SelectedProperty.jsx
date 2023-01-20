@@ -33,7 +33,7 @@ const SelectedProperty = () => {
                     <div className="allProperty__mainContainer">
                         {showProperty && showProperty.map(({_id,category,img,desc,location,propertyType},index) => (
                             <div key={index} className="allProperty__container">
-                                <img src={img[0]} alt="" className="allProperty__img" />
+                                <img src={img[0]} alt="property" className="allProperty__img" />
                                 <span className="allProperty__category">{category}</span>
                                 <div>
                                     <h2 className="allProperty__subHeader">{propertyType}</h2>

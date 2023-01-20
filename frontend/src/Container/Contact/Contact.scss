@@ -1,81 +1,3 @@
-// .contact {
-//     background: rgb(3, 2, 2);
-//     width: 100%;
-//     height: 60vh;
-//     padding: 5%;
-//     display: flex;
-//     justify-content: space-around;
-
-//     .contact__header {
-//         width: 30%;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: space-around;
-//         .contact__logo {
-//             width: 50px;
-//             height: 50px;
-//         }
-
-//         .contact__header-text{
-//             color: #ffff;
-//         }
-//     }
-
-//     .contact__links {
-//         width: 30%;
-//         display: flex;
-//         flex-direction: column;
-
-//         .rest {
-//             .footer-card {
-//                 display: flex;
-//                 align-items: center;
-//                 gap: 4%;
-//                 img {
-//                     width:40px;
-//                     height: 40px;
-//                 }
-    
-//                 a {
-//                     text-decoration: none;
-//                     color: #2f75ca;
-//                 }
-//             }
-//         }
-//     }
-
-//     .subscribe {
-//         width: 30%;
-//         height: 100%;
-        
-//         .heading {
-//             padding-bottom: 10%;
-//         }
-//         // display: flex;
-//         // flex-direction: column;
-
-//         .rest {
-//             display: flex;
-//             flex-direction: column;
-//             height: 80%;
-
-//             p {
-//                 color: #ffff;
-//             }
-//         }
-//     }
-// }
-
-// .heading {
-//     display: flex;
-//     justify-content: center;
-//     p {
-//         text-transform: uppercase;
-//         font-weight: 700;
-//         color: #ffff;
-//     }
-// }
-
 .contact {
     background: rgb(3, 2, 2);
     width: 100%;
@@ -86,30 +8,47 @@
     flex-direction: column;
 
     .main-wrapper {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.5fr;
+        gap: 20px;
         height: 80%;
         .wrapper {
             height: 100%;
-            width: 20%;
+            width: 100%;
 
             .caption {
-                font-size: 1rem;
+                font-size: 1.1rem;
                 font-weight: 700;
                 margin-bottom: 20px;
             }
             .astract-col {
                 color: rgb(159, 157, 157);
             }
+            .quick-links {
+                font-size: 1.2rem;
+                cursor: pointer;
+                margin-bottom: 10px;
+
+                // &:not(:last-child) {
+                //     margin-bottom: 10px;
+                // }
+            }
         }
 
         .contact_handle {
             .logo {
                 height: 100%;
+
+                p {
+                    padding-bottom: 40px;
+                }
                 .icons {
                     display: flex;
                     gap: 15px;
                     svg {
+                        color: #fff;
                         font-size: 1.2rem;
                     }
                 }
@@ -125,6 +64,7 @@
                     border-bottom: 1px solid rgb(159, 157, 157);
 
                     span {
+                        margin-left: 10px;
                         svg {
                             font-size: 1.5rem;
                             color: #ffff;
@@ -136,6 +76,7 @@
                         background-color: inherit;
                         color: #ffff;
                         padding: 10px 15px;
+                        font-size: 1rem;
                     }
                     input:focus, textarea:focus, select:focus{
                         outline: none;
@@ -145,10 +86,12 @@
 
                 button {
                     margin-top: 10px;
-                    padding: 7px 15px;
+                    padding: 13px 15px;
                     background-color: gray;
                     color: #ffff;
                     border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 700;
 
                     &:hover {
                         background-color: rgb(210, 209, 209);
@@ -179,6 +122,13 @@
 
         .astract-col {
             color: rgb(159, 157, 157);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                color: rgb(159, 157, 157);
+            }
         }
     }
     
