@@ -37,7 +37,6 @@ const Header = () => {
       const scrollToElement = () => {
         buy.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
       }
-console.log(form)
     return (
             <main className="header" id='home'>
                 <div className='header__main'>

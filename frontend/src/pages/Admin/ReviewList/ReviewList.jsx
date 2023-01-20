@@ -36,7 +36,7 @@ const ReviewList = () => {
         await UpdateReview(id,form)
     }
 
-const columns = [
+    const columns = [
     { field: '_id', headerName: 'ID', width: 70 },
     { field: 'username', headerName: 'User', width: 150 ,renderCell: (params) => {
         return (

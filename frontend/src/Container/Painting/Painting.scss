@@ -61,6 +61,11 @@
                         width: 300px;
                     }
                 }
+                @media screen and (max-width:380px) {
+                    .paintingLeft_overlay {
+                        width: 300px;
+                    }
+                }
             }
         }
 
@@ -106,6 +111,20 @@
                         font-size: 1.2rem;
                     }
                 }
+                @media screen and (max-width: 380px) {
+                    .paintingRight_header {
+                        font-weight: 700;
+                        font-size: 1rem;
+
+                        .paintingRight_headerIcon {
+                            padding: 3px 6px;
+
+                            svg {
+                                font-size: 1.1rem;
+                            }
+                        }
+                    }
+                }
             }
 
             .paintingRight_groupWrapper {
@@ -117,7 +136,7 @@
                 .paintingRight_group {
                     padding: 10px;
                     background: #e9ebf1;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     position: relative;
                     box-shadow: -4px 7px 24px -10px rgba(50,115,194,0.45);
                     -webkit-box-shadow: -4px 7px 24px -10px rgba(50,115,194,0.45);

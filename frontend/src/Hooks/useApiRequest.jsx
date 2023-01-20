@@ -244,22 +244,26 @@ export const useUpdateProperty = () => {
 export const useSubscription = () => {
     const { dispatch } = useSubscriptionContext()
     const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
     const [success, setSuccess] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
 
     const Subscribe = async (form) => {
         try{
+            setIsLoading(true)
             setError(null)
             const subscriber = await publicRequest.post('/subscribe',form)
+            setIsLoading(false)
             setSuccess(true)
             setSuccessMessageDisplay(true)
-            setTimeout(() => setSuccessMessageDisplay(false),6000)
+            setTimeout(() => setSuccessMessageDisplay(false),5000)
             return subscriber
         }catch(err){
+            setIsLoading(false)
             setError(err.response.data)
         }
     }
-    return { Subscribe,success,successMessageDisplay,error}
+    return { Subscribe,isLoading,success,successMessageDisplay,error}
         
 }
 

@@ -105,6 +105,10 @@
                 color: rgb(99, 99, 99);
 
             }
+            
+            @media screen and (max-width: 768px){
+                padding: 20px;
+            }
         }
         
     }

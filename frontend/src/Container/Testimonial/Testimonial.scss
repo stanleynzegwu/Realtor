@@ -51,6 +51,10 @@
             .client__text {
                 color: gray;
             }
+
+            @media screen and (max-width: 380px){
+                height: 60vh;
+            }
         }
     }
 }

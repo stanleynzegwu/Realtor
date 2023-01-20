@@ -16,6 +16,9 @@
     @media screen and (max-width:520px) {
         padding-top: 16%;
     }
+    @media screen and (max-width:380px) {
+        padding-top: 20%;
+    }
 
     .header__main {
         height: 100%;
@@ -68,6 +71,10 @@
                 p {
                     font-size: 1rem;
                     color: rgb(113, 111, 111);
+                }
+
+                @media screen and (max-width:380px){
+                    margin: 10px 0;
                 }
             }
 

@@ -124,7 +124,7 @@
                         border: none;
                         background-color: rgb(59, 59, 195);
                         color: #ffff;
-                        padding: 5px 10px;
+                        padding: 10px 10px;
                         font-weight: 600;
                         &:hover {
                             background-color: rgb(80, 80, 210);
@@ -158,6 +158,22 @@
                             color: green;
                             text-align: center;
                             font-weight: 500;
+                        }
+                    }
+                }
+                
+                @media screen and (max-width:480px){
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .userUpdateLeft {
+                        width: 100%;
+                    }
+                    .userUpdateRight {
+                        width: 100%;
+
+                        .userUpdateButton {
+                            margin: 20px 0;
                         }
                     }
                 }

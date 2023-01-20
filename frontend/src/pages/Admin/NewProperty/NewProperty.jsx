@@ -71,9 +71,9 @@ const NewProperty = () => {
                 <h1 className="propertyTitle">New Property</h1>
             </div>
 
-            <div className='propertyEditContainer'>
+            <div className='propertyCreateContainer'>
                 <form className="form form-holder" onSubmit={handleSubmit}>
-                    <div className="propertyEditLeft">
+                    <div className="propertyCreateLeft">
                         <div className="fl-holder">
                           <div className="label">
                             <label htmlFor="category" className="form-label">Category</label>
@@ -222,7 +222,7 @@ const NewProperty = () => {
                                 </div>
                             </div>
                     </div>
-                    <div className="propertyEditRight">
+                    <div className="propertyCreateRight">
                         <div className="newPropertyUpload">
                             <div className="newPropertyImgHolder">
                                 {imagesPreview && imagesPreview.map((url,index) => (
