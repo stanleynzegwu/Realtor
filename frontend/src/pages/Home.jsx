@@ -1,4 +1,4 @@
-import { About,Blog,Contact,Featured,Header,Latest,Painting,Testimonial } from '../Container'
+import { About,Blog,Footer,Featured,Header,Latest,Painting,Testimonial } from '../Container'
 import { Navbar,Loader } from '../components';
 import { usePropertyContext } from '../Hooks/usePropertyContext';
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
             <Painting />
             <Blog />
             <Testimonial />
-            <Contact />
+            <Footer />
         </div>
         :
         <Loader className='loader'/>

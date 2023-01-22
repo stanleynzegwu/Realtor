@@ -1,4 +1,4 @@
-.contact {
+.footer {
     background: rgb(3, 2, 2);
     width: 100%;
     padding: 5%;
@@ -7,8 +7,6 @@
     flex-direction: column;
 
     .main-wrapper {
-        // display: flex;
-        // justify-content: space-between;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1.5fr;
         gap: 20px;
@@ -29,14 +27,10 @@
                 font-size: 1.2rem;
                 cursor: pointer;
                 margin-bottom: 10px;
-
-                // &:not(:last-child) {
-                //     margin-bottom: 10px;
-                // }
             }
         }
 
-        .contact_handle {
+        .footer_handle {
             .logo {
                 height: 100%;
 
@@ -49,11 +43,12 @@
                     svg {
                         color: #fff;
                         font-size: 1.2rem;
+                        cursor: pointer;
                     }
                 }
             }
         }
-        .contact_newsletter {
+        .footer_newsletter {
             form {
                 display: flex;
                 flex-direction: column;

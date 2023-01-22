@@ -19,7 +19,6 @@ import { useLogout } from '../../Hooks/useApiRequest'
 const Navbar= () => {
     const { user } = useAuthContext()
     const { logout } = useLogout()
-    // const user = {isAdmin:true}
 
     const [toggle, setToggle] = useState(false)
     return ( 

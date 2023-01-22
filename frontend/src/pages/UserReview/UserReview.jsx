@@ -30,7 +30,6 @@ const UserReview = () => {
         const form = {star:reviewStarIndex,review}
         await CreateReview(userId,form)
     }
-
     return (
         success
         ?

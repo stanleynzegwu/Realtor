@@ -1,5 +1,5 @@
 import { Routes, Route , Navigate } from 'react-router-dom'
-import { Home , Login, SelectedProperty, SingleAbout,
+import { Contact, Home , Login, SelectedProperty, SingleAbout,
 Signup,UserReview,ViewBlog, ViewProperty, DashboardHome } from "./pages"
 import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
@@ -10,6 +10,7 @@ const App = () => {
         <div className='app'>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={user ? <Navigate to='/'/> : <Login />} />
                 <Route path="/signup" element={user ? <Navigate to='/'/> :<Signup />} />
                 <Route path="/adminDashboard/*" element={<DashboardHome />} />

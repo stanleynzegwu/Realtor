@@ -29,8 +29,8 @@
                     width: 450px;
                     height: 450px;
                     background: #527095;
-                    border-top-left-radius: 50%;
-                    border-top-right-radius: 50%;
+                    border-top-left-radius: 9999px;
+                    border-top-right-radius: 9999px;
                     border-bottom-left-radius: 40px;
                     border-bottom-right-radius: 40px;
                     border: 15px solid #ffff;
@@ -96,6 +96,10 @@
                             color: #ffff;
                             
                         }
+                    }
+
+                    @media screen and (max-width:1024px){
+                        text-align: center;
                     }
 
                 }
