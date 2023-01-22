@@ -74,9 +74,9 @@ const getAllSubscription = async (req, res) => {
         subscription = await Subscribe.find();
     }
 
-    res.status(200).json(subscription);
+    return res.status(200).json(subscription);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
