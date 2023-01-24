@@ -500,3 +500,27 @@ export const useUpdateBlog = () => {
     return { UpdateBlog,success, isLoading,error }
         
 }
+
+//CREATE CONTACT(message support)
+export const useCreateContact = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    const createContact = async (form) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            await userRequest.post('/contact',form)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { createContact,isLoading,error,success}
+}

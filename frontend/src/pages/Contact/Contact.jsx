@@ -1,12 +1,33 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiFillPhone } from 'react-icons/ai'
 import { BiCurrentLocation } from 'react-icons/bi'
 import { MdEmail } from 'react-icons/md'
 
 import contactUs from '../../assets/logos/contact_us.png'
+import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation/Animation'
+import { useCreateContact } from '../../Hooks/useApiRequest'
+import { TypingText } from '../../components'
 import './Contact.scss'
 
 const Contact = () => {
+    const { createContact, isLoading, success, error } = useCreateContact()
+    const [formData,setFormData] = useState({name:"",email:"",phoneNumber:0,message:""})
+
+    const handleChange = (e) => {
+        const {name,value} = e.target
+
+        setFormData(prev => {
+            return {...prev,[name]:value}
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        await createContact(formData)
+    }
+
     const navigate = useNavigate()
     const handleGoBack = () => {
         navigate(-1);
@@ -14,31 +35,55 @@ const Contact = () => {
     return ( 
         <div className="contact">
             <div className="contact_wrapper">
-                <div className="contact_left">
+                <FadeDownAnimation className="contact_left">
                     <h1>Leave us a message</h1>
-                    <form className="contact_leftForm">
+                    <form className="contact_leftForm" onSubmit={handleSubmit}>
                         <div className="contact_leftFormItem">
                             <label>Your name</label>
-                            <input placeholder="Enter your Name" type="text" />
+                            <input 
+                                placeholder="Enter your Name"
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className="contact_leftFormItem">
                             <label>Email Address</label>
-                            <input placeholder="Enter your Email Address" type="text" />
+                            <input 
+                                placeholder="Enter your Email Address"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className="contact_leftFormItem">
                             <label>Mobile Number</label>
-                            <input placeholder="Enter your Phone Number" type="text" />
+                            <input 
+                                placeholder="Enter your Phone Number"
+                                type="number"
+                                name="phoneNumber"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                />
                         </div>
                         <div className="contact_leftFormItem">
                             <label>Your Message</label>
-                            <textarea placeholder="Enter your Meassage"
-                                name="" id="" />
+                            <textarea 
+                                placeholder="Enter your Meassage"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <button className='contactBtn'>Leave a meassage</button>
+                        <button disabled={isLoading} className='contactBtn'>Leave a meassage</button>
+                        {error && <TypingText text={error} intervalDuration={50} className='error'/>}
+                        {success && <TypingText text='Message Sent Successfully' intervalDuration={50} className='success'/>}
                     </form>
-                </div>
+                </FadeDownAnimation>
 
-                <div className="contact_right">
+                <FadeUpAnimation className="contact_right">
                     <div className="contact_right__item">
                         <img src={contactUs} alt="contactUs" />
                     </div>
@@ -54,7 +99,7 @@ const Contact = () => {
                         <span><MdEmail/></span>
                         <p className="contact_phone"> realtorsupport@gmail.com</p>
                     </div>
-                </div>
+                </FadeUpAnimation>
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
         </div>

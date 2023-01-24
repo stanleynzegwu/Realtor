@@ -5,6 +5,7 @@ import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
 
 const App = () => {
+
     const { user } = useAuthContext()
     return ( 
         <div className='app'>
