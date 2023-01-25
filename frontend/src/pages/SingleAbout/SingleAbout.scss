@@ -1,79 +1,103 @@
 .container {
-    background: radial-gradient(59.21% 59.21% at 50% 50%, #AED9FB 0%, #EBF4F9 100%);
-    padding: 40px;
-    h1 {
-        text-align: center;
-        padding: 5% 0;
+    //padding: 40px;
 
-        @media screen and (max-width:760px){
-            font-size: 1.5rem;
+    .parent {
+        background-image: linear-gradient(to bottom, black 50%, #ffff 50%);
+
+        &::after {
+            content: '';
+            display: block;
+            justify-content: center;
+            min-height: 100vh;
         }
-        @media screen and (max-width:540px){
-            font-size: 1.2rem;
-            // font-weight: 600;
-        }
-    }
 
-    .sub-container {
-        display: flex;
-        gap:20px;
-
-        &__text {
-            width: 50%;
+        .child {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: sticky;
+            top: 1vmin;
+            mix-blend-mode: exclusion;
 
-            @media screen and (max-width:679px){
-                justify-content: center;
-                text-align: center;
-                width: 100%;
+            h2 {
+                color: #ffff;
+                font-size: 15vmin;
+                font-family: ptsans;
+                text-transform: uppercase;
+            }
+
+            .type_about {
+                color: #ffff;
+                font-size: 2rem;
+                font-weight: 600;
+                font-family: catamaran;
+                padding: 20px 40px;
+                text-transform: lowercase;
+            }
+
+            span {
+                
+                svg {
+                    color: #ffff;
+                    font-size: 1.5rem;
+                    margin-top: 15px;
+                    cursor: pointer;
+                }
             }
         }
-        
-        @media screen and (max-width:679px){
+    }
+
+    .container__sub {
+        padding: 40px;
+        font-size: 1.2rem;
+        white-space: pre-line;
+        font-weight: 600;
+        color: rgb(82, 81, 81);
+
+        .sub-container {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-bottom: 40px;
+            gap:20px;
+    
+            &__text {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+    
+                @media screen and (max-width:679px){
+                    justify-content: center;
+                    text-align: center;
+                    width: 100%;
+                }
+                
+                .sub-container__bold {
+                    margin: 20px;
+                }
+                p {
+                    
+                }
+            }
+
             &__img {
                 width: 100%;
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                flex-wrap: wrap;
-        }
+                justify-content: center;
+                gap: 20px;
 
-            .photo {
-                width: 40%;
-                max-height: 40%;
-            }
-        }
-
-        @media screen and (min-width:680px){
-            &__img {
-                width: 50%;
-                position: relative;
-    
                 .photo {
-                    max-width: 55%;
+                    width: calc((100%/3) - ( 40px/3));
+                    height: 300px;
+                    object-fit: cover;
                     box-shadow: 0 1.5rem 4rem rgba(0,0,0, .4);
-                    position: absolute;
                     z-index: 1;
                     transition: all .2s;
                     outline-offset: 1.5rem;
-    
-                    &1 {
-                        left: 0;
-                        top: -2rem;
-                    }
-    
-                    &2 {
-                        right: 0;
-                        top: 2rem;
-                    }
-    
-                    &3{
-                        left: 20%;
-                        top: 10rem;
-                    }
-    
+
                     &:hover {
                         transform: scale(1.05) translateY(-.5rem);
                         box-shadow: 0 2.5rem 4rem rgba(0,0,0, .5);
@@ -81,40 +105,50 @@
                         //for that green border wen u hover.. class 37. time 12:00
                         outline: 1.2rem solid rgb(196, 191, 191);
                     }
-        
+                }
+                
+                @media screen and (max-width: 768px){
+                    flex-direction: column;
 
-                @media screen and (max-width: 1050px) and (min-width: 860px) {
-                    &1 {
-                        left: 0;
-                        top: 1rem;
+                    .photo {
+                        width: 100%;
+                        height: 350px;
+
+                        @media screen and (max-width: 480px){
+                            height: 50%;
+                        }
                     }
-                  }
-                @media screen and (max-width: 859px) and (min-width: 670px) {
-                    &1 {
-                        left: 0;
-                        top: 5rem;
-                    }
-                    &2 {
-                        right: 0;
-                        top: 7rem;
-                    }
-                    &3{
-                        left: 20%;
-                        top: 12rem;
-                    }
-                  }
+                }
             }
-
+    
+            &:hover &photo:not(:hover){
+                transform: scale(.95);
+            }
+    
+            @media screen and (max-width:1024px) {
+                flex-direction: column-reverse;
+            }
         }
-        }
-            
 
-        &:hover &photo:not(:hover){
-            transform: scale(.95);
-        }
+        .sub-container2 {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 40px;
+            color: rgb(9, 85, 9);
+            font-size: 1.1rem;
 
-        @media screen and (max-width:679px) {
-            flex-direction: column-reverse;
+            span {
+                margin-left: 10px;
+
+                svg {
+                    font-size: 1.5rem;
+                    filter: grayscale(1);
+
+                    &:hover {
+                        filter: grayscale(0);
+                    }
+                }
+            }
         }
     }
 }

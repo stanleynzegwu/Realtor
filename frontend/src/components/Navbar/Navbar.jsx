@@ -65,8 +65,6 @@ const Navbar= () => {
 
                         {toggle && (
                             <div
-                                whileInView={{ x: [300, 0]}} /* meaning it"s going to take 300px */
-                                transition={{ duration: 0.85, ease: 'easeOut' }}
                             >
 
                                 <HiX onClick={() => setToggle(false)}/>
@@ -90,7 +88,7 @@ const Navbar= () => {
                                     {
                                         user ? 
                                         <li>
-                                            <Link onClick={logout} href=""><TbLogout />Logout</Link>
+                                            <Link onClick={logout}><TbLogout />Logout</Link>
                                         </li>
                                         :
                                         <>  <li>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom';
 
 export const UseId = () => {
     const [id,setId] = useState(0)
@@ -20,7 +21,15 @@ export const ScrollToTop = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+}
 
-    return (ScrollToTop)
+export const useHandleGoBack = () => {
+    const navigate = useNavigate()
+
+    const handleGoBack = () => {
+        navigate(-1);
+    }
+
+    return handleGoBack
 }
 

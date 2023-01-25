@@ -6,7 +6,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 
 //INTERNAL IMPORTS
-import { SetPasswordVisibility, ScrollToTop } from '../../Hooks/customHook'
+import { SetPasswordVisibility, ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { useLogin } from '../../Hooks/useApiRequest'
 import { TypingText } from '../../components'
 import signinImg from '../../assets/logos/signin.png'
@@ -15,6 +15,7 @@ import './Login.scss'
 const Login = () => {
     ScrollToTop()
     const {isVisible, changeVisibility} = SetPasswordVisibility()
+    const handleGoBack = useHandleGoBack()
     const {Login, error, isLoading} = useLogin()
     const [formData,setFormData] = useState({
         email: "",
@@ -98,7 +99,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <button className='backBtn'>Back</button>
+            <button onClick={handleGoBack} className='backBtn'>Back</button>
         </div>
         
     );
