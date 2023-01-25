@@ -1,9 +1,14 @@
 const Contact = require('../models/Contact')
 
 const create = async (req,res) => {
+    const { name, email, phoneNumber, message} = req.body
     const newContact = new Contact(req.body)
 
     try{
+        if(!name || !email || !phoneNumber || !message){
+          return res.status(401).json("All Input Fields Should Be Filled")
+        }
+
         const savedContact = await newContact.save()
         return res.status(200).json(savedContact)
 

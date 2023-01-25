@@ -42,7 +42,9 @@ const Footer = () => {
                     <p className='quick-links astract-col'>Contact</p>
                     <p className='quick-links astract-col'>Team</p>
                     <p className='quick-links astract-col'>Career</p>
-                    <p className='quick-links astract-col'>Blogs</p>
+                    <Link to='/viewBlog/allBlog'>
+                        <p className='quick-links astract-col'>Blogs</p>
+                    </Link>
                 </FadeDownAnimation>
                 <FadeUpAnimation className="footer_help wrapper">
                     <h3 className='caption'>Help & Support</h3>

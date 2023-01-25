@@ -1,16 +1,21 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
 
 import './UserReview.scss'
+import { MdKeyboardBackspace } from 'react-icons/md'
 import illustration from '../../assets/logos/reviewIllustration.svg'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { useUserReview } from '../../Hooks/useApiRequest' 
+import { ScrollToTop } from '../../Hooks/customHook'
+import { TypingText } from '../../components'
 
 const UserReview = () => {
+    ScrollToTop()
+    const navigate = useNavigate()
     const { user } = useAuthContext()
     const userId = user?.data._id
-    const { CreateReview, error, setError, success } = useUserReview()
+    const { CreateReview,isLoading, error, setError, success } = useUserReview()
     const [hoverIndex,setHoverIndex] = useState(0)
     const [reviewStarIndex,setReviewStarIndex] = useState(0)
     const [review,setReview] = useState("")
@@ -30,6 +35,11 @@ const UserReview = () => {
         const form = {star:reviewStarIndex,review}
         await CreateReview(userId,form)
     }
+
+    const handleGoBack = () => {
+        navigate(-1);
+    }
+
     return (
         success
         ?
@@ -54,10 +64,12 @@ const UserReview = () => {
         :
         <div className="userReview">
             <div className="reviewLeft">
+                <span onClick={handleGoBack} className='reviewLeft__goBack'><MdKeyboardBackspace />Back</span>
+                <p className='reviewLeft__heading'>How many stars would it be?</p>
+                <p className='reviewLeft__text'>Take a moment to provide an honest review and rating of our service.Your feedback helps us to improve and better serve our customers. Thank you!</p>
                 <img src={illustration} alt="review-illustarion" className='review_img'/>
             </div>
             <div className="reviewRight">
-                <h1>Your review makes us serve you better</h1>
                 <div className='starMainContainer'>
                     <p>How was your experience ?</p>
                     <ul className="starContainer">
@@ -91,7 +103,12 @@ const UserReview = () => {
                     className={review.length > 230 ? 'yellow' : ''}
                     >{`${review.length}/250`}
                     </span>
-                    <button type='submit'>SUBMIT</button>
+                    <button disabled={isLoading} type='submit'>SUBMIT</button>
+                    {
+                      error
+                      &&
+                      <TypingText text={error} intervalDuration={30} className='error'/>
+                    }
                 </form>
             </div>
         </div>

@@ -8,9 +8,11 @@ import contactUs from '../../assets/logos/contact_us.png'
 import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import { useCreateContact } from '../../Hooks/useApiRequest'
 import { TypingText } from '../../components'
+import { ScrollToTop } from '../../Hooks/customHook'
 import './Contact.scss'
 
 const Contact = () => {
+    ScrollToTop()
     const { createContact, isLoading, success, error } = useCreateContact()
     const [formData,setFormData] = useState({name:"",email:"",phoneNumber:0,message:""})
 

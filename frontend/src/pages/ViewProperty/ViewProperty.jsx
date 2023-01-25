@@ -2,9 +2,11 @@ import { useParams,useNavigate } from 'react-router-dom'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
 
 import './ViewProperty.scss'
+import { ScrollToTop } from '../../Hooks/customHook'
 import { formatPrice } from '../../utilityFunctions';
 
 const ViewProperty = () => {
+    ScrollToTop()
     const { properties } = usePropertyContext()
     const navigate = useNavigate()
     const { id } = useParams()

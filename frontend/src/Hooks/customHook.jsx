@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export const UseId = () => {
     const [id,setId] = useState(0)
@@ -14,5 +14,13 @@ export const SetPasswordVisibility = () => {
 
     const changeVisibility = () =>  setVisible(prev => !prev)
     return {isVisible, changeVisibility}
+}
+
+export const ScrollToTop = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    return (ScrollToTop)
 }
 

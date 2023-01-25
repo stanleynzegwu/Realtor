@@ -1,9 +1,11 @@
 import { Link,useLocation,useNavigate } from 'react-router-dom';
 
 import './SelectedProperty.scss'
+import { ScrollToTop } from '../../Hooks/customHook'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
 
 const SelectedProperty = () => {
+    ScrollToTop()
     const navigate = useNavigate()
     const { properties } = usePropertyContext()
     const { pathname } = useLocation()

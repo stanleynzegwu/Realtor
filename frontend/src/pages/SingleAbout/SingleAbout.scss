@@ -1,6 +1,6 @@
 .container {
     background: radial-gradient(59.21% 59.21% at 50% 50%, #AED9FB 0%, #EBF4F9 100%);
-    height: 100vh;
+    padding: 40px;
     h1 {
         text-align: center;
         padding: 5% 0;
@@ -16,7 +16,7 @@
 
     .sub-container {
         display: flex;
-        gap:1%;
+        gap:20px;
 
         &__text {
             width: 50%;

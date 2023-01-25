@@ -1,17 +1,35 @@
 .userReview {
-    width: 100%;
-    height: 100vh;
-    padding: 20px 40px;
+    width: 80%;
     display: flex;
-    gap: 50px;
+    gap: 20px;
+    margin: 50px auto;
+    box-shadow: -4px 7px 24px -10px rgba(0,0,0,0.50);
 
     .reviewLeft{
-        width: 45%;
+        width: 50%;
         background: #d2caa2;
-        border-bottom-right-radius: 60%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        padding: 30px;
 
+        .reviewLeft__goBack {
+            display: flex;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .reviewLeft__heading {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 20px 0;
+            color: rgb(76, 73, 73);
+        }
+        .reviewLeft__text {
+            font-weight: 500;
+            color: rgb(76, 73, 73);
+            margin-bottom: 20px;
+        }
         .review_img {
             width: 75%;
             height: 100%;
@@ -21,42 +39,22 @@
                 height: 100%;
             }
         }
-
-        @media  screen and (max-width:722px) {
-            display: none;
-        }
     }
     .reviewRight{
-        padding: 50px 0;
-        width: 80%;
+        padding: 60px 30px;
+        width: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
-        h1 {
-            color: rgb(101, 96, 96);
-
-            @media  screen and (max-width:1040px) {
-                font-size: 1.5rem;
-            }
-
-            @media  screen and (max-width:877px) {
-                font-size: 1.3rem;
-            }
-            @media  screen and (max-width:772px) {
-                font-size: 1.2rem;
-            }
-            @media  screen and (max-width:1040px) {
-                font-size: 1.1rem;
-            }
-            
-        }
+        
         .starMainContainer{
             padding: 10px;
+            margin-bottom: 20px;
             border-radius: 10px;
             box-shadow:  0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
-            width: 50%;
+            width: 60%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,7 +62,7 @@
             p {
                 color: rgb(173, 172, 172);
                 margin-bottom: 20px;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 
             }
             .starContainer{
@@ -86,14 +84,14 @@
             @media screen and (max-width:1030px) {
                 width: 80%;
             }
-            @media  screen and (max-width:530px) {
+            @media  screen and (max-width:950px) {
                 width: 100%;
             }
             
         }
 
         form {
-            width: 70%;
+            width: 100%;
 
             @media screen and (max-width:1030px) {
                 width: 100%;
@@ -112,7 +110,9 @@
             }
 
             span {
+                display: inline-block;
                 color: black;
+                margin-bottom: 10px;
             }
             .yellow {
                 color: #e5a523;
@@ -138,10 +138,24 @@
                     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
                 }
             }
-        }
 
-        @media  screen and (max-width:530px) {
-            width: 90%;
+            button:disabled {
+                opacity: 0.65;
+                cursor: progress;
+              }
+            .error {
+                margin-top: 40px;
+                padding: 5px 25px;
+                border-radius: 10px;
+                width: 100%;
+                border: 1px solid rgb(208, 41, 41);
+                background: rgb(245, 230, 230);
+                p {
+                    color: rgb(208, 41, 41);
+                    text-align: center;
+                    font-weight: 500;
+                }
+            }
         }
         
     }
@@ -149,6 +163,22 @@
         justify-content: center;
     }
     
+    @media  screen and (min-width:768px) {
+        .reviewLeft {
+            border-bottom-right-radius: 9999px;
+        }
+    }
+    @media  screen and (max-width:768px) {
+        flex-direction: column;
+
+        .reviewLeft {
+            width: 100%;
+        }
+
+        .reviewRight {
+            width: 100%;
+        }
+    }
 }
 .reviewSuccess {
     width: 100%;
