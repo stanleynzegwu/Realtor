@@ -524,3 +524,28 @@ export const useCreateContact = () => {
 
     return { createContact,isLoading,error,success}
 }
+
+//CREATE SELL PROPERTY/LAND
+export const useCreateSellProperty = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    // const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    // const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
+
+    const CreatePropertyForSale = async (property) => {
+        try{
+            const res = await userRequest.post("/sellProperty",property)
+            console.log(res)
+            setIsLoading(false)
+            setSuccess(true)
+            // setSuccessMessageDisplay(true)
+            // setTimeout(() => setSuccessMessageDisplay(false),6000)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {CreatePropertyForSale, isLoading, setError, error,setIsLoading}
+}

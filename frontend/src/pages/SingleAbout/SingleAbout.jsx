@@ -108,7 +108,7 @@ const SingleAbout = () => {
         When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
         Additionally, it is important to ensure that all legal documents are in order before making any purchase. 
         With careful planning and research, buying landed properties can be a rewarding experience.`,
-        more:'click the icon to fill the form',url: 'selectedProperty/allProperties',
+        more:'click the icon to fill the form',url: '/sellPropertyForm',
         describe:`At [Your Company Name], we understand that owning a landed property or a land can be a valuable asset, but it may also come with its own set of challenges. Whether you're looking to downsize, upgrade, or simply need to sell your property or land quickly, we're here to help.
 
         One of the key services we offer at [Your Company Name] is the ability to purchase landed properties and lands from our clients. We specialize in buying properties and lands in prime locations, with easy access to transportation, amenities, and other important services. This ensures that the properties and lands we purchase will retain their value over time and provide a comfortable and convenient living or working environment for our future buyers.

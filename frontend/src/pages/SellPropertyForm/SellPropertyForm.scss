@@ -1,0 +1,160 @@
+.sellProperty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+
+    .sellProperty_wrapper {
+        height: 100%;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        margin: 40px auto;
+        gap: 20px;
+        box-shadow: -4px 7px 24px -10px rgba(50,115,194,0.45);
+
+        .sellProperty_left {
+            background: #ffff;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+    
+            h1 {
+                font-size: 1.5rem;
+                font-weight: 800;
+                margin: 30px 0;
+            }
+    
+            form {
+                width: 100%;
+                .form_field {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .formImgHolder {
+                        .form_img {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 10px;
+                            object-fit: cover;
+                            margin-right: 20px;
+                        }
+                    }
+
+                    label {
+                        font-weight: 600;
+                        .reqOrOpt {
+                            color: gray;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .label_imgUpload {
+                        display: flex;
+                        align-items: center;
+
+                        filter: grayscale(1);
+
+                        &:hover {
+                            filter: grayscale(0);
+                        }
+                    }
+                    input,select {
+                        padding: 10px;
+                        border: 1px solid rgb(152, 151, 151);
+                    }
+
+                    &:not(:last-child) {
+                        margin-bottom: 25px;
+                    }
+                }
+
+                .select_group {
+                    width: 100%;
+                    display: flex;
+                    border: 1px solid rgb(152, 151, 151);
+                    margin-bottom: 25px;
+
+                    select,
+                    select:focus{
+                        width: calc(100%/2);
+                        padding: 10px;
+                        border: none;
+                        color: gray;
+                        outline: none;
+
+                        &:not(:last-child){
+                            border-right: 1px solid gray;
+                        }
+                    }
+                }
+
+                .contactInfo_text {
+                    text-transform: uppercase;
+                    font-weight: 800;
+                    font-size: 1.2rem;
+                    margin-bottom: 30px;
+                }
+
+                .submitBtn {
+                    width: 100%;
+                    padding: 11px 0;
+                    font-weight: 700;
+                    background: #20336a;
+                    color: #ffff;
+                    border: none;
+                    margin: 20px 0;
+                    transition: .2s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #394a7c;
+                    }
+                }
+
+                button:disabled {
+                    opacity: 0.65;
+                    cursor: progress;
+                }
+                
+            }
+            
+        }
+        .sellProperty_right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            color: #ffff;
+            background: #20336a;
+            padding: 20px;
+    
+            .sellProperty_illustation {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width:1024px){
+            border-top-right-radius: calc(9999px/2);
+            border-bottom-left-radius: 9999px;
+        }
+        @media screen and (max-width:1024px){
+            flex-direction: column;
+
+            .sellProperty_left {
+                width: 100%;
+            }
+            .sellProperty_right {
+                width: 100%;
+            }
+        }
+    }
+    
+}
