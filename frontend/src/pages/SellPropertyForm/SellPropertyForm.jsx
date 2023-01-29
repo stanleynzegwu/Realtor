@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
 
 import "./SellPropertyForm.scss"
@@ -6,10 +7,12 @@ import forSaleImg from '../../assets/logos/for_sale.png'
 import { useCreateSellProperty } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
 import { ScrollToTop } from '../../Hooks/customHook'
+import { TypingText } from '../../components'
 
 const SellPropertyForm = () => {
     ScrollToTop()
-    const { CreatePropertyForSale,isLoading,setError,error,setIsLoading } = useCreateSellProperty()
+    const { CreatePropertyForSale,isLoading,success, setError, error,
+    setIsLoading, errorMessageDisplay,seterrorMessageDisplay} = useCreateSellProperty()
     
 
     const [imagesFile,setImagesFile] = useState([])
@@ -47,7 +50,7 @@ const SellPropertyForm = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault()
-      const {property_type,location,plotSize,img,description,
+      const {property_type,location,plotSize,description,
       asking_price,documents,fullname,email,number} = formData
       setError(null)
       
@@ -56,15 +59,36 @@ const SellPropertyForm = () => {
         || !asking_price || !documents || !fullname || !email || !number) {
         setError("All Required Input Field Must Be Filled");
         console.log(error)
-        // seterrorMessageDisplay(true)
-        // setTimeout(() => seterrorMessageDisplay(false),6000)
+        seterrorMessageDisplay(true)
+        setTimeout(() => seterrorMessageDisplay(false),6000)
         return;
       }
       setIsLoading(true)
       uploadFiles(imagesFile,imagesPreview,CreatePropertyForSale,formData)
      }
 
-    return ( 
+    return (
+        success
+        ?
+        <div className='success'>
+            <div className='success__emojiHolder'>
+                <span className="thumbs-up">
+                  👍
+                </span>
+            </div>
+            <div className='success__messageHolder'>
+                <h3>
+                    Thank You
+                </h3>
+                <p>
+                    Your Form was successfully submitted, we'll get back to you soon.
+                </p>
+            </div>
+            <Link to='/'>
+                <span>Back to home</span>
+            </Link>
+        </div>
+        :
         <div className="sellProperty">
             <div className="sellProperty_wrapper">
                 <div className="sellProperty_left">
@@ -140,42 +164,7 @@ const SellPropertyForm = () => {
                                 value={formData.features}
                             />
                         </div>
-                        {/* <div className='form_field'>
-                            <select
-                                name="zoning"
-                                id="zoning"
-                            >   
-                                <option value='' disabled>Zoning(if land)</option>
-                                <option value='residential'>residential</option>
-                                <option value='commercial'>commercial</option>
-                                <option value='agricultural'>agricultural</option>
-                                <option value='industrial'>industrial</option>
-                            </select>
-                        </div>
-                        <div className='form_field'>
-                            <select
-                                name="topography"
-                                id="topography"
-                            >   
-                                <option value='' disabled>Topography(if land)</option>
-                                <option value='flat'>flat</option>
-                                <option value='sloping'>sloping</option>
-                                <option value='hilly'>hilly</option>
-                                <option value='mountainous'>mountainous</option>
-                            </select>
-                        </div>
-                        <div className='form_field'>
-                            <select
-                                name="soil_Type"
-                                id="soil_Type"
-                            >   
-                                <option value='' disabled>Soil Type(if land)</option>
-                                <option value='clay'>clay</option>
-                                <option value='sand'>sand</option>
-                                <option value='loam'>loam</option>
-                                <option value='rocky'>rocky</option>
-                            </select>
-                        </div> */}
+                        <p className="dropdownLabel">Select from the dropdown menus (if Land)</p>
                         <div className='select_group'>
                             <select
                                 name="zoning"
@@ -183,7 +172,7 @@ const SellPropertyForm = () => {
                                 value={formData.zoning}
                                 onChange={handleChange}
                             >   
-                                <option value='Zoning' disabled>Zoning(if land)</option>
+                                <option value='' disabled>Zoning(if land)</option>
                                 <option value='residential'>residential</option>
                                 <option value='commercial'>commercial</option>
                                 <option value='agricultural'>agricultural</option>
@@ -296,6 +285,12 @@ const SellPropertyForm = () => {
                             />
                         </div>
                         <button disabled={isLoading} className="submitBtn">Submit</button>
+                        {error
+                          &&
+                          errorMessageDisplay
+                          &&
+                          <TypingText text={error} intervalDuration={50} className='error'/>
+                        }
                     </form>
                 </div>
 

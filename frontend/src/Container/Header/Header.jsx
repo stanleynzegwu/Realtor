@@ -48,8 +48,8 @@ const Header = () => {
                         </div>
                         <div className='headerBtn_holder'>
                             <button onClick={scrollToElement} className='headerBtn'>BUY</button>
-                            <button className='headerBtn'>SELL</button>
-                            <button className='headerBtn'>HIRE</button>
+                            <Link className='headerBtn' to={`/about/sell`}><button className='btn2'>SELL</button></Link>
+                            <Link className='headerBtn' to={`/about/hire`}><button className='btn3'>HIRE</button></Link>
                         </div>
                     </div>
                     <div data-aos="fade-down" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-once="false" class="aos-init aos-animate" className='header__main-img'>

@@ -530,8 +530,7 @@ export const useCreateSellProperty = () => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
-    // const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
-    // const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
 
     const CreatePropertyForSale = async (property) => {
         try{
@@ -539,13 +538,11 @@ export const useCreateSellProperty = () => {
             console.log(res)
             setIsLoading(false)
             setSuccess(true)
-            // setSuccessMessageDisplay(true)
-            // setTimeout(() => setSuccessMessageDisplay(false),6000)
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
 
     }
-    return {CreatePropertyForSale, isLoading, setError, error,setIsLoading}
+    return {CreatePropertyForSale, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }

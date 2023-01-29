@@ -78,6 +78,52 @@
                 }
             }
 
+            // .headerBtn_holder {
+            //     background: #3478cd;
+            //     width: 270px;
+            //     border-radius: 15px;
+            //     border: none;
+            //     &:hover {
+            //         background: #3c7ecf;
+            //     }
+            //     .headerBtn {
+            //         width: calc(270px/3);
+            //         padding: 15px;
+            //         cursor: pointer;
+            //         border: inherit;
+            //         font-size: 1.1rem;
+            //         color: #ffff;
+                    
+            //         &:active {
+            //             box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+            //         }
+
+            //         &:nth-child(1){
+            //             border-top-left-radius: inherit;
+            //             border-bottom-left-radius: inherit;
+            //             background: #528952;
+            //             &:hover {
+            //                 background: #5f9c5f;
+            //             }
+            //         }
+            //         &:nth-child(2){
+            //             border-bottom-right-radius: 20px;
+            //             background: rgb(145 97 97);
+            //             &:hover {
+            //                 background: rgb(158, 104, 104);
+            //             }
+            //         }
+            //         &:nth-child(3){
+            //             border-top-right-radius: inherit;
+            //             border-bottom-right-radius: inherit;
+            //             background: inherit;
+            //             &:hover {
+            //                 background: inherit;
+            //             }
+            //         }
+            //     }
+            // }
+            
             .headerBtn_holder {
                 background: #3478cd;
                 width: 270px;
@@ -86,14 +132,23 @@
                 &:hover {
                     background: #3c7ecf;
                 }
-                .headerBtn {
+                
+                button {
                     width: calc(270px/3);
+                    color: #ffff;
+                    background: none;
+                    border: none;
+                    font-size: 1.1rem;
                     padding: 15px;
+                    height: 100%;
+                    &:active {
+                        box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+                    }
+                }
+                .headerBtn {
+                    height: 100%;
                     cursor: pointer;
                     border: inherit;
-                    font-size: 1.1rem;
-                    color: #ffff;
-                    
                     &:active {
                         box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
                     }
@@ -122,7 +177,23 @@
                         }
                     }
                 }
+                .btn2{
+                        border-bottom-right-radius: 20px;
+                        background: rgb(145 97 97);
+                        &:hover {
+                            background: rgb(158, 104, 104);
+                        }
+                }
+                .btn3{
+                        border-top-right-radius: inherit;
+                        border-bottom-right-radius: inherit;
+                        background: inherit;
+                        &:hover {
+                            background: inherit;
+                        }
+                }
             }
+            
 
             @media screen and (max-width:750px){
                 .headerLeft_sub{

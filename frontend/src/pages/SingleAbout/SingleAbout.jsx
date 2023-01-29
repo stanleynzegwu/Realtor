@@ -118,7 +118,7 @@ const SingleAbout = () => {
         Another important aspect of our service is that we purchase properties and lands in any condition, whether it's move-in ready or requires repairs. We understand that not everyone has the time or resources to make repairs before selling their property or land, that's why we are ready to purchase it as it is.
         
         At [Your Company Name], we are committed to providing our clients with the best possible experience when it comes to selling their landed properties or lands. We understand that every client's situation is unique, and we work closely with them to understand their needs and preferences. Our goal is to make the selling process as easy and stress-free as possible, while also providing fair market value for their property or land.`},
-        {whatWeDo:'HIRE PAINTERS',aboutId:'hire',header:`Hire Experienced Painters That Will Give Your Building A Glow`,subHeading:`hire sexperienced painters`,
+        {whatWeDo:'HIRE PAINTERS',aboutId:'hire',header:`Hire Experienced Painters That Will Give Your Building A Glow`,subHeading:`hire experienced painters`,
         img:{photo1:building1,photo2:building2,photo3:building3},intro:`Buying landed properties such as land and buildings can be a great investment for both personal living and financial gain. 
         Landed properties are typically more expensive than other types of real estate, but they can provide a stable source of income and appreciation over time. 
         When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
