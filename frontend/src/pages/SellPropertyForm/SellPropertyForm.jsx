@@ -6,11 +6,12 @@ import "./SellPropertyForm.scss"
 import forSaleImg from '../../assets/logos/for_sale.png'
 import { useCreateSellProperty } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
-import { ScrollToTop } from '../../Hooks/customHook'
+import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { TypingText } from '../../components'
 
 const SellPropertyForm = () => {
     ScrollToTop()
+    const handleGoBack = useHandleGoBack()
     const { CreatePropertyForSale,isLoading,success, setError, error,
     setIsLoading, errorMessageDisplay,seterrorMessageDisplay} = useCreateSellProperty()
     
@@ -24,7 +25,7 @@ const SellPropertyForm = () => {
         asking_price:"",documents:"",additional_info:"",fullname:"",
         soil_Type:"",email:"",number:""
     })
-    //console.log(formData)
+
     function handleChange(e){
         let {name,value} = e.target
         setFormData(data => {
@@ -299,6 +300,7 @@ const SellPropertyForm = () => {
                     <img className="sellProperty_illustation" src={forSaleImg} alt="forSale" />
                 </div>
             </div>
+            <button onClick={handleGoBack} className='backBtn'>Back</button>
         </div>
      );
 }

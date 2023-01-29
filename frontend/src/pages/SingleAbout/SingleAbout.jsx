@@ -124,7 +124,7 @@ const SingleAbout = () => {
         When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
         Additionally, it is important to ensure that all legal documents are in order before making any purchase. 
         With careful planning and research, buying landed properties can be a rewarding experience.`,
-        more:'click the icon to fill the form',url: 'selectedProperty/allProperties',
+        more:'click the icon to fill the form',url: '/hirePaintersForm',
         describe:`At our company, we offer building painting services that are second to none. Our experienced team of painters specialize in both interior and exterior painting, and are dedicated to providing excellent customer service. 
         
         We take pride in our attention to detail and commitment to customer satisfaction, so you can trust us to deliver a quality paint job. 
