@@ -26,6 +26,10 @@
                 font-size: 15vmin;
                 font-family: ptsans;
                 text-transform: uppercase;
+
+                @media screen and (max-width:480px) {
+                    font-size: 2rem;
+                }
             }
 
             .type_about {
@@ -35,6 +39,10 @@
                 font-family: catamaran;
                 padding: 20px 40px;
                 text-transform: lowercase;
+
+                @media screen and (max-width:480px) {
+                    font-size: 1.7rem;
+                }
             }
 
             span {

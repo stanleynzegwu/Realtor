@@ -546,3 +546,25 @@ export const useCreateSellProperty = () => {
     }
     return {CreatePropertyForSale, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
+
+//CREATE HIREPAINTER REQUEST
+export const useCreateHirePainterRequest = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
+
+    const CreateHirePainterRequest = async (hirePainterForm) => {
+        try{
+            const res = await userRequest.post("/hirePainter",hirePainterForm)
+            console.log(res)
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {CreateHirePainterRequest, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}

@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 import forSaleImg from '../../assets/logos/for_sale.png'
+import { useCreateHirePainterRequest } from '../../Hooks/useApiRequest'
+import { uploadFiles } from '../../firebase'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
+import { TypingText } from '../../components'
 import './HirePaintersForm.scss'
 
 const HirePaintersForm = () => {
     ScrollToTop()
     const handleGoBack = useHandleGoBack()
+    const { CreateHirePainterRequest,isLoading,success, setError, error,
+        setIsLoading, errorMessageDisplay,seterrorMessageDisplay} = useCreateHirePainterRequest()
 
     const [imagesFile,setImagesFile] = useState([])
     //for image preview
@@ -19,7 +25,7 @@ const HirePaintersForm = () => {
         budget:"",special_request:"",customer_name:"",customer_email:"",
         customer_number:""
     })
-    console.log(formData)
+
     function handleChange(e){
         let {name,value} = e.target
         setFormData(data => {
@@ -43,12 +49,52 @@ const HirePaintersForm = () => {
         setImagesPreview(selectedFIles);
       }
 
-    return ( 
+      const handleSubmit = async (e) => {
+        e.preventDefault()
+        const {address,sqft,painting_service,paint_provider,
+        consultation,budget,customer_name,customer_email,customer_number} = formData
+        setError(null)
+        
+        // Check that all form fields are filled out
+        if(!address || !sqft || !painting_service || !paint_provider || !consultation 
+            || !budget || !imagesFile.length || !customer_name || !customer_email || !customer_number) {
+          setError("All Required Input Field Must Be Filled");
+          console.log(error)
+          seterrorMessageDisplay(true)
+          setTimeout(() => seterrorMessageDisplay(false),6000)
+          return;
+        }
+        setIsLoading(true)
+        uploadFiles(imagesFile,imagesPreview,CreateHirePainterRequest,formData)
+       }
+
+    return (
+        success
+        ?
+        <div className='success'>
+            <div className='success__emojiHolder'>
+                <span className="thumbs-up">
+                  👍
+                </span>
+            </div>
+            <div className='success__messageHolder'>
+                <h3>
+                    Thank You
+                </h3>
+                <p>
+                    Your Form was successfully submitted, we'll get back to you soon.
+                </p>
+            </div>
+            <Link to='/'>
+                <span>Back to home</span>
+            </Link>
+        </div>
+        :
         <div className="hirePainters">
             <div className="hire_wrapper">
                 <div className="hire_left">
                     <h1>Bring Your Property to Life - Request a Painter Today</h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="form_field">
                             <label>Address of Property <span className='reqOrOpt'>(required)</span></label>
                             <input 
@@ -204,13 +250,13 @@ const HirePaintersForm = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <button  className="submitBtn">Submit</button>
-                        {/* {error
+                        <button disabled={isLoading} className="submitBtn">Submit</button>
+                        {error
                           &&
                           errorMessageDisplay
                           &&
                           <TypingText text={error} intervalDuration={50} className='error'/>
-                        } */}
+                        }
                     </form>
                 </div>
 

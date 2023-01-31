@@ -123,6 +123,20 @@
                         background: #394a7c;
                     }
                 }
+                button:disabled {
+                    opacity: 0.65;
+                    cursor: progress;
+                }
+                .error {
+                    padding: 5px 10px;
+                    border: 1px solid rgb(208, 41, 41);
+                    background: rgb(245, 230, 230);
+                    p {
+                        color: rgb(208, 41, 41);
+                        text-align: center;
+                        font-weight: 500;
+                    }
+                }
 
                 button:disabled {
                     opacity: 0.65;

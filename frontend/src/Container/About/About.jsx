@@ -16,7 +16,6 @@ const About = () => {
             id='about'
             >
             <FadeUpAnimation className='about__text heading-text--sm'>WHAT WE DO</FadeUpAnimation>
-            {/* <p className='about__text heading-text--sm'>WHAT WE DO</p> */}
             <FadeUpAnimation  className='about__header heading-text--lg'>our main focus</FadeUpAnimation>
             <CardHolder>
                 {[{icon:<ImHome />,about:'Buy Property',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd',id:'buy'},
