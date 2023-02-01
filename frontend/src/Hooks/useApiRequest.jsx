@@ -525,6 +525,30 @@ export const useCreateContact = () => {
     return { createContact,isLoading,error,success}
 }
 
+//CREATE BUYPROPERTY REQUEST
+export const useCreateBuyPropertyRequest = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    const createBuyPropertyRequest = async (form) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            await userRequest.post('/buyProperty',form)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { createBuyPropertyRequest,isLoading,error,success }
+}
+
 //CREATE SELL PROPERTY/LAND
 export const useCreateSellProperty = () => {
     const [error, setError] = useState(null)

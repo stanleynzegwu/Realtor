@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
-import forSaleImg from '../../assets/logos/for_sale.png'
+import painterIllustration from '../../assets/logos/painterIllustration.png'
 import { useCreateHirePainterRequest } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
@@ -262,7 +262,15 @@ const HirePaintersForm = () => {
 
                 <div className="hire_right">
                     <p className="hire_heading">Ready to Sell Your Property? Fill out the Form</p>
-                    <img className="hire_illustation" src={forSaleImg} alt="forSale" />
+                    <p className="hire_sub-text">A dash of the masterful brushstroke from our skilled painter will imbue your structure with a radiant gleam, 
+                    transforming it into a visually stunning masterpiece that will leave a lasting impression on everyone who sees it.<br/>
+                    <br/>
+                    Our painter's expertise in color theory, composition, and technique will elevate the look and feel of your building, 
+                    making it stand out in a sea of bland, unremarkable structures.<br/>
+                    <br/>
+                    Whether you're looking to revamp a tired facade or simply add a touch of flair, 
+                    our painter has the skills and vision to bring your vision to life.</p>
+                    <img className="hire_illustation" src={painterIllustration} alt="forSale" />
                 </div>
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>

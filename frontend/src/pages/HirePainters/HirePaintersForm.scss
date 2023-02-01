@@ -160,12 +160,21 @@
             width: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+            gap: 50px;
             color: #ffff;
             background: #20336a;
             padding: 20px;
-    
+            
+            .hire_heading {
+                font-weight: 800;
+                font-size: 1.2rem;
+            }
+
+            .hire_sub-text {
+                font-weight: 500;
+            }
             .hire_illustation {
                 width: 100%;
             }
@@ -187,6 +196,20 @@
             }
             .hire_right {
                 width: 100%;
+            }
+        }
+
+        @media screen and (max-width:480px){
+            .hire_left {
+                h1 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .hire_right {
+                .hire_heading {
+                    font-size: 1rem;
+                }
             }
         }
     }

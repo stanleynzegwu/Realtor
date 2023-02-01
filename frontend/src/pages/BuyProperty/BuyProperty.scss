@@ -1,0 +1,161 @@
+.buyProperty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .buyProperty_wrapper {
+        margin: 40px;
+        height: 100%;
+        width: 80%;
+        display: flex;
+        gap: 40px;
+        box-shadow: -4px 7px 24px -10px rgba(50,115,194,0.45);
+
+        .buyProperty_left {
+            width: 50%;
+            padding: 20px;
+
+            h1 {
+                font-size: 1.4rem;
+                font-weight: 800;
+                margin-bottom: 40px;
+            }
+
+            .buyProperty_leftForm {
+                width: 100%;
+                
+                .buyProperty_leftFormItem {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 20px;
+
+                    label {
+                        font-weight: 600;
+                    }
+                    input,textarea {
+                        width: 100%;
+                        padding: 10px;
+                    }
+                }
+
+                .buyPropertyBtn {
+                    width: 100%;
+                    padding: 13px;
+                    border: none;
+                    color: #ffff;
+                    background: #20336a;
+                    font-weight: 700;
+
+                    &:hover {
+                        background:#304279;
+                    }
+                }
+
+                button:disabled {
+                    opacity: 0.65;
+                    cursor: progress;
+                }
+
+                .error {
+                    margin-top: 20px;
+                    padding: 7px;
+                    border: 1px solid rgb(208, 41, 41);
+                    background: rgb(245, 230, 230);
+                    p {
+                        color: rgb(208, 41, 41);
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
+                .success {
+                    margin-top: 20px;
+                    padding: 7px;
+                    border: 1px solid green;
+                    background: rgb(228, 240, 228);
+                    p {
+                        color: green;
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        .buyProperty_right {
+            width: 50%;
+            padding: 20px;
+            background: #20336a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            color: #ffff;
+
+            .buyProperty_right__item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    svg {
+                        color: #ffff;
+                        font-size: 1.8rem;
+                    }
+                }
+                p {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                }
+
+                img {
+                    width: 100%;
+                    height: 70px;
+                    object-fit: contain;
+                }
+            }
+
+            @media screen and (min-width:768px){
+                border-top-left-radius: 9999px;
+               // border-top-right-radius: 9999px;
+            }
+        }
+        @media screen and (max-width:768px){
+            flex-direction: column;
+
+            .buyProperty_left {
+                width: 100%;
+            }
+            .buyProperty_right {
+                width: 100%;
+                gap: 40px;
+            }
+        }
+    }
+
+    .backBtn {
+        border: 1px solid #20336a;
+        color: #20336a;
+        background: #ffff;
+        margin-bottom: 40px;
+        padding: 13px;
+        width: 40%;
+        font-weight: 700;
+
+        &:hover {
+            background: #20336a;
+            color: #ffff;
+        }
+    }
+
+    @media screen and (max-width:768px){
+        .backBtn {
+            width: 80%;
+        }
+    }
+
+}

@@ -1,12 +1,12 @@
-import { Link,useLocation,useNavigate } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 
 import './SelectedProperty.scss'
-import { ScrollToTop } from '../../Hooks/customHook'
+import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
 
 const SelectedProperty = () => {
     ScrollToTop()
-    const navigate = useNavigate()
+    const handleGoBack = useHandleGoBack()
     const { properties } = usePropertyContext()
     const { pathname } = useLocation()
 
@@ -21,10 +21,6 @@ const SelectedProperty = () => {
         let concated = [...new Set([...val,...selectedPath])]
         return val.length === concated.length
     })
-    
-    const handleGoBack = () => {
-        navigate(-1);
-    }
 
     return ( 
         <div className="selectedProperty">

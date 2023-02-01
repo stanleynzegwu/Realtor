@@ -1,3 +1,4 @@
+export { default as BuyProperty } from "./BuyProperty/BuyProperty"
 export { default as Contact } from "./Contact/Contact"
 export { default as HirePaintersForm } from "./HirePainters/HirePaintersForm"
 export { default as Home } from "./Home"

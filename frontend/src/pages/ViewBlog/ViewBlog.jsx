@@ -1,22 +1,18 @@
-import { Link, useParams,useNavigate } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import './ViewBlog.scss'
 import { useBlogContext } from '../../Hooks/useBlogContext'
-import { ScrollToTop } from '../../Hooks/customHook'
+import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const ViewBlog = () => {
     ScrollToTop()
-    const navigate = useNavigate()
+    const handleGoBack = useHandleGoBack()
     const { id } = useParams()
     const { blogs } = useBlogContext()
     const allBlogs = blogs?.data
 
     const singleBlog = blogs?.data.find(({_id}) => id === _id)
-    
-    const handleGoBack = () => {
-        navigate(-1);
-    }
 
     return (
         <div className="viewBlog">

@@ -1,5 +1,5 @@
 import { Routes, Route , Navigate } from 'react-router-dom'
-import { Contact, HirePaintersForm, Home , Login, SelectedProperty, SingleAbout, SellPropertyForm,
+import { BuyProperty, Contact, HirePaintersForm, Home , Login, SelectedProperty, SingleAbout, SellPropertyForm,
 Signup,UserReview,ViewBlog, ViewProperty, DashboardHome } from "./pages"
 import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
@@ -11,6 +11,7 @@ const App = () => {
         <div className='app'>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/buyProperty/:id" element={<BuyProperty />} />
                 <Route path="/hirePaintersForm" element={<HirePaintersForm />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={user ? <Navigate to='/'/> : <Login />} />

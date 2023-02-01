@@ -146,12 +146,21 @@
             width: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+            gap: 40px;
             color: #ffff;
             background: #20336a;
             padding: 20px;
-    
+            
+            .sellPropertyRight_heading {
+                font-weight: 800;
+                font-size: 1.2rem;
+            }
+
+            .sellPropertyRight_sub-text {
+                font-weight: 500;
+            }
             .sellProperty_illustation {
                 width: 100%;
             }
@@ -162,6 +171,7 @@
                 border-bottom-left-radius: 9999px;
                 border-bottom-right-radius: 9999px;
             }
+            
         }
         @media screen and (max-width:1024px){
             flex-direction: column;
@@ -171,6 +181,19 @@
             }
             .sellProperty_right {
                 width: 100%;
+            }
+        }
+        @media screen and (max-width:480px){
+            .sellProperty_left {
+                h1 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .sellProperty_right {
+                .sellPropertyRight_heading {
+                    font-size: 1rem;
+                }
             }
         }
     }

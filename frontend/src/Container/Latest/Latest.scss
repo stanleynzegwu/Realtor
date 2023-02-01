@@ -68,6 +68,10 @@
                                 font-weight: 500;
                             }
                         }
+
+                        @media screen and (max-width:480px){
+                            flex-direction: column;
+                        }
                     }
 
                     .card__footer {

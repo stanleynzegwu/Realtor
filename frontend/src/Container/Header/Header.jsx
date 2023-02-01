@@ -44,7 +44,7 @@ const Header = () => {
                         <p className='big-s'>Find Your Best <br/>Smart <span>Real <br/> Estate</span></p>
                         <p className='small-s'>Find Your Best Smart <br/> <span>Real Estate</span></p>
                         <div className='headerLeft_sub'>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt doloremque, voluptas quos illum quibusdam accusamus atque. Recusandae voluptatum</p>
+                            <p>Unlock Your Property Potential with Us. Buy, Sell, and Beautify Your Buildings with Our Comprehensive Real Estate and Painting Services</p>
                         </div>
                         <div className='headerBtn_holder'>
                             <button onClick={scrollToElement} className='headerBtn'>BUY</button>

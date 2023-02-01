@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom'
 import { FaUserAlt , FaLock} from 'react-icons/fa'
 import { MdEmail,MdPublish } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+
 import { SetPasswordVisibility, ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { useSignup } from '../../Hooks/useApiRequest'
 import {useAuthContext} from '../../Hooks/useAuthContext'
 import signup from '../../assets/logos/register.png'
 import { TypingText } from '../../components'
 import './Signup.scss'
-
 import {uploadImg} from '../../firebase'
 
 const Signup = () => {

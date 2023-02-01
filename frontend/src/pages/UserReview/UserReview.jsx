@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
 
 import './UserReview.scss'
@@ -7,12 +7,12 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 import illustration from '../../assets/logos/reviewIllustration.svg'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { useUserReview } from '../../Hooks/useApiRequest' 
-import { ScrollToTop } from '../../Hooks/customHook'
+import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { TypingText } from '../../components'
 
 const UserReview = () => {
     ScrollToTop()
-    const navigate = useNavigate()
+    const handleGoBack = useHandleGoBack()
     const { user } = useAuthContext()
     const userId = user?.data._id
     const { CreateReview,isLoading, error, setError, success } = useUserReview()
@@ -34,10 +34,6 @@ const UserReview = () => {
         }
         const form = {star:reviewStarIndex,review}
         await CreateReview(userId,form)
-    }
-
-    const handleGoBack = () => {
-        navigate(-1);
     }
 
     return (

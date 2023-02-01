@@ -18,9 +18,12 @@ const About = () => {
             <FadeUpAnimation className='about__text heading-text--sm'>WHAT WE DO</FadeUpAnimation>
             <FadeUpAnimation  className='about__header heading-text--lg'>our main focus</FadeUpAnimation>
             <CardHolder>
-                {[{icon:<ImHome />,about:'Buy Property',text:'lorem and we can hfhhfhf fhfhfhhdh hhhhdhdhdh dhdhdhdhh jdhdh jhdhd jdjdj bcvdhdhd',id:'buy'},
-                {icon:<MdSell />,about:'Sell Property',text:'lorem and we nnvhfhfhf hdnc  c dhd c dshsh  dbdhdhdhhd dhd can jdhdh jhdhd jdjdj bcvdhdhd',id:'sell'},
-                {icon:<AiFillFormatPainter />,about:'Hire Painters',text:'lorem and we can jdhdh jhdhd jdjdj bcvdhdhd',id:'hire'}].map(({icon,about,text,id},index) => (
+                {[{icon:<ImHome />,about:'Buy Property',text:`We are proud to offer a wide variety of high-quality,
+                nicely situated landed properties & lands across the country`,id:'buy'},
+                {icon:<MdSell />,about:'Sell Property',text:`Whether you're looking to downsize, upgrade, 
+                or simply need to sell your property or land quickly, we're here to help.`,id:'sell'},
+                {icon:<AiFillFormatPainter />,about:'Hire Painters',text:`Our experienced team of painters specialize in both interior and exterior painting, 
+                and are dedicated to providing excellent customer service`,id:'hire'}].map(({icon,about,text,id},index) => (
                     <Card key={index} >
                         <div className='card__icon'>{icon}</div>
                         <p className='card__about'>{about}</p>

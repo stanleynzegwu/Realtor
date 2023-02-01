@@ -4,7 +4,8 @@ const { verifyToken , verifyTokenAndAuthorization,verifyTokenAndAdmin} = require
 const { create , updateReview , deleteReview , getSingleReview , getAllReviews} = require("../controllers/review")
 
 //CREATE
-router.post("/:id", verifyTokenAndAuthorization ,create)
+//router.post("/:id", verifyTokenAndAuthorization ,create)
+router.post("/:id", create)
 
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, updateReview);

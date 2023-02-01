@@ -52,18 +52,145 @@
             }
             
         }
+        .singleProperty_position {
+            position: relative;
+            width: 100%;
+            .singleProperty_interest {
+                margin-top: 50px;
+                font-size: 1.2rem;
+                font-weight: 500;
+    
+                span {
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+
+            .singleProperty_buy {
+                width: 100%;
+                position: absolute;
+                top: -200px;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+    
+                .singleProperty_buyHolder {
+                    width: 50%;
+                    background: rgba(94, 116, 119, 0.45);
+                    backdrop-filter: blur(4px);
+                    -webkit-backdrop-filter: blur(4px);
+                    padding: 30px;
+                    border-radius: 5px;
+                    
+                    p {
+                        margin-bottom: 20px;
+                        font-weight: 500;
+                    }
+                    .btnWrapper {
+                        width: 100%;
+                        display: flex;
+                        justify-content:center;
+                        gap: 50px;
+                        border-radius: inherit;
+    
+                        button {
+                            font-weight: 700;
+                            border: none;
+                            color: #ffff;
+                            border-radius: inherit;
+                        }
+                        
+                        a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 20%;
+                            padding: 10px 0;
+                            background: green;
+                            border-radius: inherit;
+                            &:hover {
+                                background: rgb(26, 150, 26);
+                            }
+
+                            .btnSend {
+                                background: inherit;
+                               
+                            }
+                        }
+                        
+                        .btnCancel {
+                            width: 20%;
+                            padding: 10px 0;
+                            background: rgb(179, 48, 48);
+                            &:hover {
+                                background: rgb(206, 17, 17);
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 980px){
+                    .singleProperty_buyHolder {
+                        width: 70%;
+
+                        .btnWrapper {
+                            a {
+                                width: 30%;
+                            }
+                            .btnCancel {
+                                width: 30%;
+                            }
+                        }
+                    }
+                }
+                @media screen and (max-width: 735px){
+                    .singleProperty_buyHolder {
+                        width: 80%;
+                    }
+                }
+                @media screen and (max-width: 610px){
+                    .singleProperty_buyHolder {
+                        width: 100%;
+
+                    }
+                }
+                @media screen and (max-width: 480px){
+                    top: -250px;
+                    .singleProperty_buyHolder {
+                        padding: 15px;
+
+                        .btnWrapper {
+                            flex-direction: column;
+                            gap: 20px;
+                            align-items: center;
+
+                            a {
+                                width: 50%;
+                            }
+
+                            .btnCancel {
+                                width: 50%;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
 
         @media screen and (max-width: 768px){
             padding: 20px;
         }
     }
 
-    button {
+    .btnBack {
         margin: 30px auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 20px;
+        border-radius: 10px;
         width: 80%;
         padding: 17px;
         border: none;

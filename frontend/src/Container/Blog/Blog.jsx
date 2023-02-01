@@ -16,7 +16,7 @@ import './Blog.scss'
 const Blog = () => {
     const {blogs} = useBlogContext()
     const allBlogs = blogs?.data
-    console.log(allBlogs)
+    
     return (
         <section className='blog' id='blog'>
             <FadeUpAnimation className='blog__p heading-text--sm'>blog</FadeUpAnimation>

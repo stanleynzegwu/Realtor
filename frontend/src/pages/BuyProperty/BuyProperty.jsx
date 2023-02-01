@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import { AiFillPhone } from 'react-icons/ai'
-import { BiCurrentLocation } from 'react-icons/bi'
-import { MdEmail } from 'react-icons/md'
+import { useParams } from 'react-router-dom'
 
-import contactUs from '../../assets/logos/contact_us.png'
 import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation/Animation'
-import { useCreateContact } from '../../Hooks/useApiRequest'
-import { TypingText } from '../../components'
+import formIllustration from '../../assets/logos/Forms-bro.png'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
-import './Contact.scss'
+import { useCreateBuyPropertyRequest } from '../../Hooks/useApiRequest'
+import { TypingText } from '../../components'
+import './BuyProperty.scss'
 
-const Contact = () => {
+const BuyProperty = () => {
     ScrollToTop()
     const handleGoBack = useHandleGoBack()
-    const { createContact, isLoading, success, error } = useCreateContact()
-    const [formData,setFormData] = useState({name:"",email:"",phoneNumber:0,message:""})
+    const { createBuyPropertyRequest, isLoading, success, error } = useCreateBuyPropertyRequest()
+    const { id } = useParams()
+    const [formData,setFormData] = useState({property_id:id,name:"", email:"",phoneNumber:"",message:""})
 
     const handleChange = (e) => {
         const {name,value} = e.target
@@ -27,16 +26,16 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await createContact(formData)
+        await createBuyPropertyRequest(formData)
     }
 
     return ( 
-        <div className="contact">
-            <div className="contact_wrapper">
-                <FadeDownAnimation className="contact_left">
-                    <h1>Leave us a message</h1>
-                    <form className="contact_leftForm" onSubmit={handleSubmit}>
-                        <div className="contact_leftFormItem">
+        <div className="buyProperty">
+            <div className="buyProperty_wrapper">
+                <FadeDownAnimation className="buyProperty_left">
+                    <h1>Fill The Form</h1>
+                    <form className="buyProperty_leftForm" onSubmit={handleSubmit}>
+                        <div className="buyProperty_leftFormItem">
                             <label>Your name</label>
                             <input 
                                 placeholder="Enter your Name"
@@ -46,7 +45,7 @@ const Contact = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="contact_leftFormItem">
+                        <div className="buyProperty_leftFormItem">
                             <label>Email Address</label>
                             <input 
                                 placeholder="Enter your Email Address"
@@ -56,7 +55,7 @@ const Contact = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="contact_leftFormItem">
+                        <div className="buyProperty_leftFormItem">
                             <label>Mobile Number</label>
                             <input 
                                 placeholder="Enter your Phone Number"
@@ -66,42 +65,28 @@ const Contact = () => {
                                 onChange={handleChange}
                                 />
                         </div>
-                        <div className="contact_leftFormItem">
-                            <label>Your Message</label>
+                        <div className="buyProperty_leftFormItem">
+                            <label>Comments/Request <span>(Optional)</span></label>
                             <textarea 
-                                placeholder="Enter your Meassage"
+                                placeholder="Add Any Comment or Reequest"
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
                             />
                         </div>
-                        <button disabled={isLoading} className='contactBtn'>Leave a meassage</button>
+                        <button className='buyPropertyBtn'>Leave a meassage</button>
                         {error && <TypingText text={error} intervalDuration={50} className='error'/>}
                         {success && <TypingText text='Message Sent Successfully' intervalDuration={50} className='success'/>}
                     </form>
                 </FadeDownAnimation>
 
-                <FadeUpAnimation className="contact_right">
-                    <div className="contact_right__item">
-                        <img src={contactUs} alt="contactUs" />
-                    </div>
-                    <div className="contact_right__item">
-                        <span><BiCurrentLocation/></span>
-                        <p className="contact_Location">Asaba Delta State</p>
-                    </div>
-                    <div className="contact_right__item">
-                        <span><AiFillPhone/></span>
-                        <p className="contact_phone"> +234 816 0000 33</p>
-                    </div>
-                    <div className="contact_right__item">
-                        <span><MdEmail/></span>
-                        <p className="contact_phone"> realtorsupport@gmail.com</p>
-                    </div>
+                <FadeUpAnimation className="buyProperty_right">
+                        <img  src={formIllustration} alt="form" className="buyProperty_right__item"/>
                 </FadeUpAnimation>
             </div>
-            <button onClick={handleGoBack} className='backBtn'>Back</button>
+            <button disabled={isLoading} onClick={handleGoBack} className='backBtn'>Back</button>
         </div>
      );
 }
  
-export default Contact;
+export default BuyProperty;

@@ -297,6 +297,7 @@ const SellPropertyForm = () => {
 
                 <div className="sellProperty_right">
                     <p className="sellPropertyRight_heading">Ready to Sell Your Property? Fill out the Form</p>
+                    <p className="sellPropertyRight_sub-text">We understand that owning a landed property or a land can be a valuable asset, but it may also come with its own set of challenges. Whether you're looking to downsize, upgrade, or simply need to sell your property or land quickly, we're here to help.</p>
                     <img className="sellProperty_illustation" src={forSaleImg} alt="forSale" />
                 </div>
             </div>

@@ -63,6 +63,9 @@
         white-space: pre-line;
         font-weight: 600;
         color: rgb(82, 81, 81);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         .sub-container {
             display: flex;
@@ -85,9 +88,7 @@
                 .sub-container__bold {
                     margin: 20px;
                 }
-                p {
-                    
-                }
+                
             }
 
             &__img {
@@ -139,6 +140,7 @@
         }
 
         .sub-container2 {
+            align-self: flex-start;
             display: flex;
             align-items: flex-start;
             margin-top: 40px;
@@ -149,13 +151,34 @@
                 margin-left: 10px;
 
                 svg {
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     filter: grayscale(1);
 
                     &:hover {
                         filter: grayscale(0);
                     }
                 }
+            }
+        }
+
+        button {
+            border: 1px solid gray;
+            color: gray;
+            background: #ffff;
+            margin-bottom: 40px;
+            padding: 13px;
+            width: 50%;
+            font-weight: 700;
+            margin-top: 50px;
+            
+
+            &:hover {
+                background: gray;
+                color: #ffff;
+            }
+
+            @media screen and (max-width:768px){
+                width: 100%;
             }
         }
     }
