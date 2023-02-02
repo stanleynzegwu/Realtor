@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 const create = async (req,res) => {
     const id = req.query.id;
-    let { email } = req.body
+    const { email } = req.body
     let newSubscription
 
     if(id){
@@ -19,13 +19,16 @@ const create = async (req,res) => {
         })
     }
     try{ 
+        if( !email ){
+          return res.status(401).json("Email is required")
+        }
         const subscriber = await Subscribe.findOne({email})
         if(subscriber){
           return res.status(401).json("Email already Subscribed")
         }
 
         const savedSubscription = await newSubscription.save()
-        res.status(200).json(savedSubscription)
+        return res.status(200).json(savedSubscription)
 
     }catch(err){
         res.status(500).json(err)

@@ -39,21 +39,21 @@ const create = async (req,res) => {
 //   }
 // }
 
-// //GET ALL Contact Messages
+//GET ALL BUYPROPERTY REQUEST
 
-// const getAllContactMessages = async (req, res) => {
-//   try {
-//       let contactMessages = await Contact.find();
+const getAllBuyPropertyRequest = async (req, res) => {
+  try {
+      let BuyPropertyRequests = await BuyProperty.find();
 
-//     return res.status(200).json(contactMessages);
-//   } catch (err) {
-//     return res.status(500).json(err);
-//   }
-// }
+    return res.status(200).json(BuyPropertyRequests);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
 
 module.exports = {
   create,
 //   deleteContactMessage,
 //   getSingleContactMessage,
-//   getAllContactMessages
+  getAllBuyPropertyRequest
 }

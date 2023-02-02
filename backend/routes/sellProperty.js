@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { verifyToken , verifyTokenAndAuthorization,verifyTokenAndAdmin} = require("../middleware/verifyToken")
-const { create , updateProperty , deleteProperty , getSingleProperty , getAllProperty} = require("../controllers/sellProperty")
+const { create , deleteProperty , getSingleProperty , getAllProperty} = require("../controllers/sellProperty")
 
 
 //CREATE
 router.post("/", create)
-
-//UPDATE
-router.put("/:id", verifyTokenAndAdmin, updateProperty);
 
 //DELETE
 router.delete("/:id", verifyTokenAndAdmin, deleteProperty);
@@ -16,7 +13,7 @@ router.delete("/:id", verifyTokenAndAdmin, deleteProperty);
 //GET A Property
 router.get("/find/:id", getSingleProperty);
 
-//GET ALL Property
-router.get("/", getAllProperty);
+//GET ALL SellProperty Request
+router.get("/",verifyTokenAndAdmin, getAllProperty);
 
 module.exports = router;
