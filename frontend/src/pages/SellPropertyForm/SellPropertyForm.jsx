@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
 
+import { Footer } from '../../Container'
 import "./SellPropertyForm.scss"
 import forSaleImg from '../../assets/logos/for_sale.png'
 import { useCreateSellProperty } from '../../Hooks/useApiRequest'
@@ -302,6 +303,7 @@ const SellPropertyForm = () => {
                 </div>
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
+            <Footer />
         </div>
      );
 }

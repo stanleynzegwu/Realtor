@@ -1,5 +1,5 @@
 //EXTERNAL IMPORTS
-import { useState, } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 //INTERNAL IMPORTS
@@ -59,6 +59,7 @@ export const useLogin = () => {
             dispatch({type:"LOGIN", payload: res})
             setIsLoading(false)
             navigate(-1)
+            //window.location.reload()
             
         }catch(err){
             setIsLoading(false)
@@ -247,6 +248,7 @@ export const useSubscription = () => {
     const [isLoading, setIsLoading] = useState(null)
     const [success, setSuccess] = useState(null)
     const [successMessageDisplay,setSuccessMessageDisplay] = useState(true)
+    const [errorMessageDisplay,setErrorMessageDisplay] = useState(false)
 
     const Subscribe = async (form) => {
         try{
@@ -261,9 +263,11 @@ export const useSubscription = () => {
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
+            setErrorMessageDisplay(true)
+            setTimeout(() => setErrorMessageDisplay(false),5000)
         }
     }
-    return { Subscribe,isLoading,success,successMessageDisplay,error}
+    return { Subscribe,isLoading,success,successMessageDisplay,error,errorMessageDisplay}
         
 }
 
@@ -592,3 +596,4 @@ export const useCreateHirePainterRequest = () => {
     }
     return {CreateHirePainterRequest, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
+

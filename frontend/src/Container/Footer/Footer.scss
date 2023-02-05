@@ -1,5 +1,6 @@
 .footer {
-    background: rgb(3, 2, 2);
+    //background: rgb(3, 2, 2);
+    background: #16254d;
     width: 100%;
     padding: 5%;
     color: #ffff;
@@ -55,6 +56,7 @@
 
                 .emailInputHolder {
                     display: flex;
+                    align-items: center;
                     border-bottom: 1px solid rgb(159, 157, 157);
 
                     span {
@@ -105,6 +107,17 @@
                     background: rgb(228, 240, 228);
                     p {
                         color: green;
+                        text-align: center;
+                        font-weight: 500;
+                    }
+                }
+                .error {
+                    padding: 3px 5px;
+                    border-radius: 5px;
+                    border: 1px solid rgb(208, 41, 41);
+                    background: rgb(245, 230, 230);
+                    p {
+                        color: rgb(208, 41, 41);
                         text-align: center;
                         font-weight: 500;
                     }

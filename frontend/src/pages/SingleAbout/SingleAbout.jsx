@@ -1,8 +1,9 @@
 import { useRef } from 'react'
-import { useParams,useLocation, Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 import { GiClick } from 'react-icons/gi'
 
+import { Footer } from '../../Container'
 import './SingleAbout.scss'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import building1 from '../../assets/logos/building1.jpg'
@@ -22,15 +23,7 @@ const SingleAbout = () => {
     }
    let about = [
         {whatWeDo:'BUY',aboutId:'buy',header:'Buy Beautiful Nice Situauted Landed Properties',subHeading:`Buy landed Properties & Lands`,
-        img:{photo1:building1,photo2:building2,photo3:building3},intro:`Buying landed properties such as land and buildings can be a great investment for both personal living and financial gain. 
-
-        Landed properties are typically more expensive than other types of real estate, but they can provide a stable source of income and appreciation over time. 
-
-        When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
-
-        Additionally, it is important to ensure that all legal documents are in order before making any purchase. 
-        
-        With careful planning and research, buying landed properties can be a rewarding experience.`,
+        img:{photo1:building1,photo2:building2,photo3:building3},
          more:'click the icon to to see all properties',url: '/selectedProperty/allProperties',
         describe:`At [Your Company Name], we are proud to offer a wide variety of high-quality, nicely situated landed properties across the country. Whether you're looking for a sprawling estate or a cozy cottage, we have something to suit every taste and budget.
 
@@ -44,11 +37,7 @@ const SingleAbout = () => {
         
         So if you're in the market for a high-quality, nicely situated landed property, look no further than [Your Company Name]. We have a wide variety of properties available, and our team of experts is ready to help you find the perfect one for you.`},
         {whatWeDo:'SELL',aboutId:'sell',header:`Sell Your Landed Properties And Get Money For It's Value`,subHeading:`sell to us`,
-        img:{photo1:building1,photo2:building2,photo3:building3},intro:`Buying landed properties such as land and buildings can be a great investment for both personal living and financial gain. 
-        Landed properties are typically more expensive than other types of real estate, but they can provide a stable source of income and appreciation over time. 
-        When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
-        Additionally, it is important to ensure that all legal documents are in order before making any purchase. 
-        With careful planning and research, buying landed properties can be a rewarding experience.`,
+        img:{photo1:building1,photo2:building2,photo3:building3},
         more:'click the icon to fill the form',url: '/sellPropertyForm',
         describe:`At [Your Company Name], we understand that owning a landed property or a land can be a valuable asset, but it may also come with its own set of challenges. Whether you're looking to downsize, upgrade, or simply need to sell your property or land quickly, we're here to help.
 
@@ -60,12 +49,7 @@ const SingleAbout = () => {
         
         At [Your Company Name], we are committed to providing our clients with the best possible experience when it comes to selling their landed properties or lands. We understand that every client's situation is unique, and we work closely with them to understand their needs and preferences. Our goal is to make the selling process as easy and stress-free as possible, while also providing fair market value for their property or land.`},
         {whatWeDo:'HIRE PAINTERS',aboutId:'hire',header:`Hire Experienced Painters That Will Give Your Building A Glow`,subHeading:`hire experienced painters`,
-        img:{photo1:building1,photo2:building2,photo3:building3},intro:`Buying landed properties such as land and buildings can be a great investment for both personal living and financial gain. 
-        Landed properties are typically more expensive than other types of real estate, but they can provide a stable source of income and appreciation over time. 
-        When considering buying landed properties, it is important to research the local market, consider the potential for future development, and understand the associated costs. 
-        Additionally, it is important to ensure that all legal documents are in order before making any purchase. 
-        With careful planning and research, buying landed properties can be a rewarding experience.`,
-        more:'click the icon to fill the form',url: '/hirePaintersForm',
+        img:{photo1:building1,photo2:building2,photo3:building3},more:'click the icon to fill the form',url: '/hirePaintersForm',
         describe:`At our company, we offer building painting services that are second to none. Our experienced team of painters specialize in both interior and exterior painting, and are dedicated to providing excellent customer service. 
         
         We take pride in our attention to detail and commitment to customer satisfaction, so you can trust us to deliver a quality paint job. 
@@ -77,7 +61,7 @@ const SingleAbout = () => {
     
     const filtered = about.filter(({aboutId}) => aboutId === id)
     let [obj] = filtered
-    let {whatWeDo,header,subHeading,img,intro,more,url,describe} = obj
+    let {whatWeDo,header,subHeading,img,more,url,describe} = obj
     let {photo1,photo2,photo3} = img
 
     return (
@@ -105,6 +89,7 @@ const SingleAbout = () => {
                 <p className='sub-container2'>{more} <Link to={url}><span><GiClick /></span></Link></p>
                 <button onClick={handleGoBack}>Back</button>
             </div>
+            <Footer />
         </div>
      );
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
+import { Footer } from '../../Container'
 import painterIllustration from '../../assets/logos/painterIllustration.png'
 import { useCreateHirePainterRequest } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
@@ -274,6 +275,7 @@ const HirePaintersForm = () => {
                 </div>
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
+            <Footer />
         </div>
      );
 }

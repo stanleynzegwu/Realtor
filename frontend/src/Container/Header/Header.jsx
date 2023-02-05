@@ -14,11 +14,10 @@ const Header = () => {
         AOS.init();
         AOS.refresh();
       }, []);
-
+      
       const [form,setForm] = useState({location:"", category:""})
       const { properties } = usePropertyContext()
       const buy = useRef(null)
-
       //Get list of properties and extract the state,propertyType for our location values
       const allStates = [...new Set(properties?.data.map(({state}) => state.toLowerCase()))].sort()
       //const listPropertyType = [...new Set(properties?.data.map(({propertyType}) => propertyType.toLowerCase()))].sort()
@@ -37,6 +36,8 @@ const Header = () => {
       const scrollToElement = () => {
         buy.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
       }
+
+
     return (
             <main className="header" id='home'>
                 <div className='header__main'>

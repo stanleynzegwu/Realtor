@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
 
+import { Footer } from '../../Container'
 import './UserReview.scss'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import illustration from '../../assets/logos/reviewIllustration.svg'
 import { useAuthContext } from '../../Hooks/useAuthContext'
-import { useUserReview } from '../../Hooks/useApiRequest' 
+import { useUserReview } from '../../Hooks/useApiRequest'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { TypingText } from '../../components'
 
@@ -19,16 +20,14 @@ const UserReview = () => {
     const [hoverIndex,setHoverIndex] = useState(0)
     const [reviewStarIndex,setReviewStarIndex] = useState(0)
     const [review,setReview] = useState("")
-
     const shouldStarBeFilled = (val) => {
         return (hoverIndex >= val) || (reviewStarIndex >= val)
     }
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError(null)
         if( (reviewStarIndex === 0) || (!review) ){
-            console.log('both star rating & text area should be filled')
             setError("Both star rating & textarea should be filled")
             return
         }
@@ -58,6 +57,7 @@ const UserReview = () => {
             </Link>
         </div>
         :
+        <>
         <div className="userReview">
             <div className="reviewLeft">
                 <span onClick={handleGoBack} className='reviewLeft__goBack'><MdKeyboardBackspace />Back</span>
@@ -108,6 +108,8 @@ const UserReview = () => {
                 </form>
             </div>
         </div>
+        <Footer />
+        </>
      );
 }
  

@@ -6,6 +6,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 
 //INTERNAL IMPORTS
+import { Footer } from '../../Container'
 import { SetPasswordVisibility, ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { useLogin } from '../../Hooks/useApiRequest'
 import { TypingText } from '../../components'
@@ -37,6 +38,7 @@ const Login = () => {
     }
 
     return (
+        <>
         <div className='login'>
             <div className="form-container">
                 <div className="login_illustration">
@@ -101,7 +103,8 @@ const Login = () => {
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
         </div>
-        
+        <Footer />
+        </>
     );
 }
  

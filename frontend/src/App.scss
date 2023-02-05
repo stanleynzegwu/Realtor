@@ -19,9 +19,14 @@
     button {
         transition: .5s ease-in-out;
         cursor: pointer;
+        &:active {
+            box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+            transition: none;
+        }
     }
     
 }
+
 .heading-text--sm {
     text-transform: uppercase;
     padding-top: 5%;

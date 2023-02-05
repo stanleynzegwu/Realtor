@@ -1,4 +1,5 @@
-import { BiDownArrowAlt, BiUpArrowAlt } from 'react-icons/bi'
+//import { useState, useEffect } from 'react';
+import { BiDownArrowAlt } from 'react-icons/bi'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 import "swiper/css";
@@ -8,9 +9,25 @@ import "swiper/css/pagination";
 import './FeaturedInfo.scss'
 import HorizontalBar from '../HorizontalBar'
 import { useReviewFunction } from '../../Hooks/useApiRequest';
+//import { userRequest } from '../../RequestMethods';
 
 const FeaturedInfo = () => {
     const { starNum, getPercentage, totalReviews } = useReviewFunction()
+    // const [subscribers, setSubscribers] = useState(null)
+    // console.log(subscribers)
+
+    // useEffect(() => {
+    //   const getAllSubscribers = async () => {
+    //     try{
+    //         const res = await userRequest.get("/subScribe")
+    //         setSubscribers(res.data)
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    //   }
+    //   getAllSubscribers()
+    // },[])
+
     return (
         <div className='featured'>
             <Swiper
@@ -54,7 +71,7 @@ const FeaturedInfo = () => {
             >
               <SwiperSlide className="featuredItem">
                  <span className='reviewTextBold'>
-                    Customer reviews <span className='reviewTextLight'>{`(${totalReviews()} reviews)`}</span>
+                    Customer reviews <span className='reviewTextLight'>{`(${totalReviews()} total reviews)`}</span>
                  </span>
                  <div className='barAllHolder'>
                     {

@@ -14,7 +14,7 @@ const App = () => {
                 <Route path="/buyProperty/:id" element={<BuyProperty />} />
                 <Route path="/hirePaintersForm" element={<HirePaintersForm />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={user ? <Navigate to='/'/> : <Login />} />
+                <Route path="/login" element={<Login /> } />
                 <Route path="/signup" element={user ? <Navigate to='/'/> :<Signup />} />
                 <Route path="/adminDashboard/*" element={<DashboardHome />} />
                 <Route path="/selectedProperty/*" element={<SelectedProperty />} />

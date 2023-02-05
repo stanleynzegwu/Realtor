@@ -1,5 +1,6 @@
 import { Link,useLocation } from 'react-router-dom';
 
+import { Footer } from '../../Container'
 import './SelectedProperty.scss'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
@@ -47,6 +48,7 @@ const SelectedProperty = () => {
                     </div>
                 </div>
                 <button onClick={handleGoBack}>Back</button>
+                <Footer />
         </div>
      );
 }

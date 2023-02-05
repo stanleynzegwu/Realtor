@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { Footer } from '../../Container'
 import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import formIllustration from '../../assets/logos/Forms-bro.png'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
@@ -74,7 +75,7 @@ const BuyProperty = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <button className='buyPropertyBtn'>Leave a meassage</button>
+                        <button className='buyPropertyBtn'>Submit</button>
                         {error && <TypingText text={error} intervalDuration={50} className='error'/>}
                         {success && <TypingText text='Message Sent Successfully' intervalDuration={50} className='success'/>}
                     </form>
@@ -85,7 +86,9 @@ const BuyProperty = () => {
                 </FadeUpAnimation>
             </div>
             <button disabled={isLoading} onClick={handleGoBack} className='backBtn'>Back</button>
+            <Footer />
         </div>
+        
      );
 }
  

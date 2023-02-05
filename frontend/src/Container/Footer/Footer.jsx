@@ -10,10 +10,10 @@ import { useSubscription } from '../../Hooks/useApiRequest'
 import { TypingText } from '../../components'
 
 const Footer = () => {
-    const { Subscribe,isLoading,success,successMessageDisplay } = useSubscription()
+    const { Subscribe,isLoading,success,successMessageDisplay,error,errorMessageDisplay } = useSubscription()
     const [formData,setFormData] = useState({email:""})
     const [subscriber,setSubscriber] = useState(null)
-
+    
     async function handleSubmit(e){
         e.preventDefault()
         const subscriber = await Subscribe(formData)
@@ -79,6 +79,10 @@ const Footer = () => {
                                 intervalDuration={30}
                                 className='success'
                             /> 
+                        }
+                        {   
+                            error && errorMessageDisplay && 
+                            <TypingText text={error} intervalDuration={30} className='error'/>
                         }
                     </form>
                 </FadeUpAnimation>

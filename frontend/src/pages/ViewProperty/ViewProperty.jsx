@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
+import { Footer } from '../../Container'
 import { usePropertyContext } from '../../Hooks/usePropertyContext';
 import './ViewProperty.scss'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
@@ -15,7 +16,7 @@ const ViewProperty = () => {
     const property = properties?.data.find(({_id}) => id === _id)
     
     return ( 
-        //<div className={toggle ? `viewProperty hideOverrflow` : `viewProperty`}>
+        <>
         <div className='viewProperty'>
             <div className='singleProperty'>
                 <div className='singleProperty_imgHolder'>
@@ -53,7 +54,7 @@ const ViewProperty = () => {
                         toggle &&
                         <div className='singleProperty_buy'>
                             <div className='singleProperty_buyHolder'>
-                                <p>If you have a genuine interest in this property and may consider purchasing it, please press the green button to fill out the form.
+                                <p>If you have a genuine interest in this {property.propertyType} and may consider purchasing it, please press the green button to fill out the form.
                                      If not, press the red button to cancel</p>
                                 <div className='btnWrapper'>
                                     <Link to={`/buyProperty/${property._id}`}><button className='btnSend'>Next</button></Link>
@@ -66,6 +67,8 @@ const ViewProperty = () => {
             </div>
             <button className='btnBack' onClick={handleGoBack}>Back</button>
         </div>
+        <Footer />
+        </>
      );
 }
  

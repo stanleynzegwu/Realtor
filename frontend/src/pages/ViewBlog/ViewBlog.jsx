@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 
+import { Footer } from '../../Container'
 import './ViewBlog.scss'
 import { useBlogContext } from '../../Hooks/useBlogContext'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
@@ -15,6 +16,7 @@ const ViewBlog = () => {
     const singleBlog = blogs?.data.find(({_id}) => id === _id)
 
     return (
+        <>
         <div className="viewBlog">
             {id === 'allBlog' ?
                 <div className='allBlog'>
@@ -51,6 +53,8 @@ const ViewBlog = () => {
             }
             <button onClick={handleGoBack}>Back</button>
         </div>
+        <Footer />
+        </>
      );
 }
  

@@ -3,6 +3,7 @@ import { AiFillPhone } from 'react-icons/ai'
 import { BiCurrentLocation } from 'react-icons/bi'
 import { MdEmail } from 'react-icons/md'
 
+import { Footer } from '../../Container'
 import contactUs from '../../assets/logos/contact_us.png'
 import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation/Animation'
 import { useCreateContact } from '../../Hooks/useApiRequest'
@@ -100,6 +101,7 @@ const Contact = () => {
                 </FadeUpAnimation>
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
+            <Footer />
         </div>
      );
 }

@@ -7,7 +7,6 @@ const UserReducer = (state,action) => {
         case 'SET_USERS':
             return { users: action.payload}
         case 'CREATE_USER':
-            console.log(state.users)
             return { users: {...state?.users,data:[...state?.users?.data,action.payload?.data]} }
         case 'UPDATE_USER':
             return { 
