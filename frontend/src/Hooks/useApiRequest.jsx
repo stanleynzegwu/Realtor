@@ -271,6 +271,31 @@ export const useSubscription = () => {
         
 }
 
+//CREATE OFFER
+export const useCreateOffer = () => {
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
+
+    const CreateOffer = async (formData) => {
+        try{
+            setIsLoading(true)
+            setSuccess(null)
+            const res = await userRequest.post(`/offer`,formData)
+            setIsLoading(false)
+            setSuccess(true)
+            setError(false)
+            
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+
+    return { CreateOffer,success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}
+
 //USER REVIEW
 export const useUserReview = () => {
     const [error, setError] = useState(null)

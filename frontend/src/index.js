@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import {AuthContextProvider} from './context/AuthContext'
 import {BlogContextProvider} from './context/BlogContext'
+import {OfferContextProvider} from './context/OfferContext'
 import {PagesContextProvider} from './context/PagesContext'
 import {PropertyContextProvider} from './context/PropertyContext'
 import {ReviewContextProvider} from './context/ReviewContext'
@@ -19,9 +20,11 @@ root.render(
     <ReviewContextProvider>
     <SubscriptionContextProvider>
     <UserContextProvider>
+    <OfferContextProvider>
         <BrowserRouter>
             <App />
         </BrowserRouter>
+    </OfferContextProvider>
     </UserContextProvider>
     </SubscriptionContextProvider>
     </ReviewContextProvider>

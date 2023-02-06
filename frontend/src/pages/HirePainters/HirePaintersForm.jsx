@@ -60,7 +60,6 @@ const HirePaintersForm = () => {
         if(!address || !sqft || !painting_service || !paint_provider || !consultation 
             || !budget || !imagesFile.length || !customer_name || !customer_email || !customer_number) {
           setError("All Required Input Field Must Be Filled");
-          console.log(error)
           seterrorMessageDisplay(true)
           setTimeout(() => seterrorMessageDisplay(false),6000)
           return;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {HiMenu,HiX} from 'react-icons/hi'
 import {AiFillHome,AiFillPropertySafety} from 'react-icons/ai'
-import {MdDashboardCustomize} from 'react-icons/md'
+import {MdDashboardCustomize, MdLocalOffer} from 'react-icons/md'
 import {SiGnuprivacyguard} from 'react-icons/si'
 import {FcAbout} from 'react-icons/fc'
 import {FaBlog,FaUsers} from 'react-icons/fa'
@@ -38,6 +38,10 @@ const Navbar= () => {
                 <li className='app__flex p-text' >
                     <div/>
                     <Link to='/viewBlog/allBlog'>blog</Link>
+                </li>
+                <li className='app__flex p-text' >
+                    <div/>
+                    <Link to='/offers'>offers</Link>
                 </li>
             </ul>
             <div className='navbarImgHolder'>
@@ -77,6 +81,9 @@ const Navbar= () => {
                                 ))}
                                     <li>
                                         <Link to='/viewBlog/allBlog' onClick={() => setToggle(false)}><FaBlog />blog</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/offers' onClick={() => setToggle(false)}><MdLocalOffer />offers</Link>
                                     </li>
                                     {
                                         user?.data?.isAdmin

@@ -68,6 +68,7 @@ const NewBlog = () => {
         <div className="newBlog">
             <div className="newBlog__generate">
                 <div className="newBlog__left">
+                    <h1>Create Blog</h1>
                     <img className='illustration' src={illustration} alt="illustration" />
                     <div className='form-left__wrapper'>
                         <form className="generateImgForm form-left">

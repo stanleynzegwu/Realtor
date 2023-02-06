@@ -60,7 +60,6 @@ const SellPropertyForm = () => {
       if(!property_type || !location || !plotSize || !imagesFile.length || !description
         || !asking_price || !documents || !fullname || !email || !number) {
         setError("All Required Input Field Must Be Filled");
-        console.log(error)
         seterrorMessageDisplay(true)
         setTimeout(() => seterrorMessageDisplay(false),6000)
         return;
