@@ -4,7 +4,7 @@ import { MdNotificationsNone } from 'react-icons/md'
 import { MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
 import { GrBlog } from 'react-icons/gr'
-import { MdProductionQuantityLimits, MdReviews } from 'react-icons/md'
+import { MdProductionQuantityLimits, MdOutlineReviews,MdOutlineLocalOffer } from 'react-icons/md'
 import {HiMenu,HiX} from 'react-icons/hi'
 import './Topbar.scss'
 import {useAuthContext} from '../../Hooks/useAuthContext'
@@ -69,7 +69,7 @@ const Topbar = () => {
                                     <li
                                         onClick={ handleClick }
                                         className='sidebarListItem topbarListItem'>
-                                        <MdReviews />Reviews
+                                        <MdOutlineReviews />Reviews
                                     </li>
                                 </Link>
                                 <Link to='/adminDashboard/properties'>
@@ -84,6 +84,13 @@ const Topbar = () => {
                                         onClick={ handleClick } 
                                         className='sidebarListItem topbarListItem'>
                                         <GrBlog />Blog
+                                    </li>
+                                </Link>
+                                <Link to='/adminDashboard/offerList'>
+                                    <li
+                                        onClick={ handleClick } 
+                                        className='sidebarListItem topbarListItem'>
+                                        <MdOutlineLocalOffer />Offer
                                     </li>
                                 </Link>
                             </ul>

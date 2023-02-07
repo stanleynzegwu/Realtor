@@ -9,7 +9,7 @@ import {PagesContextProvider} from './context/PagesContext'
 import {PropertyContextProvider} from './context/PropertyContext'
 import {ReviewContextProvider} from './context/ReviewContext'
 import {UserContextProvider} from './context/UserContext'
-import {SubscriptionContextProvider} from './context/SubscriptionContext'
+import {RestContextProvider} from './context/RestContext'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
@@ -18,7 +18,7 @@ root.render(
     <AuthContextProvider>
     <BlogContextProvider>
     <ReviewContextProvider>
-    <SubscriptionContextProvider>
+    <RestContextProvider>
     <UserContextProvider>
     <OfferContextProvider>
         <BrowserRouter>
@@ -26,7 +26,7 @@ root.render(
         </BrowserRouter>
     </OfferContextProvider>
     </UserContextProvider>
-    </SubscriptionContextProvider>
+    </RestContextProvider>
     </ReviewContextProvider>
     </BlogContextProvider>
     </AuthContextProvider>

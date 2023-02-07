@@ -10,4 +10,18 @@ function formatPrice(p){
     }).reverse().join('')
 }
 
-export { formatPrice }
+//GENERATE RANDOM ID
+function generateRandomId(){
+    const date = new Date(Date.now());
+    const time = date.toLocaleTimeString();
+    let random = String(Math.random()) + time.split(':')[1]
+    let array = random.split('.')[1].split('').slice(0,5)
+    // shuffle
+    for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array.join('')
+}
+
+export { formatPrice, generateRandomId }

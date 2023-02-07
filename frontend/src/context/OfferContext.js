@@ -9,6 +9,12 @@ const OfferReducer = (state,action) => {
             return {
                 offers: action.payload
             }
+        case 'CREATE_OFFER':
+            return {
+                offers: [...state.offers,action.payload]
+            }
+        case 'DELETE_OFFER':
+            return { offers: state.offers.filter(({_id}) => action.payload._id !== _id) }
         default:
             return state
     }

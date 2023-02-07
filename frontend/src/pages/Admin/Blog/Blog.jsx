@@ -101,7 +101,7 @@ const Blog = () => {
         <div className={toggle ? `admin_blog hideOverrflow` : `admin_blog`}>
             <div  className='admin_blogBtn'>
                 <Link to='/adminDashboard/newBlog'>
-                    <button>Create</button>
+                    <button>Create Blog Post</button>
                 </Link>
             </div>
             <div style={{ height: 800, width: '100%' }}>

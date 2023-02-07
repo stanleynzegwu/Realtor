@@ -1,0 +1,96 @@
+.offers {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #efeeee;
+
+    .offers__header {
+        margin-bottom: 40px;
+    }
+
+    .offer__holder {
+        width: 100%;
+        margin-bottom: 40px;
+        box-shadow: -4px 7px 24px -10px rgba(50,115,194,0.45);
+        padding: 20px;
+
+        .offer__title {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .offers_imgGroup {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 15px;
+
+            .offer_img {
+                width: 30%;
+                height: 250px;
+                border-radius: 10px;
+
+                @media screen and (max-width: 940px){
+                    width: 50%;
+                }
+                @media screen and (max-width: 768px){
+                    width: 100%;
+                    height: 300px;
+                }
+                @media screen and (max-width: 350px){
+                    width: 100%;
+                    height: 200px;
+                }
+            }
+        }
+
+        .offers_item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            .item_desc {
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+            .item_content {
+                color: rgb(95, 93, 93);
+                font-weight: 500;
+            }
+        }
+
+        .offers_validity {
+            font-weight: 500;
+
+            .start {
+                color: green;
+            }
+
+            .end {
+                color: red;
+            }
+        }
+    }
+
+    .backBtn {
+        padding: 13px;
+        width: 50%;
+        border: none;
+        color: #ffff;
+        background: #20336a;
+        font-weight: 700;
+        &:hover {
+            background:#304279;
+        }
+
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+}

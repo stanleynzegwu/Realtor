@@ -25,7 +25,7 @@ const SingleAbout = () => {
         {whatWeDo:'BUY',aboutId:'buy',header:'Buy Beautiful Nice Situauted Landed Properties',subHeading:`Buy landed Properties & Lands`,
         img:{photo1:building1,photo2:building2,photo3:building3},
          more:'click the icon to to see all properties',url: '/selectedProperty/allProperties',
-        describe:`At [Your Company Name], we are proud to offer a wide variety of high-quality, nicely situated landed properties across the country. Whether you're looking for a sprawling estate or a cozy cottage, we have something to suit every taste and budget.
+        describe:`At Realtor & Paint, we are proud to offer a wide variety of high-quality, nicely situated landed properties across the country. Whether you're looking for a sprawling estate or a cozy cottage, we have something to suit every taste and budget.
 
         One of the key factors that sets our properties apart is their prime location. We carefully select properties that are situated in desirable areas, with easy access to transportation, amenities, and other important services. This ensures that our properties will retain their value over time and provide a comfortable and convenient living or working environment.
         
@@ -33,21 +33,21 @@ const SingleAbout = () => {
         
         In addition, our landed properties are available at different price ranges, which means that we have something for everyone. Whether you're a first-time homebuyer or a seasoned investor, we have properties that will meet your needs and budget.
         
-        At [Your Company Name], we are committed to providing our clients with the best possible experience when it comes to purchasing landed properties. We work closely with our clients to understand their needs and preferences, and we are dedicated to helping them find the perfect property that suits their needs and budget.
+        At Realtor & Paint, we are committed to providing our clients with the best possible experience when it comes to purchasing landed properties. We work closely with our clients to understand their needs and preferences, and we are dedicated to helping them find the perfect property that suits their needs and budget.
         
-        So if you're in the market for a high-quality, nicely situated landed property, look no further than [Your Company Name]. We have a wide variety of properties available, and our team of experts is ready to help you find the perfect one for you.`},
+        So if you're in the market for a high-quality, nicely situated landed property, look no further than Realtor & Paint. We have a wide variety of properties available, and our team of experts is ready to help you find the perfect one for you.`},
         {whatWeDo:'SELL',aboutId:'sell',header:`Sell Your Landed Properties And Get Money For It's Value`,subHeading:`sell to us`,
         img:{photo1:building1,photo2:building2,photo3:building3},
         more:'click the icon to fill the form',url: '/sellPropertyForm',
-        describe:`At [Your Company Name], we understand that owning a landed property or a land can be a valuable asset, but it may also come with its own set of challenges. Whether you're looking to downsize, upgrade, or simply need to sell your property or land quickly, we're here to help.
+        describe:`At Realtor & Paint, we understand that owning a landed property or a land can be a valuable asset, but it may also come with its own set of challenges. Whether you're looking to downsize, upgrade, or simply need to sell your property or land quickly, we're here to help.
 
-        One of the key services we offer at [Your Company Name] is the ability to purchase landed properties and lands from our clients. We specialize in buying properties and lands in prime locations, with easy access to transportation, amenities, and other important services. This ensures that the properties and lands we purchase will retain their value over time and provide a comfortable and convenient living or working environment for our future buyers.
+        One of the key services we offer at Realtor & Paint is the ability to purchase landed properties and lands from our clients. We specialize in buying properties and lands in prime locations, with easy access to transportation, amenities, and other important services. This ensures that the properties and lands we purchase will retain their value over time and provide a comfortable and convenient living or working environment for our future buyers.
         
         Our team is experienced in handling all aspects of the buying process, from initial property or land evaluation to closing the sale. We make the process as easy and stress-free as possible for our clients by handling all the paperwork and negotiations. We also offer competitive prices for your property or land and can close the deal in a timely manner.
         
         Another important aspect of our service is that we purchase properties and lands in any condition, whether it's move-in ready or requires repairs. We understand that not everyone has the time or resources to make repairs before selling their property or land, that's why we are ready to purchase it as it is.
         
-        At [Your Company Name], we are committed to providing our clients with the best possible experience when it comes to selling their landed properties or lands. We understand that every client's situation is unique, and we work closely with them to understand their needs and preferences. Our goal is to make the selling process as easy and stress-free as possible, while also providing fair market value for their property or land.`},
+        At Realtor & Paint, we are committed to providing our clients with the best possible experience when it comes to selling their landed properties or lands. We understand that every client's situation is unique, and we work closely with them to understand their needs and preferences. Our goal is to make the selling process as easy and stress-free as possible, while also providing fair market value for their property or land.`},
         {whatWeDo:'HIRE PAINTERS',aboutId:'hire',header:`Hire Experienced Painters That Will Give Your Building A Glow`,subHeading:`hire experienced painters`,
         img:{photo1:building1,photo2:building2,photo3:building3},more:'click the icon to fill the form',url: '/hirePaintersForm',
         describe:`At our company, we offer building painting services that are second to none. Our experienced team of painters specialize in both interior and exterior painting, and are dedicated to providing excellent customer service. 

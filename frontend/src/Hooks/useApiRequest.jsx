@@ -7,9 +7,10 @@ import { publicRequest, userRequest } from '../RequestMethods'
 import { useAuthContext } from './useAuthContext'
 import { useBlogContext } from './useBlogContext'
 import { useUserContext } from './useUserContext'
+import { useOfferContext } from './useOfferContext'
 import { usePropertyContext } from './usePropertyContext'
 import { useReviewContext } from './useReviewContext'
-import { useSubscriptionContext } from './useSubscriptionContext'
+import { useRestContext } from './useRestContext'
 
 //USER SIGNUP
 export const useSignup = () => {
@@ -59,7 +60,6 @@ export const useLogin = () => {
             dispatch({type:"LOGIN", payload: res})
             setIsLoading(false)
             navigate(-1)
-            //window.location.reload()
             
         }catch(err){
             setIsLoading(false)
@@ -243,7 +243,7 @@ export const useUpdateProperty = () => {
 
 //SUBSCRIBE TO NEWSLETTER
 export const useSubscription = () => {
-    const { dispatch } = useSubscriptionContext()
+    const { dispatch } = useRestContext()
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [success, setSuccess] = useState(null)
@@ -273,6 +273,7 @@ export const useSubscription = () => {
 
 //CREATE OFFER
 export const useCreateOffer = () => {
+    const { dispatch } = useOfferContext()
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [success, setSuccess] = useState(null)
@@ -283,6 +284,7 @@ export const useCreateOffer = () => {
             setIsLoading(true)
             setSuccess(null)
             const res = await userRequest.post(`/offer`,formData)
+            dispatch({type:'CREATE_OFFER', payload: res.data})
             setIsLoading(false)
             setSuccess(true)
             setError(false)
@@ -294,6 +296,30 @@ export const useCreateOffer = () => {
     }
 
     return { CreateOffer,success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}
+
+//DELETE OFFER
+export const useDeleteOffer = () => {
+    const { dispatch } = useOfferContext()
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const DeleteOffer = async (id) => {
+        try{
+            setIsLoading(true)
+            setError(null)
+            const offer = await userRequest.delete(`/offer/${id}`)
+            dispatch({type:'DELETE_OFFER', payload: offer.data})
+            setIsLoading(false)
+            setSuccess(true)
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+    }
+    return { DeleteOffer, isLoading }
+        
 }
 
 //USER REVIEW

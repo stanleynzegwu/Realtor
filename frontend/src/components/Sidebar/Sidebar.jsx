@@ -1,7 +1,7 @@
 import { MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
 import { GrBlog } from 'react-icons/gr'
-import { MdProductionQuantityLimits, MdReviews } from 'react-icons/md'
+import { MdProductionQuantityLimits, MdOutlineReviews, MdOutlineLocalOffer } from 'react-icons/md'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Sidebar.scss'
@@ -52,7 +52,7 @@ const Sidebar = () => {
                                 style={{backgroundColor:`${active === 'reviews' ? 'rgb(210, 206, 206)' : ''}`}}
                                 onClick={ handleClick }
                                 className='sidebarListItem'>
-                                <MdReviews />Reviews
+                                <MdOutlineReviews />Reviews
                             </li>
                         </Link>
                         <Link to='/adminDashboard/properties'>
@@ -69,6 +69,14 @@ const Sidebar = () => {
                                 onClick={ handleClick } 
                                 className='sidebarListItem'>
                                 <GrBlog />Blog
+                            </li>
+                        </Link>
+                        <Link to='/adminDashboard/offerList'>
+                            <li id='offers'
+                                style={{backgroundColor:`${active === 'offers' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick } 
+                                className='sidebarListItem'>
+                                <MdOutlineLocalOffer />Offer
                             </li>
                         </Link>
                     </ul>

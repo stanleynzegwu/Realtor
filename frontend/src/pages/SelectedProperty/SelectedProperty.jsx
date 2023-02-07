@@ -23,7 +23,8 @@ const SelectedProperty = () => {
         return val.length === concated.length
     })
 
-    return ( 
+    return (
+        <>
         <div className="selectedProperty">
             <div className='allProperty'>
                     <h1 className="allProperty__header">
@@ -48,8 +49,9 @@ const SelectedProperty = () => {
                     </div>
                 </div>
                 <button onClick={handleGoBack}>Back</button>
-                <Footer />
         </div>
+        <Footer />
+        </>
      );
 }
  

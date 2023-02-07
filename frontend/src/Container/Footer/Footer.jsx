@@ -26,7 +26,7 @@ const Footer = () => {
             <div className='main-wrapper'>
                 <FadeDownAnimation className="footer_handle wrapper">
                     <div className="logo">
-                        <h3 className='caption'>LOGO</h3>
+                        <Link to="/"><h3 className='caption'>LOGO</h3></Link>
                         <p className='astract-col'>Find your best smart real estate</p>
                         <div className="icons">
                             <BsFacebook />
@@ -41,7 +41,10 @@ const Footer = () => {
                     <h3 className='caption'>About</h3>
                     <p className='quick-links astract-col'>Contact</p>
                     <p className='quick-links astract-col'>Team</p>
-                    <p className='quick-links astract-col'>Career</p>
+                    <Link to='/about/hire'>
+                        <p className='quick-links astract-col'>Hire Painter</p>
+                    </Link>
+                    
                     <Link to='/viewBlog/allBlog'>
                         <p className='quick-links astract-col'>Blogs</p>
                     </Link>
@@ -88,7 +91,7 @@ const Footer = () => {
                 </FadeUpAnimation>
             </div>
             <div className='copyright'>
-                <p className='astract-col'>Copyright <BiCopyright /> Realtor 2022-2023</p>
+                <p className='astract-col col'>Copyright <BiCopyright /> Realtor 2022-2023</p>
             </div>
         </footer>
      );

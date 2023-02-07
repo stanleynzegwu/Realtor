@@ -5,10 +5,10 @@ const create = async (req,res) => {
 
     try{
         const savedOffer = await newOffer.save()
-        res.status(200).json(savedOffer)
+        return res.status(200).json(savedOffer)
 
     }catch(err){
-        res.status(500).json(err)
+        return res.status(500).json(err)
     }
 }
 
@@ -34,10 +34,10 @@ const updateOffer = async (req, res) => {
 
 const deleteOffer = async (req, res) => {
   try {
-    await Offer.findByIdAndDelete(req.params.id);
-    res.status(200).json("Offer has been deleted...");
+    const offer = await Offer.findByIdAndDelete(req.params.id);
+    return res.status(200).json(offer);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -46,9 +46,9 @@ const deleteOffer = async (req, res) => {
 const getSingleOffer = async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.id);
-    res.status(200).json(offer);
+    return res.status(200).json(offer);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 
@@ -70,9 +70,9 @@ const getAllOffers = async (req, res) => {
       offers = await Offer.find();
     }
 
-    res.status(200).json(offers);
+    return res.status(200).json(offers);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 

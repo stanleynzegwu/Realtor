@@ -48,6 +48,7 @@ const NewOffer = () => {
         e.preventDefault()
         const { desc } = offerDesc
         if(!desc){
+            //console.log('enter text description')
             descRef.current.focus()
         }else{
             const textPrompt = `correct this english "${desc}" and make it more appealing`

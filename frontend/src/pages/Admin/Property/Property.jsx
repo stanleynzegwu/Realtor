@@ -226,7 +226,7 @@ const Property = () => {
                         </div>
                         <button disabled={isLoading} type="submit" className="propertyUpdateButton">Update</button>
                         {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                        {success && <TypingText text='Blog Updated Successfully' intervalDuration={50} className='success'/>}
+                        {success && <TypingText text='Property Updated Successfully' intervalDuration={50} className='success'/>}
                     </div>
                 </form>
 

@@ -1,7 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { MdDeleteOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import './PropertyList.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext';
 import { useDeleteProperty } from '../../../Hooks/useApiRequest';
@@ -11,11 +10,6 @@ const PropertyList = () => {
     const { DeleteAProperty } = useDeleteProperty()
     const { properties } = usePropertyContext()
     const allProperties = properties?.data
-    //const [data,setData] = useState(propertyRows)
-    // function handleDelete(id){
-    //     let filtered = data.filter(property => property.id !== id)
-    //     setData(filtered)
-    // }
 
     const columns = [
         { field: '_id', headerName: 'ID', width: 40 },

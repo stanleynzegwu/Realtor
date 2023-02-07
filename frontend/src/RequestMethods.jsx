@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let token = localStorage.getItem("user") && (JSON.parse(localStorage.getItem("user")).data.token)
+export let token = localStorage.getItem("user") && (JSON.parse(localStorage.getItem("user")).data.token)
 
 export const BASE_URL = "/api"
 
