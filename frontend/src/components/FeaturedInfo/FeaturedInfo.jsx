@@ -1,5 +1,5 @@
 //import { useState, useEffect } from 'react';
-import { BiDownArrowAlt } from 'react-icons/bi'
+import { MdVisibility } from 'react-icons/md'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 import "swiper/css";
@@ -9,24 +9,12 @@ import "swiper/css/pagination";
 import './FeaturedInfo.scss'
 import HorizontalBar from '../HorizontalBar'
 import { useReviewFunction } from '../../Hooks/useApiRequest';
-//import { userRequest } from '../../RequestMethods';
+import { useRestContext } from '../../Hooks/useRestContext';
+import { FadeDownAnimation, FadeLeftAnimation, FadeRightAnimation } from '../UI/Animation/Animation'
 
 const FeaturedInfo = () => {
     const { starNum, getPercentage, totalReviews } = useReviewFunction()
-    // const [subscribers, setSubscribers] = useState(null)
-    // console.log(subscribers)
-
-    // useEffect(() => {
-    //   const getAllSubscribers = async () => {
-    //     try{
-    //         const res = await userRequest.get("/subScribe")
-    //         setSubscribers(res.data)
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    //   }
-    //   getAllSubscribers()
-    // },[])
+    const { subscribers,supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
 
     return (
         <div className='featured'>
@@ -70,10 +58,10 @@ const FeaturedInfo = () => {
                 className="mySwiper"
             >
               <SwiperSlide className="featuredItem">
-                 <span className='reviewTextBold'>
+                 <FadeDownAnimation className='reviewTextBold'>
                     Customer reviews <span className='reviewTextLight'>{`(${totalReviews()} total reviews)`}</span>
-                 </span>
-                 <div className='barAllHolder'>
+                 </FadeDownAnimation>
+                 <FadeRightAnimation className='barAllHolder'>
                     {
                       [{star:5,bgColor:'#48E6B4',percentage:`${getPercentage(5)}%`,totalStarNo:starNum(5)},
                         {star:4,bgColor:'#AED58A',percentage:`${getPercentage(4)}%`,totalStarNo:starNum(4)},
@@ -92,33 +80,48 @@ const FeaturedInfo = () => {
                       ))
                       
                     }
-                 </div>
+                 </FadeRightAnimation>
               </SwiperSlide>
               <SwiperSlide className="featuredItem">
-                 <span className="featuredTitle">Revenue</span>
-                 <div className="featuredMoneyContainer">
-                     <span className="featuredMoney">$2,415</span>
-                     <span className="featuredMoneyRate">-11.4 <BiDownArrowAlt className='featuredIcon negative'/></span>
-                 </div>
-                 <span className='featuredSub'>Compared to last month</span>
+                 <FadeLeftAnimation className="messagesContainer">
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Support Requests</span>
+                      {supportRequests && <span className="itemNumber">{supportRequests.length}</span>}
+                      <button className='itemButton'>
+                        <MdVisibility />Display
+                      </button>
+                    </div>
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Subscribers</span>
+                      {subscribers && <span className="itemNumber">{subscribers.length}</span>}
+                      <button className='itemButton'>
+                        <MdVisibility />Display
+                      </button>
+                    </div>
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Buy Property Requests</span>
+                      {buyPropertyRequests && <span className="itemNumber">{buyPropertyRequests.length}</span>}
+                      <button className='itemButton'>
+                        <MdVisibility />Display
+                      </button>
+                    </div>
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Sell Property Requests</span>
+                      {sellPropertyRequests && <span className="itemNumber">{sellPropertyRequests.length}</span>}
+                      <button className='itemButton'>
+                        <MdVisibility />Display
+                      </button>
+                    </div>
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Painter Requests</span>
+                      {painterRequests && <span className="itemNumber">{painterRequests.length}</span>}
+                      <button className='itemButton'>
+                        <MdVisibility />Display
+                      </button>
+                    </div>
+                 </FadeLeftAnimation>
              </SwiperSlide>
-             {/* <SwiperSlide className="featuredItem">
-                 <span className="featuredTitle">Sales</span>
-                 <div className="featuredMoneyContainer">
-                     <span className="featuredMoney">$4,415</span>
-                     <span className="featuredMoneyRate">-1.4 <BiDownArrowAlt className='featuredIcon negative'/></span>
-                 </div>
-                 <span className='featuredSub'>Compared to last month</span>
-             </SwiperSlide>
-             <SwiperSlide className="featuredItem">
-                 <span className="featuredTitle">Cost</span>
-                 <div className="featuredMoneyContainer">
-                     <span className="featuredMoney">$2,225</span>
-                     <span className="featuredMoneyRate">+11.4 <BiUpArrowAlt className='featuredIcon'/></span>
-                 </div>
-                 <span className='featuredSub'>Compared to last month</span>
-             </SwiperSlide> */}
-              </Swiper>
+          </Swiper>
         </div>
 
     )

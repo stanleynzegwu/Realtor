@@ -5,8 +5,10 @@ import './NewProperty.scss'
 import { useCreateProperty } from '../../../Hooks/useApiRequest';
 import { uploadFiles } from '../../../firebase';
 import { TypingText } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const NewProperty = () => {
+  ScrollToTop()
     const { CreateProperty,isLoading,setIsLoading,
           error,success,setError,successMessageDisplay,
           errorMessageDisplay,seterrorMessageDisplay

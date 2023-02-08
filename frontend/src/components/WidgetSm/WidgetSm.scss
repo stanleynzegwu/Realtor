@@ -46,6 +46,9 @@
                 color: gray;
                 cursor: pointer; 
                 gap: 5px;
+                &:hover {
+                    background-color: rgb(232, 228, 228);
+                }
 
                 svg {
                     font-size: 17px;

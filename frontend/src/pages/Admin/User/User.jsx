@@ -9,8 +9,10 @@ import { useUserContext } from '../../../Hooks/useUserContext'
 import { uploadImgAndUpdate } from '../../../firebase'
 import { useUpdateUser } from '../../../Hooks/useApiRequest'
 import { TypingText } from '../../../components'
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const User = () => {
+    ScrollToTop()
     const { UpdateUser,isLoading,successMessageDisplay,error } = useUpdateUser()
     const { id } = useParams()
     const { users } = useUserContext()

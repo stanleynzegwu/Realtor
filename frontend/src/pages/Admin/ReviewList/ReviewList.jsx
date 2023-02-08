@@ -9,8 +9,11 @@ import { useDeleteReview } from '../../../Hooks/useApiRequest';
 import { useUpdateReview } from '../../../Hooks/useApiRequest'
 import { TypingText } from '../../../components';
 import { Loader } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
+import { FadeDownAnimation, FadeUpAnimation,FadeRightAnimation,FadeLeftAnimation } from '../../../components/UI/Animation/Animation';
 
 const ReviewList = () => {
+    ScrollToTop()
     const { reviews } = useReviewContext()
     const { DeleteAReview } = useDeleteReview()
     const { UpdateReview, success , isLoading } = useUpdateReview()

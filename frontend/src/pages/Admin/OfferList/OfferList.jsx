@@ -6,8 +6,10 @@ import './OfferList.scss'
 import { useDeleteOffer } from '../../../Hooks/useApiRequest';
 import { useOfferContext } from '../../../Hooks/useOfferContext';
 import { Loader } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const OfferList = () => {
+    ScrollToTop()
      const { DeleteOffer } = useDeleteOffer()
      const { offers } = useOfferContext()
  

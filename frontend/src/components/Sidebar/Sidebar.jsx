@@ -5,6 +5,7 @@ import { MdProductionQuantityLimits, MdOutlineReviews, MdOutlineLocalOffer } fro
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Sidebar.scss'
+import { FadeDownAnimation, FadeLeftAnimation, FadeRightAnimation, FadeUpAnimation } from '../UI/Animation/Animation'
 
 const Sidebar = () => {
     const [active,setActive] = useState('home')
@@ -16,7 +17,7 @@ const Sidebar = () => {
     return ( 
         <div className="sidebar">
             <div className="sidebarWrapper">
-                <div className="sidebarMenu">
+                <FadeUpAnimation className="sidebarMenu">
                     <h3 className='sidebarTitle'>Dashboard</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/home'>
@@ -34,9 +35,9 @@ const Sidebar = () => {
                             <MdTimeline />Analytics
                         </li>
                     </ul>
-                </div>
+                </FadeUpAnimation>
 
-                <div className="sidebarMenu">
+                <FadeUpAnimation className="sidebarMenu">
                     <h3 className='sidebarTitle'>Quick Menu</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/users'>
@@ -80,9 +81,9 @@ const Sidebar = () => {
                             </li>
                         </Link>
                     </ul>
-                </div>
+                </FadeUpAnimation>
 
-                <div className="sidebarMenu">
+                <FadeUpAnimation className="sidebarMenu">
                     <h3 className='sidebarTitle'>Notifications</h3>
                     <ul className='sidebarList'>
                         <li id='mail'
@@ -98,7 +99,7 @@ const Sidebar = () => {
                             <FiMessageSquare />Messages
                         </li>
                     </ul>
-                </div>
+                </FadeUpAnimation>
             </div>
         </div>
      );

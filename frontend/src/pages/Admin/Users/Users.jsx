@@ -5,8 +5,10 @@ import './Users.scss'
 import { useUserContext } from '../../../Hooks/useUserContext';
 import { useDeleteUser } from '../../../Hooks/useApiRequest';
 import { Loader } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const Users = () => {
+    ScrollToTop()
     const { users } = useUserContext()
     const { DeleteAUser } = useDeleteUser()
     const allUsers = users?.data

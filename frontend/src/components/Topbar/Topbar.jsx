@@ -1,17 +1,20 @@
 import { useState} from 'react'
 import { Link } from 'react-router-dom'
-import { MdNotificationsNone } from 'react-icons/md'
-import { MdLineStyle, MdTimeline } from 'react-icons/md'
+import { MdNotificationsNone, MdProductionQuantityLimits, MdOutlineReviews,
+MdOutlineLocalOffer, MdLineStyle, MdTimeline } from 'react-icons/md'
 import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
 import { GrBlog } from 'react-icons/gr'
-import { MdProductionQuantityLimits, MdOutlineReviews,MdOutlineLocalOffer } from 'react-icons/md'
 import {HiMenu,HiX} from 'react-icons/hi'
+
 import './Topbar.scss'
 import {useAuthContext} from '../../Hooks/useAuthContext'
+import { useRestContext } from '../../Hooks/useRestContext'
 
 const Topbar = () => {
     const [toggle,setToggle] = useState(false)
     const { user } = useAuthContext()
+    const { supportRequests } = useRestContext()
+    const supportRequestsLength = supportRequests && supportRequests.length
 
     const handleClick = () => setToggle(false)
 
@@ -24,7 +27,7 @@ const Topbar = () => {
                 <div className="topRight">
                     <div className="topbarIconContainer">
                         <MdNotificationsNone />
-                        <span className='topIconBag'>2</span>
+                        {supportRequestsLength && <span className='topIconBag'>{supportRequestsLength}</span>}
                     </div>
                     {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='topAvatar'/>}
                     <div className='topbar__menuIcon' onClick={() => setToggle(true)}><HiMenu /></div>

@@ -5,8 +5,10 @@ import './PropertyList.scss'
 import { usePropertyContext } from '../../../Hooks/usePropertyContext';
 import { useDeleteProperty } from '../../../Hooks/useApiRequest';
 import { Loader } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const PropertyList = () => {
+    ScrollToTop()
     const { DeleteAProperty } = useDeleteProperty()
     const { properties } = usePropertyContext()
     const allProperties = properties?.data

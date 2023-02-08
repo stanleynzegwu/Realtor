@@ -5,8 +5,10 @@ import './NewUser.scss'
 import { uploadImg } from '../../../firebase'
 import { useCreateUser } from '../../../Hooks/useApiRequest'
 import { TypingText } from '../../../components'
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const NewUser = () => {
+    ScrollToTop()
     const { CreateUser, isLoading,error,success,successMessageDisplay,setIsLoading,
     setError,errorMessageDisplay,setErrorMessageDisplay} = useCreateUser()
     const [radio,setRadio] = useState('False')

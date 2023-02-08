@@ -9,8 +9,10 @@ import { usePropertyContext } from '../../../Hooks/usePropertyContext'
 import { useUpdateProperty } from '../../../Hooks/useApiRequest'
 import { uploadMultipleAndUpdate } from '../../../firebase'
 import { TypingText } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const Property = () => {
+  ScrollToTop()
   const { UpdateProperty,isLoading, success,error } = useUpdateProperty()
   const { id } = useParams()
   const { properties } = usePropertyContext()

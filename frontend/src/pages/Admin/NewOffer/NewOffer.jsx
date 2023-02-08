@@ -4,8 +4,10 @@ import { useCreateOffer, useGenerateText } from '../../../Hooks/useApiRequest';
 import { uploadFiles } from '../../../firebase';
 import { TypingText } from '../../../components';
 import './NewOffer.scss'
+import { ScrollToTop } from '../../../Hooks/customHook';
 
 const NewOffer = () => {
+    ScrollToTop()
     const { CreateOffer,isLoading,success, setError, error,
         setIsLoading, errorMessageDisplay,seterrorMessageDisplay} = useCreateOffer()
     const { generateText,isGenerateTextError,isGenerateTextLoading,isGenerateTextSuccess } = useGenerateText()

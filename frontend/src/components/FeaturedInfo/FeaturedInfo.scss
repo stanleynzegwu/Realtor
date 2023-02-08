@@ -95,6 +95,51 @@
         color: gray;
     }
 
+    .messagesContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        .messagesContainer__item {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            @media screen and (max-width:1040px){
+                width: 100%;
+            }
+            .itemHeader {
+                width: 65%;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: gray;
+            }
+            .itemNumber {
+                width: 10%;
+                color: #000;
+            }
+            .itemButton {
+                //width: 25%;
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 10px;
+                padding:6px 10px ;
+                color: gray;
+                cursor: pointer; 
+                gap: 5px;
+                &:hover {
+                    background-color: rgb(232, 228, 228);
+                }
+                svg {
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+
     @media screen and (max-width:750px){
         margin-bottom: 10px;
     }

@@ -6,8 +6,11 @@ import { uploadImg } from '../../../firebase'
 import { useGenerateImage, useGenerateText, useCreateBlog } from '../../../Hooks/useApiRequest'
 import illustration from '../../../assets/logos/blogIllustration.png'
 import { TypingText } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
+import { FadeUpAnimation, FadeDownAnimation, FadeRightAnimation,FadeLeftAnimation } from '../../../components/UI/Animation/Animation';
 
 const NewBlog = () => {
+    ScrollToTop()
     const { generateImg,isGenerateImgLoading,generateImgSuccess,generateImgError} = useGenerateImage()
     const { generateText,isGenerateTextError,isGenerateTextLoading,isGenerateTextSuccess } = useGenerateText()
     const { createBlog,isLoading,setIsLoading,setError,success,error,
@@ -68,7 +71,7 @@ const NewBlog = () => {
         <div className="newBlog">
             <div className="newBlog__generate">
                 <div className="newBlog__left">
-                    <h1>Create Blog Post</h1>
+                    <FadeDownAnimation className="newBlog_heading">Create Blog Post</FadeDownAnimation>
                     <img className='illustration' src={illustration} alt="illustration" />
                     <div className='form-left__wrapper'>
                         <form className="generateImgForm form-left">
@@ -78,7 +81,7 @@ const NewBlog = () => {
                             </div>
                         </form>
                         <form className="generateTextForm form-left" onSubmit={handleSubmitText}>
-                            <div className="form-left__holder">
+                            <FadeUpAnimation className="form-left__holder">
                                 <label className='textLabel form-lef_label' htmlFor="">Text Description</label>
                                 <input name='textPrompt'
                                 value={generateForm.textPrompt}
@@ -87,7 +90,7 @@ const NewBlog = () => {
                                 type="text"
                                 onChange={handleChange}
                                 />
-                            </div>
+                            </FadeUpAnimation>
                             <button
                                 style={{border: isGenerateTextSuccess && '2px solid #3eff3e'}}
                                 disabled={isGenerateTextLoading}

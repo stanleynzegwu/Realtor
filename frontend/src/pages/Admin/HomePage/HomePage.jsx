@@ -1,8 +1,10 @@
 import { FeaturedInfo , Chart, WidgetLg,WidgetSm} from '../../../components'
+import { ScrollToTop } from '../../../Hooks/customHook';
+import { FadeUpAnimation } from '../../../components/UI/Animation/Animation';
 import './HomePage.scss'
 
 const HomePage = () => {
-
+    ScrollToTop()
     const data = [
         {
           name: 'Jan',
@@ -58,10 +60,10 @@ const HomePage = () => {
         <div className='home'>
             <FeaturedInfo />
             <Chart title='User Analytics' data={data} grid dataKey='Active User' />
-                <div className="homeWidgets">
+                <FadeUpAnimation className="homeWidgets">
                     <WidgetSm />
                     <WidgetLg />
-                </div>
+                </FadeUpAnimation>
         </div>
      );
 }

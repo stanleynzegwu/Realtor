@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import './Blog.scss'
 
+import './Blog.scss'
 import { DataGrid } from '@mui/x-data-grid';
 import { MdDeleteOutline,MdPublish } from 'react-icons/md'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -11,8 +11,11 @@ import { useDeleteBlog } from '../../../Hooks/useApiRequest';
 import { uploadImgAndUpdate } from '../../../firebase'
 import { useUpdateBlog } from '../../../Hooks/useApiRequest';
 import { TypingText } from '../../../components';
+import { ScrollToTop } from '../../../Hooks/customHook';
+import { FadeDownAnimation, FadeUpAnimation,FadeRightAnimation,FadeLeftAnimation } from '../../../components/UI/Animation/Animation';
 
 const Blog = () => {
+    ScrollToTop()
     const { UpdateBlog,isLoading,success,error } = useUpdateBlog()
     const { DeleteBlog } = useDeleteBlog()
     const { blogs } = useBlogContext()
@@ -98,12 +101,12 @@ const Blog = () => {
     return ( 
         blogs
         ?
-        <div className={toggle ? `admin_blog hideOverrflow` : `admin_blog`}>
-            <div  className='admin_blogBtn'>
+        <FadeUpAnimation className={toggle ? `admin_blog hideOverrflow` : `admin_blog`}>
+            <FadeDownAnimation  className='admin_blogBtn'>
                 <Link to='/adminDashboard/newBlog'>
                     <button>Create Blog Post</button>
                 </Link>
-            </div>
+            </FadeDownAnimation>
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
                 rows={allBlogs}
@@ -124,7 +127,7 @@ const Blog = () => {
                         <span className='close-icon' onClick={() => setToggle(false)}><AiOutlineClose /></span>
                     </div>
                     <form onSubmit={handleSubmit}>
-                        <div className='blogEdit__left'>
+                        <FadeRightAnimation className='blogEdit__left'>
                             <div className="blogEdit__Item blogEdit__imageHolder">
                                 <img src={preview ? preview : currentBlog.img} alt='blog'/>
                                 <label htmlFor="file"><MdPublish /></label>
@@ -137,7 +140,7 @@ const Blog = () => {
                                 />
                             </div>
                             <div className="blogEdit__textHolder">
-                                <label>Heading</label>
+                                <label>TITLE</label>
                                 <input
                                     type="text"
                                     name="title"
@@ -145,9 +148,9 @@ const Blog = () => {
                                     onChange={handleChange}
                                  />
                             </div>
-                        </div>
+                        </FadeRightAnimation>
                        
-                        <div className='blogEdit__right'>
+                        <FadeLeftAnimation className='blogEdit__right'>
                             <div className='blogEdit__textarea'>
                                 <textarea
                                     id=""
@@ -160,13 +163,13 @@ const Blog = () => {
                             </div>
                             <button disabled={isLoading} type='submit' className='blogUpdateButton'>UPDATE</button>
                             {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                            {success && <TypingText text='Blog Updated Successfully' intervalDuration={50} className='success'/>}
-                        </div>
+                            {success && <TypingText text='Blog Post Updated Successfully' intervalDuration={50} className='success'/>}
+                        </FadeLeftAnimation>
                     </form>
                 </div>
             </div>
         }
-        </div>
+        </FadeUpAnimation>
         :
         <Loader className='loading'/>
      );
