@@ -74,7 +74,7 @@ const ReviewList = () => {
     return (
         allReviews
         ?
-        <div className={toggle ? `reviewList hideOverflow` : `reviewList`}>
+        <FadeUpAnimation className={toggle ? `reviewList hideOverflow` : `reviewList`}>
             <div style={{ height: 800, width: '100%' }}>
               <DataGrid
                 rows={allReviews}
@@ -91,15 +91,15 @@ const ReviewList = () => {
             &&
             <div className='reviewEdit'>
                 <div className='reviewEdit__holder'>
-                    <div className='reviewEdit__topHolder'>
+                    <FadeDownAnimation className='reviewEdit__topHolder'>
                         <p>EDIT REVIEW</p>
                         <span className='close-icon' onClick={() => setToggle(false)}><AiOutlineClose /></span>
-                    </div>
+                    </FadeDownAnimation>
                     <div className='reviewEdit__starHolder'>
                         <span>{Array(currentReview?.star).fill(<AiFillStar />)}</span>
                     </div>
                     <form>
-                        <div className='reviewEdit__textarea'>
+                        <FadeUpAnimation className='reviewEdit__textarea'>
                             <textarea name="review"
                             id=""
                             cols="30"
@@ -107,8 +107,8 @@ const ReviewList = () => {
                             value={formReview}
                             onChange={(e) => setFormReview(e.target.value)}
                             />
-                        </div>
-                        <div className="reviewUpdateItem">
+                        </FadeUpAnimation>
+                        <FadeUpAnimation className="reviewUpdateItem">
                             <label className='radio-label'>isFavorite</label>
                             <div className='radioHolder'>
                                 <span>
@@ -134,14 +134,14 @@ const ReviewList = () => {
                                     />
                                 </span>
                             </div>
-                        </div>
+                        </FadeUpAnimation>
                         <button disabled={isLoading} type='submit' className='reviewUpdateButton' onClick={handleUpdate}>UPDATE</button>
                         {success && <TypingText text='Review Updated Successfully' intervalDuration={50} className='success'/>}
                     </form>
                 </div>
             </div>
         }
-        </div>
+        </FadeUpAnimation>
         :
         <Loader className='loading'/>
      );

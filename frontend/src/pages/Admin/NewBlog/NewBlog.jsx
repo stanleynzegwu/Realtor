@@ -95,7 +95,7 @@ const NewBlog = () => {
                                 style={{border: isGenerateTextSuccess && '2px solid #3eff3e'}}
                                 disabled={isGenerateTextLoading}
                                 className='form-left__btn'
-                            >Generate Writeup</button>
+                            >Generate AI Writeup</button>
                         </form>
                     </div>
                 </div>

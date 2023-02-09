@@ -1,4 +1,5 @@
 //import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import { MdVisibility } from 'react-icons/md'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
@@ -87,37 +88,47 @@ const FeaturedInfo = () => {
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Support Requests</span>
                       {supportRequests && <span className="itemNumber">{supportRequests.length}</span>}
-                      <button className='itemButton'>
-                        <MdVisibility />Display
-                      </button>
+                      <Link to={`/adminDashboard/messages`}>
+                        <button className='itemButton'>
+                          <MdVisibility />Display
+                        </button>
+                      </Link>
                     </div>
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Subscribers</span>
                       {subscribers && <span className="itemNumber">{subscribers.length}</span>}
-                      <button className='itemButton'>
-                        <MdVisibility />Display
-                      </button>
+                      <Link to={`/adminDashboard/messages`}>
+                        <button className='itemButton'>
+                          <MdVisibility />Display
+                        </button>
+                      </Link>
                     </div>
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Buy Property Requests</span>
                       {buyPropertyRequests && <span className="itemNumber">{buyPropertyRequests.length}</span>}
-                      <button className='itemButton'>
-                        <MdVisibility />Display
-                      </button>
+                      <Link to={`/adminDashboard/messages`}>
+                        <button className='itemButton'>
+                          <MdVisibility />Display
+                        </button>
+                      </Link>
                     </div>
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Sell Property Requests</span>
                       {sellPropertyRequests && <span className="itemNumber">{sellPropertyRequests.length}</span>}
-                      <button className='itemButton'>
-                        <MdVisibility />Display
-                      </button>
+                      <Link to={`/adminDashboard/messages`}>
+                        <button className='itemButton'>
+                          <MdVisibility />Display
+                        </button>
+                      </Link>
                     </div>
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Painter Requests</span>
                       {painterRequests && <span className="itemNumber">{painterRequests.length}</span>}
-                      <button className='itemButton'>
-                        <MdVisibility />Display
-                      </button>
+                      <Link to={`/adminDashboard/messages`}>
+                        <button className='itemButton'>
+                          <MdVisibility />Display
+                        </button>
+                      </Link>
                     </div>
                  </FadeLeftAnimation>
              </SwiperSlide>

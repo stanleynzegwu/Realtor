@@ -1,6 +1,7 @@
 export { default as Blog } from './Blog/Blog'
 export { default as DashboardHome } from './DashboardHome/DashboardHome'
 export { default as HomePage } from './HomePage/HomePage'
+export { default as Messages } from './Messages/Messages'
 export { default as NewBlog } from './NewBlog/NewBlog'
 export { default as NewOffer } from './NewOffer/NewOffer'
 export { default as NewProperty } from './NewProperty/NewProperty'

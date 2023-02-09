@@ -16,8 +16,8 @@ const Sidebar = () => {
 
     return ( 
         <div className="sidebar">
-            <div className="sidebarWrapper">
-                <FadeUpAnimation className="sidebarMenu">
+            <FadeUpAnimation className="sidebarWrapper">
+                <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Dashboard</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/home'>
@@ -35,9 +35,9 @@ const Sidebar = () => {
                             <MdTimeline />Analytics
                         </li>
                     </ul>
-                </FadeUpAnimation>
+                </div>
 
-                <FadeUpAnimation className="sidebarMenu">
+                <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Quick Menu</h3>
                     <ul className='sidebarList'>
                         <Link to='/adminDashboard/users'>
@@ -81,9 +81,9 @@ const Sidebar = () => {
                             </li>
                         </Link>
                     </ul>
-                </FadeUpAnimation>
+                </div>
 
-                <FadeUpAnimation className="sidebarMenu">
+                <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Notifications</h3>
                     <ul className='sidebarList'>
                         <li id='mail'
@@ -99,8 +99,8 @@ const Sidebar = () => {
                             <FiMessageSquare />Messages
                         </li>
                     </ul>
-                </FadeUpAnimation>
-            </div>
+                </div>
+            </FadeUpAnimation>
         </div>
      );
 }

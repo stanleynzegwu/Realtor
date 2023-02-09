@@ -7,6 +7,7 @@ import { GrBlog } from 'react-icons/gr'
 import {HiMenu,HiX} from 'react-icons/hi'
 
 import './Topbar.scss'
+import { FadeRightAnimation,FadeDownAnimation } from '../UI/Animation/Animation'
 import {useAuthContext} from '../../Hooks/useAuthContext'
 import { useRestContext } from '../../Hooks/useRestContext'
 
@@ -21,17 +22,17 @@ const Topbar = () => {
     return ( 
         <div className='topbar'>
             <div className='topbarWrapper'>
-                <div className="topLeft">
+                <FadeRightAnimation className="topLeft">
                     <Link to='/'><span className='logo'>stannz</span></Link>
-                </div>
-                <div className="topRight">
+                </FadeRightAnimation>
+                <FadeDownAnimation className="topRight">
                     <div className="topbarIconContainer">
                         <MdNotificationsNone />
                         {supportRequestsLength && <span className='topIconBag'>{supportRequestsLength}</span>}
                     </div>
                     {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='topAvatar'/>}
                     <div className='topbar__menuIcon' onClick={() => setToggle(true)}><HiMenu /></div>
-                </div>
+                </FadeDownAnimation>
             </div>
 
             {
