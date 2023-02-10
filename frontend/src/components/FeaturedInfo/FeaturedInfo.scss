@@ -101,6 +101,7 @@
         flex-direction: column;
         align-items: center;
         gap: 3px;
+        position: relative;
         .messagesContainer__item {
             width: 90%;
             display: flex;
@@ -120,9 +121,16 @@
                 width: 10%;
                 color: #000;
             }
-            .itemButton {
-                //width: 25%;
+            a {
+                width: 25%;
                 display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .itemButton {
+                width: 100%;
+                display: flex;
+                justify-content: center;
                 align-items: center;
                 border: none;
                 border-radius: 10px;
@@ -135,6 +143,38 @@
                 }
                 svg {
                     font-size: 17px;
+                }
+            }
+            .copyBtn {
+                width: 25%;
+            }
+
+            .clipBoard-Tooltip {
+                padding: 20px 10px;
+                background: rgba(94, 116, 119, 0.45);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                font-weight: 600;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+
+                svg {
+                    color: #000;
+                    align-self: flex-end;
+                }
+                span {
+                    color: #000;
+                }
+
+                @media screen and (max-width:370px){
+                    width: 60%;
+                    height: 40%;
                 }
             }
         }

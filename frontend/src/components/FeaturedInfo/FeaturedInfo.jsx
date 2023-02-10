@@ -1,6 +1,6 @@
 //import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { MdVisibility } from 'react-icons/md'
+import { MdVisibility, MdFileCopy, MdClose } from 'react-icons/md'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 import "swiper/css";
@@ -9,13 +9,30 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import './FeaturedInfo.scss'
 import HorizontalBar from '../HorizontalBar'
+import { UseToggleVisibility } from '../../Hooks/customHook';
 import { useReviewFunction } from '../../Hooks/useApiRequest';
 import { useRestContext } from '../../Hooks/useRestContext';
 import { FadeDownAnimation, FadeLeftAnimation, FadeRightAnimation } from '../UI/Animation/Animation'
 
 const FeaturedInfo = () => {
+    const { toggle, setToggle } = UseToggleVisibility()
     const { starNum, getPercentage, totalReviews } = useReviewFunction()
     const { subscribers,supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
+
+    let subscribersMail = (subscribers?.map(({email}) => (
+      email
+    )))
+
+    //COPY TO SUBSCRIBERS MAIL TO CLIPBOARD
+    const copyToClipboard = async sub => {
+      const subscribersString = sub.join("\n");
+      try {
+        navigator.clipboard.writeText(subscribersString);
+        setToggle(true)
+      }catch(err){
+        console.error("Failed to copy text: ", err)
+      }
+    };
 
     return (
         <div className='featured'>
@@ -86,17 +103,22 @@ const FeaturedInfo = () => {
               <SwiperSlide className="featuredItem">
                  <FadeLeftAnimation className="messagesContainer">
                     <div className="messagesContainer__item">
-                      <span className='itemHeader'>Support Requests</span>
-                      {supportRequests && <span className="itemNumber">{supportRequests.length}</span>}
-                      <Link to={`/adminDashboard/messages`}>
-                        <button className='itemButton'>
-                          <MdVisibility />Display
-                        </button>
-                      </Link>
-                    </div>
-                    <div className="messagesContainer__item">
                       <span className='itemHeader'>Subscribers</span>
                       {subscribers && <span className="itemNumber">{subscribers.length}</span>}
+                      <button onClick={() => copyToClipboard(subscribersMail)} className='itemButton copyBtn'>
+                        <MdFileCopy />Copy
+                      </button>
+                      {
+                        toggle &&
+                        <div className='clipBoard-Tooltip'>
+                          <MdClose onClick={() => setToggle(false)}/>
+                          <span>copied to clipboard</span>
+                        </div>
+                      }
+                    </div>
+                    <div className="messagesContainer__item">
+                      <span className='itemHeader'>Support Requests</span>
+                      {supportRequests && <span className="itemNumber">{supportRequests.length}</span>}
                       <Link to={`/adminDashboard/messages`}>
                         <button className='itemButton'>
                           <MdVisibility />Display

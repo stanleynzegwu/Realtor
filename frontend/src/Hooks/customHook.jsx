@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 
-import { useAuthContext } from "./useAuthContext";
-import axios from 'axios';
-
 export const UseId = () => {
     const [id,setId] = useState(0)
 
@@ -11,7 +8,12 @@ export const UseId = () => {
 
     return { id,changeId }
 }
- 
+
+export const UseToggleVisibility = () => {
+    const [toggle,setToggle] = useState(false)
+
+    return {toggle, setToggle}
+}
 
 export const SetPasswordVisibility = () => {
     const [isVisible, setVisible] = useState(false)
