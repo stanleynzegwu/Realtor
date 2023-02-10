@@ -65,9 +65,9 @@ const getAllBlog = async (req, res) => {
       blog = await Blog.find();
     }
 
-    res.status(200).json(blog);
+    return res.status(200).json(blog);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 

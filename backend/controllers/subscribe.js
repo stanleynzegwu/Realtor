@@ -1,5 +1,6 @@
 const Subscribe = require('../models/Subscribe')
 const User = require('../models/User')
+const sendSubsciptionMail = require('./nodemailer').sendSubsciptionMail
 
 //CREATE Subscribe
 
@@ -28,6 +29,8 @@ const create = async (req,res) => {
         }
 
         const savedSubscription = await newSubscription.save()
+        //SEND THE USER ACKNOWLEDGEMENT MAIL
+        sendSubsciptionMail(email)
         return res.status(200).json(savedSubscription)
 
     }catch(err){
