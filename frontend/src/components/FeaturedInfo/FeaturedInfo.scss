@@ -149,6 +149,68 @@
                 width: 25%;
             }
 
+            .copyOrSend {
+                width: 70%;
+                height: 70%;
+                position: absolute;
+                padding: 20px 10px;
+                display: flex;
+                flex-direction: column;
+                background: rgba(94, 116, 119, 0.45);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 5px;
+                font-weight: 600;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+
+                svg {
+                    color: #000;
+                    align-self: flex-end;
+                }
+                .btnHolder {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    gap: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    .btn {
+                        padding: 5px;
+                        width: 30%;
+                        height: 60%;
+                        border: none;
+                        background: #186cd4;
+                        border-radius: 10px;
+                        display: flex;
+                        gap: 5px;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-weight: 600;
+                        transition: .5s ease-in-out;
+                        cursor: pointer;
+                        &:active {
+                            box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+                            transition: none;
+                        }
+
+                        svg {
+                            color: #fff;
+                        }
+                        .sendBtn {
+                            width: 100%;
+                            height: 100%;
+                            color: inherit;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
             .clipBoard-Tooltip {
                 padding: 20px 10px;
                 background: rgba(94, 116, 119, 0.45);

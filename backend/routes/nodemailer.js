@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { sendSubsciptionMail } = require("../controllers/nodemailer")
+const { sendSubsciptionMail, sendBulkSubsciptionMail } = require("../controllers/nodemailer")
 
-//CREATE
+//SEND MAIL ONCE SUBSCRIBED
 router.post("/" ,sendSubsciptionMail)
+
+//SEND BULK EMAIL TO SUBSCRIBERS
+router.post("/sendBulk",sendBulkSubsciptionMail)
+
 
 module.exports = router;

@@ -9,6 +9,7 @@
     .contact_wrapper {
         margin: 40px;
         height: 100%;
+        min-height: 85vh;
         width: 80%;
         display: flex;
         gap: 40px;
@@ -16,6 +17,9 @@
 
         .contact_left {
             width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             padding: 20px;
 
             h1 {
@@ -124,7 +128,7 @@
                 border-top-right-radius: 9999px;
             }
         }
-        @media screen and (max-width:768px){
+        @media screen and (max-width:767px){
             flex-direction: column;
 
             .contact_left {
@@ -152,7 +156,7 @@
         }
     }
 
-    @media screen and (max-width:768px){
+    @media screen and (max-width:767px){
         .backBtn {
             width: 80%;
         }

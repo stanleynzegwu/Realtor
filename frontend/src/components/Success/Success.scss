@@ -1,0 +1,56 @@
+.success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    gap:10px;
+  
+    .thumbs-up {
+      font-size: 80px;
+      animation: thumbs-up-animation 2s ease-in-out infinite;
+    }
+
+    .success__big {
+        color: green;
+    }
+
+    .success__message {
+        color: rgb(40, 171, 40);
+        font-weight: 500;
+    }
+
+    .successBtnWrapper {
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+        .successBtn {
+            background: black;
+            color: white;
+            width: 100px;
+            font-weight: 600;
+            padding: 7px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: .5s ease-in-out;
+            &:active {
+                box-shadow: inset 5px 5px 10px -3px rgba(255, 255, 255, .7);
+                transition: none;
+            }
+
+            span {
+                color: inherit;
+            }
+        }
+    }
+  }
+  
+  @keyframes thumbs-up-animation {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-15deg); }
+    40% { transform: rotate(15deg); }
+    60% { transform: rotate(-15deg); }
+    80% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+  }

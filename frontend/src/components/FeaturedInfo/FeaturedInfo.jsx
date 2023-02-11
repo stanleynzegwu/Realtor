@@ -15,20 +15,24 @@ import { useRestContext } from '../../Hooks/useRestContext';
 import { FadeDownAnimation, FadeLeftAnimation, FadeRightAnimation } from '../UI/Animation/Animation'
 
 const FeaturedInfo = () => {
-    const { toggle, setToggle } = UseToggleVisibility()
+    const { toggle, setToggle, toggle1, setToggle1 } = UseToggleVisibility()
     const { starNum, getPercentage, totalReviews } = useReviewFunction()
     const { subscribers,supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
 
     let subscribersMail = (subscribers?.map(({email}) => (
       email
     )))
-
+    const mainToggle = () => {
+      setToggle1(false)
+      setToggle(true)
+    }
     //COPY TO SUBSCRIBERS MAIL TO CLIPBOARD
     const copyToClipboard = async sub => {
       const subscribersString = sub.join("\n");
       try {
         navigator.clipboard.writeText(subscribersString);
-        setToggle(true)
+        setToggle(false)
+        setToggle1(true)
       }catch(err){
         console.error("Failed to copy text: ", err)
       }
@@ -105,13 +109,25 @@ const FeaturedInfo = () => {
                     <div className="messagesContainer__item">
                       <span className='itemHeader'>Subscribers</span>
                       {subscribers && <span className="itemNumber">{subscribers.length}</span>}
-                      <button onClick={() => copyToClipboard(subscribersMail)} className='itemButton copyBtn'>
-                        <MdFileCopy />Copy
+                      <button onClick={() => mainToggle() } className='itemButton copyBtn'>
+                        Click
                       </button>
                       {
                         toggle &&
+                          <div className='copyOrSend'>
+                             <MdClose onClick={() => setToggle(false)}/>
+                             <div className='btnHolder'>
+                                <button onClick={() => copyToClipboard(subscribersMail)} className='btn'><MdFileCopy />Copy</button>
+                                <Link to="/adminDashboard/messageSubscribers"className='btn'>
+                                  <span className='sendBtn'>Msg</span>
+                                </Link>
+                             </div>
+                          </div>
+                      }
+                      {
+                        toggle1 &&
                         <div className='clipBoard-Tooltip'>
-                          <MdClose onClick={() => setToggle(false)}/>
+                          <MdClose onClick={() => setToggle1(false)}/>
                           <span>copied to clipboard</span>
                         </div>
                       }

@@ -9,6 +9,7 @@ import illustration from '../../assets/logos/reviewIllustration.svg'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { useUserReview } from '../../Hooks/useApiRequest'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
+import { Success } from '../../components'
 import { TypingText } from '../../components'
 
 const UserReview = () => {
@@ -36,25 +37,9 @@ const UserReview = () => {
     }
 
     return (
-        success
-        ?
-        <div className='reviewSuccess'>
-            <div className='reviewSuccess__emojiHolder'>
-                <span className="thumbs-up">
-                  👍
-                </span>
-            </div>
-            <div className='reviewSuccess__messageHolder'>
-                <h3>
-                    Thank You
-                </h3>
-                <p>
-                    Your Feedback was successfully submitted
-                </p>
-            </div>
-            <Link to='/'>
-                <span>Back to home</span>
-            </Link>
+        success ?
+        <div className='successWrapper'>
+            <Success message="Your Feedback was successfully submitted"/>
         </div>
         :
         <>

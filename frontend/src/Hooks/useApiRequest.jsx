@@ -648,3 +648,26 @@ export const useCreateHirePainterRequest = () => {
     return {CreateHirePainterRequest, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
 
+//SEND BULK MAIL TO SUBSCRIBERS
+export const useSendBulkMail = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const CreateSendBulk = async (form) => {
+        try{
+            const res = await userRequest.post("/nodemailer/sendBulk",form)
+            console.log(res.status)
+            if(res.status === 200){
+            setIsLoading(false)
+            setSuccess(true)
+            }
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {CreateSendBulk, success,isLoading, setError, error,setIsLoading}
+}
+

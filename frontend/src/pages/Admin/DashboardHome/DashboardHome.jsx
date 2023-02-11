@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Topbar, Sidebar , Loader} from '../../../components'
 import { token } from '../../../RequestMethods'
-import { Blog, HomePage, NewBlog, NewOffer, Messages, NewProperty, NewUser,OfferList, Property,
+import { Blog, HomePage, NewBlog, NewOffer, Messages, NewProperty, NewUser,MessageSubscribers,OfferList, Property,
  PropertyList, ReviewList, User, Users } from '../../Admin'
 import './DashboardHome.scss'
 import { useReviewContext } from '../../../Hooks/useReviewContext'
@@ -29,6 +29,7 @@ const DashboardHome = () => {
                   <Route path='newOffer' element={<NewOffer/>}/>
                   <Route path='newProperty' element={<NewProperty/>}/>
                   <Route path='newUser' element={<NewUser/>}/>
+                  <Route path='messageSubscribers' element={<MessageSubscribers/>}/>
                   <Route path='offerList' element={<OfferList/>}/>
                   <Route path='property/:id' element={<Property/>}/>
                   <Route path='properties' element={<PropertyList/>}/>

@@ -11,8 +11,9 @@ export const UseId = () => {
 
 export const UseToggleVisibility = () => {
     const [toggle,setToggle] = useState(false)
+    const [toggle1,setToggle1] = useState(false)
 
-    return {toggle, setToggle}
+    return {toggle, setToggle,toggle1,setToggle1}
 }
 
 export const SetPasswordVisibility = () => {
