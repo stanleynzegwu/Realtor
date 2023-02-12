@@ -635,6 +635,7 @@ export const useCreateHirePainterRequest = () => {
 
     const CreateHirePainterRequest = async (hirePainterForm) => {
         try{
+            setIsLoading(true)
             const res = await userRequest.post("/hirePainter",hirePainterForm)
             console.log(res)
             setIsLoading(false)
@@ -653,11 +654,12 @@ export const useSendBulkMail = () => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
 
     const CreateSendBulk = async (form) => {
         try{
+            setIsLoading(true)
             const res = await userRequest.post("/nodemailer/sendBulk",form)
-            console.log(res.status)
             if(res.status === 200){
             setIsLoading(false)
             setSuccess(true)
@@ -668,6 +670,6 @@ export const useSendBulkMail = () => {
         }
 
     }
-    return {CreateSendBulk, success,isLoading, setError, error,setIsLoading}
+    return {CreateSendBulk, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
 

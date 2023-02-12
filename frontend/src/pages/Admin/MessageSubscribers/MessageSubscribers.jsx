@@ -5,6 +5,7 @@ import { useRestContext } from '../../../Hooks/useRestContext'
 import { useSendBulkMail } from '../../../Hooks/useApiRequest'
 import Success from '../../../components/Success/Success'
 import { useHandleGoBack } from '../../../Hooks/customHook'
+import { TypingText } from '../../../components'
 
 const MessageSubscribers = () => {
     const handleGoBack = useHandleGoBack()
@@ -15,7 +16,7 @@ const MessageSubscribers = () => {
         emails:subscribersEmail, subject:"",body:""
     })
 
-    const { CreateSendBulk, success, error, setError } = useSendBulkMail()
+    const { CreateSendBulk,isLoading, success, error, setError,errorMessageDisplay,seterrorMessageDisplay } = useSendBulkMail()
 
     console.log(formData)
     const handleChange = (e) => {
@@ -31,7 +32,9 @@ const MessageSubscribers = () => {
         e.preventDefault()
 
         if(!emails || !subject || !body){
-            setError(true)
+            setError("Fill the input fields")
+            seterrorMessageDisplay(true)
+            setTimeout(() => seterrorMessageDisplay(false),6000)
             return
         }
         await CreateSendBulk(formData)
@@ -68,8 +71,11 @@ const MessageSubscribers = () => {
                         />
                     </div>
 
-                    <button className='messageSubscribers__btn'>send</button>
+                    <button disabled={isLoading} className='messageSubscribers__btn'>send</button>
                 </form>
+                {error && errorMessageDisplay &&
+                <TypingText text={error} intervalDuration={50} className='error'/>
+                }
             </div>
             <button onClick={handleGoBack} className='backBtn'>Back</button>
         </div>
