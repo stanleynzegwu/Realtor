@@ -14,8 +14,12 @@ import { useRestContext } from '../../Hooks/useRestContext'
 const Topbar = () => {
     const [toggle,setToggle] = useState(false)
     const { user } = useAuthContext()
-    const { supportRequests } = useRestContext()
+    const { supportRequests,buyPropertyRequests, sellPropertyRequests, painterRequests} = useRestContext()
     const supportRequestsLength = supportRequests && supportRequests.length
+    const buyPropertyRequestsLength = buyPropertyRequests && buyPropertyRequests.length
+    const sellPropertyRequestsLength = sellPropertyRequests && sellPropertyRequests.length
+    const painterRequestsLength = painterRequests && painterRequests.length
+    const requestsSum = (supportRequestsLength + buyPropertyRequestsLength + sellPropertyRequestsLength + painterRequestsLength)
 
     const handleClick = () => setToggle(false)
 
@@ -28,7 +32,7 @@ const Topbar = () => {
                 <FadeDownAnimation className="topRight">
                     <div className="topbarIconContainer">
                         <MdNotificationsNone />
-                        {supportRequestsLength && <span className='topIconBag'>{supportRequestsLength}</span>}
+                        {requestsSum && <span className='topIconBag'>{requestsSum}</span>}
                     </div>
                     {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='topAvatar'/>}
                     <div className='topbar__menuIcon' onClick={() => setToggle(true)}><HiMenu /></div>

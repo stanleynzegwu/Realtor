@@ -6,8 +6,10 @@ import { useSendBulkMail } from '../../../Hooks/useApiRequest'
 import Success from '../../../components/Success/Success'
 import { useHandleGoBack } from '../../../Hooks/customHook'
 import { TypingText } from '../../../components'
+import { ScrollToTop } from '../../../Hooks/customHook'
 
 const MessageSubscribers = () => {
+    ScrollToTop()
     const handleGoBack = useHandleGoBack()
     const { subscribers } = useRestContext()
     const subscribersEmail = subscribers && subscribers.map(({email}) => email)
@@ -18,7 +20,6 @@ const MessageSubscribers = () => {
 
     const { CreateSendBulk,isLoading, success, error, setError,errorMessageDisplay,seterrorMessageDisplay } = useSendBulkMail()
 
-    console.log(formData)
     const handleChange = (e) => {
         const {name,value} = e.target
 

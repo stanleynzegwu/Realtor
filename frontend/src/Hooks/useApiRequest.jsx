@@ -673,3 +673,28 @@ export const useSendBulkMail = () => {
     return {CreateSendBulk, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
 
+
+//REPLY REQUEST MAIL
+export const useSendRequestReply = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(null)
+    const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
+
+    const CreateRequestReply = async (form) => {
+        try{
+            setIsLoading(true)
+            const res = await userRequest.post("/nodemailer/sendRequestReply",form)
+            if(res.status === 200){
+            setIsLoading(false)
+            setSuccess(true)
+            }
+        }catch(err){
+            setIsLoading(false)
+            setError(err.response.data)
+        }
+
+    }
+    return {CreateRequestReply, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}
+

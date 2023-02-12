@@ -9,6 +9,7 @@ import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation
 import { useCreateContact } from '../../Hooks/useApiRequest'
 import { TypingText } from '../../components'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
+import { Success } from '../../components'
 import './Contact.scss'
 
 const Contact = () => {
@@ -31,7 +32,12 @@ const Contact = () => {
         await createContact(formData)
     }
 
-    return ( 
+    return (
+        success ?
+        <div className='successWrapper'>
+            <Success message="Message Sent Successfully."/>
+        </div>
+        :
         <div className="contact">
             <div className="contact_wrapper">
                 <FadeDownAnimation className="contact_left">
@@ -78,7 +84,6 @@ const Contact = () => {
                         </div>
                         <button disabled={isLoading} className='contactBtn'>Leave a meassage</button>
                         {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                        {success && <TypingText text='Message Sent Successfully' intervalDuration={50} className='success'/>}
                     </form>
                 </FadeDownAnimation>
 

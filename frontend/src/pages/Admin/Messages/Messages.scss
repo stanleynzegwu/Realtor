@@ -1,4 +1,10 @@
+.hideOverflow{
+    height: 100vh;
+    overflow: hidden;
+}
+
 .Messages {
+    position: relative;
     width: 85%;
     display: flex;
     flex-direction: column;
@@ -7,15 +13,18 @@
     .Messages_header {
         font-weight: 800;
         text-transform: uppercase;
+        color: #20336a;
     }
     .messages_itemWrapper {
-        width: 80%;
+        width: 90%;
+        min-height: 80vh;
         box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
         border-radius: 5px;
         margin: 40px 0;
         padding: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 20px;
 
         .Messages-item {
@@ -24,6 +33,7 @@
                 color: rgb(100, 99, 99);
                 font-size: 1.5rem;
                 font-weight: 700;
+                text-transform: uppercase;
             }
 
             .Messages-item_toggle {
@@ -122,7 +132,7 @@
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        gap: 10px;
+                        gap: 15%;
 
 
                         .item_btn {
@@ -139,6 +149,10 @@
                                 box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
                                 transition: none;
                             }
+                        }
+
+                        @media screen and (max-width:480px) {
+                            width: 80%;
                         }
                     }
 
@@ -172,6 +186,101 @@
 
         @media screen and (max-width: 767px){
             width: 90%;
+        }
+    }
+
+    .formReply-wrapper {
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        min-height: 100vh;
+        background: rgba(255, 255, 255 , 0.20);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border-radius: 5px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .formReply {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            border: 1.5px solid gray;
+            border-radius: 5px;
+            padding: 20px 40px;
+
+            .formReply__header {
+                align-self: flex-start;
+                text-transform: uppercase;
+                padding-bottom: 20px;
+                font-weight: 800;
+            }
+    
+            svg {
+                align-self: flex-end;
+                font-size: 1.5rem;
+                color: #000;
+                cursor: pointer;
+            }
+    
+            .form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .formReply__item {
+                    display: flex;
+                    flex-direction: column;
+                    label {
+                        font-weight: 600;
+                    }
+                    input,textarea {
+                        padding: 10px;
+                        border: 1.5px solid gray;
+                        border-radius: 5px;
+                    }
+                }
+                .reply_btn {
+                    padding: 10px;
+                    font-weight: 700;
+                    color: #fff;
+                    border-radius: 5px;
+                    background: #20336a;
+                    border: none;
+
+                    &:hover {
+                        background: #30437c;
+                    }
+                }
+
+                button:disabled {
+                    opacity: 0.65;
+                    cursor: progress;
+                }
+            }
+
+            @media screen and (max-width:767px){
+                width: 90%;
+            }
+        }
+
+        .error {
+            width: 70%;
+            margin-top: 20px;
+            padding: 7px;
+            border: 1px solid rgb(208, 41, 41);
+            background: rgb(245, 230, 230);
+            p {
+                color: rgb(208, 41, 41);
+                text-align: center;
+                font-weight: 600;
+            }
+
+            @media screen and (max-width:767px){
+                width: 90%;
+            }
         }
     }
 

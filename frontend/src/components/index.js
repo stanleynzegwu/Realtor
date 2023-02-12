@@ -1,4 +1,5 @@
 export { default as Button } from "./Button/Button"
+export { default as ButtonLarge } from "./buttonLarge"
 export { default as Chart } from "./Chart/Chart"
 export { default as HorizontalBar } from "./HorizontalBar"
 export { default as Loader } from "./Loader/Loader"

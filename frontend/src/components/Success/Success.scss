@@ -44,7 +44,28 @@
             }
         }
     }
-  }
+
+    @media screen and (min-width:768px){
+        .thumbs-up {
+            font-size: 150px;
+        }
+
+        .success__big {
+            font-size: 2.5rem;
+        }
+
+        .success__message {
+            font-size: 1.5rem;
+        }
+
+        .successBtnWrapper {
+            .successBtn {
+                width: 140px;
+                padding: 9px;
+            }
+        }
+    }
+}
   
   @keyframes thumbs-up-animation {
     0% { transform: rotate(0deg); }

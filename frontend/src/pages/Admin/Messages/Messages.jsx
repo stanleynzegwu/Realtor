@@ -1,26 +1,77 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import { AiOutlineClose } from 'react-icons/ai'
 import { MdVisibility } from 'react-icons/md'
 
 import './Messages.scss'
 import { useRestContext } from '../../../Hooks/useRestContext';
+import { useSendRequestReply } from '../../../Hooks/useApiRequest';
 import { UseToggleVisibility,UseId } from '../../../Hooks/customHook';
-import { FadeUpAnimation } from '../../../components/UI/Animation/Animation';
+import { FadeUpAnimation,FadeLeftAnimation,FadeRightAnimation } from '../../../components/UI/Animation/Animation';
+import { ScrollToTop } from '../../../Hooks/customHook';
+import ButtonLarge from '../../../components/buttonLarge';
+import { TypingText } from '../../../components'
+import Success from '../../../components/Success/Success'
 
 const Messages = () => {
+    ScrollToTop()
+    const { CreateRequestReply,success,isLoading,error,setError,errorMessageDisplay,seterrorMessageDisplay } = useSendRequestReply()
     const { supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
     const { toggle, setToggle,toggle1,setToggle1,toggle2,setToggle2,
-            toggle3,setToggle3,toggle4,setToggle4} = UseToggleVisibility()
+            toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5} = UseToggleVisibility()
     const { id,setId } = UseId()
+    const [preloadForm, setPreloadForm] = useState('')
     
+    //GET THE EMAIL OF THE CLICKED USER
+    const { request,idd } = preloadForm
+    const email = request?.filter(({_id}) => idd === _id).map(({email,customer_email}) => email || customer_email)
+    const [formData, setFormData] = useState({subject:"",message:""})
+    
+    const preload = (request,idd) => {
+        setPreloadForm({request,idd})
+        setToggle4(false)
+        setToggle5(true)
+    }
+
     const handleShouldBeVisible = (id) => {
         setId(id)
         setToggle4(prev => !prev)
     }
-    return ( 
-        <div className="Messages">
+
+    const handleChange = (e) => {
+        const {name,value} = e.target
+
+        setFormData(prev => {
+            return {...prev,[name]:value}
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        const { subject,message } = formData
+        e.preventDefault()
+
+        if( !subject || !message ){
+            setError("Fill the input fields")
+            seterrorMessageDisplay(true)
+            setTimeout(() => seterrorMessageDisplay(false),6000)
+            return
+        }
+        const allFormData = {...formData,email}
+        console.log(allFormData)
+        await CreateRequestReply(allFormData)
+    }
+
+    return (
+        success ?
+        <div className='successWrapper'>
+            <Success message="Your Message has been sent successfully."/>
+        </div>
+        :
+        <div className={toggle5 ? `Messages hideOverflow` : `Messages`}>
             <h1 className="Messages_header">All Requests</h1>
             <div className="messages_itemWrapper">
+                {/* SUPPORT REQUESTS */}
                 <div className="Messages-item">
                     <h2>Support Requests</h2>
                     <span className='Messages-item_toggle'>
@@ -51,7 +102,7 @@ const Messages = () => {
                                 </div>
 
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload(supportRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -63,7 +114,8 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
-
+                
+                {/* BUY PROPERTY REQUESTS */}
                 <div className="Messages-item">
                     <h2>Buy Property Requests</h2>
                     <span className='Messages-item_toggle'>
@@ -98,7 +150,7 @@ const Messages = () => {
                                     </div>
                                 }
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload(buyPropertyRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -110,7 +162,8 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
-
+                
+                {/* SELL PROPERTY REQUESTS */}
                 <div className="Messages-item">
                     <h2>Sell Property Requests</h2>
                     <span className='Messages-item_toggle'>
@@ -213,7 +266,7 @@ const Messages = () => {
                                     <span className="value phone_number">{number}</span>
                                 </div>
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link className='item_btn'>Reply</Link>
+                                    <div onClick={() => preload(sellPropertyRequests,_id)} className='item_btn'>Reply</div>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -225,7 +278,8 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
-
+                
+                {/* PAINTER REQUEST MESSAGES */}
                 <div className="Messages-item">
                     <h2>Painter Requests</h2>
                     <span className='Messages-item_toggle'>
@@ -300,7 +354,7 @@ const Messages = () => {
                                     <span className="value customer_number">{customer_number}</span>
                                 </div>
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload(painterRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -313,6 +367,53 @@ const Messages = () => {
                     }
                 </div>
             </div>
+            
+            {/* REPLY FORM FIELD */}
+            {toggle5 &&
+                <div className='formReply-wrapper'>
+                    <div className='formReply'>
+                        <AiOutlineClose onClick={() => setToggle5(false)}/>
+                        <h3 className='formReply__header'>Response Form</h3>
+                        <form onSubmit={handleSubmit} className='form'>
+                            <FadeRightAnimation className='formReply__item'>
+                                <label >Subject</label>
+                                <input 
+                                    type="text"
+                                    name="subject"
+                                    placeholder='Enter the subject'
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                />
+                            </FadeRightAnimation>
+                            <FadeLeftAnimation className='formReply__item'>
+                                <label >Message</label>
+                                <textarea 
+                                    name="message" 
+                                    placeholder='Enter The Message'
+                                    cols="30" 
+                                    rows="10"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                />
+                            </FadeLeftAnimation>
+                            <button disabled={isLoading} className='reply_btn'>Reply</button>
+                        </form>
+                    </div>
+                    {error && errorMessageDisplay &&
+                    <TypingText text={error} intervalDuration={50} className='error'/>
+                    }
+                </div>
+            }
+            
+            {/* BACK BUTTON */}
+            <ButtonLarge
+                text="Back"
+                background="#ffff"
+                color="#20336a"
+                hoverColor="#fff"
+                hoverBackground="#20336a"
+                width="90%"
+            />
         </div>
     );
 }

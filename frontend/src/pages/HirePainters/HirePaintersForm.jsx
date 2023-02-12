@@ -261,7 +261,7 @@ const HirePaintersForm = () => {
                 </div>
 
                 <div className="hire_right">
-                    <p className="hire_heading">Ready to Sell Your Property? Fill out the Form</p>
+                    <p className="hire_heading">Ready for a radiant building? Fill out the Form</p>
                     <p className="hire_sub-text">A dash of the masterful brushstroke from our skilled painter will imbue your structure with a radiant gleam, 
                     transforming it into a visually stunning masterpiece that will leave a lasting impression on everyone who sees it.<br/>
                     <br/>
