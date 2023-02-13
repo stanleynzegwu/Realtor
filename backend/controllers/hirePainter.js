@@ -21,6 +21,15 @@ const create = async (req,res) => {
     }
 }
 
+//DELETE
+const deleteHirePainterRequest = async (req, res) => {
+  try {
+    const hirePainterRequest = await HirePainter.findByIdAndDelete(req.params.id);
+    return res.status(200).json(hirePainterRequest);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
 
 const getAllPainterRequest = async (req, res) => {
     try {
@@ -34,5 +43,6 @@ const getAllPainterRequest = async (req, res) => {
 
 module.exports = {
   create,
-  getAllPainterRequest
+  getAllPainterRequest,
+  deleteHirePainterRequest
 }

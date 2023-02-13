@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { MdPublish } from 'react-icons/md'
-import { Link } from 'react-router-dom'
 
 import { Footer } from '../../Container'
 import painterIllustration from '../../assets/logos/painterIllustration.png'
@@ -8,6 +7,7 @@ import { useCreateHirePainterRequest } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { TypingText } from '../../components'
+import { Success } from '../../components'
 import './HirePaintersForm.scss'
 
 const HirePaintersForm = () => {
@@ -71,24 +71,7 @@ const HirePaintersForm = () => {
     return (
         success
         ?
-        <div className='success'>
-            <div className='success__emojiHolder'>
-                <span className="thumbs-up">
-                  👍
-                </span>
-            </div>
-            <div className='success__messageHolder'>
-                <h3>
-                    Thank You
-                </h3>
-                <p>
-                    Your Form was successfully submitted, we'll get back to you soon.
-                </p>
-            </div>
-            <Link to='/'>
-                <span>Back to home</span>
-            </Link>
-        </div>
+        <Success message="Your request was successfully submitted, we'll get back to you shortly."/>
         :
         <div className="hirePainters">
             <div className="hire_wrapper">

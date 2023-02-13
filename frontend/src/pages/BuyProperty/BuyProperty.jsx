@@ -6,7 +6,7 @@ import { FadeDownAnimation,FadeUpAnimation } from '../../components/UI/Animation
 import formIllustration from '../../assets/logos/Forms-bro.png'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
 import { useCreateBuyPropertyRequest } from '../../Hooks/useApiRequest'
-import { TypingText } from '../../components'
+import { TypingText,Success } from '../../components'
 import './BuyProperty.scss'
 
 const BuyProperty = () => {
@@ -30,7 +30,10 @@ const BuyProperty = () => {
         await createBuyPropertyRequest(formData)
     }
 
-    return ( 
+    return (
+        success ?
+        <Success message="Your Message has been sent successfully."/>
+        :
         <div className="buyProperty">
             <div className="buyProperty_wrapper">
                 <FadeDownAnimation className="buyProperty_left">
@@ -77,7 +80,6 @@ const BuyProperty = () => {
                         </div>
                         <button className='buyPropertyBtn'>Submit</button>
                         {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                        {success && <TypingText text='Message Sent Successfully' intervalDuration={50} className='success'/>}
                     </form>
                 </FadeDownAnimation>
 

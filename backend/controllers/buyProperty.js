@@ -17,16 +17,15 @@ const create = async (req,res) => {
     }
 }
 
-// //DELETE
-
-// const deleteContactMessage = async (req, res) => {
-//   try {
-//     const contactMessage = await Contact.findByIdAndDelete(req.params.id);
-//     return res.status(200).json(contactMessage);
-//   } catch (err) {
-//     return res.status(500).json(err);
-//   }
-// }
+//DELETE
+const deleteBuyPropertyRequest = async (req, res) => {
+  try {
+    const buyPropertyRequest = await BuyProperty.findByIdAndDelete(req.params.id);
+    return res.status(200).json(buyPropertyRequest);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
 
 // //GET Contact Message
 
@@ -53,7 +52,7 @@ const getAllBuyPropertyRequest = async (req, res) => {
 
 module.exports = {
   create,
-//   deleteContactMessage,
+  deleteBuyPropertyRequest,
 //   getSingleContactMessage,
   getAllBuyPropertyRequest
 }

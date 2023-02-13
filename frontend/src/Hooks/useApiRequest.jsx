@@ -399,9 +399,6 @@ export const useDeleteReview = () => {
 //review functions
 export const useReviewFunction = () => {
     const { reviews } = useReviewContext()
-    const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
 
     const getReviewPercentage = (num) => {
         const reviewLength = reviews?.data.length
@@ -580,6 +577,29 @@ export const useCreateContact = () => {
     return { createContact,isLoading,error,success}
 }
 
+//DELETE CONTACT MESSAGE
+export const useDeleteSupportRequest = () => {
+    //const { dispatch } = useRestContext()
+    const [deleteSupportSuccess, setDeleteSupportSuccess] = useState(null)
+    const [deleteSupportIsLoading, setDeleteSupportIsLoading] = useState(null)
+
+    const DeleteSupportRequest = async (id) => {
+        try{
+            setDeleteSupportIsLoading(true)
+            const supportRequest = await userRequest.delete(`/contact/${id}`)
+            console.log(supportRequest)
+            //dispatch({type:'DELETE_SUPPORT-REQUEST', payload: supportRequest})
+            setDeleteSupportIsLoading(false)
+            setDeleteSupportSuccess(true)
+        }catch(err){
+            setDeleteSupportIsLoading(false)
+            console.log(err.response.data)
+        }
+    }
+    return { DeleteSupportRequest, deleteSupportIsLoading, deleteSupportSuccess }
+        
+}
+
 //CREATE BUYPROPERTY REQUEST
 export const useCreateBuyPropertyRequest = () => {
     const [error, setError] = useState(null)
@@ -604,6 +624,29 @@ export const useCreateBuyPropertyRequest = () => {
     return { createBuyPropertyRequest,isLoading,error,success }
 }
 
+//DELETE buyProperty Request
+export const useDeleteBuyPropertyRequest = () => {
+    //const { dispatch } = useRestContext()
+    const [deleteBuySuccess, setDeleteBuySuccess] = useState(null)
+    const [deleteBuyIsLoading, setDeleteBuyIsLoading] = useState(null)
+
+    const DeleteBuyPropertyRequest = async (id) => {
+        try{
+            setDeleteBuyIsLoading(true)
+            const buyPropertyRequest = await userRequest.delete(`/buyProperty/${id}`)
+            console.log(buyPropertyRequest)
+            //dispatch({type:'DELETE_BUYPROPERTY-REQUEST', payload: buyPropertyRequest})
+            setDeleteBuyIsLoading(false)
+            setDeleteBuySuccess(true)
+        }catch(err){
+            setDeleteBuyIsLoading(false)
+            console.log(err.response.data)
+        }
+    }
+    return { DeleteBuyPropertyRequest, deleteBuyIsLoading, deleteBuySuccess }
+        
+}
+
 //CREATE SELL PROPERTY/LAND
 export const useCreateSellProperty = () => {
     const [error, setError] = useState(null)
@@ -624,6 +667,29 @@ export const useCreateSellProperty = () => {
 
     }
     return {CreatePropertyForSale, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}
+
+//DELETE SELLProperty Request
+export const useDeleteSellPropertyRequest = () => {
+    //const { dispatch } = useRestContext()
+    const [deleteSellSuccess, setDeleteSellSuccess] = useState(null)
+    const [deleteSellIsLoading, setDeleteSellIsLoading] = useState(null)
+
+    const DeleteSellPropertyRequest = async (id) => {
+        try{
+            setDeleteSellIsLoading(true)
+            const sellPropertyRequest = await userRequest.delete(`/sellProperty/${id}`)
+            console.log(sellPropertyRequest)
+            //dispatch({type:'DELETE_SELLPROPERTY-REQUEST', payload: sellPropertyRequest})
+            setDeleteSellIsLoading(false)
+            setDeleteSellSuccess(true)
+        }catch(err){
+            setDeleteSellIsLoading(false)
+            console.log(err.response.data)
+        }
+    }
+    return { DeleteSellPropertyRequest, deleteSellIsLoading, deleteSellSuccess }
+        
 }
 
 //CREATE HIREPAINTER REQUEST
@@ -647,6 +713,29 @@ export const useCreateHirePainterRequest = () => {
 
     }
     return {CreateHirePainterRequest, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+}
+
+//DELETE HIREPAINTER Request
+export const useDeleteHirePainterRequest = () => {
+    //const { dispatch } = useRestContext()
+    const [deleteHireSuccess, setDeleteHireSuccess] = useState(null)
+    const [deleteHireIsLoading, setDeleteHireIsLoading] = useState(null)
+
+    const DeleteHirePainterRequest = async (id) => {
+        try{
+            setDeleteHireIsLoading(true)
+            const hirePainterRequest = await userRequest.delete(`/hirePainter/${id}`)
+            console.log(hirePainterRequest)
+            //dispatch({type:'DELETE_HIREPAINTER-REQUEST', payload: hirePainterRequest})
+            setDeleteHireIsLoading(false)
+            setDeleteHireSuccess(true)
+        }catch(err){
+            setDeleteHireIsLoading(false)
+            console.log(err.response.data)
+        }
+    }
+    return { DeleteHirePainterRequest, deleteHireIsLoading, deleteHireSuccess }
+        
 }
 
 //SEND BULK MAIL TO SUBSCRIBERS

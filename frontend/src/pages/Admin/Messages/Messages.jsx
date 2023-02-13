@@ -6,16 +6,18 @@ import { MdVisibility } from 'react-icons/md'
 
 import './Messages.scss'
 import { useRestContext } from '../../../Hooks/useRestContext';
-import { useSendRequestReply } from '../../../Hooks/useApiRequest';
-import { UseToggleVisibility,UseId } from '../../../Hooks/customHook';
-import { FadeUpAnimation,FadeLeftAnimation,FadeRightAnimation } from '../../../components/UI/Animation/Animation';
-import { ScrollToTop } from '../../../Hooks/customHook';
-import { ButtonLarge, TypingText, SelectedMessageDisplay } from '../../../components'
-import Success from '../../../components/Success/Success'
+import { useSendRequestReply, useDeleteSupportRequest,useDeleteBuyPropertyRequest,useDeleteSellPropertyRequest,useDeleteHirePainterRequest } from '../../../Hooks/useApiRequest';
+import { UseToggleVisibility,UseId,ScrollToTop } from '../../../Hooks/customHook';
+import { FadeUpAnimation, FadeLeftAnimation, FadeRightAnimation } from '../../../components/UI/Animation/Animation';
+import { ButtonLarge, TypingText, SelectedMessageDisplay, Success } from '../../../components'
 
 const Messages = () => {
     ScrollToTop()
     const { CreateRequestReply,success,isLoading,error,setError,errorMessageDisplay,seterrorMessageDisplay } = useSendRequestReply()
+    const { DeleteSupportRequest, deleteSupportIsLoading, deleteSupportSuccess } = useDeleteSupportRequest()
+    const { DeleteBuyPropertyRequest, deleteBuyIsLoading, deleteBuySuccess } = useDeleteBuyPropertyRequest()
+    const { DeleteSellPropertyRequest, deleteSellIsLoading, deleteSellSuccess } = useDeleteSellPropertyRequest()
+    const { DeleteHirePainterRequest, deleteHireIsLoading, deleteHireSuccess } = useDeleteHirePainterRequest()
     const { supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
     const { toggle, setToggle,toggle1,setToggle1,toggle2,setToggle2,
             toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5,toggle6,setToggle6} = UseToggleVisibility()
@@ -23,14 +25,14 @@ const Messages = () => {
     const [preloadForm, setPreloadForm] = useState('')
     
     //GET THE EMAIL OF THE CLICKED USER
-    const { request,idd } = preloadForm
+    const { name,request,idd } = preloadForm
     const filteredRequest = request?.filter(({_id}) => idd === _id)
     const email = filteredRequest?.map(({email,customer_email}) => email || customer_email)
-    
+    console.log(name,request)
     const [formData, setFormData] = useState({subject:"",message:""})
     
-    const preload = (request,idd) => {
-        setPreloadForm({request,idd})
+    const preload = (name,request,idd) => {
+        setPreloadForm({name,request,idd})
         setToggle4(false)
         setToggle5(true)
     }
@@ -59,10 +61,21 @@ const Messages = () => {
         }
         const allFormData = {...formData,email}
         await CreateRequestReply(allFormData)
+        if(name === 'painterRequests'){
+            DeleteHirePainterRequest(idd)
+        }else if(name === 'supportRequests'){
+            DeleteSupportRequest(idd)
+        }else if(name === 'buyPropertyRequests'){
+            DeleteBuyPropertyRequest(idd)
+        }else if(name === 'sellPropertyRequests'){
+            DeleteSellPropertyRequest(idd)
+        }
     }
 
     return (
-        success ?
+        success &&
+        (deleteSupportSuccess || deleteBuySuccess || deleteSellSuccess || deleteHireSuccess)
+        ?
         <div className='successWrapper'>
             <Success message="Your Message has been sent successfully."/>
         </div>
@@ -101,7 +114,7 @@ const Messages = () => {
                                 </div>
 
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link onClick={() => preload(supportRequests,_id)} className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload('supportRequests',supportRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -149,7 +162,7 @@ const Messages = () => {
                                     </div>
                                 }
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link onClick={() => preload(buyPropertyRequests,_id)} className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload('buyPropertyRequests',buyPropertyRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -265,7 +278,7 @@ const Messages = () => {
                                     <span className="value phone_number">{number}</span>
                                 </div>
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <div onClick={() => preload(sellPropertyRequests,_id)} className='item_btn'>Reply</div>
+                                    <div onClick={() => preload('sellPropertyRequests',sellPropertyRequests,_id)} className='item_btn'>Reply</div>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -353,7 +366,7 @@ const Messages = () => {
                                     <span className="value customer_number">{customer_number}</span>
                                 </div>
                                 {toggle4 && (id === _id) && <div className='item_hover'>
-                                    <Link onClick={() => preload(painterRequests,_id)} className='item_btn'>Reply</Link>
+                                    <Link onClick={() => preload('painterRequests',painterRequests,_id)} className='item_btn'>Reply</Link>
                                     <button className='item_btn deleteBtn'>Delete</button>
                                 </div>
                                 }
@@ -399,7 +412,12 @@ const Messages = () => {
                                     onChange={handleChange}
                                 />
                             </FadeLeftAnimation>
-                            <button disabled={isLoading} className='reply_btn'>Reply</button>
+                            <button 
+                                disabled={isLoading || deleteSupportIsLoading || deleteBuyIsLoading || deleteSellIsLoading || deleteHireIsLoading}
+                                className='reply_btn'
+                                >
+                                Reply
+                            </button>
                         </form>
                     </div>
                     {error && errorMessageDisplay &&

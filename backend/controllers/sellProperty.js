@@ -22,7 +22,7 @@ const create = async (req,res) => {
 
 //DELETE
 
-const deleteProperty = async (req, res) => {
+const deletePropertyRequest = async (req, res) => {
   try {
     const SellPropertyRequest = await SellProperty.findByIdAndDelete(req.params.id);
     return res.status(200).json(SellPropertyRequest);
@@ -55,7 +55,7 @@ const getAllProperty = async (req, res) => {
 
 module.exports = {
   create,
-  deleteProperty,
+  deletePropertyRequest,
   getSingleProperty,
   getAllProperty
 }
