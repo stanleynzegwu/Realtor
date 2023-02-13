@@ -16,9 +16,10 @@ export const UseToggleVisibility = () => {
     const [toggle3,setToggle3] = useState(false)
     const [toggle4,setToggle4] = useState(false)
     const [toggle5,setToggle5] = useState(false)
+    const [toggle6,setToggle6] = useState(false)
 
     return {toggle, setToggle,toggle1,setToggle1,toggle2,
-    setToggle2,toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5}
+    setToggle2,toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5,toggle6,setToggle6}
 }
 
 export const SetPasswordVisibility = () => {

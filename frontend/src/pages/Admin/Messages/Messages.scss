@@ -203,6 +203,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        z-index: 10;
 
         .formReply {
             width: 70%;
@@ -218,12 +219,16 @@
                 padding-bottom: 20px;
                 font-weight: 800;
             }
-    
-            svg {
+            .formReply__span {
                 align-self: flex-end;
-                font-size: 1.5rem;
-                color: #000;
-                cursor: pointer;
+                display: flex;
+                gap: 15px;
+
+                svg {
+                    font-size: 1.5rem;
+                    color: #000;
+                    cursor: pointer;
+                }
             }
     
             .form {
@@ -281,6 +286,29 @@
             @media screen and (max-width:767px){
                 width: 90%;
             }
+        }
+    }
+
+    .selectedMessageWrapper {
+        position: absolute;
+        top: 0;
+        z-index: 20;
+        width: 100%;
+        min-height: 100vh;
+        background: rgba(255, 255, 255 , 0.20);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        .closeIcon {
+            align-self: flex-end;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: black;
+            cursor: pointer;
         }
     }
 

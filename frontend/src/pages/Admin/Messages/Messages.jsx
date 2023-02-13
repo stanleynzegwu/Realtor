@@ -10,8 +10,7 @@ import { useSendRequestReply } from '../../../Hooks/useApiRequest';
 import { UseToggleVisibility,UseId } from '../../../Hooks/customHook';
 import { FadeUpAnimation,FadeLeftAnimation,FadeRightAnimation } from '../../../components/UI/Animation/Animation';
 import { ScrollToTop } from '../../../Hooks/customHook';
-import ButtonLarge from '../../../components/buttonLarge';
-import { TypingText } from '../../../components'
+import { ButtonLarge, TypingText, SelectedMessageDisplay } from '../../../components'
 import Success from '../../../components/Success/Success'
 
 const Messages = () => {
@@ -19,13 +18,15 @@ const Messages = () => {
     const { CreateRequestReply,success,isLoading,error,setError,errorMessageDisplay,seterrorMessageDisplay } = useSendRequestReply()
     const { supportRequests,buyPropertyRequests,sellPropertyRequests,painterRequests } = useRestContext()
     const { toggle, setToggle,toggle1,setToggle1,toggle2,setToggle2,
-            toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5} = UseToggleVisibility()
+            toggle3,setToggle3,toggle4,setToggle4,toggle5,setToggle5,toggle6,setToggle6} = UseToggleVisibility()
     const { id,setId } = UseId()
     const [preloadForm, setPreloadForm] = useState('')
     
     //GET THE EMAIL OF THE CLICKED USER
     const { request,idd } = preloadForm
-    const email = request?.filter(({_id}) => idd === _id).map(({email,customer_email}) => email || customer_email)
+    const filteredRequest = request?.filter(({_id}) => idd === _id)
+    const email = filteredRequest?.map(({email,customer_email}) => email || customer_email)
+    
     const [formData, setFormData] = useState({subject:"",message:""})
     
     const preload = (request,idd) => {
@@ -41,7 +42,6 @@ const Messages = () => {
 
     const handleChange = (e) => {
         const {name,value} = e.target
-
         setFormData(prev => {
             return {...prev,[name]:value}
         })
@@ -58,7 +58,6 @@ const Messages = () => {
             return
         }
         const allFormData = {...formData,email}
-        console.log(allFormData)
         await CreateRequestReply(allFormData)
     }
 
@@ -372,7 +371,11 @@ const Messages = () => {
             {toggle5 &&
                 <div className='formReply-wrapper'>
                     <div className='formReply'>
-                        <AiOutlineClose onClick={() => setToggle5(false)}/>
+                        <span className='formReply__span'>
+                            <MdVisibility onClick={() => setToggle6(true)}/>
+                            <AiOutlineClose onClick={() => setToggle5(false)}/>
+                        </span>
+                        
                         <h3 className='formReply__header'>Response Form</h3>
                         <form onSubmit={handleSubmit} className='form'>
                             <FadeRightAnimation className='formReply__item'>
@@ -402,6 +405,15 @@ const Messages = () => {
                     {error && errorMessageDisplay &&
                     <TypingText text={error} intervalDuration={50} className='error'/>
                     }
+                </div>
+            }
+
+            {/* DISPLAY SELECTED MESSAGE DETAILS */}
+            {
+                toggle6 && 
+                <div className='selectedMessageWrapper'>
+                    <AiOutlineClose onClick={() => setToggle6(false)} className='closeIcon'/>
+                    <SelectedMessageDisplay data={filteredRequest}/>
                 </div>
             }
             
