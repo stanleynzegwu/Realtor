@@ -145,6 +145,9 @@
                     font-size: 17px;
                 }
             }
+            .itemButton:disabled {
+              opacity: 0.65;
+            }
             .copyBtn {
                 width: 25%;
             }

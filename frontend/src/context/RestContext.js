@@ -1,7 +1,6 @@
-import { createContext, useReducer, useEffect, useState} from 'react';
+import { createContext, useReducer, useEffect} from 'react';
 import { userRequest } from '../RequestMethods';
 
-import { useAuthContext } from '../Hooks/useAuthContext';
 const RestContext = createContext()
 
 
@@ -17,12 +16,19 @@ const RestReducer = (state,action) => {
             return { ...state,buyPropertyRequests: action.payload}
         case 'SET_SELLPROPERTY-REQUESTS':
             return { ...state,sellPropertyRequests: action.payload}
+        case 'DELETE_SUPPORT-REQUEST':
+            return { ...state,supportRequests: state.supportRequests.filter(({_id}) => _id !== action.payload.data._id)}
+        case 'DELETE_BUYPROPERTY-REQUEST':
+            return { ...state,buyPropertyRequests: state.buyPropertyRequests.filter(({_id}) => _id !== action.payload.data._id)}
+        case 'DELETE_SELLPROPERTY-REQUEST':
+            return { ...state,sellPropertyRequests: state.sellPropertyRequests.filter(({_id}) => _id !== action.payload.data._id)}
+        case 'DELETE_PAINTER-REQUEST':
+            return { ...state,painterRequests: state.painterRequests.filter(({_id}) => _id !== action.payload.data._id)}
         default:
             return state
     }
 }
 const RestContextProvider = ({children}) => {
-    const { user } = useAuthContext()
     const [state,dispatch] = useReducer(RestReducer, {
         subscribers:null,
         supportRequests:null,
@@ -30,10 +36,6 @@ const RestContextProvider = ({children}) => {
         buyPropertyRequests:null,
         sellPropertyRequests:null
     })
-// const [isLoading,setLoading] = useState(false)
-// if(state.subscribers && state.supportRequests && state.painterRequests && state.buyPropertyRequests && state.sellPropertyRequests){
-//     setLoading(true)
-// }
 
     useEffect(() => {
         const getMessages = async () => {

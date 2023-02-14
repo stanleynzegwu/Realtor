@@ -579,7 +579,7 @@ export const useCreateContact = () => {
 
 //DELETE CONTACT MESSAGE
 export const useDeleteSupportRequest = () => {
-    //const { dispatch } = useRestContext()
+    const { dispatch } = useRestContext()
     const [deleteSupportSuccess, setDeleteSupportSuccess] = useState(null)
     const [deleteSupportIsLoading, setDeleteSupportIsLoading] = useState(null)
 
@@ -587,8 +587,7 @@ export const useDeleteSupportRequest = () => {
         try{
             setDeleteSupportIsLoading(true)
             const supportRequest = await userRequest.delete(`/contact/${id}`)
-            console.log(supportRequest)
-            //dispatch({type:'DELETE_SUPPORT-REQUEST', payload: supportRequest})
+            dispatch({type:'DELETE_SUPPORT-REQUEST', payload: supportRequest})
             setDeleteSupportIsLoading(false)
             setDeleteSupportSuccess(true)
         }catch(err){
@@ -626,7 +625,7 @@ export const useCreateBuyPropertyRequest = () => {
 
 //DELETE buyProperty Request
 export const useDeleteBuyPropertyRequest = () => {
-    //const { dispatch } = useRestContext()
+    const { dispatch } = useRestContext()
     const [deleteBuySuccess, setDeleteBuySuccess] = useState(null)
     const [deleteBuyIsLoading, setDeleteBuyIsLoading] = useState(null)
 
@@ -634,8 +633,7 @@ export const useDeleteBuyPropertyRequest = () => {
         try{
             setDeleteBuyIsLoading(true)
             const buyPropertyRequest = await userRequest.delete(`/buyProperty/${id}`)
-            console.log(buyPropertyRequest)
-            //dispatch({type:'DELETE_BUYPROPERTY-REQUEST', payload: buyPropertyRequest})
+            dispatch({type:'DELETE_BUYPROPERTY-REQUEST', payload: buyPropertyRequest})
             setDeleteBuyIsLoading(false)
             setDeleteBuySuccess(true)
         }catch(err){
@@ -657,7 +655,6 @@ export const useCreateSellProperty = () => {
     const CreatePropertyForSale = async (property) => {
         try{
             const res = await userRequest.post("/sellProperty",property)
-            console.log(res)
             setIsLoading(false)
             setSuccess(true)
         }catch(err){
@@ -671,7 +668,7 @@ export const useCreateSellProperty = () => {
 
 //DELETE SELLProperty Request
 export const useDeleteSellPropertyRequest = () => {
-    //const { dispatch } = useRestContext()
+    const { dispatch } = useRestContext()
     const [deleteSellSuccess, setDeleteSellSuccess] = useState(null)
     const [deleteSellIsLoading, setDeleteSellIsLoading] = useState(null)
 
@@ -679,8 +676,7 @@ export const useDeleteSellPropertyRequest = () => {
         try{
             setDeleteSellIsLoading(true)
             const sellPropertyRequest = await userRequest.delete(`/sellProperty/${id}`)
-            console.log(sellPropertyRequest)
-            //dispatch({type:'DELETE_SELLPROPERTY-REQUEST', payload: sellPropertyRequest})
+            dispatch({type:'DELETE_SELLPROPERTY-REQUEST', payload: sellPropertyRequest})
             setDeleteSellIsLoading(false)
             setDeleteSellSuccess(true)
         }catch(err){
@@ -703,7 +699,6 @@ export const useCreateHirePainterRequest = () => {
         try{
             setIsLoading(true)
             const res = await userRequest.post("/hirePainter",hirePainterForm)
-            console.log(res)
             setIsLoading(false)
             setSuccess(true)
         }catch(err){
@@ -717,16 +712,15 @@ export const useCreateHirePainterRequest = () => {
 
 //DELETE HIREPAINTER Request
 export const useDeleteHirePainterRequest = () => {
-    //const { dispatch } = useRestContext()
+    const { dispatch } = useRestContext()
     const [deleteHireSuccess, setDeleteHireSuccess] = useState(null)
     const [deleteHireIsLoading, setDeleteHireIsLoading] = useState(null)
 
     const DeleteHirePainterRequest = async (id) => {
         try{
             setDeleteHireIsLoading(true)
-            const hirePainterRequest = await userRequest.delete(`/hirePainter/${id}`)
-            console.log(hirePainterRequest)
-            //dispatch({type:'DELETE_HIREPAINTER-REQUEST', payload: hirePainterRequest})
+            const painterRequest = await userRequest.delete(`/hirePainter/${id}`)
+            dispatch({type:'DELETE_PAINTER-REQUEST', payload: painterRequest})
             setDeleteHireIsLoading(false)
             setDeleteHireSuccess(true)
         }catch(err){

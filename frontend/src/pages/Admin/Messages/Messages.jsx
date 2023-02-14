@@ -28,7 +28,7 @@ const Messages = () => {
     const { name,request,idd } = preloadForm
     const filteredRequest = request?.filter(({_id}) => idd === _id)
     const email = filteredRequest?.map(({email,customer_email}) => email || customer_email)
-    console.log(name,request)
+
     const [formData, setFormData] = useState({subject:"",message:""})
     
     const preload = (name,request,idd) => {
@@ -84,10 +84,11 @@ const Messages = () => {
             <h1 className="Messages_header">All Requests</h1>
             <div className="messages_itemWrapper">
                 {/* SUPPORT REQUESTS */}
+                {supportRequests && supportRequests.length > 0 &&
                 <div className="Messages-item">
                     <h2>Support Requests</h2>
                     <span className='Messages-item_toggle'>
-                    {supportRequests && `${supportRequests.length} request${supportRequests.length > 1 ? 's' : ''}`}
+                    {`${supportRequests.length} request${supportRequests.length > 1 ? 's' : ''}`}
                     <MdVisibility onClick={() => setToggle(prev => !prev)}/>
                     </span>
 
@@ -126,12 +127,14 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
+                }
                 
                 {/* BUY PROPERTY REQUESTS */}
+                {buyPropertyRequests && buyPropertyRequests.length > 0 &&
                 <div className="Messages-item">
                     <h2>Buy Property Requests</h2>
                     <span className='Messages-item_toggle'>
-                        {buyPropertyRequests && `${buyPropertyRequests.length} request${buyPropertyRequests.length > 1 ? 's' : ''}`}
+                        {`${buyPropertyRequests.length} request${buyPropertyRequests.length > 1 ? 's' : ''}`}
                         <MdVisibility onClick={() => setToggle1(prev => !prev)}/>
                     </span>
                     {toggle1 &&
@@ -174,12 +177,14 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
+                }
                 
                 {/* SELL PROPERTY REQUESTS */}
+                {sellPropertyRequests && sellPropertyRequests.length > 0 &&
                 <div className="Messages-item">
                     <h2>Sell Property Requests</h2>
                     <span className='Messages-item_toggle'>
-                    {sellPropertyRequests && `${sellPropertyRequests.length} request${sellPropertyRequests.length > 1 ? 's' : ''}`}
+                    {`${sellPropertyRequests.length} request${sellPropertyRequests.length > 1 ? 's' : ''}`}
                     <MdVisibility onClick={() => setToggle2(prev => !prev)}/>
                     </span>
                     {toggle2 &&
@@ -290,12 +295,14 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
+                }
                 
                 {/* PAINTER REQUEST MESSAGES */}
+                {painterRequests && painterRequests.length > 0 &&
                 <div className="Messages-item">
                     <h2>Painter Requests</h2>
                     <span className='Messages-item_toggle'>
-                    {painterRequests && `${painterRequests.length} request${painterRequests.length > 1 ? 's' : ''}`}
+                    {`${painterRequests.length} request${painterRequests.length > 1 ? 's' : ''}`}
                     <MdVisibility onClick={() => setToggle3(prev => !prev)}/>
                     </span>
                     {toggle3 &&
@@ -378,6 +385,7 @@ const Messages = () => {
                     </FadeUpAnimation>
                     }
                 </div>
+                }
             </div>
             
             {/* REPLY FORM FIELD */}
