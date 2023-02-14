@@ -117,7 +117,7 @@ const User = () => {
                             </div>
                             <button disabled={isLoading} className="userUpdateButton" type='submit'>Update</button>
                             {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                            {successMessageDisplay && <TypingText text='User Updated Successfully' intervalDuration={50} className='success'/>}
+                            {successMessageDisplay && <TypingText text='User Updated Successfully' intervalDuration={50} className='userSuccess'/>}
                         </div>
                     </form>
                 </div>

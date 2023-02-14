@@ -123,7 +123,7 @@ const NewUser = () => {
                         &&
                         successMessageDisplay 
                         &&
-                        <TypingText text='User Created Successfully' intervalDuration={50} className='success'/>
+                        <TypingText text='User Created Successfully' intervalDuration={50} className='userSuccess'/>
                     }
                 </div>
             </form>

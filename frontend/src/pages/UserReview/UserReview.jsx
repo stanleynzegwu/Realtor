@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { AiFillStar,AiOutlineStar } from 'react-icons/ai'
 
 import { Footer } from '../../Container'
@@ -9,8 +8,7 @@ import illustration from '../../assets/logos/reviewIllustration.svg'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { useUserReview } from '../../Hooks/useApiRequest'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
-import { Success } from '../../components'
-import { TypingText } from '../../components'
+import { Success, TypingText } from '../../components'
 
 const UserReview = () => {
     ScrollToTop()

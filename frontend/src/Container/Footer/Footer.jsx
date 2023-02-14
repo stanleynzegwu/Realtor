@@ -80,7 +80,7 @@ const Footer = () => {
                             <TypingText 
                                 text={`${subscriber} subscribed succesfully`}
                                 intervalDuration={30}
-                                className='success'
+                                className='successs'
                             /> 
                         }
                         {   

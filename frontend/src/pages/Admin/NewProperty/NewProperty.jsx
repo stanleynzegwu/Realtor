@@ -246,7 +246,7 @@ const NewProperty = () => {
                           &&
                           successMessageDisplay
                           && 
-                          <TypingText text='Property Created Successfully' intervalDuration={50} className='success'/>
+                          <TypingText text='Property Created Successfully' intervalDuration={50} className='propertySuccess'/>
                         }
 
                     </div>

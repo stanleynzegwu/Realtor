@@ -128,7 +128,7 @@ const NewBlog = () => {
                     {
                     success && successMessageDisplay
                     && 
-                    <TypingText text='Blog Created Successfully' intervalDuration={50} className='success'/>
+                    <TypingText text='Blog Created Successfully' intervalDuration={50} className='blogSuccess'/>
                     }
                 </form>
             </div>

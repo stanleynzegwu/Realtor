@@ -15,13 +15,27 @@ const sendSubsciptionMail = async (email) => {
         let info = await transporter.sendMail({
             from: `Realtor <${process.env.MY_EMAIL}>`,
             to: email,
-            subject: "Subscribed To Newsletter",
+            subject: "Welcome to our Real Estate Community!",
             html: `
-            <h1>Congratulation</h1>
-            <p>Congratulations on your subscription to our Newsletter</p>
+            <h3>Dear ${email.split('@')[0]}</h3>
+            <p>We are thrilled to welcome you to our Real Estate community! As a subscriber to our newsletter, 
+            you will receive regular updates on the latest real estate news, trends, and listings.<br/>
+            <br/>
+            At <b>Realtor</b>, we specialize in helping buyers and sellers find their perfect property. 
+            Our extensive listings of land and buildings cater to all budgets and preferences. We also offer 
+            additional services such as building painting to help you achieve the perfect look for your new property.<br/>
+            <br/>
+            With a wealth of experience in the real estate industry, we are committed to providing you with excellent service, 
+            guidance, and support throughout your journey. We value your trust in us, and we are excited to be part of your journey towards your dream property.<br/>
+            <br/>
+            Thank you for joining our community! We look forward to sharing valuable information with you and helping you achieve your real estate goals.<br/>
+            <br/>
+            Best regards,<br/>
+            <b>Realtor</b>
+            </p>
             `,
           });
-        
+
           console.log(info.messageId); // Random ID generated after successful send (optional)
           //return res.status(200).json();
     }catch(err){

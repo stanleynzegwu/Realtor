@@ -163,7 +163,7 @@ const Blog = () => {
                             </div>
                             <button disabled={isLoading} type='submit' className='blogUpdateButton'>UPDATE</button>
                             {error && <TypingText text={error} intervalDuration={50} className='error'/>}
-                            {success && <TypingText text='Blog Post Updated Successfully' intervalDuration={50} className='success'/>}
+                            {success && <TypingText text='Blog Post Updated Successfully' intervalDuration={50} className='blogSuccess'/>}
                         </FadeLeftAnimation>
                     </form>
                 </div>

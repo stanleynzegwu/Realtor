@@ -16,7 +16,6 @@ const NewOffer = () => {
     const [formData,setFormData] = useState({
         title:"",desc:"",category:"",startDate:"",endDate:""
     })
-    console.log(formData)
     const [imagesFile,setImagesFile] = useState([])
     //for image preview
     const [imagesPreview, setImagesPreview] = useState([]);
@@ -50,18 +49,19 @@ const NewOffer = () => {
         e.preventDefault()
         const { desc } = offerDesc
         if(!desc){
-            //console.log('enter text description')
             descRef.current.focus()
         }else{
             const textPrompt = `correct this english "${desc}" and make it more appealing`
             const res = await generateText({ textPrompt })
             console.log(res)
+            res?.data && (
             setFormData(data => {
                 return {
                     ...data,
-                    desc: res.data.data.trim()
+                    desc: res?.data.data.trim()
                 }
             })
+            )
         }
     }
 
@@ -154,7 +154,7 @@ const NewOffer = () => {
                     }
                     {success
                       && 
-                      <TypingText text='Offer Created Successfully' intervalDuration={50} className='success'/>
+                      <TypingText text='Offer Created Successfully' intervalDuration={50} className='offerSuccess'/>
                     }
                 </form>
             </div>

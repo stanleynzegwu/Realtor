@@ -7,10 +7,9 @@ import './ReviewList.scss'
 import { useReviewContext } from '../../../Hooks/useReviewContext';
 import { useDeleteReview } from '../../../Hooks/useApiRequest';
 import { useUpdateReview } from '../../../Hooks/useApiRequest'
-import { TypingText } from '../../../components';
-import { Loader } from '../../../components';
+import { TypingText, Loader } from '../../../components';
 import { ScrollToTop } from '../../../Hooks/customHook';
-import { FadeDownAnimation, FadeUpAnimation,FadeRightAnimation,FadeLeftAnimation } from '../../../components/UI/Animation/Animation';
+import { FadeDownAnimation, FadeUpAnimation } from '../../../components/UI/Animation/Animation';
 
 const ReviewList = () => {
     ScrollToTop()
@@ -136,7 +135,7 @@ const ReviewList = () => {
                             </div>
                         </FadeUpAnimation>
                         <button disabled={isLoading} type='submit' className='reviewUpdateButton' onClick={handleUpdate}>UPDATE</button>
-                        {success && <TypingText text='Review Updated Successfully' intervalDuration={50} className='success'/>}
+                        {success && <TypingText text='Review Updated Successfully' intervalDuration={50} className='reviewSuccess'/>}
                     </form>
                 </div>
             </div>

@@ -6,9 +6,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .propertyTitle {
-
-        }
 
         .propertyAddButton {
             width: 80px;
@@ -127,7 +124,7 @@
                         font-weight: 500;
                     }
                 }
-                .success {
+                .propertySuccess {
                     padding: 3px 10px;
                     border-radius: 5px;
                     border: 1px solid green;
