@@ -136,7 +136,7 @@ const FeaturedInfo = () => {
                       <span className='itemHeader'>Support Requests</span>
                       {supportRequests && <span className="itemNumber">{supportRequests.length}</span>}
                       <Link to={`/adminDashboard/messages`}>
-                        <button disabled={supportRequests.length < 1} className='itemButton'>
+                        <button disabled={supportRequests?.length < 1} className='itemButton'>
                           <MdVisibility />Display
                         </button>
                       </Link>
@@ -145,7 +145,7 @@ const FeaturedInfo = () => {
                       <span className='itemHeader'>Buy Property Requests</span>
                       {buyPropertyRequests && <span className="itemNumber">{buyPropertyRequests.length}</span>}
                       <Link to={`/adminDashboard/messages`}>
-                        <button disabled={buyPropertyRequests.length < 1} className='itemButton'>
+                        <button disabled={buyPropertyRequests?.length < 1} className='itemButton'>
                           <MdVisibility />Display
                         </button>
                       </Link>
@@ -154,7 +154,7 @@ const FeaturedInfo = () => {
                       <span className='itemHeader'>Sell Property Requests</span>
                       {sellPropertyRequests && <span className="itemNumber">{sellPropertyRequests.length}</span>}
                       <Link to={`/adminDashboard/messages`}>
-                        <button disabled={sellPropertyRequests.length < 1} className='itemButton'>
+                        <button disabled={sellPropertyRequests?.length < 1} className='itemButton'>
                           <MdVisibility />Display
                         </button>
                       </Link>
@@ -163,7 +163,7 @@ const FeaturedInfo = () => {
                       <span className='itemHeader'>Painter Requests</span>
                       {painterRequests && <span className="itemNumber">{painterRequests.length}</span>}
                       <Link to={`/adminDashboard/messages`}>
-                        <button disabled={painterRequests.length < 1} className='itemButton'>
+                        <button disabled={painterRequests?.length < 1} className='itemButton'>
                           <MdVisibility />Display
                         </button>
                       </Link>

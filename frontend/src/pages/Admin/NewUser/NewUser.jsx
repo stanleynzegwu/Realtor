@@ -64,15 +64,35 @@ const NewUser = () => {
                 <div className="newUserLeft">
                     <div className="newUserItem">
                         <label>Username</label>
-                        <input type="text" name='username' value={formData.username} onChange={handleChange} placeholder='leo Messi' className='input'/>
+                        <input 
+                            type="text"
+                            name='username'
+                            value={formData.username}
+                            onChange={handleChange}
+                            placeholder='Enter Name'
+                            className='input'
+                        />
                     </div>
                     <div className="newUserItem">
                         <label>Email</label>
-                        <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='leo@gmail.com' className='input'/>
+                        <input 
+                            type="email"
+                            name='email'
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder='Enter Email'
+                            className='input'
+                        />
                     </div>
                     <div className="newUserItem">
                         <label>Password</label>
-                        <input type="password" name='password' value={formData.password} onChange={handleChange} placeholder='loi**********' className='input'/>
+                        <input 
+                            type="password"
+                            name='password'
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder='Enter Password'
+                            className='input'/>
                     </div>
                     <div className="newUserItem">
                         <label>isAdmin</label>

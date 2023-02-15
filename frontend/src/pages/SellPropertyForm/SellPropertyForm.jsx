@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { MdPublish } from 'react-icons/md'
 
 import { Footer } from '../../Container'
@@ -8,7 +7,7 @@ import forSaleImg from '../../assets/logos/for_sale.png'
 import { useCreateSellProperty } from '../../Hooks/useApiRequest'
 import { uploadFiles } from '../../firebase'
 import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
-import { TypingText } from '../../components'
+import { TypingText, Success } from '../../components'
 
 const SellPropertyForm = () => {
     ScrollToTop()
@@ -71,24 +70,7 @@ const SellPropertyForm = () => {
     return (
         success
         ?
-        <div className='success'>
-            <div className='success__emojiHolder'>
-                <span className="thumbs-up">
-                  👍
-                </span>
-            </div>
-            <div className='success__messageHolder'>
-                <h3>
-                    Thank You
-                </h3>
-                <p>
-                    Your Form was successfully submitted, we'll get back to you soon.
-                </p>
-            </div>
-            <Link to='/'>
-                <span>Back to home</span>
-            </Link>
-        </div>
+        <Success message="Your Message has been sent successfully, we'll get back to you shortly."/>
         :
         <div className="sellProperty">
             <div className="sellProperty_wrapper">

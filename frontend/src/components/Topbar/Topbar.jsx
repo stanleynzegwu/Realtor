@@ -2,7 +2,7 @@ import { useState} from 'react'
 import { Link } from 'react-router-dom'
 import { MdNotificationsNone, MdProductionQuantityLimits, MdOutlineReviews,
 MdOutlineLocalOffer, MdLineStyle, MdTimeline } from 'react-icons/md'
-import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
+import { FiUsers , FiMessageSquare} from 'react-icons/fi'
 import { GrBlog } from 'react-icons/gr'
 import {HiMenu,HiX} from 'react-icons/hi'
 
@@ -30,10 +30,12 @@ const Topbar = () => {
                     <Link to='/'><span className='logo'>stannz</span></Link>
                 </FadeRightAnimation>
                 <div className="topRight">
-                    <div className="topbarIconContainer">
-                        <MdNotificationsNone />
-                        {requestsSum > 0 && <span className='topIconBag'>{requestsSum}</span>}
-                    </div>
+                    <Link to='/adminDashboard/messages'>
+                        <div className="topbarIconContainer">
+                            <MdNotificationsNone />
+                            {requestsSum > 0 && <span className='topIconBag'>{requestsSum}</span>}
+                        </div>
+                    </Link>
                     {user && <img src={user?.data.img ? user?.data.img : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"} alt="avatar" className='topAvatar'/>}
                     <div className='topbar__menuIcon' onClick={() => setToggle(true)}><HiMenu /></div>
                 </div>
@@ -107,16 +109,13 @@ const Topbar = () => {
                         <div className="sidebarMenu topbarMenu">
                             <h3 className='sidebarTitle topbarTitle'>Notifications</h3>
                             <ul className='sidebarList topbarList'>
-                                <li
-                                    onClick={ handleClick }
-                                    className='sidebarListItem topbarListItem'>
-                                    <FiMail />Mail
-                                </li>
-                                <li
-                                    onClick={ handleClick }
-                                    className='sidebarListItem topbarListItem'>
-                                    <FiMessageSquare />Messages
-                                </li>
+                                <Link to='/adminDashboard/messages'>
+                                    <li
+                                        onClick={ handleClick }
+                                        className='sidebarListItem topbarListItem'>
+                                        <FiMessageSquare />Messages
+                                    </li>
+                                </Link>
                             </ul>
                         </div>
                     </div>

@@ -1,11 +1,11 @@
-import { MdLineStyle, MdTimeline } from 'react-icons/md'
-import { FiUsers , FiMail , FiMessageSquare} from 'react-icons/fi'
+import { FiUsers , FiMessageSquare} from 'react-icons/fi'
 import { GrBlog } from 'react-icons/gr'
-import { MdProductionQuantityLimits, MdOutlineReviews, MdOutlineLocalOffer } from 'react-icons/md'
+import { MdProductionQuantityLimits, MdOutlineReviews, MdOutlineLocalOffer,MdLineStyle, MdTimeline } from 'react-icons/md'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import './Sidebar.scss'
-import { FadeDownAnimation, FadeLeftAnimation, FadeRightAnimation, FadeUpAnimation } from '../UI/Animation/Animation'
+import { FadeUpAnimation } from '../UI/Animation/Animation'
 
 const Sidebar = () => {
     const [active,setActive] = useState('home')
@@ -86,18 +86,14 @@ const Sidebar = () => {
                 <div className="sidebarMenu">
                     <h3 className='sidebarTitle'>Notifications</h3>
                     <ul className='sidebarList'>
-                        <li id='mail'
-                            style={{backgroundColor:`${active === 'mail' ? 'rgb(210, 206, 206)' : ''}`}}
-                            onClick={ handleClick }
-                            className='sidebarListItem'>
-                            <FiMail />Mail
-                        </li>
-                        <li id='messages'
-                            style={{backgroundColor:`${active === 'messages' ? 'rgb(210, 206, 206)' : ''}`}}
-                            onClick={ handleClick }
-                            className='sidebarListItem'>
-                            <FiMessageSquare />Messages
-                        </li>
+                        <Link to='/adminDashboard/messages'>
+                            <li id='messages'
+                                style={{backgroundColor:`${active === 'messages' ? 'rgb(210, 206, 206)' : ''}`}}
+                                onClick={ handleClick }
+                                className='sidebarListItem'>
+                                <FiMessageSquare />Messages
+                            </li>
+                        </Link>
                     </ul>
                 </div>
             </FadeUpAnimation>

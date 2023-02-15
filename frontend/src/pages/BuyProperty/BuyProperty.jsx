@@ -32,7 +32,7 @@ const BuyProperty = () => {
 
     return (
         success ?
-        <Success message="Your Message has been sent successfully."/>
+        <Success message="Your Message has been sent successfully, we'll get back to you shortly."/>
         :
         <div className="buyProperty">
             <div className="buyProperty_wrapper">

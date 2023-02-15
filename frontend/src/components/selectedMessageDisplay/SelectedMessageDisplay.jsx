@@ -1,4 +1,5 @@
 import './SelectedMessageDisplay.scss'
+import { formatPrice } from '../../utilityFunctions';
 
 const SelectedMessageDisplay = ({data}) => {
     data = data && data[0]
@@ -77,7 +78,7 @@ const SelectedMessageDisplay = ({data}) => {
             }
             {data?.asking_price && <div className="item_value">
                 <span className='label'>asking price</span>
-                <span className="itemValue">{data.asking_price}</span>
+                <span className="itemValue">{`N${formatPrice(data.asking_price)}`}</span>
             </div>
             }
             {data?.documents && <div className="item_value">
@@ -132,7 +133,7 @@ const SelectedMessageDisplay = ({data}) => {
             }
             {data?.budget && <div className="item_value">
                 <span className='label'>budget</span>
-                <span className="itemValue">{data.budget}</span>
+                <span className="itemValue">{`N${formatPrice(data.budget)}`}</span>
             </div>
             }
             {data?.special_request && <div className="item_value">

@@ -1,65 +1,50 @@
+import { useState, useEffect,useMemo } from 'react';
 import { FeaturedInfo , Chart, WidgetLg,WidgetSm} from '../../../components'
 import { ScrollToTop } from '../../../Hooks/customHook';
 import { FadeUpAnimation } from '../../../components/UI/Animation/Animation';
 import './HomePage.scss'
+import { userRequest } from '../../../RequestMethods';
 
 const HomePage = () => {
     ScrollToTop()
-    const data = [
-        {
-          name: 'Jan',
-          "Active User": 5,
-        },
-        {
-          name: 'Feb',
-          "Active User": 7,
-        },
-        {
-          name: 'Mar',
-          "Active User": 20,
-        },
-        {
-          name: 'April',
-          "Active User": 15,
-        },
-        {
-          name: 'May',
-          "Active User": 18,
-        },
-        {
-          name: 'Jun',
-          "Active User": 5,
-        },
-        {
-          name: 'Jul',
-          "Active User": 1,
-        },
-        {
-          name: 'Aug',
-          "Active User": 9,
-        },
-        {
-          name: 'Sep',
-          "Active User": 12,
-        },
-        {
-          name: 'Oct',
-          "Active User": 12,
-        },
-        {
-          name: 'Nov',
-          "Active User": 8,
-        },
-        {
-          name: 'Dec',
-          "Active User": 11,
-        },
-      ];
+    const [userStats, setUserStats] = useState([])
+
+    const MONTHS = useMemo(
+      () => [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        'Nov',
+        "Dec"
+      ],
+      []
+      )
+      useEffect(() => {
+        const getStats = async () => {
+          try{
+            const res = await userRequest.get("/users/stats")
+            res.data.map(item => setUserStats(prev => [
+              ...prev,
+              {name:MONTHS[item._id-1], "Active User": item.total}
+            ]))
+          }catch{
+
+          }
+        }
+        getStats()
+      },[MONTHS])
 
     return ( 
         <div className='home'>
             <FeaturedInfo />
-            <Chart title='User Analytics' data={data} grid dataKey='Active User' />
+            <Chart title='User Analytics' data={userStats} grid dataKey='Active User' />
                 <FadeUpAnimation className="homeWidgets">
                     <WidgetSm />
                     <WidgetLg />

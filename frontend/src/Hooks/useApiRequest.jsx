@@ -772,12 +772,13 @@ export const useSendRequestReply = () => {
             setIsLoading(false)
             setSuccess(true)
             }
+            return res
         }catch(err){
             setIsLoading(false)
             setError(err.response.data)
         }
 
     }
-    return {CreateRequestReply, success,isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
+    return {CreateRequestReply, success, isLoading, setError, error,setIsLoading,errorMessageDisplay,seterrorMessageDisplay}
 }
 
