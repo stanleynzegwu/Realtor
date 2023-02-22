@@ -17,9 +17,6 @@ const PagesContextProvider = ({children}) => {
         pages:null
     })
 
-
-    console.log("PagesContext state:", state)
-
     return (
         <PagesContext.Provider value={{...state,dispatch}}>
             {children}

@@ -34,7 +34,15 @@
         .footer_handle {
             .logo {
                 height: 100%;
-
+                img{
+                    width: 60px;
+                    height: 60px;
+            
+                    @media screen and (min-width: 2000px) {
+                        width: 80px;
+                        width: 80px;
+                    }
+                }
                 p {
                     margin-bottom: 20px;
                 }

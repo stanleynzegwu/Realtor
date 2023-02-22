@@ -49,7 +49,7 @@ const BlogContextProvider = ({children}) => {
     }
     getAllBlogs()
   },[])  
-  console.log("BlogContext state:", state.blogs)
+
     return (
         <BlogContext.Provider value={{...state,dispatch}}>
             {children}

@@ -49,7 +49,7 @@ const ReviewContextProvider = ({children}) => {
     }
     getAllReviews()
   },[])  
-  console.log("ReviewContext state:", state.reviews)
+
     return (
         <ReviewContext.Provider value={{...state,dispatch}}>
             {children}

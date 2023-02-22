@@ -49,7 +49,7 @@ const PropertyContextProvider = ({children}) => {
     }
     getAllProperties()
   },[])  
-  console.log("PropertyContext state:", state.properties)
+
     return (
         <PropertyContext.Provider value={{...state,dispatch}}>
             {children}

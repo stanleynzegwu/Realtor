@@ -36,7 +36,7 @@ const OfferContextProvider = ({children}) => {
     }
     getAllOffers()
   },[])  
-  console.log("OfferContext state:", state.offers)
+
     return (
         <OfferContext.Provider value={{...state,dispatch}}>
             {children}

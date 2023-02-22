@@ -7,7 +7,7 @@ import { GrBlog } from 'react-icons/gr'
 import {HiMenu,HiX} from 'react-icons/hi'
 
 import './Topbar.scss'
-import { FadeRightAnimation } from '../UI/Animation/Animation'
+import { FadeRightAnimation, FadeLeftAnimation } from '../UI/Animation/Animation'
 import {useAuthContext} from '../../Hooks/useAuthContext'
 import { useRestContext } from '../../Hooks/useRestContext'
 
@@ -43,7 +43,7 @@ const Topbar = () => {
 
             {
                 toggle &&
-                <div className='topbar__menuList'>
+                <FadeLeftAnimation className='topbar__menuList'>
                     <span className='topbar__closeMenu' onClick={handleClick}><HiX /></span>
 
                     <div className="sidebarWrapper topbarWrapper">
@@ -119,7 +119,7 @@ const Topbar = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </FadeLeftAnimation>
             }
         </div>
      );

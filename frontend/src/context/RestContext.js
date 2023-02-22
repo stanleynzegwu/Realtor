@@ -61,7 +61,6 @@ const RestContextProvider = ({children}) => {
         }
         getMessages()
     },[])
-    console.log("RestContext state:", state)
 
     return (
         <RestContext.Provider value={{...state,dispatch}}>

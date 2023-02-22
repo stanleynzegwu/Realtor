@@ -39,7 +39,7 @@ const SelectedProperty = () => {
                                     <h2 className="allProperty__subHeader">{propertyType}</h2>
                                     <span>{location}</span>
                                 </div>
-                                <p className="allProperty_desc">{`${desc.slice(0,501)}`}</p>
+                                <p className="allProperty_desc">{`${desc.slice(0,501)}${desc.length > 500 ? '...' : ''}`}</p>
                                 <Link to={`/viewProperty/${_id}`}>
                                     <span className='allProperty_read'>View Property &rarr;</span>
                                 </Link>

@@ -33,9 +33,6 @@ const UserContextProvider = ({children}) => {
         users:null
     })
 
-
-    console.log("UserContext state:", state)
-
     return (
         <UserContext.Provider value={{...state,dispatch}}>
             {children}
