@@ -29,7 +29,6 @@ const Footer = () => {
         <FadeDownAnimation className="footer_handle wrapper">
           <div className="logo">
             <Link to="/">
-              {/* <h3 className="caption">REALSPLASH</h3> */}
               <img src={logo} alt="realsplash" />
             </Link>
             <p className="astract-col">Find your best smart real estate</p>
