@@ -174,7 +174,7 @@ const getAllUsers = async (req, res) => {
   try {
     const users = query
       ? await User.find().sort({ _id: -1 }).limit(5)
-      : await User.find();
+      : await User.find().sort({ createdAt: -1 });
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
@@ -202,9 +202,9 @@ const getUserStats = async (req, res) => {
         },
       },
     ]);
-    res.status(200).json(data)
+    return res.status(200).json(data)
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 }
 

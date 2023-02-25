@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const connectDB = require("./config/database");
 const userRoutes = require("./routes/user");
+const adminMessageRoutes = require("./routes/adminMessage");
 const authRoutes = require("./routes/auth");
 const blogRoutes = require("./routes/blog");
 const buildingRoutes = require("./routes/building");
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/users", userRoutes);
+app.use("/api/adminMessage", adminMessageRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/building", buildingRoutes);

@@ -3,17 +3,20 @@ import { useState, useEffect } from "react";
 import "./WidgetLg.scss";
 import AdminForm from "../AdminForm/AdminForm";
 import Message from "../WidgetLg/message/message";
+import { useAuthContext } from "../../Hooks/useAuthContext";
 import { userRequest } from "../../RequestMethods";
 
 const WidgetLg = () => {
+  const { user } = useAuthContext();
+  const [toggle, setToggle] = useState(false);
   const [adminMessages, setAdminMessages] = useState(null);
-  console.log(adminMessages);
+
   //FETCH ALL USERS
   useEffect(() => {
     const GetAllAdminMessages = async () => {
       try {
-        const Messages = await userRequest.get("/adminMessage");
-        setAdminMessages(Messages?.data);
+        const messages = await userRequest.get("/adminMessage");
+        setAdminMessages(messages?.data);
       } catch (err) {
         console.log(err.response.data);
       }
@@ -24,8 +27,11 @@ const WidgetLg = () => {
   return (
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Admin Messages</h3>
-      <Message adminMessages={adminMessages} />
-      <AdminForm />
+      <button onClick={() => setToggle(true)} className="adminMessageCreateBtn">
+        Create
+      </button>
+      <Message adminMessages={adminMessages} user={user} />
+      {toggle && <AdminForm user={user} setToggle={setToggle} />}
     </div>
   );
 };

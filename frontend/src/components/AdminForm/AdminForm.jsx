@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 import "./AdminForm.scss";
-import { useAuthContext } from "../../Hooks/useAuthContext";
 import { useCreateAdminMessage } from "../../Hooks/useApiRequest";
 import TypingText from "../TypingText";
 
-const AdminForm = () => {
-  const { user } = useAuthContext();
+const AdminForm = ({ user, setToggle }) => {
   const { CreateAdminMessage, success, isLoading, setError, error } = useCreateAdminMessage();
   const [formData, setFormData] = useState({
     admin: user?.data,
@@ -36,33 +35,42 @@ const AdminForm = () => {
 
   return (
     <div className="admin_formWrapper">
-      <h2 className="admin_title">Form</h2>
-      <form className="admin_leftForm" onSubmit={handleSubmit}>
-        <div className="admin_leftFormItem">
-          <label>Title</label>
-          <input
-            placeholder="Enter your Name"
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-          />
+      <div className="admin_formHolder">
+        <div className="admin_top">
+          <h2 className="admin_title">Form</h2>
+          <AiOutlineClose onClick={() => setToggle(false)} />
         </div>
 
-        <div className="admin_leftFormItem">
-          <label>Your Message</label>
-          <textarea
-            placeholder="Enter your Meassage"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-          />
-        </div>
-        <button disabled={isLoading} className="adminBtn">
-          Leave a meassage
-        </button>
-        {error && <TypingText text={error} intervalDuration={50} className="error" />}
-      </form>
+        <form className="admin_form" onSubmit={handleSubmit}>
+          <div className="admin_formItem">
+            <label>Title</label>
+            <input
+              placeholder="Enter your Name"
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="admin_formItem">
+            <label>Your Message</label>
+            <textarea
+              id=""
+              cols="30"
+              rows="8"
+              placeholder="Enter your Meassage"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </div>
+          <button disabled={isLoading} className="adminBtn">
+            Leave a meassage
+          </button>
+          {error && <TypingText text={error} intervalDuration={50} className="error" />}
+        </form>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const sendSubsciptionMail = async (email) => {
     try{
 
         let info = await transporter.sendMail({
-            from: `Realtor <${process.env.MY_EMAIL}>`,
+            from: `RealSplash <${process.env.MY_EMAIL}>`,
             to: email,
             subject: "Welcome to our Real Estate Community!",
             html: `
@@ -57,7 +57,7 @@ const sendBulkSubsciptionMail = async (req,res) => {
     try{
 
         let info = await transporter.sendMail({
-            from: `Realtor <${process.env.MY_EMAIL}>`,
+            from: `RealSplash <${process.env.MY_EMAIL}>`,
             bcc: emails, //with bcc rather than to, each recipent will not see other recipients mail
             subject: subject,
             html: body,
@@ -84,7 +84,7 @@ const sendRequestReplyMail = async (req,res) => {
     try{
 
         let info = await transporter.sendMail({
-            from: `Realtor <${process.env.MY_EMAIL}>`,
+            from: `Realty <${process.env.MY_EMAIL}>`,
             to: email, //with bcc rather than to, each recipent will not see other recipients mail
             subject: subject,
             text: message,
