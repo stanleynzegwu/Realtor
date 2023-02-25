@@ -1,14 +1,17 @@
 import { Routes, Route , Navigate } from 'react-router-dom'
+import { SplashScreen } from './components'
 import { BuyProperty, Contact, HirePaintersForm, Home , Login, Offers,SelectedProperty, SingleAbout, SellPropertyForm,
 Signup,UserReview,ViewBlog, ViewProperty, DashboardHome } from "./pages"
 import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
+import { usePropertyContext } from "./Hooks/usePropertyContext";
 
 const App = () => {
-
     const { user } = useAuthContext()
+    const { properties } = usePropertyContext();
     return ( 
         <div className='app'>
+            {properties && <SplashScreen />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/buyProperty/:id" element={<BuyProperty />} />

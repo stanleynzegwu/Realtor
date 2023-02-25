@@ -10,10 +10,12 @@
     }
 
     .widgetSmList {
+        width: 100%;
         margin: 0;
         padding: 0;
         list-style: none;
         .widgetSmListItem {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -26,8 +28,10 @@
                 object-fit: cover;
             }
             .widgetSmUser {
+                width: 50%;
                 display: flex;
                 flex-direction: column;
+                overflow: hidden;
                 .widgetSmUsername {
                     font-weight: 600;
                     color: black;

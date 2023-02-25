@@ -94,7 +94,7 @@ const Footer = () => {
       </div>
       <div className="copyright">
         <p className="astract-col col">
-          Copyright <BiCopyright /> Realtor 2022-2023
+          Copyright <BiCopyright /> RealSplash 2022-2023
         </p>
       </div>
     </footer>
