@@ -31,7 +31,7 @@ const Footer = () => {
             <Link to="/">
               <img src={logo} alt="realsplash" />
             </Link>
-            <p className="astract-col">Find your best smart real estate</p>
+            <p className="astract-col">Trusted Realtor & Painting Agency</p>
             <div className="icons">
               <BsFacebook />
               <BsInstagram />
@@ -43,14 +43,16 @@ const Footer = () => {
 
         <FadeDownAnimation className="footer_about wrapper">
           <h3 className="caption">Quick Links</h3>
-          <p className="quick-links astract-col">Contact</p>
-          <p className="quick-links astract-col">Team</p>
+          {/* <p className="quick-links astract-col">Team</p> */}
           <Link to="/about/hire">
             <p className="quick-links astract-col">Hire Painter</p>
           </Link>
 
           <Link to="/viewBlog/allBlog">
             <p className="quick-links astract-col">Blogs</p>
+          </Link>
+          <Link to="/offers">
+            <p className="quick-links astract-col">Offer</p>
           </Link>
         </FadeDownAnimation>
         <FadeUpAnimation className="footer_help wrapper">
@@ -61,7 +63,7 @@ const Footer = () => {
           <Link to="/contact">
             <p className="quick-links astract-col">Contact us</p>
           </Link>
-          <p className="quick-links astract-col">Book</p>
+          <p className="quick-links astract-col">FAQ</p>
         </FadeUpAnimation>
         <FadeUpAnimation className="footer_newsletter wrapper">
           <h3 className="caption">Subscribe to our Newsletter</h3>

@@ -17,11 +17,11 @@
         width: 80%;
         display: flex;
         flex-direction: column;
-        border: 1px solid gray;
+        border: .5px solid gray;
         border-radius: 5px;
         padding: 20px;
-        background: rgba(255, 255, 255 , 0.25);//0.25 opacity
-        backdrop-filter: blur(5px); //blurry
+        background: rgba(255, 255, 255 , 0.50);//0.25 opacity
+        backdrop-filter: blur(4px); //blurry
         -webkit-backdrop-filter: blur(4px); //blurry
 
         .admin_top {
@@ -60,7 +60,7 @@
                 input,textarea {
                     padding: 8px;
                     border-radius: 5px;
-                    border: 1px solid gray;
+                    border: .5px solid gray;
                 }
             }
 
