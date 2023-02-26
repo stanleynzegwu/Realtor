@@ -5,6 +5,7 @@ import AdminForm from "../AdminForm/AdminForm";
 import Message from "../WidgetLg/message/message";
 import { useAuthContext } from "../../Hooks/useAuthContext";
 import { useRestContext } from "../../Hooks/useRestContext";
+import { FadeUpAnimation } from "../UI/Animation/Animation";
 
 const WidgetLg = () => {
   const { user } = useAuthContext();
@@ -13,7 +14,7 @@ const WidgetLg = () => {
 
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Admin Messages</h3>
+      <FadeUpAnimation className="widgetLgTitle">Admin Messages</FadeUpAnimation>
       <button onClick={() => setToggle(true)} className="adminMessageCreateBtn">
         Create
       </button>

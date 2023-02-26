@@ -20,6 +20,9 @@
         border: 1px solid gray;
         border-radius: 5px;
         padding: 20px;
+        background: rgba(255, 255, 255 , 0.25);//0.25 opacity
+        backdrop-filter: blur(5px); //blurry
+        -webkit-backdrop-filter: blur(4px); //blurry
 
         .admin_top {
             display: flex;
@@ -58,8 +61,6 @@
                     padding: 8px;
                     border-radius: 5px;
                     border: 1px solid gray;
-                    background-color: #000;
-                    color: #fff;
                 }
             }
 
@@ -110,6 +111,13 @@
                     font-weight: 500;
                 }
             }
+        }
+
+        @media screen and (max-width:600px) {
+            width: 90%;
+        }
+        @media screen and (max-width:480px){
+            width: 100%;
         }
     }
 
