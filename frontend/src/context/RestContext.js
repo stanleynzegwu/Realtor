@@ -16,6 +16,8 @@ const RestReducer = (state,action) => {
             return { ...state,buyPropertyRequests: action.payload}
         case 'SET_SELLPROPERTY-REQUESTS':
             return { ...state,sellPropertyRequests: action.payload}
+        case 'SET_ADMIN-MESSAGES':
+            return { ...state,adminMessages: action.payload}
         case 'DELETE_SUPPORT-REQUEST':
             return { ...state,supportRequests: state.supportRequests.filter(({_id}) => _id !== action.payload.data._id)}
         case 'DELETE_BUYPROPERTY-REQUEST':
@@ -24,6 +26,8 @@ const RestReducer = (state,action) => {
             return { ...state,sellPropertyRequests: state.sellPropertyRequests.filter(({_id}) => _id !== action.payload.data._id)}
         case 'DELETE_PAINTER-REQUEST':
             return { ...state,painterRequests: state.painterRequests.filter(({_id}) => _id !== action.payload.data._id)}
+        case 'DELETE_ADMIN-MESSAGE':
+            return { ...state,adminMessages: state.adminMessages.filter(({_id}) => _id !== action.payload?.data?._id)}
         default:
             return state
     }
@@ -34,7 +38,8 @@ const RestContextProvider = ({children}) => {
         supportRequests:null,
         painterRequests:null,
         buyPropertyRequests:null,
-        sellPropertyRequests:null
+        sellPropertyRequests:null,
+        adminMessages:null
     })
 
     useEffect(() => {
@@ -50,18 +55,21 @@ const RestContextProvider = ({children}) => {
                 
                 const sellProperty = await userRequest.get("/sellProperty")
 
+                const adminMessage = await userRequest.get("/adminMessage")
+
                 dispatch({type:'SET_SUPPORT-REQUESTS', payload: supportRequest.data})
                 dispatch({type:'SET_SUBSCRIBERS', payload: subscribers.data})
                 dispatch({type:'SET_SELLPROPERTY-REQUESTS', payload: sellProperty.data})
                 dispatch({type:'SET_BUYPROPERTY-REQUESTS', payload: buyPropertyRequest.data})
                 dispatch({type:'SET_PAINTER-REQUESTS', payload: painterRequest.data})
+                dispatch({type:'SET_ADMIN-MESSAGES', payload: adminMessage.data})
             }catch(err){
                 console.log(err)
             }
         }
         getMessages()
     },[])
-
+    
     return (
         <RestContext.Provider value={{...state,dispatch}}>
             {children}

@@ -37,7 +37,7 @@ const AdminForm = ({ user, setToggle }) => {
     <div className="admin_formWrapper">
       <div className="admin_formHolder">
         <div className="admin_top">
-          <h2 className="admin_title">Form</h2>
+          <h2 className="admin_title">Admin Message Form</h2>
           <AiOutlineClose onClick={() => setToggle(false)} />
         </div>
 
@@ -45,7 +45,7 @@ const AdminForm = ({ user, setToggle }) => {
           <div className="admin_formItem">
             <label>Title</label>
             <input
-              placeholder="Enter your Name"
+              placeholder="Enter The Title"
               type="text"
               name="title"
               value={formData.title}
@@ -58,7 +58,7 @@ const AdminForm = ({ user, setToggle }) => {
             <textarea
               id=""
               cols="30"
-              rows="8"
+              rows="5"
               placeholder="Enter your Meassage"
               name="message"
               value={formData.message}
@@ -69,6 +69,13 @@ const AdminForm = ({ user, setToggle }) => {
             Leave a meassage
           </button>
           {error && <TypingText text={error} intervalDuration={50} className="error" />}
+          {success && (
+            <TypingText
+              text="message created successfully"
+              intervalDuration={50}
+              className="adminMessagesucsess"
+            />
+          )}
         </form>
       </div>
     </div>

@@ -1,28 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./WidgetLg.scss";
 import AdminForm from "../AdminForm/AdminForm";
 import Message from "../WidgetLg/message/message";
 import { useAuthContext } from "../../Hooks/useAuthContext";
-import { userRequest } from "../../RequestMethods";
+import { useRestContext } from "../../Hooks/useRestContext";
 
 const WidgetLg = () => {
   const { user } = useAuthContext();
+  const { adminMessages } = useRestContext();
   const [toggle, setToggle] = useState(false);
-  const [adminMessages, setAdminMessages] = useState(null);
-
-  //FETCH ALL USERS
-  useEffect(() => {
-    const GetAllAdminMessages = async () => {
-      try {
-        const messages = await userRequest.get("/adminMessage");
-        setAdminMessages(messages?.data);
-      } catch (err) {
-        console.log(err.response.data);
-      }
-    };
-    GetAllAdminMessages();
-  }, []);
 
   return (
     <div className="widgetLg">

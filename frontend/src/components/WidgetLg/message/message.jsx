@@ -1,8 +1,11 @@
 import { MdDeleteOutline } from "react-icons/md";
 
 import "./message.scss";
+import { UseDeleteAdminMessage } from "../../../Hooks/useApiRequest";
 
 const message = ({ adminMessages, user }) => {
+  const { DeleteAdminMessage, isLoading } = UseDeleteAdminMessage();
+
   return (
     adminMessages && (
       <div className="admin_messagesWrapper">
@@ -12,7 +15,9 @@ const message = ({ adminMessages, user }) => {
             <div className="message__wrap">
               <img src={admin.img} alt="admin-avatar" className="admin_img" />
               <p className="message__message">{message}</p>
-              {user?.data._id === admin._id && <MdDeleteOutline />}
+              {user?.data._id === admin._id && (
+                <MdDeleteOutline disabled={isLoading} onClick={() => DeleteAdminMessage(_id)} />
+              )}
             </div>
           </div>
         ))}

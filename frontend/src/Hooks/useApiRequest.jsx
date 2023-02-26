@@ -342,7 +342,6 @@ export const useCreateAdminMessage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [success, setSuccess] = useState(null);
-  //const [errorMessageDisplay,seterrorMessageDisplay] = useState(false)
 
   const CreateAdminMessage = async (formData) => {
     try {
@@ -361,6 +360,29 @@ export const useCreateAdminMessage = () => {
   };
 
   return { CreateAdminMessage, success, isLoading, setError, error, setIsLoading };
+};
+
+//DELETE ADMIN MESSAGE
+export const UseDeleteAdminMessage = () => {
+  const { dispatch } = useRestContext();
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
+
+  const DeleteAdminMessage = async (id) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const adminMessage = await userRequest.delete(`/adminMessage/${id}`);
+      dispatch({ type: "DELETE_ADMIN-MESSAGE", payload: adminMessage });
+      setIsLoading(false);
+      return adminMessage;
+    } catch (err) {
+      setIsLoading(false);
+      setError(err.response.data);
+      return;
+    }
+  };
+  return { DeleteAdminMessage, isLoading };
 };
 
 //USER REVIEW

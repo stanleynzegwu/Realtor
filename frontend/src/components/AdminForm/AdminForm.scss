@@ -2,7 +2,7 @@
     margin: 0 auto;
     padding: 10px;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -19,27 +19,96 @@
         flex-direction: column;
         border: 1px solid gray;
         border-radius: 5px;
-        padding: 10px;
+        padding: 20px;
 
         .admin_top {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 15px;
+
+            .admin_title {
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                font-weight: 800;
+            }
 
             svg {
                 font-size: 1.5rem;
                 cursor: pointer;
+                color: #000;
             }
         }
         .admin_form {
-            width: 90%;
+            width: 100%;
             display: flex;
+            gap: 10px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
     
             .admin_formItem {
+                width: 100%;
                 display: flex;
                 flex-direction: column;
+
+                label {
+                    font-weight: 600;
+                }
+                input,textarea {
+                    padding: 8px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+
+            .adminBtn {
+                width: 100%;
+                padding: 10px;
+                font-weight: 700;
+                color: #fff;
+                border-radius: 5px;
+                background: #20336a;
+                border: none;
+
+                &:hover {
+                    background: #30437c;
+                }
+            }
+
+            .error {
+                width: 100%;
+                border-radius: 5px;
+                margin-top: 5px;
+                padding: 5px;
+                border: 1px solid rgb(208, 41, 41);
+                background: rgb(245, 230, 230);
+                p {
+                    color: rgb(208, 41, 41);
+                    text-align: center;
+                    font-weight: 600;
+                }
+
+            }
+
+            button:disabled {
+                opacity: 0.65;
+                cursor: progress;
+              }
+
+            .adminMessagesucsess {
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                margin-top: 5px;
+                border: 1px solid green;
+                background: rgb(228, 240, 228);
+                p {
+                    color: green;
+                    text-align: center;
+                    font-weight: 500;
+                }
             }
         }
     }
