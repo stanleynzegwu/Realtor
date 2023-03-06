@@ -26,9 +26,17 @@
                 object-fit: cover;
             }
 
-            .message__message {
+            .adminSubHolder {
                 width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                .message__createdAt {
+                    color: gray;
+                }
             }
+
 
             svg {
                 width: 10%;

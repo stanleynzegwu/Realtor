@@ -1,4 +1,12 @@
 .selectedProperty {
+    .noProperty_display {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
     .allProperty{
             width: 100%;
         

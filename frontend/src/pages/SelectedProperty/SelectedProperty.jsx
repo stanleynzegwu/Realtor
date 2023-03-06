@@ -1,58 +1,65 @@
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
-import { Footer } from '../../Container'
-import './SelectedProperty.scss'
-import { ScrollToTop, useHandleGoBack } from '../../Hooks/customHook'
-import { usePropertyContext } from '../../Hooks/usePropertyContext';
+import { Footer } from "../../Container";
+import "./SelectedProperty.scss";
+import { ScrollToTop, useHandleGoBack } from "../../Hooks/customHook";
+import { usePropertyContext } from "../../Hooks/usePropertyContext";
 
 const SelectedProperty = () => {
-    ScrollToTop()
-    const handleGoBack = useHandleGoBack()
-    const { properties } = usePropertyContext()
-    const { pathname } = useLocation()
+  ScrollToTop();
+  const handleGoBack = useHandleGoBack();
+  const { properties } = usePropertyContext();
+  const { pathname } = useLocation();
 
-    let showProperty
-    
-    const selectedPath = pathname.split('/').filter(word => word && word !== 'selectedProperty')
+  let showProperty;
 
-    showProperty = selectedPath[0] === 'isFeatured' ? properties.data.filter(({isFeatured}) => isFeatured) :
-    selectedPath[0] === 'allProperties' ? properties.data :
-    properties.data.filter(({state,category}) => {
-        let val = [state,category].map((a) => a.toLowerCase().trim())
-        let concated = [...new Set([...val,...selectedPath])]
-        return val.length === concated.length
-    })
+  const selectedPath = pathname.split("/").filter((word) => word && word !== "selectedProperty");
 
-    return (
-        <>
-        <div className="selectedProperty">
-            <div className='allProperty'>
-                    <h1 className="allProperty__header">
-                        Property
-                    </h1>
-                    <div className="allProperty__mainContainer">
-                        {showProperty && showProperty.map(({_id,category,img,desc,location,propertyType},index) => (
-                            <div key={index} className="allProperty__container">
-                                <img src={img[0]} alt="property" className="allProperty__img" />
-                                <span className="allProperty__category">{category}</span>
-                                <div>
-                                    <h2 className="allProperty__subHeader">{propertyType}</h2>
-                                    <span>{location}</span>
-                                </div>
-                                <p className="allProperty_desc">{`${desc.slice(0,501)}${desc.length > 500 ? '...' : ''}`}</p>
-                                <Link to={`/viewProperty/${_id}`}>
-                                    <span className='allProperty_read'>View Property &rarr;</span>
-                                </Link>
-                            </div>
-                        ))
-                        }
+  showProperty =
+    selectedPath[0] === "isFeatured"
+      ? properties.data.filter(({ isFeatured }) => isFeatured)
+      : selectedPath[0] === "allProperties"
+      ? properties.data
+      : properties.data.filter(({ state, category }) => {
+          let val = [state, category].map((a) => a.toLowerCase().trim());
+          let concated = [...new Set([...val, ...selectedPath])];
+          return val.length === concated.length;
+        });
+  console.log(showProperty);
+  return (
+    <>
+      <div className="selectedProperty">
+        {showProperty.length ? (
+          <div className="allProperty">
+            <h1 className="allProperty__header">Property</h1>
+            <div className="allProperty__mainContainer">
+              {showProperty &&
+                showProperty.map(({ _id, category, img, desc, location, propertyType }, index) => (
+                  <div key={index} className="allProperty__container">
+                    <img src={img[0]} alt="property" className="allProperty__img" />
+                    <span className="allProperty__category">{category}</span>
+                    <div>
+                      <h2 className="allProperty__subHeader">{propertyType}</h2>
+                      <span>{location}</span>
                     </div>
-                </div>
-                <button onClick={handleGoBack}>Back</button>
-        </div>
-        <Footer />
-        </>
-     );
-}
- 
+                    <p className="allProperty_desc">{`${desc.slice(0, 501)}${
+                      desc.length > 500 ? "..." : ""
+                    }`}</p>
+                    <Link to={`/viewProperty/${_id}`}>
+                      <span className="allProperty_read">View Property &rarr;</span>
+                    </Link>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ) : (
+          <p className="noProperty_display">no property</p>
+        )}
+        <button onClick={handleGoBack}>Back</button>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
 export default SelectedProperty;

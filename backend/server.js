@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const app = express();
 const mongoose = require("mongoose");
 const connectDB = require("./config/database");
@@ -18,6 +19,8 @@ const propertyRoutes = require("./routes/property");
 const reviewRoutes = require("./routes/review");
 const sellPropertyRoutes = require("./routes/sellProperty");
 const subscribeRoutes = require("./routes/subscribe");
+
+app.use(cors())
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
