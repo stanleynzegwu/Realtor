@@ -83,10 +83,10 @@ const Topbar = () => {
                     Home
                   </li>
                 </Link>
-                <li onClick={handleClick} className="sidebarListItem topbarListItem">
+                {/* <li onClick={handleClick} className="sidebarListItem topbarListItem">
                   <MdTimeline />
                   Analytics
-                </li>
+                </li> */}
               </ul>
             </div>
 

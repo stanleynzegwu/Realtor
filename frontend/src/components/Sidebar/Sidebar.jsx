@@ -37,7 +37,7 @@ const Sidebar = () => {
                 Home
               </li>
             </Link>
-            <li
+            {/* <li
               id="analytics"
               style={{ backgroundColor: `${active === "analytics" ? "rgb(210, 206, 206)" : ""}` }}
               onClick={handleClick}
@@ -45,7 +45,7 @@ const Sidebar = () => {
             >
               <MdTimeline />
               Analytics
-            </li>
+            </li> */}
           </ul>
         </div>
 
