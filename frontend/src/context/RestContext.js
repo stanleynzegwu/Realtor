@@ -28,6 +28,8 @@ const RestReducer = (state,action) => {
             return { ...state,painterRequests: state.painterRequests.filter(({_id}) => _id !== action.payload.data._id)}
         case 'DELETE_ADMIN-MESSAGE':
             return { ...state,adminMessages: state.adminMessages.filter(({_id}) => _id !== action.payload?.data?._id)}
+        case 'CREATE_ADMIN-MESSAGE':
+            return { ...state,adminMessages: [...state.adminMessages,action.payload?.data]}
         default:
             return state
     }

@@ -1,0 +1,45 @@
+.popUpDeleteAction {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(94, 116, 119, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 15px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .popUpActionText {
+        margin: 0 auto;
+        font-weight: 500;
+    }
+
+    .popUpBtnWrapper {
+        display: flex;
+        gap: 15px;
+
+        .popUpBtn {
+            flex: 1;
+            font-weight: 700;
+            border: none;
+            color: #ffff;
+            border-radius: inherit;
+            padding: 10px 0;
+            border-radius: 5px;
+            
+        }
+
+        .popUpBtnDelete {
+            background: red;
+        }
+
+        .popUpBtnCancel {
+            background: gray;
+        }
+    }
+}

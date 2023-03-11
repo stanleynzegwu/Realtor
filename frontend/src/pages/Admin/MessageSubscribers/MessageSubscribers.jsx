@@ -83,7 +83,7 @@ const MessageSubscribers = () => {
           </FadeUpAnimation>
 
           <button disabled={isLoading} className="messageSubscribers__btn">
-            send
+            {isLoading ? "sending" : "send"}
           </button>
         </form>
         {error && errorMessageDisplay && (

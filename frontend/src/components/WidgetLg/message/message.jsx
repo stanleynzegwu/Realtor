@@ -3,9 +3,13 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 import "./message.scss";
 import { UseDeleteAdminMessage } from "../../../Hooks/useApiRequest";
+import { UseToggleVisibility, UseId } from "../../../Hooks/customHook";
+import PopUpDeleteAction from "../../PopUpDeleteAction/PopUpDeleteAction";
 
 const message = ({ adminMessages, user }) => {
-  const { DeleteAdminMessage, isLoading } = UseDeleteAdminMessage();
+  const { DeleteAdminMessage } = UseDeleteAdminMessage();
+  const { toggle, setToggle } = UseToggleVisibility();
+  const { id, setId } = UseId();
 
   return (
     adminMessages && (
@@ -23,7 +27,21 @@ const message = ({ adminMessages, user }) => {
               </div>
 
               {user?.data._id === admin._id && (
-                <MdDeleteOutline disabled={isLoading} onClick={() => DeleteAdminMessage(_id)} />
+                <MdDeleteOutline
+                  onClick={() => {
+                    setId(_id);
+                    setToggle(true);
+                  }}
+                />
+              )}
+              {toggle && id === _id && (
+                <PopUpDeleteAction
+                  value="message"
+                  width=""
+                  action={DeleteAdminMessage}
+                  id={_id}
+                  setToggle={setToggle}
+                />
               )}
             </div>
           </div>

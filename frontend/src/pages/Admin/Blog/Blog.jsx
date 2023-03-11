@@ -173,7 +173,7 @@ const Blog = () => {
                   />
                 </div>
                 <button disabled={isLoading} type="submit" className="blogUpdateButton">
-                  UPDATE
+                  {isLoading ? "Updating..." : "UPDATE"}
                 </button>
                 {error && <TypingText text={error} intervalDuration={50} className="error" />}
                 {success && (

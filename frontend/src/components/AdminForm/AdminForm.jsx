@@ -71,7 +71,7 @@ const AdminForm = ({ user, setToggle }) => {
             />
           </FadeLeftAnimation>
           <button disabled={isLoading} className="adminBtn">
-            Leave a meassage
+            {isLoading ? "Just a moment..." : "Leave a meassage"}
           </button>
           {error && <TypingText text={error} intervalDuration={50} className="error" />}
           {success && (

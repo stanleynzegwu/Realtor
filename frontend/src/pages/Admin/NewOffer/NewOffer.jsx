@@ -126,7 +126,7 @@ const NewOffer = () => {
                 onClick={handleSubmitText}
                 className="aiEdit_btn"
               >
-                AI Edit
+                {isGenerateTextLoading ? "Editing..." : "AI Edit"}
               </button>
             </div>
           </div>
@@ -167,7 +167,7 @@ const NewOffer = () => {
             />
           </div>
           <button disabled={isLoading} className="newOffer_leftFormItemBtn">
-            Send
+            {isLoading ? "Sending..." : "Send"}
           </button>
           {error && errorMessageDisplay && (
             <TypingText text={error} intervalDuration={50} className="error" />

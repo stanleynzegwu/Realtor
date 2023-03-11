@@ -120,8 +120,6 @@ const generateText = async (req, res) => {
     return res.status(400).json({
       success: false,
       error: 'The text could not be generated',
-      error: error.response.data,
-      error: error.response,
     });
   }
 };

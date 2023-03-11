@@ -339,6 +339,7 @@ export const useDeleteOffer = () => {
 
 //CREATE ADMIN MESSAGE
 export const useCreateAdminMessage = () => {
+  const { dispatch } = useRestContext();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -347,12 +348,12 @@ export const useCreateAdminMessage = () => {
     try {
       setIsLoading(true);
       setSuccess(null);
-      const res = await userRequest.post(`/adminMessage`, formData);
-      console.log(res);
+      const adminMessage = await userRequest.post(`/adminMessage`, formData);
+      dispatch({ type: "CREATE_ADMIN-MESSAGE", payload: adminMessage });
       setIsLoading(false);
       setSuccess(true);
       setError(false);
-      return res;
+      return adminMessage;
     } catch (err) {
       setIsLoading(false);
       setError(err.response.data);

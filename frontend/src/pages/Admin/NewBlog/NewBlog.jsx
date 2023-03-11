@@ -125,7 +125,7 @@ const NewBlog = () => {
                 disabled={isGenerateTextLoading}
                 className="form-left__btn"
               >
-                Generate AI Writeup
+                {isGenerateTextLoading ? "Generating..." : "Generate AI Writeup"}
               </button>
             </form>
           </div>
@@ -159,7 +159,7 @@ const NewBlog = () => {
               />
             </div>
             <button disabled={isLoading} className="createBlog__btn">
-              Create
+              {isLoading ? "Creating..." : "Create"}
             </button>
           </div>
           {error && errorMessageDisplay && (

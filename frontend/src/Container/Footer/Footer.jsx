@@ -80,7 +80,7 @@ const Footer = () => {
                 name="email"
               />
             </div>
-            <button disabled={isLoading}>Subscribe</button>
+            <button disabled={isLoading}>{isLoading ? "Subscribing..." : "Subscribe"}</button>
             {success && successMessageDisplay && (
               <TypingText
                 text={`${subscriber} subscribed succesfully`}

@@ -14,23 +14,14 @@ import {
   useDeleteSellPropertyRequest,
   useDeleteHirePainterRequest,
 } from "../../../Hooks/useApiRequest";
-import {
-  UseToggleVisibility,
-  UseId,
-  ScrollToTop,
-} from "../../../Hooks/customHook";
+import { UseToggleVisibility, UseId, ScrollToTop } from "../../../Hooks/customHook";
 import {
   FadeUpAnimation,
   FadeDownAnimation,
   FadeLeftAnimation,
   FadeRightAnimation,
 } from "../../../components/UI/Animation/Animation";
-import {
-  ButtonLarge,
-  TypingText,
-  SelectedMessageDisplay,
-  Success,
-} from "../../../components";
+import { ButtonLarge, TypingText, SelectedMessageDisplay, Success } from "../../../components";
 import { formatPrice } from "../../../utilityFunctions";
 import Envelope from "../../../assets/logos/Envelope.png";
 
@@ -53,12 +44,8 @@ const Messages = () => {
     useDeleteSellPropertyRequest();
   const { DeleteHirePainterRequest, deleteHireIsLoading, deleteHireSuccess } =
     useDeleteHirePainterRequest();
-  const {
-    supportRequests,
-    buyPropertyRequests,
-    sellPropertyRequests,
-    painterRequests,
-  } = useRestContext();
+  const { supportRequests, buyPropertyRequests, sellPropertyRequests, painterRequests } =
+    useRestContext();
   const {
     toggle,
     setToggle,
@@ -81,9 +68,7 @@ const Messages = () => {
   //GET THE EMAIL OF THE CLICKED USER
   const { name, request, idd } = preloadForm;
   const filteredRequest = request?.filter(({ _id }) => idd === _id);
-  const email = filteredRequest?.map(
-    ({ email, customer_email }) => email || customer_email
-  );
+  const email = filteredRequest?.map(({ email, customer_email }) => email || customer_email);
 
   const [formData, setFormData] = useState({ subject: "", message: "" });
 
@@ -131,18 +116,13 @@ const Messages = () => {
   };
 
   return success &&
-    (deleteSupportSuccess ||
-      deleteBuySuccess ||
-      deleteSellSuccess ||
-      deleteHireSuccess) ? (
+    (deleteSupportSuccess || deleteBuySuccess || deleteSellSuccess || deleteHireSuccess) ? (
     <div className="successWrapper">
       <Success message="Your Message has been sent successfully." />
     </div>
   ) : (
     <div className={toggle5 ? `Messages hideOverflow` : `Messages`}>
-      <FadeDownAnimation className="Messages_header">
-        All messages
-      </FadeDownAnimation>
+      <FadeDownAnimation className="Messages_header">All messages</FadeDownAnimation>
 
       <div className="messages_itemWrapper-wrapper">
         <div className="messages_itemWrapper">
@@ -151,19 +131,14 @@ const Messages = () => {
             <FadeUpAnimation className="Messages-item">
               <h2>Support Requests</h2>
               <span className="Messages-item_toggle">
-                {`${supportRequests.length} message${
-                  supportRequests.length > 1 ? "s" : ""
-                }`}
+                {`${supportRequests.length} message${supportRequests.length > 1 ? "s" : ""}`}
                 <MdVisibility onClick={() => setToggle((prev) => !prev)} />
               </span>
 
               {toggle && (
                 <FadeUpAnimation className="messageWrapper">
                   {supportRequests?.map(
-                    (
-                      { createdAt, _id, email, message, name, phoneNumber },
-                      index
-                    ) => (
+                    ({ createdAt, _id, email, message, name, phoneNumber }, index) => (
                       <div className="message-item" key={_id}>
                         <span className="number">{index + 1}</span>
                         <div className="item_val">
@@ -184,9 +159,7 @@ const Messages = () => {
                         </div>
                         <div className="item_val">
                           <span className="label">phone number</span>
-                          <span className="value phoneNumber">
-                            {phoneNumber}
-                          </span>
+                          <span className="value phoneNumber">{phoneNumber}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">message</span>
@@ -196,22 +169,15 @@ const Messages = () => {
                         {toggle4 && id === _id && (
                           <div className="item_hover">
                             <Link
-                              onClick={() =>
-                                preload("supportRequests", supportRequests, _id)
-                              }
+                              onClick={() => preload("supportRequests", supportRequests, _id)}
                               className="item_btn"
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">
-                              Delete
-                            </button>
+                            <button className="item_btn deleteBtn">Delete</button>
                           </div>
                         )}
-                        <span
-                          onClick={() => handleShouldBeVisible(_id)}
-                          className="moreOption"
-                        >
+                        <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
                           <BsThreeDotsVertical />
                         </span>
                       </div>
@@ -235,18 +201,7 @@ const Messages = () => {
               {toggle1 && (
                 <FadeUpAnimation className="messageWrapper">
                   {buyPropertyRequests?.map(
-                    (
-                      {
-                        createdAt,
-                        _id,
-                        property_id,
-                        email,
-                        message,
-                        name,
-                        phoneNumber,
-                      },
-                      index
-                    ) => (
+                    ({ createdAt, _id, property_id, email, message, name, phoneNumber }, index) => (
                       <div className="message-item" key={_id}>
                         <span className="number">{index + 1}</span>
                         <div className="item_val">
@@ -271,9 +226,7 @@ const Messages = () => {
                         </div>
                         <div className="item_val">
                           <span className="label">phone number</span>
-                          <span className="value phoneNumber">
-                            {phoneNumber}
-                          </span>
+                          <span className="value phoneNumber">{phoneNumber}</span>
                         </div>
                         {message && (
                           <div className="item_val">
@@ -285,25 +238,16 @@ const Messages = () => {
                           <div className="item_hover">
                             <Link
                               onClick={() =>
-                                preload(
-                                  "buyPropertyRequests",
-                                  buyPropertyRequests,
-                                  _id
-                                )
+                                preload("buyPropertyRequests", buyPropertyRequests, _id)
                               }
                               className="item_btn"
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">
-                              Delete
-                            </button>
+                            <button className="item_btn deleteBtn">Delete</button>
                           </div>
                         )}
-                        <span
-                          onClick={() => handleShouldBeVisible(_id)}
-                          className="moreOption"
-                        >
+                        <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
                           <BsThreeDotsVertical />
                         </span>
                       </div>
@@ -369,9 +313,7 @@ const Messages = () => {
                         </div>
                         <div className="item_val">
                           <span className="label">property type</span>
-                          <span className="value property_type">
-                            {property_type}
-                          </span>
+                          <span className="value property_type">{property_type}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">location</span>
@@ -414,9 +356,7 @@ const Messages = () => {
                         {topography && (
                           <div className="item_val">
                             <span className="label">topography</span>
-                            <span className="value topography">
-                              {topography}
-                            </span>
+                            <span className="value topography">{topography}</span>
                           </div>
                         )}
                         {soil_type && (
@@ -427,9 +367,7 @@ const Messages = () => {
                         )}
                         <div className="item_val">
                           <span className="label">description</span>
-                          <span className="value description">
-                            {description}
-                          </span>
+                          <span className="value description">{description}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">asking price</span>
@@ -444,9 +382,7 @@ const Messages = () => {
                         {additional_info && (
                           <div className="item_val">
                             <span className="label">additional info</span>
-                            <span className="value additional_info">
-                              {additional_info}
-                            </span>
+                            <span className="value additional_info">{additional_info}</span>
                           </div>
                         )}
                         <div className="item_val">
@@ -465,25 +401,16 @@ const Messages = () => {
                           <div className="item_hover">
                             <div
                               onClick={() =>
-                                preload(
-                                  "sellPropertyRequests",
-                                  sellPropertyRequests,
-                                  _id
-                                )
+                                preload("sellPropertyRequests", sellPropertyRequests, _id)
                               }
                               className="item_btn"
                             >
                               Reply
                             </div>
-                            <button className="item_btn deleteBtn">
-                              Delete
-                            </button>
+                            <button className="item_btn deleteBtn">Delete</button>
                           </div>
                         )}
-                        <span
-                          onClick={() => handleShouldBeVisible(_id)}
-                          className="moreOption"
-                        >
+                        <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
                           <BsThreeDotsVertical />
                         </span>
                       </div>
@@ -499,9 +426,7 @@ const Messages = () => {
             <FadeUpAnimation className="Messages-item">
               <h2>Painter Requests</h2>
               <span className="Messages-item_toggle">
-                {`${painterRequests.length} message${
-                  painterRequests.length > 1 ? "s" : ""
-                }`}
+                {`${painterRequests.length} message${painterRequests.length > 1 ? "s" : ""}`}
                 <MdVisibility onClick={() => setToggle3((prev) => !prev)} />
               </span>
               {toggle3 && (
@@ -558,89 +483,60 @@ const Messages = () => {
                         </div>
                         <div className="item_val">
                           <span className="label">completion date</span>
-                          <span className="value completionDate">
-                            {completionDate}
-                          </span>
+                          <span className="value completionDate">{completionDate}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">type Of Paint</span>
-                          <span className="value type_Of_Paint">
-                            {type_Of_Paint}
-                          </span>
+                          <span className="value type_Of_Paint">{type_Of_Paint}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">painting service</span>
-                          <span className="value painting_service">
-                            {painting_service}
-                          </span>
+                          <span className="value painting_service">{painting_service}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">paint provider</span>
-                          <span className="value paint_provider">
-                            {paint_provider}
-                          </span>
+                          <span className="value paint_provider">{paint_provider}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">consultation</span>
-                          <span className="value consultation">
-                            {consultation}
-                          </span>
+                          <span className="value consultation">{consultation}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">repairs needed</span>
-                          <span className="value repairs_needed">
-                            {repairs_needed}
-                          </span>
+                          <span className="value repairs_needed">{repairs_needed}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">budget</span>
-                          <span className="value budget">{`N${formatPrice(
-                            budget
-                          )}`}</span>
+                          <span className="value budget">{`N${formatPrice(budget)}`}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">special request</span>
-                          <span className="value special_request">
-                            {special_request}
-                          </span>
+                          <span className="value special_request">{special_request}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">customer name</span>
-                          <span className="value customer_name">
-                            {customer_name}
-                          </span>
+                          <span className="value customer_name">{customer_name}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">customer email</span>
-                          <span className="value customer_email">
-                            {customer_email}
-                          </span>
+                          <span className="value customer_email">{customer_email}</span>
                         </div>
                         <div className="item_val">
                           <span className="label">customer number</span>
-                          <span className="value customer_number">
-                            {customer_number}
-                          </span>
+                          <span className="value customer_number">{customer_number}</span>
                         </div>
                         {toggle4 && id === _id && (
                           <div className="item_hover">
                             <Link
-                              onClick={() =>
-                                preload("painterRequests", painterRequests, _id)
-                              }
+                              onClick={() => preload("painterRequests", painterRequests, _id)}
                               className="item_btn"
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">
-                              Delete
-                            </button>
+                            <button className="item_btn deleteBtn">Delete</button>
                           </div>
                         )}
-                        <span
-                          onClick={() => handleShouldBeVisible(_id)}
-                          className="moreOption"
-                        >
+                        <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
                           <BsThreeDotsVertical />
                         </span>
                       </div>
@@ -653,11 +549,7 @@ const Messages = () => {
         </div>
         {!toggle && !toggle1 && !toggle2 && !toggle3 && (
           <FadeLeftAnimation className="img_div">
-            <img
-              src={Envelope}
-              alt="message-illustration"
-              className="message-img"
-            />
+            <img src={Envelope} alt="message-illustration" className="message-img" />
           </FadeLeftAnimation>
         )}
       </div>
@@ -704,7 +596,13 @@ const Messages = () => {
                 }
                 className="reply_btn"
               >
-                Reply
+                {isLoading ||
+                deleteSupportIsLoading ||
+                deleteBuyIsLoading ||
+                deleteSellIsLoading ||
+                deleteHireIsLoading
+                  ? "Sending..."
+                  : "Reply"}
               </button>
             </form>
           </div>
@@ -717,10 +615,7 @@ const Messages = () => {
       {/* DISPLAY SELECTED MESSAGE DETAILS */}
       {toggle6 && (
         <div className="selectedMessageWrapper">
-          <AiOutlineClose
-            onClick={() => setToggle6(false)}
-            className="closeIcon"
-          />
+          <AiOutlineClose onClick={() => setToggle6(false)} className="closeIcon" />
           <SelectedMessageDisplay data={filteredRequest} />
         </div>
       )}
