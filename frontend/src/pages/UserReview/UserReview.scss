@@ -180,28 +180,12 @@
             width: 100%;
         }
     }
+
+    @media screen and (max-width:479px){
+        width: 100%;
+        margin: 0 auto;
+    }
 }
-// .reviewSuccess {
-//     width: 100%;
-//     height: 100vh;
-//     padding: 40px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-
-//     .reviewSuccess__emojiHolder {
-//         width: 100%;
-
-//         .thumbs-up {
-//             font-size: 5rem;
-//         }
-//     }
-
-//     .reviewSuccess__messageHolder {
-//         margin-bottom: 20px;
-//     }
-// }
 
 .successWrapper {
     width: 100%;

@@ -10,8 +10,17 @@
     backdrop-filter: blur(4px); //blurry
     -webkit-backdrop-filter: blur(4px); //blurry
     border: 1px solid rgba(255, 255, 255, 0.18);
-    position: fixed; //so it stays on-top
+    // position: fixed; //so it stays on-top
+    //
+    position: sticky;
+    transition: transform 1s ease;
+    top: 0;
+    //
     z-index: 2;
+
+    @media screen and (max-width:479px){
+        height: 60px;
+    }
 }
 
 .app__navbar-logo{
