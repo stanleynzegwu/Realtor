@@ -6,6 +6,7 @@ import { uploadImg } from "../../../firebase";
 import { useCreateUser } from "../../../Hooks/useApiRequest";
 import { TypingText } from "../../../components";
 import { ScrollToTop } from "../../../Hooks/customHook";
+import { capitalizeText } from "../../../utilityFunctions";
 
 const NewUser = () => {
   ScrollToTop();
@@ -43,6 +44,8 @@ const NewUser = () => {
 
   async function handleSubmit(e) {
     const { username, email, password } = form;
+    capitalizeText(username);
+
     e.preventDefault();
     setError(null);
     setIsLoading(true);
@@ -55,13 +58,16 @@ const NewUser = () => {
       setTimeout(() => setErrorMessageDisplay(false), 6000);
       return;
     }
+    //capitalize username before saving to DB
+    const name = capitalizeText(username);
+    const newform = { ...form, username: name };
+
     //if there is an img file,call the upload img func to upload to firebase , then the ref stored in db
     if (file) {
-      uploadImg(file, CreateUser, form);
+      uploadImg(file, CreateUser, newform);
       //else when there is no image file, create a user, no img to upload to firebase
     } else {
-      console.log(form);
-      await CreateUser(form);
+      await CreateUser(newform);
     }
   }
 

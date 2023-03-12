@@ -1,5 +1,4 @@
 .footer {
-    //background: rgb(3, 2, 2);
     background: #16254d;
     width: 100%;
     padding: 5%;
@@ -11,7 +10,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1.5fr;
         gap: 20px;
-        height: 80%;
+        height: 60%;
         .wrapper {
             height: 100%;
             width: 100%;
@@ -138,6 +137,9 @@
         @media screen and (max-width:900px) {
             display: flex;
             flex-direction: column;
+        }
+        @media screen and (min-width:900px) {
+            margin: auto;
         }
     }
 

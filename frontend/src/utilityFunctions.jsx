@@ -29,4 +29,17 @@ function generateRandomId() {
   return array.join("");
 }
 
-export { formatPrice, generateRandomId };
+//Capitalize text
+function capitalizeText(text) {
+  const wordArray = text.split(" ");
+  const filteredArray = wordArray.filter((word) => word.length);
+  return filteredArray
+    .map((word) => {
+      let letterArray = word.split("");
+      letterArray[0] = letterArray[0].toUpperCase();
+      return letterArray.join("");
+    })
+    .join(" ");
+}
+
+export { formatPrice, generateRandomId, capitalizeText };
