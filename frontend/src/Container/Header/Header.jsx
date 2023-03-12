@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { FaHouzz, FaMapMarkerAlt } from "react-icons/fa";
 import AOS from "aos";
@@ -9,6 +9,7 @@ import building from "../../assets/logos/building1.jpg";
 import { usePropertyContext } from "../../Hooks/usePropertyContext";
 import { FadeUpAnimation, FadeLeftAnimation } from "../../components/UI/Animation/Animation";
 import "./Header.scss";
+import { Loader } from "../../components";
 
 const Header = () => {
   useEffect(() => {
@@ -21,7 +22,6 @@ const Header = () => {
   const buy = useRef(null);
   //Get list of properties and extract the state,propertyType for our location values
   const allStates = [...new Set(properties?.data.map(({ state }) => state.toLowerCase()))].sort();
-  //const listPropertyType = [...new Set(properties?.data.map(({propertyType}) => propertyType.toLowerCase()))].sort()
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -71,8 +71,10 @@ const Header = () => {
           </div>
         </FadeUpAnimation>
         <FadeLeftAnimation className="header__main-img">
-          <img src={building} alt="land" />
-          <img className="painterImg" src={painter} alt="painter" />
+          <Suspense fallback={<Loader />}>
+            <img src={building} alt="land" />
+            <img className="painterImg" src={painter} alt="painter" />
+          </Suspense>
         </FadeLeftAnimation>
       </div>
 

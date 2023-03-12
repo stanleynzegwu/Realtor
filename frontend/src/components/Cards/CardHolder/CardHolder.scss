@@ -1,12 +1,11 @@
 .card-holder {
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
+    justify-content: center;
+    gap: 20px;
     margin: 25px 5px;
-    width: 90%;
     padding-top: 2%;
     
-    @media screen and (max-width:860px) {
+    @media screen and (max-width:1000px) {
         flex-direction: column;
         align-items: center;
         gap: 15px;

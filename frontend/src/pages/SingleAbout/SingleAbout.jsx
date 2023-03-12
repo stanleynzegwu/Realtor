@@ -27,7 +27,13 @@ const SingleAbout = () => {
       aboutId: "buy",
       header: "Buy Beautiful Nice Situauted Landed Properties",
       subHeading: `Buy landed Properties & Lands`,
-      img: { photo1: building1, photo2: building2, photo3: building3 },
+      img: {
+        photo1:
+          "https://st.depositphotos.com/1004998/3385/i/600/depositphotos_33858913-stock-photo-field-trees-and-blue-sky.jpg",
+        photo2: "https://wallpaperaccess.com/full/1126753.jpg",
+        photo3:
+          "https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/home-improvement/wp-content/uploads/2022/08/featured-image-pretty-homes.jpeg.jpg",
+      },
       more: "click the icon to to see all properties",
       url: "/selectedProperty/allProperties",
       describe: `At REALSPLASH, we are proud to offer a wide variety of high-quality, nicely situated landed properties across the country. Whether you're looking for a sprawling estate or a cozy cottage, we have something to suit every taste and budget.
@@ -65,7 +71,14 @@ const SingleAbout = () => {
       aboutId: "hire",
       header: `Hire Experienced Painters That Will Give Your Building A Glow`,
       subHeading: `hire experienced painters`,
-      img: { photo1: building1, photo2: building2, photo3: building3 },
+      img: {
+        photo1:
+          "https://d3ssz1uz7feir2.cloudfront.net/wp-content/uploads/sites/103/2017/09/28152316/interior-painting.jpg",
+        photo2:
+          "https://www.stewartpaint.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-10-at-1.32.27-PM.png",
+        photo3:
+          "https://www.housedigest.com/img/gallery/5-tips-for-painting-the-exterior-of-your-home-like-a-pro/timing-is-everything-1658749058.jpg",
+      },
       more: "click the icon to fill the form",
       url: "/hirePaintersForm",
       describe: `At our company, we offer building painting services that are second to none. Our experienced team of painters specialize in both interior and exterior painting, and are dedicated to providing excellent customer service. 
