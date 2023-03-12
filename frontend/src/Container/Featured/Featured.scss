@@ -9,6 +9,7 @@
         width: 90%;
         display: flex;
         gap:5%;
+        row-gap: 5%;
         padding-bottom: 15px;
 
         @media screen and (min-width:700px) {
@@ -18,6 +19,8 @@
 
         .featured_card {
             width: 100%;
+            min-width: 300px;
+            min-height: 20rem;
             display: flex;
             border-radius: 30px;
 
@@ -51,6 +54,7 @@
                 .property-location {
                     display: flex;
                     gap: 5%;
+                    row-gap: 5%;
                     border-bottom: 1px solid rgb(228, 226, 226);
                     padding-bottom: 10%;
 
@@ -88,6 +92,7 @@
         @media screen and (max-width:700px) {
             flex-direction: column;
             gap: 25px;
+            column-gap: 25px;
         }
     }
 }

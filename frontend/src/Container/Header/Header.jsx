@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import painter from "../../assets/logos/painter.jpg";
 import building from "../../assets/logos/building1.jpg";
 import { usePropertyContext } from "../../Hooks/usePropertyContext";
-import { FadeUpAnimation, FadeLeftAnimation } from "../../components/UI/Animation/Animation";
+import { FadeUpAnimation } from "../../components/UI/Animation/Animation";
 import "./Header.scss";
 import { Loader } from "../../components";
 
@@ -70,12 +70,12 @@ const Header = () => {
             </Link>
           </div>
         </FadeUpAnimation>
-        <FadeLeftAnimation className="header__main-img">
+        <div className="header__main-img">
           <Suspense fallback={<Loader />}>
             <img src={building} alt="land" />
             <img className="painterImg" src={painter} alt="painter" />
           </Suspense>
-        </FadeLeftAnimation>
+        </div>
       </div>
 
       <div
@@ -114,8 +114,6 @@ const Header = () => {
                     {state}
                   </option>
                 ))}
-                {/* <option value='Anambra'>Anambra</option>
-                                    <option value='Delta'>Delta</option> */}
               </select>
             </div>
           </div>
@@ -140,9 +138,6 @@ const Header = () => {
                 <option value="" disabled>
                   Category
                 </option>
-                {/* {listPropertyType.map((propertyType,index) => (
-                                        <option value={propertyType} key={index}>{propertyType}</option>
-                                    ))} */}
                 <option value="building">Building</option>
                 <option value="land">Land</option>
               </select>

@@ -85,6 +85,7 @@
     .navbarImgHolder {
         display: flex;
         gap: 5px;
+        row-gap: 5px;
         .navbarUserImg {
             width: 35px;
             height: 35px;
@@ -176,6 +177,7 @@
 .app__navbar-menuHolder {
     display: flex;
     gap: 10px;
+    row-gap: 10px;
     .navbarUserImg {
         width: 35px;
         height: 35px;
