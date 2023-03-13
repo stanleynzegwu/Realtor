@@ -25,13 +25,15 @@ const SelectedProperty = () => {
           let concated = [...new Set([...val, ...selectedPath])];
           return val.length === concated.length;
         });
-  console.log(showProperty);
+
   return (
     <>
       <div className="selectedProperty">
-        {showProperty.length ? (
+        {showProperty?.length ? (
           <div className="allProperty">
-            <h1 className="allProperty__header">Property</h1>
+            <h1 className="allProperty__header">
+              {showProperty?.length > 1 ? "PROPERTIES" : "PROPERTY"}
+            </h1>
             <div className="allProperty__mainContainer">
               {showProperty &&
                 showProperty.map(({ _id, category, img, desc, location, propertyType }, index) => (

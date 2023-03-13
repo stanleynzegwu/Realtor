@@ -8,6 +8,7 @@
             width: 100%;
             background: rgb(169, 166, 166);
             font-weight: 800;
+
         }
         .allBlog__mainContainer{
             width: 100%;
@@ -16,6 +17,7 @@
             place-items: center;
             grid-template-columns: 2fr 2fr;
             gap: 30px;
+
             .allBlog__container {
                 width: 100%;
                 background: rgb(169, 166, 166);
@@ -27,6 +29,10 @@
                     border-radius: inherit;
                     width: 100%;
                     object-fit: contain;
+
+                    @media screen and (max-width:479px){
+                        border: 5px solid rgb(210, 206, 206);
+                    }
                 }
 
                 .allBlog__date {
@@ -51,10 +57,18 @@
                     font-weight: 600;
                     cursor: pointer;
                 }
+
+                @media screen and (max-width:479px){
+                    padding: 10px;
+                }
             }
 
             @media screen and (max-width:1024px){
                 grid-template-columns: 1fr;
+            }
+
+            @media screen and (max-width:479px){
+                padding: 10px;
             }
         }
     }
@@ -83,6 +97,9 @@
                 @media screen and (min-width:1024px){
                     width: 70%;
                 }
+                @media screen and (max-width:1479px){
+                    border: 5px solid rgb(218, 215, 215);
+                }
             }
     
             .singleBlog__date{
@@ -108,6 +125,11 @@
             
             @media screen and (max-width: 768px){
                 padding: 20px;
+            }
+
+            @media screen and (max-width: 479px){
+                padding: 10px;
+                width: 90%;
             }
         }
         

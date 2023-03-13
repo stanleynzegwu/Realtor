@@ -1,7 +1,7 @@
 .viewProperty {
     width: 100%;
     padding: 40px;
-
+    
     .singleProperty {
         border: 1px solid rgb(218, 215, 215);
         width: 100%;
@@ -183,6 +183,7 @@
         @media screen and (max-width: 768px){
             padding: 20px;
         }
+    
     }
 
     .btnBack {
@@ -201,5 +202,9 @@
         &:hover {
             background: rgb(189, 187, 187);
         }
+    }
+
+    @media screen and (max-width: 479px){
+        padding: 10px;
     }
 }

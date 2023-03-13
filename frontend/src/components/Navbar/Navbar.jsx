@@ -4,8 +4,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { AiFillHome, AiFillPropertySafety } from "react-icons/ai";
 import { MdDashboardCustomize, MdLocalOffer } from "react-icons/md";
 import { SiGnuprivacyguard } from "react-icons/si";
-import { FcAbout } from "react-icons/fc";
-import { FaBlog, FaUsers } from "react-icons/fa";
+import { FaBlog } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { TbLogin, TbLogout } from "react-icons/tb";
 
@@ -101,19 +100,24 @@ const Navbar = () => {
             <FadeLeftAnimation className="nav-menu">
               <HiX className="close" onClick={() => setToggle(false)} />
               <ul>
-                {[
-                  [<AiFillHome />, "home"],
-                  [<FcAbout />, "about"],
-                  [<AiFillPropertySafety />, "properties"],
-                  [<FaUsers />, "testimonial"],
-                  [<GrContact />, "contact"],
-                ].map((item) => (
-                  <li key={item}>
-                    <Link href={`#${item[1]}`} onClick={() => setToggle(false)}>
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/" onClick={() => setToggle(false)}>
+                    <AiFillHome />
+                    home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/selectedProperty/allProperties" onClick={() => setToggle(false)}>
+                    <AiFillPropertySafety />
+                    properties
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" onClick={() => setToggle(false)}>
+                    <GrContact />
+                    contact
+                  </Link>
+                </li>
                 <li>
                   <Link to="/viewBlog/allBlog" onClick={() => setToggle(false)}>
                     <FaBlog />
