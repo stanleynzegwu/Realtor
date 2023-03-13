@@ -7,8 +7,8 @@ import "./ReviewList.scss";
 import { useReviewContext } from "../../../Hooks/useReviewContext";
 import { useDeleteReview } from "../../../Hooks/useApiRequest";
 import { useUpdateReview } from "../../../Hooks/useApiRequest";
-import { TypingText, Loader } from "../../../components";
-import { ScrollToTop } from "../../../Hooks/customHook";
+import { TypingText, Loader, PopUpDeleteAction } from "../../../components";
+import { ScrollToTop, UseToggleVisibility, UseId } from "../../../Hooks/customHook";
 import { FadeDownAnimation, FadeUpAnimation } from "../../../components/UI/Animation/Animation";
 
 const ReviewList = () => {
@@ -18,24 +18,28 @@ const ReviewList = () => {
   const { UpdateReview, success, isLoading } = useUpdateReview();
   const allReviews = reviews?.data;
   const [toggle, setToggle] = useState(false);
-  const [id, setId] = useState(null);
+  const [idd, setIdd] = useState(null);
+
+  //to pass as prop to PopUpDeleteAction
+  const { toggle1, setToggle1 } = UseToggleVisibility();
+  const { id, setId } = UseId();
 
   const handleUpdateState = (id) => {
-    setId(id);
+    setIdd(id);
     setToggle(true);
   };
-  const currentReview = allReviews?.find((review) => review._id === id);
+  const currentReview = allReviews?.find((review) => review._id === idd);
   const [radio, setRadio] = useState(null);
   const [formReview, setFormReview] = useState("");
   useEffect(() => {
     currentReview && setFormReview(currentReview?.review);
     currentReview && setRadio(currentReview?.isFavorite ? "True" : "False");
-  }, [id, currentReview]);
+  }, [idd, currentReview]);
 
   async function handleUpdate(e) {
     e.preventDefault();
     const form = { review: formReview, isFavorite: radio === "False" ? false : true };
-    await UpdateReview(id, form);
+    await UpdateReview(idd, form);
   }
 
   const columns = [
@@ -77,7 +81,10 @@ const ReviewList = () => {
             </button>
             <MdDeleteOutline
               className="userListDelete"
-              onClick={() => DeleteAReview(params.row._id)}
+              onClick={() => {
+                setId(params.row._id);
+                setToggle1(true);
+              }}
             />
           </>
         );
@@ -98,6 +105,15 @@ const ReviewList = () => {
           checkboxSelection
         />
       </div>
+      {toggle1 && (
+        <PopUpDeleteAction
+          value="Review"
+          width=""
+          action={DeleteAReview}
+          id={id}
+          setToggle={setToggle1}
+        />
+      )}
 
       {toggle && (
         <div className="reviewEdit">

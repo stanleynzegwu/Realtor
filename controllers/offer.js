@@ -67,7 +67,7 @@ const getAllOffers = async (req, res) => {
             category:qCategory,
         });
     }else {
-      offers = await Offer.find();
+      offers = await Offer.find().sort({ createdAt: -1 });
     }
 
     return res.status(200).json(offers);

@@ -62,7 +62,7 @@ const getAllBlog = async (req, res) => {
     if (qNew) {
       blog = await Blog.find().sort({ createdAt: -1 }).limit(3);
     }else {
-      blog = await Blog.find();
+      blog = await Blog.find().sort({createdAt: -1});
     }
 
     return res.status(200).json(blog);

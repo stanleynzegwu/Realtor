@@ -99,7 +99,7 @@ const Navbar = () => {
 
           {toggle && (
             <FadeLeftAnimation className="nav-menu">
-              <HiX onClick={() => setToggle(false)} />
+              <HiX className="close" onClick={() => setToggle(false)} />
               <ul>
                 {[
                   [<AiFillHome />, "home"],

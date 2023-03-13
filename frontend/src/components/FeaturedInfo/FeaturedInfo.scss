@@ -172,6 +172,10 @@
                 svg {
                     color: #000;
                     align-self: flex-end;
+
+                    @media screen and (max-width: 479px){
+                        font-size: 2rem;
+                    }
                 }
                 .btnHolder {
                     width: 100%;
@@ -210,7 +214,17 @@
                             color: inherit;
                             text-align: center;
                         }
+
+                        
+                        @media screen and (max-width:479px){
+                            width: 40%;
+                        }
                     }
+
+                }
+
+                @media screen and (max-width:479px){
+                        width: 90%;
                 }
             }
 

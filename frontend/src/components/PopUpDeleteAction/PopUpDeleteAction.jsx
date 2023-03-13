@@ -7,7 +7,7 @@ const PopUpDeleteAction = ({ value, width, action, id, setToggle }) => {
 
   return (
     <div style={styles} className="popUpDeleteAction">
-      <p className="popUpActionText">Are you sure you want to delete {value} ?</p>
+      <p className="popUpActionText">Are you sure you want to delete this {value} ?</p>
       <div className="popUpBtnWrapper">
         <button
           onClick={() => {

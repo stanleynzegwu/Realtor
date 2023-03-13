@@ -5,13 +5,13 @@ import "./Blog.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { MdDeleteOutline, MdPublish } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
-import { Loader } from "../../../components";
+import { Loader, PopUpDeleteAction } from "../../../components";
 import { useBlogContext } from "../../../Hooks/useBlogContext";
 import { useDeleteBlog } from "../../../Hooks/useApiRequest";
 import { uploadImgAndUpdate } from "../../../firebase";
 import { useUpdateBlog } from "../../../Hooks/useApiRequest";
 import { TypingText } from "../../../components";
-import { ScrollToTop } from "../../../Hooks/customHook";
+import { ScrollToTop, UseToggleVisibility, UseId } from "../../../Hooks/customHook";
 import {
   FadeDownAnimation,
   FadeUpAnimation,
@@ -27,19 +27,22 @@ const Blog = () => {
   const allBlogs = blogs?.data;
 
   const [toggle, setToggle] = useState(false);
-  const [id, setId] = useState(null);
+  const [idd, setIdd] = useState(null);
   const handleUpdateState = (id) => {
-    setId(id);
+    setIdd(id);
     setToggle(true);
   };
-  const currentBlog = allBlogs?.find((blog) => blog._id === id);
+  const currentBlog = allBlogs?.find((blog) => blog._id === idd);
   const [formBlog, setFormBlog] = useState({ desc: "", title: "" });
   const [preview, setPreview] = useState("");
   const [newImg, setNewImg] = useState("");
+  // to pass into PopUpDeleteAction
+  const { toggle1, setToggle1 } = UseToggleVisibility();
+  const { id, setId } = UseId();
 
   useEffect(() => {
     currentBlog && setFormBlog({ desc: currentBlog.desc, title: currentBlog.title });
-  }, [id, currentBlog]);
+  }, [idd, currentBlog]);
 
   //handle Image Change
   function handleImageChange(e) {
@@ -105,7 +108,10 @@ const Blog = () => {
             </button>
             <MdDeleteOutline
               className="userListDelete"
-              onClick={() => DeleteBlog(params.row._id)}
+              onClick={() => {
+                setId(params.row._id);
+                setToggle1(true);
+              }}
             />
           </>
         );
@@ -131,6 +137,17 @@ const Blog = () => {
           checkboxSelection
         />
       </div>
+
+      {toggle1 && (
+        <PopUpDeleteAction
+          value="blog post"
+          width=""
+          action={DeleteBlog}
+          id={id}
+          setToggle={setToggle1}
+        />
+      )}
+
       {toggle && (
         <div className="blogEdit">
           <div className="blogEdit__holder">
