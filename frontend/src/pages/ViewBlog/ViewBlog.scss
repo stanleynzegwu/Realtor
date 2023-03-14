@@ -28,7 +28,8 @@
                     border: 15px solid rgb(210, 206, 206);
                     border-radius: inherit;
                     width: 100%;
-                    object-fit: contain;
+                    object-fit: cover;
+                    aspect-ratio: 3/2;
 
                     @media screen and (max-width:479px){
                         border: 5px solid rgb(210, 206, 206);

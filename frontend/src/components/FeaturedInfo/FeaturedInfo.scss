@@ -207,6 +207,10 @@
 
                         svg {
                             color: #fff;
+
+                            @media screen and (max-width:479px){
+                                display: none;
+                            }
                         }
                         .sendBtn {
                             width: 100%;
@@ -218,6 +222,7 @@
                         
                         @media screen and (max-width:479px){
                             width: 40%;
+                            height: 80%;
                         }
                     }
 

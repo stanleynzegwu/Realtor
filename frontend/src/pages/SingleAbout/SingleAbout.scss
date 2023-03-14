@@ -87,6 +87,10 @@
                 
                 .sub-container__bold {
                     margin: 20px;
+
+                    @media screen and (max-width: 479px){
+                        font-size: 1.5rem;
+                    }
                 }
                 
             }
