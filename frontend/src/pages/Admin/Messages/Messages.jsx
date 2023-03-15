@@ -174,7 +174,7 @@ const Messages = () => {
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">Delete</button>
+                            {/* <button className="item_btn deleteBtn">Delete</button> */}
                           </div>
                         )}
                         <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
@@ -244,7 +244,7 @@ const Messages = () => {
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">Delete</button>
+                            {/* <button className="item_btn deleteBtn">Delete</button> */}
                           </div>
                         )}
                         <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
@@ -407,7 +407,7 @@ const Messages = () => {
                             >
                               Reply
                             </div>
-                            <button className="item_btn deleteBtn">Delete</button>
+                            {/* <button className="item_btn deleteBtn">Delete</button> */}
                           </div>
                         )}
                         <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">
@@ -533,7 +533,7 @@ const Messages = () => {
                             >
                               Reply
                             </Link>
-                            <button className="item_btn deleteBtn">Delete</button>
+                            {/* <button className="item_btn deleteBtn">Delete</button> */}
                           </div>
                         )}
                         <span onClick={() => handleShouldBeVisible(_id)} className="moreOption">

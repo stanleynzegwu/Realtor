@@ -11,6 +11,7 @@ import { SetPasswordVisibility, ScrollToTop, useHandleGoBack } from "../../Hooks
 import { useLogin } from "../../Hooks/useApiRequest";
 import { TypingText } from "../../components";
 import signinImg from "../../assets/logos/signin.png";
+import { FadeDownAnimation } from "../../components/UI/Animation/Animation";
 import "./Login.scss";
 
 const Login = () => {
@@ -108,7 +109,7 @@ const Login = () => {
               </p>
               {error && <TypingText text={error} intervalDuration={30} className="error" />}
             </form>
-            <div className="illustration">
+            <FadeDownAnimation className="illustration">
               <p className="illustration_header">
                 Finding Your Dream Property and Bringing your Building to Life with Fresh Coat of
                 Paint
@@ -117,7 +118,7 @@ const Login = () => {
                 Welcome back! Let's get back to business and continue your experience.
               </p>
               <img className="illustration_img" src={signinImg} alt="illustration" />
-            </div>
+            </FadeDownAnimation>
           </div>
         </div>
         <button onClick={handleGoBack} className="backBtn">

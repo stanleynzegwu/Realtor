@@ -11,6 +11,7 @@ import signup from "../../assets/logos/register.png";
 import { TypingText } from "../../components";
 import "./Signup.scss";
 import { uploadImg } from "../../firebase";
+import { FadeDownAnimation } from "../../components/UI/Animation/Animation";
 
 const Signup = () => {
   ScrollToTop();
@@ -163,7 +164,7 @@ const Signup = () => {
               {error && <TypingText text={error} intervalDuration={30} className="error" />}
             </form>
 
-            <div className="illustration">
+            <FadeDownAnimation className="illustration">
               <p className="illustration_header">
                 Finding Your Dream Property and Bringing your Building to Life with Fresh Coat of
                 Paint
@@ -172,7 +173,7 @@ const Signup = () => {
                 Welcome aboard! Let's begin your journey and create a new experience
               </p>
               <img className="illustration_img" src={signup} alt="illustration" />
-            </div>
+            </FadeDownAnimation>
           </div>
         </div>
         <button onClick={handleGoBack} className="backBtn">
