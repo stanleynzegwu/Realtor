@@ -30,3 +30,5 @@ Overall, the MERN app is a comprehensive and powerful tool that streamlines the 
 
 ![realsplash-Screenshot](https://user-images.githubusercontent.com/107365512/225252078-c622a232-7e61-40f4-8e72-eece8048b072.png)
 ![laptop1](https://user-images.githubusercontent.com/107365512/225252368-28564841-29f7-479a-b27e-c0c4d6e25112.png)
+![real-paint](https://user-images.githubusercontent.com/107365512/225255812-e5a5f762-e7bc-48f6-85f5-48228c131864.png)
+![real-g](https://user-images.githubusercontent.com/107365512/225255957-34cef4a0-18c9-4dfc-aedb-cec28efa2c54.png)
