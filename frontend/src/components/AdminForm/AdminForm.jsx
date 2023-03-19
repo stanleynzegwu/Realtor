@@ -4,11 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./AdminForm.scss";
 import { useCreateAdminMessage } from "../../Hooks/useApiRequest";
 import TypingText from "../TypingText";
-import {
-  FadeDownAnimation,
-  FadeLeftAnimation,
-  FadeRightAnimation,
-} from "../UI/Animation/Animation";
+import { FadeDownAnimation, FadeRightAnimation } from "../UI/Animation/Animation";
 
 const AdminForm = ({ user, setToggle }) => {
   const { CreateAdminMessage, success, isLoading, setError, error } = useCreateAdminMessage();
@@ -58,7 +54,7 @@ const AdminForm = ({ user, setToggle }) => {
             />
           </FadeRightAnimation>
 
-          <FadeLeftAnimation className="admin_formItem">
+          <div className="admin_formItem">
             <label>Your Message</label>
             <textarea
               id=""
@@ -69,7 +65,7 @@ const AdminForm = ({ user, setToggle }) => {
               value={formData.message}
               onChange={handleChange}
             />
-          </FadeLeftAnimation>
+          </div>
           <button disabled={isLoading} className="adminBtn">
             {isLoading ? "Just a moment..." : "Leave a meassage"}
           </button>

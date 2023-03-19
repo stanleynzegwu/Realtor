@@ -4,6 +4,7 @@ const User = require("../models/User")
 const CryptoJS = require("crypto-js");
 //const validator = require("validator")
 const jwt = require('jsonwebtoken')
+const sendRegistrationMail = require("../controllers/nodemailer").sendRegistrationMail
 
 const accessToken = (id,isAdmin) => {
   return jwt.sign({id,isAdmin}, process.env.JWT_SECRET, {
@@ -35,7 +36,8 @@ router.post("/register", async (req, res) => {
     }
     const savedUser = await newUser.save();
 
-
+    //SEND THE USER ACKNOWLEDGEMENT MAIL
+    sendRegistrationMail(email)
     return res.status(201).json({
       _id: savedUser.id,
       username: savedUser.username,

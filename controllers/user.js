@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const CryptoJS = require("crypto-js")
 const User = require('../models/User')
+const sendRegistrationMail = require("./nodemailer").sendRegistrationMail
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -105,6 +106,10 @@ const create = async (req,res) => {
       return res.status(401).json("Email Already Exist")
     }
     const savedUser = await newUser.save();
+
+    //SEND THE USER ACKNOWLEDGEMENT MAIL
+    sendRegistrationMail(email)
+    
     return res.status(201).json({
       _id: savedUser.id,
       username: savedUser.username,
