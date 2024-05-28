@@ -21,7 +21,14 @@ const reviewRoutes = require("./routes/review");
 const sellPropertyRoutes = require("./routes/sellProperty");
 const subscribeRoutes = require("./routes/subscribe");
 
-app.use(cors())
+// app.use(cors())
+app.use(cors(
+  {
+      origin: ["https://birbleai-chat-frontend.vercel.app"],
+      methods: ["POST", "GET", "DELETE", "UPDATE"],
+      credentials: true
+  }
+));
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });

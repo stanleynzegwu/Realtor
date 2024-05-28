@@ -59,7 +59,7 @@ const Blog = () => {
           className="mySwiper"
         >
           {allBlogs &&
-            allBlogs.map(({ _id, img, title, createdAt, desc }, index) => (
+            allBlogs.map(({ _id, img, title, createdAt, desc }) => (
               <SwiperSlide className="blog-card" key={_id}>
                 <div className="card-img">
                   <img src={img} alt="blog-pix" />

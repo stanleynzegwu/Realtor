@@ -5,6 +5,7 @@ Signup,UserReview,ViewBlog, ViewProperty, DashboardHome } from "./pages"
 import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
 import { usePropertyContext } from "./Hooks/usePropertyContext";
+import Error from './pages/Error/Error'
 
 const App = () => {
     const { user } = useAuthContext()
@@ -24,9 +25,10 @@ const App = () => {
                 <Route path="/selectedProperty/*" element={<SelectedProperty />} />
                 <Route path="/sellPropertyForm" element={<SellPropertyForm />} />
                 <Route path="/about/:id" element={<SingleAbout />} />
-                <Route path="/userReview" element={!user ? <Navigate to='/login'/> :<UserReview />} />
+                <Route path="/userReview" element={!user ? <Navigate to='/login'/> : <UserReview />} />
                 <Route path="/viewBlog/:id" element={<ViewBlog />} />
                 <Route path="/viewProperty/:id" element={<ViewProperty />} />
+                <Route path="*" element={<Error />} />
             </Routes>
         </div>
      );
