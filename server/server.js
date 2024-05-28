@@ -57,17 +57,23 @@ app.use("/api/sellProperty", sellPropertyRoutes);
 app.use("/api/subscribe", subscribeRoutes);
 
 //to serve the frontend
-app.use(express.static(path.join(__dirname, "./frontend/build")));
+// app.use(express.static(path.join(__dirname, "./frontend/build")));
 
-app.get("*", function (req, res) {
-  res.sendFile(
-    path.join(__dirname, "./frontend/build/index.html"),
-    function (err) {
-      //res.status(500).send(err);
-      res.status(500).json(err);
-    }
-  );
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(
+//     path.join(__dirname, "./frontend/build/index.html"),
+//     function (err) {
+//       //res.status(500).send(err);
+//       res.status(500).json(err);
+//     }
+//   );
+// });
+
+app.get('/', async (req, res) => {
+  res.status(200).send({
+    message: 'Hello from Realsplash!'
+  })
+})
 
 //Server Running
 app.listen(process.env.PORT || 5000, () => {
