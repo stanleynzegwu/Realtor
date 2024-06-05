@@ -4,7 +4,7 @@ export let token =
   localStorage.getItem("user") && JSON.parse(localStorage.getItem("user")).data.token;
 
 // export const BASE_URL = "/api"
-export const BASE_URL = "/https://realsplash-vercel-api.vercel.app/api";
+export const BASE_URL = "/https://realsplash-vercel-api.vercel.app";
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
