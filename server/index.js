@@ -77,6 +77,5 @@ app.use("/api/subscribe", subscribeRoutes);
 
 //Server Running
 app.listen(process.env.PORT || 5000, () => {
-  console.log(process.env.PORT)
   console.log("Server is running, you better catch it!");
 });
