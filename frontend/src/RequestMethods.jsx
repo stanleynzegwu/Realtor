@@ -1,14 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 
-export let token = localStorage.getItem("user") && (JSON.parse(localStorage.getItem("user")).data.token)
+export let token =
+  localStorage.getItem("user") && JSON.parse(localStorage.getItem("user")).data.token;
 
-export const BASE_URL = "/api"
+// export const BASE_URL = "/api"
+export const BASE_URL = "/https://realsplash-vercel-api.vercel.app/api";
 
 export const publicRequest = axios.create({
-    baseURL: BASE_URL,
-})
+  baseURL: BASE_URL,
+});
 
 export const userRequest = axios.create({
-    baseURL: BASE_URL,
-    headers:{token:`Bearer ${token}`}
-})
+  baseURL: BASE_URL,
+  headers: { token: `Bearer ${token}` },
+});

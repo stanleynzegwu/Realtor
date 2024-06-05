@@ -6,8 +6,11 @@ import './App.scss'
 import { useAuthContext } from './Hooks/useAuthContext'
 import { usePropertyContext } from "./Hooks/usePropertyContext";
 import Error from './pages/Error/Error'
+import axios from'axios'
 
 const App = () => {
+    axios.defaults.withCredentials = true
+    
     const { user } = useAuthContext()
     const { properties } = usePropertyContext();
     return ( 
