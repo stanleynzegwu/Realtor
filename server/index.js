@@ -39,6 +39,12 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get('/', async (req, res) => {
+  res.status(200).send({
+    message: 'Hello from Realsplash!'
+  })
+})
+
 app.use("/api/users", userRoutes);
 app.use("/api/adminMessage", adminMessageRoutes);
 app.use("/api/auth", authRoutes);
@@ -69,13 +75,8 @@ app.use("/api/subscribe", subscribeRoutes);
 //   );
 // });
 
-app.get('/', async (req, res) => {
-  res.status(200).send({
-    message: 'Hello from Realsplash!'
-  })
-})
-
 //Server Running
 app.listen(process.env.PORT || 5000, () => {
+  console.log(process.env.PORT)
   console.log("Server is running, you better catch it!");
 });
