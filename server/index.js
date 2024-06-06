@@ -24,7 +24,7 @@ const subscribeRoutes = require("./routes/subscribe");
 // app.use(cors())
 app.use(cors({
       origin: ["https://realsplash.vercel.app"],
-      methods: ["POST", "GET", "DELETE", "UPDATE"],
+      methods: ["POST", "GET", "DELETE", "UPDATE", "PUT"],
       credentials: true
 }));
 

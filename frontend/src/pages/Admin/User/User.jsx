@@ -33,7 +33,6 @@ const User = () => {
     });
   }
   const form = { ...formData, isAdmin: radio === "False" ? false : true };
-  console.log(form);
   const [preview, setPreview] = useState(user.img);
   const [file, setFile] = useState("");
   function handleImageChange(e) {
