@@ -23,7 +23,6 @@ const subscribeRoutes = require("./routes/subscribe");
 
 // app.use(cors())
 app.use(cors({
-      // origin: ["https://birbleai-chat-frontend.vercel.app"],
       origin: ["https://realsplash.vercel.app"],
       methods: ["POST", "GET", "DELETE", "UPDATE"],
       credentials: true

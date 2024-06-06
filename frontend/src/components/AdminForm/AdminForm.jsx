@@ -32,6 +32,11 @@ const AdminForm = ({ user, setToggle }) => {
     }
 
     CreateAdminMessage(formData);
+    setFormData((formData) => ({
+      ...formData,
+      title: "",
+      message: "",
+    }));
   };
 
   return (
