@@ -93,8 +93,17 @@ const generateText = async (req, res) => {
   const { textPrompt } = req.body;
 
   try {
+    // const response = await openai.createCompletion({
+    //   model: "text-davinci-003",
+    //   prompt: textPrompt,
+    //   temperature: 0,
+    //   max_tokens: 3000,
+    //   top_p: 1,
+    //   frequency_penalty: 0.5,
+    //   presence_penalty: 0,
+    // });
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo",
       prompt: textPrompt,
       temperature: 0,
       max_tokens: 3000,

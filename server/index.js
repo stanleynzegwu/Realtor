@@ -21,10 +21,9 @@ const reviewRoutes = require("./routes/review");
 const sellPropertyRoutes = require("./routes/sellProperty");
 const subscribeRoutes = require("./routes/subscribe");
 
-// app.use(cors())
 app.use(cors({
       origin: ["https://realsplash.vercel.app"],
-      methods: ["POST", "GET", "DELETE", "UPDATE", "PUT"],
+      methods: ["POST", "GET", "DELETE", "PUT"],
       credentials: true
 }));
 
@@ -59,19 +58,6 @@ app.use("/api/property", propertyRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/sellProperty", sellPropertyRoutes);
 app.use("/api/subscribe", subscribeRoutes);
-
-//to serve the frontend
-// app.use(express.static(path.join(__dirname, "./frontend/build")));
-
-// app.get("*", function (req, res) {
-//   res.sendFile(
-//     path.join(__dirname, "./frontend/build/index.html"),
-//     function (err) {
-//       //res.status(500).send(err);
-//       res.status(500).json(err);
-//     }
-//   );
-// });
 
 //Server Running
 app.listen(process.env.PORT || 5000, () => {

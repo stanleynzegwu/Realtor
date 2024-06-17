@@ -20,21 +20,20 @@ const NewBlog = () => {
     setError,
     success,
     error,
-    setSuccess,
     successMessageDisplay,
     errorMessageDisplay,
     setErrorMessageDisplay,
   } = useCreateBlog();
 
-  const [generateForm, setGenerateForm] = useState({ textPrompt: "", title: "" });
-  const [generatedText, setGeneratedText] = useState("");
+  const [formData, setFormData] = useState({ textPrompt: "", title: "" });
+  const [aiGeneratedDesc, setAIGeneratedDesc] = useState("");
   const [preview, setPreview] = useState();
   const [file, setFile] = useState("");
   const descRef = useRef(null);
 
   function handleChange(e) {
     let { name, value } = e.target;
-    setGenerateForm((data) => {
+    setFormData((data) => {
       return {
         ...data,
         [name]: value,
@@ -50,7 +49,7 @@ const NewBlog = () => {
   //to generate text
   const handleSubmitText = async (e) => {
     e.preventDefault();
-    const { textPrompt } = generateForm;
+    const { textPrompt } = formData;
     if (!textPrompt) {
       descRef.current.focus();
       return;
@@ -58,7 +57,7 @@ const NewBlog = () => {
 
     try {
       const res = await generateText({ textPrompt });
-      res.status === 200 && setGeneratedText(res.data.data);
+      res.status === 200 && setAIGeneratedDesc(res.data.data);
     } catch (err) {
       isGenerateTextError && setError("error occured");
     }
@@ -66,21 +65,19 @@ const NewBlog = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const { title } = generateForm;
-
+    const { textPrompt, title } = formData;
     setError(null);
     setIsLoading(true);
     // Check that all form fields are filled out
-    if (!title || !file || !generatedText) {
+    if (!title || !file || !(aiGeneratedDesc || textPrompt)) {
       setIsLoading(false);
       setError("Check That Title,Generated Text & Image field are not Empty");
-      console.log("Please fill out all form fields");
       setErrorMessageDisplay(true);
       setTimeout(() => setErrorMessageDisplay(false), 6000);
       return;
     }
-    const formData = { title, desc: generatedText };
-    uploadImg(file, createBlog, formData);
+    const blogFormData = { title, desc: aiGeneratedDesc || textPrompt };
+    uploadImg(file, createBlog, blogFormData);
   }
 
   return (
@@ -112,7 +109,7 @@ const NewBlog = () => {
                 </label>
                 <input
                   name="textPrompt"
-                  value={generateForm.textPrompt}
+                  value={formData.textPrompt}
                   className="textInput form-left__input"
                   placeholder="Enter Text Description"
                   type="text"
@@ -140,8 +137,8 @@ const NewBlog = () => {
             alt="avatar"
             className="generated-Image"
           />
-          <p className="generated_title">{generateForm.title}</p>
-          <p className="generated-text">{generatedText}</p>
+          <p className="generated_title">{formData.title}</p>
+          <p className="generated-text">{aiGeneratedDesc || formData.textPrompt}</p>
         </div>
       </div>
 
@@ -153,7 +150,7 @@ const NewBlog = () => {
                 className="createBlog__input"
                 name="title"
                 placeholder="Enter The Title"
-                value={generateForm.title}
+                value={formData.title}
                 onChange={handleChange}
                 type="text"
               />

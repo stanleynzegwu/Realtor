@@ -20,7 +20,7 @@ const NewOffer = () => {
   } = useCreateOffer();
   const { generateText, isGenerateTextError, isGenerateTextLoading, isGenerateTextSuccess } =
     useGenerateText();
-  const [offerDesc, setOfferDesc] = useState({ desc: "" });
+  const [aiOfferDesc, setAIOfferDesc] = useState({ desc: "" });
 
   const [formData, setFormData] = useState({
     title: "",
@@ -60,7 +60,7 @@ const NewOffer = () => {
   // Ai Edit Description
   const handleSubmitText = async (e) => {
     e.preventDefault();
-    const { desc } = offerDesc;
+    const { desc } = aiOfferDesc;
     if (!desc) {
       descRef.current.focus();
     } else {
@@ -81,16 +81,25 @@ const NewOffer = () => {
     e.preventDefault();
     const { title, desc, category, startDate, endDate } = formData;
     setError(null);
-
     // Check that all form fields are filled out
-    if (!title || !desc || !category || !imagesFile.length || !startDate || !endDate) {
+    if (
+      !title ||
+      !(desc || aiOfferDesc.desc) ||
+      !category ||
+      !imagesFile.length ||
+      !startDate ||
+      !endDate
+    ) {
       setError("All Required Input Field Must Be Filled");
       seterrorMessageDisplay(true);
       setTimeout(() => seterrorMessageDisplay(false), 6000);
       return;
     }
     setIsLoading(true);
-    uploadFiles(imagesFile, imagesPreview, CreateOffer, formData);
+    uploadFiles(imagesFile, imagesPreview, CreateOffer, {
+      ...formData,
+      desc: desc || aiOfferDesc.desc,
+    });
   };
 
   return (
@@ -117,8 +126,8 @@ const NewOffer = () => {
               <textarea
                 placeholder="Enter Offer Description"
                 name="desc"
-                value={offerDesc.desc}
-                onChange={(e) => setOfferDesc({ [e.target.name]: e.target.value })}
+                value={aiOfferDesc.desc}
+                onChange={(e) => setAIOfferDesc({ [e.target.name]: e.target.value })}
                 ref={descRef}
               />
               <button
@@ -188,7 +197,7 @@ const NewOffer = () => {
         </div>
         <div className="newOfferRight_item">
           <span className="heading">Description</span>
-          <p className="newOfferRight_item newOffer_desc">{formData.desc || offerDesc.desc}</p>
+          <p className="newOfferRight_item newOffer_desc">{formData.desc || aiOfferDesc.desc}</p>
         </div>
         <div className="newOfferRight_item newOffer_ImgHolder">
           {imagesPreview &&

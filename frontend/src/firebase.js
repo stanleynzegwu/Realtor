@@ -122,7 +122,7 @@ const uploadImgAndUpdate = (file,Func,id,formData) => {
 const uploadMultipleAndUpdate = (files,imagesPreview,id,Func,form) => {
   let img = []
   files.map((file) => {
-      console.log('loop');
+      // console.log('loop');
       const storage = getStorage(app)
       const storageRef = ref(storage, new Date().getTime() + file.name);
 
@@ -130,9 +130,10 @@ const uploadMultipleAndUpdate = (files,imagesPreview,id,Func,form) => {
       uploadTask.on(
           "state_changed",
           (snapshot) => {
-              const prog = Math.round(
+              const progress = Math.round(
                   (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               );
+              // console.log(progress)
           },
           (error) => console.log(error),
           async () => {
