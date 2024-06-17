@@ -22,26 +22,26 @@ const Featured = () => {
       <FadeUpAnimation className="featured__cardHolder">
         {featured &&
           featured.map(({ _id, price, img, propertyType, location }, index) => (
-            <div key={index} className="featured_card">
-              <div className="card_text">
-                <p className="card_text-price">{`N${formatPrice(price)}`}</p>
-                <h2 className="card_text-property">{propertyType}</h2>
-                <div className="property-location">
-                  <span className="icon">
-                    <FaMapMarkerAlt />
-                  </span>
-                  <p className="property-location__text">{location}</p>
-                </div>
-                <Link to={`/viewProperty/${_id}`}>
+            <Link to={`/viewProperty/${_id}`} className="featuredLink">
+              <div key={index} className="featured_card">
+                <div className="card_text">
+                  <p className="card_text-price">{`N${formatPrice(price)}`}</p>
+                  <h2 className="card_text-property">{propertyType}</h2>
+                  <div className="property-location">
+                    <span className="icon">
+                      <FaMapMarkerAlt />
+                    </span>
+                    <p className="property-location__text">{location}</p>
+                  </div>
                   <div className="view">
                     <AiFillEye />
                   </div>
-                </Link>
+                </div>
+                <div className="card_img">
+                  <img src={img[0]} alt="property" />
+                </div>
               </div>
-              <div className="card_img">
-                <img src={img[0]} alt="property" />
-              </div>
-            </div>
+            </Link>
           ))}
       </FadeUpAnimation>
       <Link to="/selectedProperty/isFeatured">

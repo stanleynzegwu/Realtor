@@ -16,7 +16,8 @@
             height: 65vh;
             max-height: 27rem;
         }
-
+        .featuredLink {
+            width: 100%;
         .featured_card {
             width: 100%;
             min-height: 20rem;
@@ -90,7 +91,14 @@
                     border-top-right-radius: 30px;
                 }
             }
+
+            &:hover {
+                box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
+                border: none;
+                transition: box-shadow 0.3s ease-in-out;
+            }
         }
+    }
 
         @media screen and (max-width:700px) {
             flex-direction: column;

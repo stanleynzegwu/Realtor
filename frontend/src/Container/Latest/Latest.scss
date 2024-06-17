@@ -117,6 +117,12 @@
                     -webkit-backdrop-filter: contrast(0.5); //blurry
                 }
             }
+
+            &:hover {
+                box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.14);
+                border: none;
+                transition: box-shadow 0.3s ease-in-out;
+            }
         }
         @media screen and (max-width:1024px){
             .card__holder:last-child {

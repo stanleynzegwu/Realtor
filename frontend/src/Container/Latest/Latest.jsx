@@ -25,40 +25,42 @@ const Latest = () => {
         {latestProperties &&
           latestProperties.map(({ _id, img, propertyType, location, price }, index) => (
             <div key={index} className="card__holder">
-              <div className="card__holder_relative">
-                <div className="card__imgHolder">
-                  <img src={img[0]} alt="property" />
-                </div>
+              <Link to={`/viewProperty/${_id}`} className="card_Link">
+                <div className="card__holder_relative">
+                  <div className="card__imgHolder">
+                    <img src={img[0]} alt="property" />
+                  </div>
 
-                <div className="card__allDescHolder">
-                  <div className="card__restHolder">
-                    <div className="card__restHolder-sub">
-                      <h2 className="property-type">{propertyType}</h2>
-                      <div className="property-location">
-                        <span className="icon">
-                          <FaMapMarkerAlt />
-                        </span>
-                        <p className="property-location__text">{location}</p>
+                  <div className="card__allDescHolder">
+                    <div className="card__restHolder">
+                      <div className="card__restHolder-sub">
+                        <h2 className="property-type">{propertyType}</h2>
+                        <div className="property-location">
+                          <span className="icon">
+                            <FaMapMarkerAlt />
+                          </span>
+                          <p className="property-location__text">{location}</p>
+                        </div>
+                      </div>
+                      <div className="property-price__Holder">
+                        <span className="property-price">{`N${formatPrice(price)}`}</span>
                       </div>
                     </div>
-                    <div className="property-price__Holder">
-                      <span className="property-price">{`N${formatPrice(price)}`}</span>
-                    </div>
-                  </div>
-                  <div className="card__footer">
-                    <Link to={`/viewProperty/${_id}`}>
+                    <div className="card__footer">
+                      {/* <Link to={`/viewProperty/${_id}`}> */}
                       <div className="card__view">
                         <span>
                           <AiFillEye />
                         </span>
                       </div>
-                    </Link>
+                      {/* </Link> */}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="onSale">
-                <p>FOR SALE</p>
-              </div>
+                <div className="onSale">
+                  <p>FOR SALE</p>
+                </div>
+              </Link>
             </div>
           ))}
       </div>
